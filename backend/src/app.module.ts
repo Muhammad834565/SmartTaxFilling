@@ -31,6 +31,10 @@ import { SiteSetting } from './entities/site-setting.entity';
         ssl: config.get<string>('DB_SSL', 'false') === 'true'
           ? { rejectUnauthorized: false }
           : false,
+        // Force IPv4 — prevents ENETUNREACH errors on Render/Railway (IPv6 not supported)
+        extra: {
+          family: 4,
+        },
         entities: [
           Page,
           Service,
