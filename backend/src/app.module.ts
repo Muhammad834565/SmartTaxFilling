@@ -28,6 +28,9 @@ import { SiteSetting } from './entities/site-setting.entity';
         username: config.get<string>('DB_USERNAME', 'postgres'),
         password: config.get<string>('DB_PASSWORD', 'postgrespassword'),
         database: config.get<string>('DB_NAME', 'smartax_db'),
+        ssl: config.get<string>('DB_SSL', 'false') === 'true'
+          ? { rejectUnauthorized: false }
+          : false,
         entities: [
           Page,
           Service,
