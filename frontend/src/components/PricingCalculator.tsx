@@ -19,7 +19,7 @@ export default function PricingCalculator() {
           type="button"
           onClick={() => setIsAnnual(!isAnnual)}
           className={`relative inline-flex h-7 w-14 items-center rounded-full transition-colors focus:outline-none focus:ring-2 focus:ring-amber-500/20 ${
-            isAnnual ? 'bg-amber-500' : 'bg-slate-300'
+            isAnnual ? 'bg-emerald-500' : 'bg-slate-300'
           }`}
           aria-label="Toggle annual billing"
         >
@@ -31,7 +31,7 @@ export default function PricingCalculator() {
         </button>
         <span className={`text-sm font-bold flex items-center gap-1.5 ${isAnnual ? 'text-[#0c1e36]' : 'text-slate-400'}`}>
           Annual Billing
-          <span className="text-[10px] uppercase font-bold tracking-wider bg-amber-100 text-amber-800 px-2 py-0.5 rounded-full border border-amber-300">
+          <span className="text-[10px] uppercase font-bold tracking-wider bg-emerald-100 text-amber-800 px-2 py-0.5 rounded-full border border-amber-300">
             Save ~15%
           </span>
         </span>
@@ -47,12 +47,12 @@ export default function PricingCalculator() {
               key={plan.id}
               className={`relative rounded-2xl p-8 flex flex-col justify-between transition-all duration-300 card-hover ${
                 plan.isPopular
-                  ? 'bg-[#0c1e36] text-white border-2 border-amber-500 shadow-2xl scale-[1.02]'
+                  ? 'bg-[#0c1a2e] text-white border-2 border-emerald-500 shadow-2xl scale-[1.02]'
                   : 'bg-white text-slate-800 border border-slate-200 shadow-sm'
               }`}
             >
               {plan.isPopular && (
-                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-amber-500 text-slate-950 text-xs font-extrabold px-4 py-1 rounded-full uppercase tracking-wider flex items-center gap-1.5 shadow-md">
+                <div className="absolute -top-3.5 left-1/2 -translate-x-1/2 bg-emerald-500 text-slate-950 text-xs font-extrabold px-4 py-1 rounded-full uppercase tracking-wider flex items-center gap-1.5 shadow-md">
                   <Sparkles className="w-3.5 h-3.5" />
                   Most Popular Choice
                 </div>
@@ -67,7 +67,7 @@ export default function PricingCalculator() {
                 </p>
 
                 <div className="flex items-baseline gap-1.5 mb-6 pb-6 border-b border-slate-200/20">
-                  <span className={`text-4xl font-extrabold tracking-tight ${plan.isPopular ? 'text-amber-400' : 'text-[#0c1e36]'}`}>
+                  <span className={`text-4xl font-extrabold tracking-tight ${plan.isPopular ? 'text-emerald-400' : 'text-[#0c1e36]'}`}>
                     ${price}
                   </span>
                   <span className={`text-xs ${plan.isPopular ? 'text-slate-300' : 'text-slate-500'}`}>
@@ -76,13 +76,13 @@ export default function PricingCalculator() {
                 </div>
 
                 <div className="space-y-3 mb-8">
-                  <div className={`text-xs font-bold uppercase tracking-wider ${plan.isPopular ? 'text-amber-400' : 'text-[#0c1e36]'}`}>
+                  <div className={`text-xs font-bold uppercase tracking-wider ${plan.isPopular ? 'text-emerald-400' : 'text-[#0c1e36]'}`}>
                     What is included:
                   </div>
                   <ul className="space-y-2.5 text-xs">
                     {plan.features.map((feature, idx) => (
                       <li key={idx} className="flex items-start gap-2.5">
-                        <Check className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
+                        <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
                         <span className={plan.isPopular ? 'text-slate-200' : 'text-slate-600'}>
                           {feature}
                         </span>
@@ -97,8 +97,8 @@ export default function PricingCalculator() {
                   href={`/contact?plan=${encodeURIComponent(plan.name)}`}
                   className={`w-full py-3.5 px-5 rounded-lg text-center text-xs font-bold uppercase tracking-wider flex items-center justify-center gap-2 transition-all shadow-sm hover:shadow-md ${
                     plan.isPopular
-                      ? 'bg-amber-500 hover:bg-amber-600 text-slate-950'
-                      : 'bg-[#0c1e36] hover:bg-[#152c4e] text-white'
+                      ? 'bg-emerald-500 hover:bg-emerald-600 text-slate-950'
+                      : 'bg-[#0c1a2e] hover:bg-[#152c4e] text-white'
                   }`}
                 >
                   <span>{plan.ctaText}</span>
