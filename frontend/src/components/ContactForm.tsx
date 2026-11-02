@@ -58,17 +58,17 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
 
   if (success) {
     return (
-      <div className="bg-emerald-50 border border-amber-300 rounded-2xl p-8 text-center animate-in fade-in duration-200">
-        <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-amber-300">
+      <div className="bg-emerald-50 border border-emerald-300 rounded-2xl p-8 text-center animate-in fade-in duration-200">
+        <div className="w-12 h-12 bg-emerald-100 text-[#2DC55F] rounded-full flex items-center justify-center mx-auto mb-4 border border-emerald-300">
           <CheckCircle2 className="w-6 h-6" />
         </div>
         <h3 className="text-xl font-bold text-[#0c1e36] mb-2">Consultation Request Received!</h3>
         <p className="text-sm text-slate-600 mb-6 max-w-md mx-auto">
-          Thank you for reaching out to Smartax Books. One of our certified tax advisors will review your business requirements and contact you within 24 business hours.
+          Thank you for reaching out to SMARTax Global. One of our certified tax advisors will review your business requirements and contact you within 24 business hours.
         </p>
         <button
           onClick={() => setSuccess(false)}
-          className="text-xs font-bold uppercase tracking-wider text-slate-900 bg-emerald-500 hover:bg-emerald-600 px-5 py-2.5 rounded-lg transition-colors shadow-sm"
+          className="text-xs font-bold uppercase tracking-wider text-slate-900 bg-[#2DC55F] hover:bg-[#23a54e] px-5 py-2.5 rounded-lg transition-colors shadow-sm"
         >
           Send Another Message
         </button>
@@ -96,7 +96,7 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             placeholder="John Doe"
-            className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-emerald-500 transition-colors"
+            className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-[#2DC55F] transition-colors"
           />
         </div>
 
@@ -110,7 +110,7 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             placeholder="john@example.com"
-            className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-emerald-500 transition-colors"
+            className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-[#2DC55F] transition-colors"
           />
         </div>
       </div>
@@ -123,7 +123,7 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             placeholder="+1 (555) 000-0000"
-            className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-emerald-500 transition-colors"
+            className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-[#2DC55F] transition-colors"
           />
         </div>
 
@@ -132,7 +132,7 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
           <select
             value={formData.country}
             onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-            className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-emerald-500 transition-colors bg-white font-medium text-slate-800"
+            className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-[#2DC55F] transition-colors bg-white font-medium text-slate-800"
           >
             <option value="United States">United States</option>
             <option value="United Kingdom">United Kingdom</option>
@@ -149,7 +149,7 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
         <select
           value={formData.service}
           onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-          className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-emerald-500 transition-colors bg-white font-medium text-slate-800"
+          className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-[#2DC55F] transition-colors bg-white font-medium text-slate-800"
         >
           <option value="">Select a service (Optional)</option>
           {SERVICES.map((s) => (
@@ -170,14 +170,14 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           placeholder="Briefly describe your business entity (LLC, C-Corp, Ltd), monthly transaction volume, or target filing deadlines..."
-          className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-emerald-500 transition-colors resize-none"
+          className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-[#2DC55F] transition-colors resize-none"
         ></textarea>
       </div>
 
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-emerald-500 hover:bg-emerald-600 disabled:bg-amber-300 text-slate-950 font-bold text-xs uppercase tracking-wider py-3.5 px-6 rounded-lg shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
+        className="w-full bg-[#2DC55F] hover:bg-[#23a54e] disabled:bg-emerald-300 text-slate-950 font-bold text-xs uppercase tracking-wider py-3.5 px-6 rounded-lg shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
       >
         {loading ? (
           <>

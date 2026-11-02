@@ -8,16 +8,16 @@ export default function PrivacyPolicyPage() {
       <section className="bg-[#0c1a2e] text-white py-16 sm:py-20 border-b border-[#152c4e] relative overflow-hidden">
         <div className="absolute inset-0 inzofin-pattern-grid opacity-30 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3 relative z-10">
-          <div className="inzofin-section-subtitle justify-center text-emerald-400">
+          <div className="inzofin-section-subtitle justify-center text-[#2DC55F]">
             <span>// LEGAL & COMPLIANCE //</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
             Privacy Policy
           </h1>
           <div className="flex items-center justify-center gap-2 text-xs font-semibold text-slate-400 pt-2">
-            <Link href="/" className="hover:text-emerald-400 transition-colors">Home</Link>
+            <Link href="/" className="hover:text-[#2DC55F] transition-colors">Home</Link>
             <span>/</span>
-            <span className="text-emerald-400">Privacy Policy</span>
+            <span className="text-[#2DC55F]">Privacy Policy</span>
           </div>
         </div>
       </section>
@@ -32,7 +32,7 @@ export default function PrivacyPolicyPage() {
           <section className="space-y-2">
             <h3 className="text-base font-bold text-[#0c1e36]">1. Commitment to Privacy</h3>
             <p>
-              Smartax Books (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;us&rdquo;) is committed to protecting your privacy. This policy explains how we collect, process, and safeguard your personal and business financial information when you visit our website or engage our professional services.
+              SMARTax Global (&ldquo;we&rdquo;, &ldquo;our&rdquo;, or &ldquo;us&rdquo;) is committed to protecting your privacy. This policy explains how we collect, process, and safeguard your personal and business financial information when you visit our website or engage our professional services.
             </p>
           </section>
 

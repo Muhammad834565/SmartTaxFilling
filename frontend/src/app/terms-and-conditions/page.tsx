@@ -8,16 +8,16 @@ export default function TermsPage() {
       <section className="bg-[#0c1a2e] text-white py-16 sm:py-20 border-b border-[#152c4e] relative overflow-hidden">
         <div className="absolute inset-0 inzofin-pattern-grid opacity-30 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3 relative z-10">
-          <div className="inzofin-section-subtitle justify-center text-emerald-400">
+          <div className="inzofin-section-subtitle justify-center text-[#2DC55F]">
             <span>// TERMS OF SERVICE //</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
             Terms and Conditions
           </h1>
           <div className="flex items-center justify-center gap-2 text-xs font-semibold text-slate-400 pt-2">
-            <Link href="/" className="hover:text-emerald-400 transition-colors">Home</Link>
+            <Link href="/" className="hover:text-[#2DC55F] transition-colors">Home</Link>
             <span>/</span>
-            <span className="text-emerald-400">Terms & Conditions</span>
+            <span className="text-[#2DC55F]">Terms & Conditions</span>
           </div>
         </div>
       </section>
@@ -32,14 +32,14 @@ export default function TermsPage() {
           <section className="space-y-2">
             <h3 className="text-base font-bold text-[#0c1e36]">1. Introduction</h3>
             <p>
-              Welcome to Smartax Books. By accessing or using our website, client portals, and accounting or advisory services, you agree to be bound by these Terms and Conditions. Please review them carefully before engaging our services.
+              Welcome to SMARTax Global. By accessing or using our website, client portals, and accounting or advisory services, you agree to be bound by these Terms and Conditions. Please review them carefully before engaging our services.
             </p>
           </section>
 
           <section className="space-y-2">
             <h3 className="text-base font-bold text-[#0c1e36]">2. Scope of Services</h3>
             <p>
-              Smartax Books provides bookkeeping, financial statement preparation, US and UK tax compliance, corporate formation assistance, and management advisory services. We do not provide statutory legal advice; legal filings are prepared in accordance with client instructions and relevant jurisdictional guidelines.
+              SMARTax Global provides bookkeeping, financial statement preparation, US and UK tax compliance, corporate formation assistance, and management advisory services. We do not provide statutory legal advice; legal filings are prepared in accordance with client instructions and relevant jurisdictional guidelines.
             </p>
           </section>
 

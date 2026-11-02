@@ -85,7 +85,7 @@ export default function HomePage() {
       <section className="relative pt-16 pb-28 md:pt-24 md:pb-36 inzofin-hero-bg text-white overflow-hidden border-b border-[#152c4e]">
         {/* Decorative Grid & Glow */}
         <div className="absolute inset-0 inzofin-pattern-grid opacity-60 pointer-events-none" />
-        <div className="absolute top-0 right-1/4 w-[700px] h-[500px] bg-amber-500/10 blur-[130px] rounded-full pointer-events-none" />
+        <div className="absolute top-0 right-1/4 w-[700px] h-[500px] bg-[#2DC55F]/10 blur-[130px] rounded-full pointer-events-none" />
         <div className="absolute -bottom-20 -left-20 w-[500px] h-[500px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
@@ -93,15 +93,15 @@ export default function HomePage() {
             {/* Left Content Column */}
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
               {/* Badge */}
-              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-amber-500/40 text-amber-400 text-xs font-bold uppercase tracking-widest shadow-sm">
-                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-[#2DC55F]/40 text-[#2DC55F] text-xs font-bold uppercase tracking-widest shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-[#2DC55F]" />
                 <span>Trusted Finance & Tax Consultancy</span>
               </div>
 
               {/* Headline */}
               <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.12]">
                 Reliable Financial & Tax Solutions For Your{' '}
-                <span className="inzofin-gold-text">
+                <span className="inzofin-emerald-text">
                   Business Growth
                 </span>
               </h1>
@@ -115,7 +115,7 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
                 <Link
                   href="/services"
-                  className="w-full sm:w-auto px-8 py-4 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs uppercase tracking-wider rounded-lg shadow-xl shadow-amber-500/20 hover:shadow-amber-500/30 transition-all flex items-center justify-center gap-2 group"
+                  className="w-full sm:w-auto px-8 py-4 bg-[#2DC55F] hover:bg-[#23a54e] text-slate-950 font-bold text-xs uppercase tracking-wider rounded-lg shadow-xl shadow-[#2DC55F]/20 hover:shadow-[#2DC55F]/30 transition-all flex items-center justify-center gap-2 group"
                 >
                   <span>Our Services</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -123,7 +123,7 @@ export default function HomePage() {
 
                 <Link
                   href="/contact"
-                  className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-lg border border-white/20 backdrop-blur-md transition-all flex items-center justify-center gap-2 hover:border-amber-400"
+                  className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-lg border border-white/20 backdrop-blur-md transition-all flex items-center justify-center gap-2 hover:border-[#2DC55F]"
                 >
                   <span>Book Free Consultation</span>
                 </Link>
@@ -132,19 +132,19 @@ export default function HomePage() {
               {/* Inzofin Trust Strip */}
               <div className="pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-semibold text-slate-300">
                 <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs">
-                  <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0" />
+                  <ShieldCheck className="w-4 h-4 text-[#2DC55F] shrink-0" />
                   <span>IRS Authorized ERO</span>
                 </div>
                 <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs">
-                  <Award className="w-4 h-4 text-amber-400 shrink-0" />
+                  <Award className="w-4 h-4 text-[#2DC55F] shrink-0" />
                   <span>HMRC MTD Partner</span>
                 </div>
                 <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs">
-                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#2DC55F] shrink-0" />
                   <span>QuickBooks Elite</span>
                 </div>
                 <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs">
-                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+                  <CheckCircle2 className="w-4 h-4 text-[#2DC55F] shrink-0" />
                   <span>Platinum Xero Partner</span>
                 </div>
               </div>
@@ -166,19 +166,19 @@ export default function HomePage() {
                 </div>
 
                 {/* Floating Experience Badge 1 (Top Left) */}
-                <div className="absolute -top-6 -left-6 bg-[#0c1e36] text-white border-2 border-amber-500 rounded-xl p-4 shadow-2xl flex items-center gap-3.5 backdrop-blur-md">
-                  <div className="w-12 h-12 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-black text-xl shrink-0">
+                <div className="absolute -top-6 -left-6 bg-[#0c1e36] text-white border-2 border-[#2DC55F] rounded-xl p-4 shadow-2xl flex items-center gap-3.5 backdrop-blur-md">
+                  <div className="w-12 h-12 rounded-lg bg-[#2DC55F] text-slate-950 flex items-center justify-center font-black text-xl shrink-0">
                     25+
                   </div>
                   <div>
-                    <div className="text-xs font-bold uppercase tracking-wider text-amber-400">Experience</div>
+                    <div className="text-xs font-bold uppercase tracking-wider text-[#2DC55F]">Experience</div>
                     <div className="text-xs text-slate-200">Years in Tax & Finance</div>
                   </div>
                 </div>
 
                 {/* Floating Metric Card 2 (Bottom Right) */}
                 <div className="absolute -bottom-6 -right-6 bg-white text-slate-900 border border-slate-200 rounded-xl p-4 shadow-2xl flex items-center gap-3.5">
-                  <div className="w-10 h-10 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
+                  <div className="w-10 h-10 rounded-lg bg-emerald-100 text-[#2DC55F] flex items-center justify-center shrink-0">
                     <TrendingUp className="w-5 h-5" />
                   </div>
                   <div>
@@ -196,56 +196,56 @@ export default function HomePage() {
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-24 sm:-mt-28 relative z-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="bg-white rounded-xl p-7 border border-slate-200 shadow-xl card-hover border-t-4 border-t-amber-500 space-y-3">
-            <div className="w-12 h-12 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-200">
+            <div className="w-12 h-12 rounded-lg bg-emerald-50 text-[#2DC55F] flex items-center justify-center border border-emerald-200">
               <FileText className="w-6 h-6" />
             </div>
             <h3 className="text-base font-extrabold text-[#0c1e36]">Corporate Tax Compliance</h3>
             <p className="text-xs text-slate-600 leading-relaxed">
               IRS Form 1040, 1120, 1120S, 1065, Form 5472 and UK CT600 Corporation Tax prepared with maximum deduction security.
             </p>
-            <Link href="/services/us-tax-compliance-filing-services" className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 hover:text-amber-700 transition-colors pt-1 group">
+            <Link href="/services/us-tax-compliance-filing-services" className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2DC55F] hover:text-emerald-700 transition-colors pt-1 group">
               <span>Learn More</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
           <div className="bg-white rounded-xl p-7 border border-slate-200 shadow-xl card-hover border-t-4 border-t-amber-500 space-y-3">
-            <div className="w-12 h-12 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-200">
+            <div className="w-12 h-12 rounded-lg bg-emerald-50 text-[#2DC55F] flex items-center justify-center border border-emerald-200">
               <BookOpen className="w-6 h-6" />
             </div>
             <h3 className="text-base font-extrabold text-[#0c1e36]">Management Bookkeeping</h3>
             <p className="text-xs text-slate-600 leading-relaxed">
               Real-time QuickBooks & Xero ledgers, monthly reconciliations, balance sheets, and cashflow health reporting.
             </p>
-            <Link href="/services/bookkeeping-accounting-services" className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 hover:text-amber-700 transition-colors pt-1 group">
+            <Link href="/services/bookkeeping-accounting-services" className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2DC55F] hover:text-emerald-700 transition-colors pt-1 group">
               <span>Learn More</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
           <div className="bg-white rounded-xl p-7 border border-slate-200 shadow-xl card-hover border-t-4 border-t-amber-500 space-y-3">
-            <div className="w-12 h-12 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-200">
+            <div className="w-12 h-12 rounded-lg bg-emerald-50 text-[#2DC55F] flex items-center justify-center border border-emerald-200">
               <Rocket className="w-6 h-6" />
             </div>
             <h3 className="text-base font-extrabold text-[#0c1e36]">Cross-Border Formation</h3>
             <p className="text-xs text-slate-600 leading-relaxed">
               End-to-end US LLC (Wyoming, Delaware, Florida) and UK Ltd formation with EIN, BOI, Registered Agent & banking.
             </p>
-            <Link href="/services/startup-business-formation-usa" className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 hover:text-amber-700 transition-colors pt-1 group">
+            <Link href="/services/startup-business-formation-usa" className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2DC55F] hover:text-emerald-700 transition-colors pt-1 group">
               <span>Learn More</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </Link>
           </div>
 
           <div className="bg-white rounded-xl p-7 border border-slate-200 shadow-xl card-hover border-t-4 border-t-amber-500 space-y-3">
-            <div className="w-12 h-12 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-200">
+            <div className="w-12 h-12 rounded-lg bg-emerald-50 text-[#2DC55F] flex items-center justify-center border border-emerald-200">
               <Coins className="w-6 h-6" />
             </div>
             <h3 className="text-base font-extrabold text-[#0c1e36]">Multi-State Sales & Payroll</h3>
             <p className="text-xs text-slate-600 leading-relaxed">
               50-state sales tax nexus registration, automated filings, and payroll tax management (941/940/W-2).
             </p>
-            <Link href="/services/payroll-tax-management" className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 hover:text-amber-700 transition-colors pt-1 group">
+            <Link href="/services/payroll-tax-management" className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2DC55F] hover:text-emerald-700 transition-colors pt-1 group">
               <span>Learn More</span>
               <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
             </Link>
@@ -261,17 +261,17 @@ export default function HomePage() {
             <div className="relative h-[440px] sm:h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl border-2 border-slate-200">
               <Image
                 src="/uploads/2025/11/about_img.png"
-                alt="About Smartax Books Financial Consultants"
+                alt="About SMARTax Global Financial Consultants"
                 fill
                 className="object-cover"
               />
             </div>
 
             {/* Overlapping Inzofin Gold Experience Badge */}
-            <div className="absolute -bottom-6 -right-4 sm:right-6 bg-[#0c1e36] text-white p-6 rounded-2xl border-2 border-amber-500 shadow-2xl max-w-xs space-y-2">
-              <div className="flex items-center gap-1 text-amber-400">
+            <div className="absolute -bottom-6 -right-4 sm:right-6 bg-[#0c1e36] text-white p-6 rounded-2xl border-2 border-[#2DC55F] shadow-2xl max-w-xs space-y-2">
+              <div className="flex items-center gap-1 text-[#2DC55F]">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-amber-400" />
+                  <Star key={i} className="w-4 h-4 fill-[#2DC55F]" />
                 ))}
               </div>
               <div className="text-2xl font-black text-white">25+ Years</div>
@@ -292,13 +292,13 @@ export default function HomePage() {
             </h2>
 
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-              At Smartax Books, we specialize in removing the bureaucratic complexity of accounting, company formation, and tax compliance. Whether you operate an e-commerce brand, a fast-moving SaaS company, or a global enterprise expanding into US and UK markets, our certified specialists ensure your books are pristine and your taxes strictly optimized.
+              At SMARTax Global, we specialize in removing the bureaucratic complexity of accounting, company formation, and tax compliance. Whether you operate an e-commerce brand, a fast-moving SaaS company, or a global enterprise expanding into US and UK markets, our certified specialists ensure your books are pristine and your taxes strictly optimized.
             </p>
 
             {/* 4 Feature Points with Checkmarks */}
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
               <div className="flex items-start gap-3">
-                <div className="w-5 h-5 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-5 h-5 rounded-full bg-emerald-100 text-[#2DC55F] flex items-center justify-center shrink-0 mt-0.5">
                   <Check className="w-3.5 h-3.5" />
                 </div>
                 <div>
@@ -308,7 +308,7 @@ export default function HomePage() {
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="w-5 h-5 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-5 h-5 rounded-full bg-emerald-100 text-[#2DC55F] flex items-center justify-center shrink-0 mt-0.5">
                   <Check className="w-3.5 h-3.5" />
                 </div>
                 <div>
@@ -318,7 +318,7 @@ export default function HomePage() {
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="w-5 h-5 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-5 h-5 rounded-full bg-emerald-100 text-[#2DC55F] flex items-center justify-center shrink-0 mt-0.5">
                   <Check className="w-3.5 h-3.5" />
                 </div>
                 <div>
@@ -328,7 +328,7 @@ export default function HomePage() {
               </div>
 
               <div className="flex items-start gap-3">
-                <div className="w-5 h-5 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-5 h-5 rounded-full bg-emerald-100 text-[#2DC55F] flex items-center justify-center shrink-0 mt-0.5">
                   <Check className="w-3.5 h-3.5" />
                 </div>
                 <div>
@@ -340,14 +340,14 @@ export default function HomePage() {
 
             {/* Inzofin Quote Card */}
             <div className="p-5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-4">
-              <div className="w-12 h-12 rounded-full bg-[#0c1e36] text-amber-400 flex items-center justify-center font-bold text-lg shrink-0">
+              <div className="w-12 h-12 rounded-full bg-[#0c1e36] text-[#2DC55F] flex items-center justify-center font-bold text-lg shrink-0">
                 SB
               </div>
               <div className="space-y-1">
                 <p className="text-xs italic text-slate-700">
                   &ldquo;We treat your financial books and tax filings with the meticulous care and precision as if they were our own enterprise.&rdquo;
                 </p>
-                <div className="text-xs font-bold text-[#0c1e36]">Senior Tax Advisory Board, Smartax Books</div>
+                <div className="text-xs font-bold text-[#0c1e36]">Senior Tax Advisory Board, SMARTax Global</div>
               </div>
             </div>
 
@@ -358,7 +358,7 @@ export default function HomePage() {
                 className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#0c1e36] hover:bg-[#152c4e] text-white font-bold text-xs uppercase tracking-wider rounded-lg shadow-md transition-all group"
               >
                 <span>Discover More About Us</span>
-                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-amber-400" />
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-[#2DC55F]" />
               </Link>
             </div>
           </div>
@@ -395,10 +395,10 @@ export default function HomePage() {
                   {/* Top Header: Icon & Number Badge */}
                   <div>
                     <div className="flex items-center justify-between mb-6">
-                      <div className="w-14 h-14 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-slate-950 transition-colors">
+                      <div className="w-14 h-14 rounded-xl bg-[#2DC55F]/10 text-[#2DC55F] flex items-center justify-center group-hover:bg-[#2DC55F] group-hover:text-slate-950 transition-colors">
                         <IconComponent className="w-7 h-7" />
                       </div>
-                      <span className="text-3xl font-black text-slate-200 group-hover:text-amber-500/30 transition-colors">
+                      <span className="text-3xl font-black text-slate-200 group-hover:text-[#2DC55F]/30 transition-colors">
                         {numberStr}
                       </span>
                     </div>
@@ -407,7 +407,7 @@ export default function HomePage() {
                       {service.category} Service
                     </div>
 
-                    <h3 className="text-lg font-bold text-[#0c1e36] group-hover:text-amber-600 transition-colors mb-3">
+                    <h3 className="text-lg font-bold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors mb-3">
                       <Link href={`/services/${service.slug}`}>{service.title}</Link>
                     </h3>
 
@@ -419,7 +419,7 @@ export default function HomePage() {
                     <ul className="space-y-2 mb-6 border-t border-slate-100 pt-4 text-xs text-slate-500">
                       {service.features.slice(0, 3).map((f, i) => (
                         <li key={i} className="flex items-center gap-2">
-                          <Check className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                          <Check className="w-3.5 h-3.5 text-[#2DC55F] shrink-0" />
                           <span className="truncate">{f}</span>
                         </li>
                       ))}
@@ -430,7 +430,7 @@ export default function HomePage() {
                   <div className="pt-2">
                     <Link
                       href={`/services/${service.slug}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0c1e36] group-hover:text-amber-600 transition-colors"
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors"
                     >
                       <span>Explore Service</span>
                       <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -445,7 +445,7 @@ export default function HomePage() {
           <div className="text-center pt-4">
             <Link
               href="/services"
-              className="inline-flex items-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs uppercase tracking-wider rounded-lg shadow-md transition-all"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-[#2DC55F] hover:bg-[#23a54e] text-slate-950 font-bold text-xs uppercase tracking-wider rounded-lg shadow-md transition-all"
             >
               <span>View All 12+ Financial Services</span>
               <ArrowRight className="w-4 h-4" />
@@ -475,7 +475,7 @@ export default function HomePage() {
             <div className="space-y-4 pt-2">
               <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1">
                 <div className="font-bold text-sm text-[#0c1e36] flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+                  <span className="w-2 h-2 rounded-full bg-[#2DC55F]"></span>
                   <span>Proactive Year-Round Tax Strategy</span>
                 </div>
                 <p className="text-xs text-slate-500 pl-4">
@@ -485,7 +485,7 @@ export default function HomePage() {
 
               <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1">
                 <div className="font-bold text-sm text-[#0c1e36] flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+                  <span className="w-2 h-2 rounded-full bg-[#2DC55F]"></span>
                   <span>Cloud Accounting Tech Stack</span>
                 </div>
                 <p className="text-xs text-slate-500 pl-4">
@@ -495,7 +495,7 @@ export default function HomePage() {
 
               <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1">
                 <div className="font-bold text-sm text-[#0c1e36] flex items-center gap-2">
-                  <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+                  <span className="w-2 h-2 rounded-full bg-[#2DC55F]"></span>
                   <span>Dedicated Senior Client Manager</span>
                 </div>
                 <p className="text-xs text-slate-500 pl-4">
@@ -506,11 +506,11 @@ export default function HomePage() {
           </div>
 
           {/* Right: Performance Bars & Stats */}
-          <div className="lg:col-span-6 bg-[#0c1e36] text-white p-8 sm:p-10 rounded-2xl border-2 border-amber-500/40 shadow-2xl space-y-8 relative overflow-hidden">
+          <div className="lg:col-span-6 bg-[#0c1e36] text-white p-8 sm:p-10 rounded-2xl border-2 border-[#2DC55F]/40 shadow-2xl space-y-8 relative overflow-hidden">
             <div className="absolute inset-0 inzofin-pattern-lines opacity-20 pointer-events-none" />
 
             <div className="space-y-2 relative z-10">
-              <div className="text-xs font-bold uppercase tracking-wider text-amber-400">Our Performance Standards</div>
+              <div className="text-xs font-bold uppercase tracking-wider text-[#2DC55F]">Our Performance Standards</div>
               <h3 className="text-2xl font-black text-white">Consistently Exceeding Industry Benchmarks</h3>
             </div>
 
@@ -520,10 +520,10 @@ export default function HomePage() {
               <div className="space-y-2">
                 <div className="flex justify-between text-xs font-bold">
                   <span>IRS & HMRC Tax Filing Accuracy</span>
-                  <span className="text-amber-400">99.8%</span>
+                  <span className="text-[#2DC55F]">99.8%</span>
                 </div>
                 <div className="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-amber-500 rounded-full" style={{ width: '99.8%' }}></div>
+                  <div className="h-full bg-[#2DC55F] rounded-full" style={{ width: '99.8%' }}></div>
                 </div>
               </div>
 
@@ -531,10 +531,10 @@ export default function HomePage() {
               <div className="space-y-2">
                 <div className="flex justify-between text-xs font-bold">
                   <span>Bookkeeping Reconciliation Precision</span>
-                  <span className="text-amber-400">100%</span>
+                  <span className="text-[#2DC55F]">100%</span>
                 </div>
                 <div className="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-amber-500 rounded-full" style={{ width: '100%' }}></div>
+                  <div className="h-full bg-[#2DC55F] rounded-full" style={{ width: '100%' }}></div>
                 </div>
               </div>
 
@@ -542,10 +542,10 @@ export default function HomePage() {
               <div className="space-y-2">
                 <div className="flex justify-between text-xs font-bold">
                   <span>Client Retention & Satisfaction</span>
-                  <span className="text-amber-400">98.5%</span>
+                  <span className="text-[#2DC55F]">98.5%</span>
                 </div>
                 <div className="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-amber-500 rounded-full" style={{ width: '98.5%' }}></div>
+                  <div className="h-full bg-[#2DC55F] rounded-full" style={{ width: '98.5%' }}></div>
                 </div>
               </div>
 
@@ -553,17 +553,17 @@ export default function HomePage() {
               <div className="space-y-2">
                 <div className="flex justify-between text-xs font-bold">
                   <span>Audit Defense & Notice Resolution</span>
-                  <span className="text-amber-400">99.2%</span>
+                  <span className="text-[#2DC55F]">99.2%</span>
                 </div>
                 <div className="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden">
-                  <div className="h-full bg-amber-500 rounded-full" style={{ width: '99.2%' }}></div>
+                  <div className="h-full bg-[#2DC55F] rounded-full" style={{ width: '99.2%' }}></div>
                 </div>
               </div>
             </div>
 
             {/* Callout box */}
             <div className="pt-4 border-t border-slate-700/60 flex items-center gap-4 relative z-10">
-              <div className="w-12 h-12 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center font-bold shrink-0">
+              <div className="w-12 h-12 rounded-xl bg-[#2DC55F] text-slate-950 flex items-center justify-center font-bold shrink-0">
                 <Award className="w-6 h-6" />
               </div>
               <div>
@@ -583,28 +583,28 @@ export default function HomePage() {
           <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
             {/* Stat 1 */}
             <div className="space-y-2 p-4">
-              <div className="text-3xl sm:text-5xl font-black text-amber-400">1,250+</div>
+              <div className="text-3xl sm:text-5xl font-black text-[#2DC55F]">1,250+</div>
               <div className="text-xs uppercase font-bold tracking-wider text-slate-300">Active Global Clients</div>
               <p className="text-[11px] text-slate-400">Businesses in 42+ Countries</p>
             </div>
 
             {/* Stat 2 */}
             <div className="space-y-2 p-4 border-l border-white/10">
-              <div className="text-3xl sm:text-5xl font-black text-amber-400">$45M+</div>
+              <div className="text-3xl sm:text-5xl font-black text-[#2DC55F]">$45M+</div>
               <div className="text-xs uppercase font-bold tracking-wider text-slate-300">Tax Deductions Saved</div>
               <p className="text-[11px] text-slate-400">Legally Optimized Filings</p>
             </div>
 
             {/* Stat 3 */}
             <div className="space-y-2 p-4 border-l border-white/10">
-              <div className="text-3xl sm:text-5xl font-black text-amber-400">15+</div>
+              <div className="text-3xl sm:text-5xl font-black text-[#2DC55F]">15+</div>
               <div className="text-xs uppercase font-bold tracking-wider text-slate-300">Years Experience</div>
               <p className="text-[11px] text-slate-400">CPA & Enrolled Agents</p>
             </div>
 
             {/* Stat 4 */}
             <div className="space-y-2 p-4 border-l border-white/10">
-              <div className="text-3xl sm:text-5xl font-black text-amber-400">100%</div>
+              <div className="text-3xl sm:text-5xl font-black text-[#2DC55F]">100%</div>
               <div className="text-xs uppercase font-bold tracking-wider text-slate-300">On-Time Compliance</div>
               <p className="text-[11px] text-slate-400">Zero Late Penalties</p>
             </div>
@@ -632,7 +632,7 @@ export default function HomePage() {
             className="inline-flex items-center gap-2 px-6 py-3 bg-[#0c1e36] hover:bg-[#152c4e] text-white font-bold text-xs uppercase tracking-wider rounded-lg transition-all self-start md:self-auto"
           >
             <span>Request A Case Study Review</span>
-            <ArrowRight className="w-4 h-4 text-amber-400" />
+            <ArrowRight className="w-4 h-4 text-[#2DC55F]" />
           </Link>
         </div>
 
@@ -645,7 +645,7 @@ export default function HomePage() {
             >
               <div className="space-y-3">
                 <div className="flex items-center justify-between">
-                  <span className="text-[11px] uppercase font-bold tracking-wider px-2.5 py-1 rounded bg-amber-100 text-amber-800">
+                  <span className="text-[11px] uppercase font-bold tracking-wider px-2.5 py-1 rounded bg-emerald-100 text-emerald-800">
                     {cs.tag}
                   </span>
                   <span className="text-xs font-bold text-slate-400">
@@ -653,7 +653,7 @@ export default function HomePage() {
                   </span>
                 </div>
 
-                <h3 className="text-xl font-bold text-[#0c1e36] group-hover:text-amber-600 transition-colors">
+                <h3 className="text-xl font-bold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors">
                   {cs.title}
                 </h3>
 
@@ -664,10 +664,10 @@ export default function HomePage() {
 
               <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
                 <div className="flex items-center gap-2 text-xs font-extrabold text-[#0c1e36]">
-                  <CheckCircle2 className="w-4 h-4 text-amber-500" />
-                  <span>Key Result: <span className="text-amber-600">{cs.metric}</span></span>
+                  <CheckCircle2 className="w-4 h-4 text-[#2DC55F]" />
+                  <span>Key Result: <span className="text-[#2DC55F]">{cs.metric}</span></span>
                 </div>
-                <Link href="/contact" className="text-xs font-bold text-[#0c1e36] group-hover:text-amber-600 flex items-center gap-1">
+                <Link href="/contact" className="text-xs font-bold text-[#0c1e36] group-hover:text-[#2DC55F] flex items-center gap-1">
                   <span>Consult</span>
                   <ArrowRight className="w-3.5 h-3.5" />
                 </Link>
@@ -721,7 +721,7 @@ export default function HomePage() {
                 {/* 5 Gold Stars */}
                 <div className="flex items-center gap-1">
                   {[...Array(t.rating || 5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                    <Star key={i} className="w-4 h-4 fill-[#2DC55F] text-[#2DC55F]" />
                   ))}
                 </div>
 
@@ -731,7 +731,7 @@ export default function HomePage() {
               </div>
 
               <div className="pt-4 border-t border-slate-100 flex items-center gap-3.5">
-                <div className="w-11 h-11 rounded-full bg-amber-500 text-slate-950 font-black text-sm flex items-center justify-center shrink-0">
+                <div className="w-11 h-11 rounded-full bg-[#2DC55F] text-slate-950 font-black text-sm flex items-center justify-center shrink-0">
                   {t.clientName.charAt(0)}
                 </div>
                 <div>
@@ -780,7 +780,7 @@ export default function HomePage() {
 
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 hover:text-amber-700 transition-colors self-start sm:self-auto group"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2DC55F] hover:text-emerald-700 transition-colors self-start sm:self-auto group"
           >
             <span>View All Insights</span>
             <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -801,7 +801,7 @@ export default function HomePage() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute top-3 left-3 bg-[#0c1e36] text-amber-400 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded">
+                  <div className="absolute top-3 left-3 bg-[#0c1e36] text-[#2DC55F] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded">
                     {post.category}
                   </div>
                 </div>
@@ -809,14 +809,14 @@ export default function HomePage() {
                 <div className="p-6 space-y-3">
                   <div className="flex items-center gap-4 text-xs text-slate-400">
                     <span className="flex items-center gap-1">
-                      <Clock className="w-3.5 h-3.5 text-amber-500" />
+                      <Clock className="w-3.5 h-3.5 text-[#2DC55F]" />
                       {post.readTime}
                     </span>
                     <span>•</span>
                     <span>{post.date}</span>
                   </div>
 
-                  <h3 className="text-base font-bold text-[#0c1e36] group-hover:text-amber-600 transition-colors leading-snug">
+                  <h3 className="text-base font-bold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors leading-snug">
                     <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                   </h3>
 
@@ -829,7 +829,7 @@ export default function HomePage() {
               <div className="p-6 pt-0">
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0c1e36] group-hover:text-amber-600 transition-colors"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors"
                 >
                   <span>Read Article</span>
                   <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
@@ -842,11 +842,11 @@ export default function HomePage() {
 
       {/* 12. Call to Action Banner (Inzofin Home 1) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-        <div className="bg-[#0c1e36] text-white rounded-3xl p-8 sm:p-14 border-2 border-amber-500 shadow-2xl relative overflow-hidden text-center space-y-8">
+        <div className="bg-[#0c1e36] text-white rounded-3xl p-8 sm:p-14 border-2 border-[#2DC55F] shadow-2xl relative overflow-hidden text-center space-y-8">
           <div className="absolute inset-0 inzofin-pattern-grid opacity-30 pointer-events-none" />
 
           <div className="max-w-2xl mx-auto space-y-4 relative z-10">
-            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-amber-400 text-xs font-bold uppercase tracking-wider">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-[#2DC55F] text-xs font-bold uppercase tracking-wider">
               <Sparkles className="w-3.5 h-3.5" />
               <span>Complimentary Tax Diagnostic</span>
             </div>
@@ -863,7 +863,7 @@ export default function HomePage() {
           <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
             <Link
               href="/contact"
-              className="w-full sm:w-auto px-8 py-4 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs uppercase tracking-wider rounded-lg shadow-xl shadow-amber-500/20 transition-all flex items-center justify-center gap-2"
+              className="w-full sm:w-auto px-8 py-4 bg-[#2DC55F] hover:bg-[#23a54e] text-slate-950 font-bold text-xs uppercase tracking-wider rounded-lg shadow-xl shadow-[#2DC55F]/20 transition-all flex items-center justify-center gap-2"
             >
               <span>Schedule Free Consultation</span>
               <ArrowRight className="w-4 h-4" />
@@ -871,9 +871,9 @@ export default function HomePage() {
 
             <a
               href={`tel:${SITE_INFO.phone}`}
-              className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-lg border border-white/20 backdrop-blur-md transition-all flex items-center justify-center gap-2 hover:border-amber-400"
+              className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-lg border border-white/20 backdrop-blur-md transition-all flex items-center justify-center gap-2 hover:border-[#2DC55F]"
             >
-              <Phone className="w-4 h-4 text-amber-400" />
+              <Phone className="w-4 h-4 text-[#2DC55F]" />
               <span>Call Us: {SITE_INFO.phone}</span>
             </a>
           </div>

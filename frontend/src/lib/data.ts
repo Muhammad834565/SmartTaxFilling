@@ -1,7 +1,7 @@
 export interface ServiceItem {
   slug: string;
   title: string;
-  category: 'USA' | 'UK' | 'General';
+  category: 'USA' | 'UK' | 'Pakistan' | 'General';
   icon: string;
   shortDescription: string;
   fullDescription: string;
@@ -48,13 +48,13 @@ export interface FaqItem {
 }
 
 export const SITE_INFO = {
-  title: 'Smartax Books',
+  title: 'SMARTax Global',
   tagline: 'Bookkeeping, Accounting & Tax Compliance for Growing Businesses in the US & UK',
-  email: 'info@smartaxbooks.com',
+  email: 'info@smartaxglobal.com',
   phone: '+1 (813) 555-0199',
   address: '401 Timbered Knoll Dr, Valrico, FL 33594, United States',
   workingHours: 'Mon - Fri: 9:00 AM - 6:00 PM EST',
-  logoText: 'Smartax Books',
+  logoText: 'SMARTax Global',
   logoImage: '/uploads/2025/11/logo-2.png',
 };
 
@@ -254,6 +254,56 @@ export const SERVICES: ServiceItem[] = [
       'Cross-border digital services and Amazon/eBay marketplace VAT analysis'
     ],
     softwareTools: ['HMRC Online Services', 'Xero MTD', 'QuickBooks Online']
+  },
+
+  // Pakistan Services
+  {
+    slug: 'fbr-tax-filing-ntn-registration-pakistan',
+    title: 'FBR Income Tax Filing & NTN Registration',
+    category: 'Pakistan',
+    icon: 'FileText',
+    shortDescription: 'National Tax Number (NTN) registration, Active Taxpayer List (ATL) status maintenance, and annual income tax return filing with FBR.',
+    fullDescription: 'Comprehensive Federal Board of Revenue (FBR) tax services for individuals, salaried persons, sole proprietors, AOPs, and private companies in Pakistan.',
+    features: [
+      'NTN (National Tax Number) registration for individuals & businesses',
+      'Annual Income Tax return filing on IRIS portal',
+      'Active Taxpayer List (ATL) status inclusion & verification',
+      'Wealth statement reconciliation and asset declaration',
+      'Withholding tax statements and advance tax calculations'
+    ],
+    softwareTools: ['FBR IRIS Portal', 'WeBOC', 'Excel']
+  },
+  {
+    slug: 'secp-company-incorporation-pakistan',
+    title: 'SECP Company Incorporation & Statutory Filings',
+    category: 'Pakistan',
+    icon: 'Building',
+    shortDescription: 'Private Limited (SMC-Pvt / Pvt Ltd) company registration with SECP, name reservation, statutory forms, and corporate compliance.',
+    fullDescription: 'End-to-end Securities and Exchange Commission of Pakistan (SECP) registration services for startups and established enterprises.',
+    features: [
+      'Company Name Reservation & digital certificate incorporation',
+      'Articles and Memorandum of Association preparation',
+      'Single Member Company (SMC-Pvt) & Private Limited registration',
+      'Annual statutory compliance (Form 29, Form A) filings',
+      'Corporate advisory and bank account opening resolution'
+    ],
+    softwareTools: ['SECP eServices Portal', 'EzFile']
+  },
+  {
+    slug: 'sales-tax-pra-srb-fbr-pakistan',
+    title: 'Provincial Sales Tax & PRA / SRB / KPRA Registration',
+    category: 'Pakistan',
+    icon: 'Receipt',
+    shortDescription: 'Sales tax on services registration and monthly return filings with PRA, SRB, KPRA, and FBR GST registration.',
+    fullDescription: 'Complete provincial and federal sales tax compliance across Punjab (PRA), Sindh (SRB), Islamabad (ICT), and KPK (KPRA) for service and goods businesses.',
+    features: [
+      'Provincial Sales Tax registration (PRA, SRB, KPRA, BRA)',
+      'Sales Tax on Goods registration (STRN) with FBR',
+      'Monthly sales tax return preparation and submission',
+      'Sales tax audit support and notice handling',
+      'Input tax adjustments and invoice reconciliation'
+    ],
+    softwareTools: ['PRA Portal', 'SRB Portal', 'FBR IRIS']
   }
 ];
 
@@ -279,7 +329,7 @@ Key Pillars for Client Satisfaction:
     title: 'How Bookkeeping Fits Into CAS & Why You Should Set it to Autopilot',
     category: 'Practice Growth',
     readTime: '5 min read',
-    author: 'Smartax Advisory Team',
+    author: 'SMARTax Global Advisory Team',
     date: 'Dec 12, 2025',
     imageUrl: '/uploads/2025/12/analyzing-financial-diagram-1536x1025-1.jpg',
     excerpt: 'Client Advisory Services (CAS) are the highest-growth segment in public accounting. Learn how automated bookkeeping forms the bedrock of high-value advisory.',
@@ -293,7 +343,7 @@ By implementing bank feeds, OCR receipt capture (such as Dext or Hubdoc), and st
     title: 'How Your Firm Defines CAS Will Determine Your Growth Strategy',
     category: 'Strategy & Scaling',
     readTime: '7 min read',
-    author: 'Smartax Advisory Team',
+    author: 'SMARTax Global Advisory Team',
     date: 'Dec 12, 2025',
     imageUrl: '/uploads/2025/12/business-trainer-explainig-strategy-of-development-e1638180959911.jpg',
     excerpt: 'Whether your advisory practice focuses on outsourced CFO services, tax planning, or vertical-specific controller support, defining your specialty is key to scaling.',
@@ -367,7 +417,7 @@ export const TESTIMONIALS: TestimonialItem[] = [
     clientName: 'Abdul Malik',
     company: 'Malik Enterprises LLC',
     role: 'Founder & CEO',
-    quote: 'Smartax made my bookkeeping and tax filing incredibly easy. Their team is professional, responsive, and truly understands small business needs. Highly recommend!',
+    quote: 'SMARTax Global made my bookkeeping and tax filing incredibly easy. Their team is professional, responsive, and truly understands small business needs. Highly recommend!',
     rating: 5,
     avatarUrl: '/uploads/2025/11/about_img.png'
   },
@@ -375,7 +425,7 @@ export const TESTIMONIALS: TestimonialItem[] = [
     clientName: 'Sarah Jenkins',
     company: 'Vanguard Retail Brands',
     role: 'Managing Director',
-    quote: 'Managing multi-state sales tax on Amazon and Shopify used to be an ongoing nightmare until Smartax stepped in. They resolved our backlog and automated everything seamlessly.',
+    quote: 'Managing multi-state sales tax on Amazon and Shopify used to be an ongoing nightmare until SMARTax Global stepped in. They resolved our backlog and automated everything seamlessly.',
     rating: 5,
     avatarUrl: '/uploads/2025/12/managers-working-with-financial-chart-e1638180766443.jpg'
   },
