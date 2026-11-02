@@ -1,7 +1,6 @@
 import type { Metadata } from 'next';
 import './globals.css';
-import Navbar from '@/components/Navbar';
-import Footer from '@/components/Footer';
+import AppShell from '@/components/AppShell';
 
 export const metadata: Metadata = {
   title: 'SMARTax Global | Finance & Tax Consulting (US & UK) - Inzofin Theme',
@@ -31,9 +30,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body className="min-h-screen flex flex-col bg-white text-slate-800">
-        <Navbar />
-        <main className="flex-1">{children}</main>
-        <Footer />
+        <AppShell>{children}</AppShell>
       </body>
     </html>
   );

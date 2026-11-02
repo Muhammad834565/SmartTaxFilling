@@ -10,6 +10,7 @@ import { Faq } from '../entities/faq.entity';
 import { Inquiry } from '../entities/inquiry.entity';
 import { SiteSetting } from '../entities/site-setting.entity';
 import { CreateInquiryDto } from './dto/create-inquiry.dto';
+import { MailService } from '../mail/mail.service';
 
 @Injectable()
 export class ApiService {
@@ -22,6 +23,7 @@ export class ApiService {
     @InjectRepository(Faq) private faqRepo: Repository<Faq>,
     @InjectRepository(Inquiry) private inquiryRepo: Repository<Inquiry>,
     @InjectRepository(SiteSetting) private settingRepo: Repository<SiteSetting>,
+    private readonly mailService: MailService,
   ) {}
 
   // Services
@@ -87,11 +89,21 @@ export class ApiService {
   // Inquiries / Leads
   async createInquiry(dto: CreateInquiryDto) {
     const inquiry = this.inquiryRepo.create(dto);
-    return this.inquiryRepo.save(inquiry);
+    const saved = await this.inquiryRepo.save(inquiry);
+    // Fire-and-forget email — won't fail the API response
+    this.mailService.sendInquiryNotification(dto);
+    return saved;
   }
 
   async getInquiries() {
     return this.inquiryRepo.find({ order: { createdAt: 'DESC' } });
+  }
+
+  async updateInquiryStatus(id: string, status: string) {
+    const inquiry = await this.inquiryRepo.findOne({ where: { id } });
+    if (!inquiry) throw new NotFoundException(`Inquiry ${id} not found`);
+    inquiry.status = status;
+    return this.inquiryRepo.save(inquiry);
   }
 
   // Settings
