@@ -105,3 +105,35 @@ export async function submitInquiry(data: {
   }
   return await res.json();
 }
+
+// ─── Admin API ────────────────────────────────────────────────────────────────
+export async function adminLogin(email: string, password: string) {
+  const res = await fetch(`${API_BASE_URL}/auth/login`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ email, password }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.message || 'Invalid credentials');
+  }
+  return await res.json();
+}
+
+export async function fetchAdminInquiries(token: string) {
+  const res = await fetch(`${API_BASE_URL}/inquiries`, {
+    headers: { Authorization: `Bearer ${token}` },
+  });
+  if (!res.ok) throw new Error('Unauthorized or failed to fetch');
+  return await res.json();
+}
+
+export async function updateInquiryStatus(id: string, status: string, token: string) {
+  const res = await fetch(`${API_BASE_URL}/inquiries/${id}/status`, {
+    method: 'PATCH',
+    headers: { 'Content-Type': 'application/json', Authorization: `Bearer ${token}` },
+    body: JSON.stringify({ status }),
+  });
+  if (!res.ok) throw new Error('Failed to update status');
+  return await res.json();
+}

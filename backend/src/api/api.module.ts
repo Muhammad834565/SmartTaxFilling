@@ -10,6 +10,8 @@ import { Testimonial } from '../entities/testimonial.entity';
 import { Faq } from '../entities/faq.entity';
 import { Inquiry } from '../entities/inquiry.entity';
 import { SiteSetting } from '../entities/site-setting.entity';
+import { MailModule } from '../mail/mail.module';
+import { AuthModule } from '../auth/auth.module';
 
 @Module({
   imports: [
@@ -23,6 +25,8 @@ import { SiteSetting } from '../entities/site-setting.entity';
       Inquiry,
       SiteSetting,
     ]),
+    MailModule,
+    AuthModule,
   ],
   controllers: [ApiController],
   providers: [ApiService],

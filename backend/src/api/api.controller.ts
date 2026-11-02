@@ -1,6 +1,13 @@
-import { Controller, Get, Post, Body, Param, Query } from '@nestjs/common';
+import { Controller, Get, Post, Patch, Body, Param, Query, UseGuards } from '@nestjs/common';
 import { ApiService } from './api.service';
 import { CreateInquiryDto } from './dto/create-inquiry.dto';
+import { JwtAuthGuard } from '../auth/jwt-auth.guard';
+import { IsIn } from 'class-validator';
+
+class UpdateInquiryStatusDto {
+  @IsIn(['NEW', 'CONTACTED', 'RESOLVED'])
+  status: string;
+}
 
 @Controller('api')
 export class ApiController {
@@ -64,8 +71,18 @@ export class ApiController {
   }
 
   @Get('inquiries')
+  @UseGuards(JwtAuthGuard)
   getInquiries() {
     return this.apiService.getInquiries();
+  }
+
+  @Patch('inquiries/:id/status')
+  @UseGuards(JwtAuthGuard)
+  updateInquiryStatus(
+    @Param('id') id: string,
+    @Body() dto: UpdateInquiryStatusDto,
+  ) {
+    return this.apiService.updateInquiryStatus(id, dto.status);
   }
 
   // Site Settings
