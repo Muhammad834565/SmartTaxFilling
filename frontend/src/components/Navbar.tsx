@@ -6,260 +6,139 @@ import Image from 'next/image';
 import { 
   Phone, 
   Mail, 
+  MapPin, 
   ChevronDown, 
   Menu, 
   X, 
-  ShieldCheck, 
-  BookOpen, 
-  FileText, 
-  Rocket, 
-  ShoppingBag, 
-  Building, 
-  Truck, 
-  Landmark, 
-  Coins, 
-  CreditCard 
+  Facebook, 
+  Twitter, 
+  Linkedin, 
+  Instagram,
+  ArrowRight
 } from 'lucide-react';
 import { SITE_INFO } from '@/lib/data';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
-  const [usaDropdownOpen, setUsaDropdownOpen] = useState(false);
-  const [ukDropdownOpen, setUkDropdownOpen] = useState(false);
+  const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white/95 backdrop-blur-md shadow-sm border-b border-slate-100">
-      {/* Top Banner */}
-      <div className="bg-slate-900 text-slate-300 text-xs py-2 px-4 border-b border-slate-800">
-        <div className="max-w-7xl mx-auto flex flex-col sm:flex-row justify-between items-center gap-2">
-          <div className="flex items-center gap-6">
-            <a href={`tel:${SITE_INFO.phone}`} className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors">
-              <Phone className="w-3.5 h-3.5 text-emerald-400" />
-              <span>{SITE_INFO.phone}</span>
-            </a>
-            <a href={`mailto:${SITE_INFO.email}`} className="flex items-center gap-1.5 hover:text-emerald-400 transition-colors">
+    <header className="sticky top-0 z-50 w-full bg-white shadow-xs">
+      {/* Top Bar: Slanted Dark Navy & Vibrant Green */}
+      <div className="bg-[#0c1a2e] text-slate-300 text-xs py-2.5 px-4 overflow-hidden relative">
+        <div className="max-w-7xl mx-auto flex flex-col md:flex-row justify-between items-center gap-2">
+          {/* Left: Green badge with address */}
+          <div className="flex items-center gap-4">
+            <div className="inline-flex items-center gap-1.5 bg-[#10b981] text-white font-semibold px-3 py-1 rounded-sm text-xs">
+              <MapPin className="w-3.5 h-3.5" />
+              <span>{SITE_INFO.address.split(',')[0]}, FL</span>
+            </div>
+            <a href={`mailto:${SITE_INFO.email}`} className="hidden sm:flex items-center gap-1.5 hover:text-emerald-400 text-slate-300 transition-colors">
               <Mail className="w-3.5 h-3.5 text-emerald-400" />
               <span>{SITE_INFO.email}</span>
             </a>
           </div>
-          <div className="flex items-center gap-4 text-slate-400">
-            <span className="flex items-center gap-1">
-              <ShieldCheck className="w-3.5 h-3.5 text-emerald-400" />
-              <span>Certified IRS Agent & HMRC MTD Partner</span>
-            </span>
-            <span className="hidden md:inline">|</span>
-            <span className="hidden md:inline">{SITE_INFO.workingHours}</span>
+
+          {/* Right: Phone & Socials */}
+          <div className="flex items-center gap-6">
+            <a href={`tel:${SITE_INFO.phone}`} className="flex items-center gap-1.5 hover:text-emerald-400 text-white font-bold transition-colors">
+              <Phone className="w-3.5 h-3.5 text-emerald-400" />
+              <span>{SITE_INFO.phone}</span>
+            </a>
+
+            <div className="hidden sm:flex items-center gap-3 text-slate-400 border-l border-slate-700 pl-4">
+              <a href="#" className="hover:text-emerald-400 transition-colors" aria-label="Facebook"><Facebook className="w-3.5 h-3.5" /></a>
+              <a href="#" className="hover:text-emerald-400 transition-colors" aria-label="Twitter"><Twitter className="w-3.5 h-3.5" /></a>
+              <a href="#" className="hover:text-emerald-400 transition-colors" aria-label="LinkedIn"><Linkedin className="w-3.5 h-3.5" /></a>
+              <a href="#" className="hover:text-emerald-400 transition-colors" aria-label="Instagram"><Instagram className="w-3.5 h-3.5" /></a>
+            </div>
           </div>
         </div>
       </div>
 
-      {/* Main Navigation */}
+      {/* Main Nav */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Logo */}
-          <Link href="/" className="flex items-center gap-3 group">
-            <div className="relative h-12 w-48">
-              <Image 
-                src="/uploads/2025/11/logo-2.png" 
-                alt="Smartax Books Logo"
-                fill
-                className="object-contain"
-                priority
-              />
+          {/* Inzofin Logo */}
+          <Link href="/" className="flex items-center gap-2">
+            <div className="flex items-center gap-2 font-black text-2xl tracking-tight text-[#0c1a2e]">
+              <span className="w-7 h-7 bg-[#10b981] rounded-sm flex items-center justify-center text-white text-base">
+                ◈
+              </span>
+              <span>inzofin<span className="text-[#10b981]">.</span></span>
             </div>
           </Link>
 
-          {/* Desktop Nav Items */}
-          <nav className="hidden lg:flex items-center gap-7 text-sm font-medium text-slate-700">
-            <Link href="/" className="hover:text-emerald-600 transition-colors">
+          {/* Center Navigation Links */}
+          <nav className="hidden lg:flex items-center gap-8 text-[14px] font-bold text-slate-800">
+            <Link href="/" className="text-[#10b981] hover:text-[#059669] transition-colors py-1">
               Home
             </Link>
-            <Link href="/about-us" className="hover:text-emerald-600 transition-colors">
-              About
+            <Link href="/about-us" className="hover:text-[#10b981] transition-colors py-1">
+              About Us
             </Link>
 
-            {/* USA Services Dropdown */}
+            {/* Services Dropdown */}
             <div 
               className="relative"
-              onMouseEnter={() => setUsaDropdownOpen(true)}
-              onMouseLeave={() => setUsaDropdownOpen(false)}
+              onMouseEnter={() => setServicesDropdownOpen(true)}
+              onMouseLeave={() => setServicesDropdownOpen(false)}
             >
-              <button className="flex items-center gap-1 hover:text-emerald-600 transition-colors py-2">
-                <span>USA Services</span>
-                <ChevronDown className="w-4 h-4 text-slate-400" />
+              <button className="flex items-center gap-1 hover:text-[#10b981] transition-colors py-2">
+                <span>Services</span>
+                <ChevronDown className="w-3.5 h-3.5 text-slate-400" />
               </button>
 
-              {usaDropdownOpen && (
-                <div className="absolute top-full -left-10 w-80 bg-white rounded-xl shadow-2xl border border-slate-100 p-3 grid gap-1 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <Link 
-                    href="/services/bookkeeping-accounting-services" 
-                    className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-50 transition-colors"
-                  >
-                    <BookOpen className="w-5 h-5 text-emerald-600 mt-0.5" />
-                    <div>
-                      <div className="font-semibold text-slate-900 text-xs">Bookkeeping & Accounting</div>
-                      <div className="text-[11px] text-slate-500">Monthly books & ledger balancing</div>
-                    </div>
+              {servicesDropdownOpen && (
+                <div className="absolute top-full -left-4 w-72 bg-white rounded-xl shadow-xl border border-slate-100 p-2 grid gap-1 z-50">
+                  <Link href="/services/bookkeeping-accounting-services" className="p-2.5 rounded-lg hover:bg-slate-50 text-xs font-semibold text-slate-800 hover:text-emerald-600">
+                    Bookkeeping & Accounting
                   </Link>
-
-                  <Link 
-                    href="/services/us-tax-compliance-filing-services" 
-                    className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-50 transition-colors"
-                  >
-                    <FileText className="w-5 h-5 text-emerald-600 mt-0.5" />
-                    <div>
-                      <div className="font-semibold text-slate-900 text-xs">US Tax Compliance & Filing</div>
-                      <div className="text-[11px] text-slate-500">Forms 1040, 1120, 1065, 5472</div>
-                    </div>
+                  <Link href="/services/us-tax-compliance-filing-services" className="p-2.5 rounded-lg hover:bg-slate-50 text-xs font-semibold text-slate-800 hover:text-emerald-600">
+                    Tax Planning & Compliance
                   </Link>
-
-                  <Link 
-                    href="/services/startup-business-formation-usa" 
-                    className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-50 transition-colors"
-                  >
-                    <Rocket className="w-5 h-5 text-emerald-600 mt-0.5" />
-                    <div>
-                      <div className="font-semibold text-slate-900 text-xs">Startup Business Formation</div>
-                      <div className="text-[11px] text-slate-500">US LLC, C-Corp, EIN, BOI filings</div>
-                    </div>
+                  <Link href="/services/startup-business-formation-usa" className="p-2.5 rounded-lg hover:bg-slate-50 text-xs font-semibold text-slate-800 hover:text-emerald-600">
+                    Startup Business Formation
                   </Link>
-
-                  <Link 
-                    href="/services/e-commerce-accounting-tax-services-us" 
-                    className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-50 transition-colors"
-                  >
-                    <ShoppingBag className="w-5 h-5 text-emerald-600 mt-0.5" />
-                    <div>
-                      <div className="font-semibold text-slate-900 text-xs">E-Commerce Accounting & Tax</div>
-                      <div className="text-[11px] text-slate-500">Shopify, Amazon, Stripe reconciliations</div>
-                    </div>
+                  <Link href="/services/uk-company-formation-compliance-services" className="p-2.5 rounded-lg hover:bg-slate-50 text-xs font-semibold text-slate-800 hover:text-emerald-600">
+                    UK Corporate Compliance
                   </Link>
-
-                  <Link 
-                    href="/services/payroll-tax-management" 
-                    className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-50 transition-colors"
-                  >
-                    <Coins className="w-5 h-5 text-emerald-600 mt-0.5" />
-                    <div>
-                      <div className="font-semibold text-slate-900 text-xs">Payroll Tax Management</div>
-                      <div className="text-[11px] text-slate-500">Forms 941, 940, W-2, 1099 filings</div>
-                    </div>
-                  </Link>
-
-                  <Link 
-                    href="/services/real-estate-financial-tax-services-us" 
-                    className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-50 transition-colors"
-                  >
-                    <Building className="w-5 h-5 text-emerald-600 mt-0.5" />
-                    <div>
-                      <div className="font-semibold text-slate-900 text-xs">Real Estate Financial & Tax</div>
-                      <div className="text-[11px] text-slate-500">Rental income, Schedule E, 1031</div>
-                    </div>
-                  </Link>
-
-                  <Link 
-                    href="/services/logistics-transport-accounting-tax-support" 
-                    className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-50 transition-colors"
-                  >
-                    <Truck className="w-5 h-5 text-emerald-600 mt-0.5" />
-                    <div>
-                      <div className="font-semibold text-slate-900 text-xs">Logistics & Transport Accounting</div>
-                      <div className="text-[11px] text-slate-500">Form 2290 HVUT, per-mile reports</div>
-                    </div>
-                  </Link>
-
-                  <Link 
-                    href="/services/virtual-bank-accounts-payment-solutions" 
-                    className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-50 transition-colors"
-                  >
-                    <CreditCard className="w-5 h-5 text-emerald-600 mt-0.5" />
-                    <div>
-                      <div className="font-semibold text-slate-900 text-xs">Virtual Bank Accounts & Payment</div>
-                      <div className="text-[11px] text-slate-500">Mercury, Wise, Relay, Stripe onboarding</div>
-                    </div>
+                  <Link href="/services" className="p-2.5 rounded-lg hover:bg-emerald-50 text-xs font-bold text-emerald-600 border-t border-slate-100">
+                    View All Services →
                   </Link>
                 </div>
               )}
             </div>
 
-            {/* UK Services Dropdown */}
-            <div 
-              className="relative"
-              onMouseEnter={() => setUkDropdownOpen(true)}
-              onMouseLeave={() => setUkDropdownOpen(false)}
-            >
-              <button className="flex items-center gap-1 hover:text-emerald-600 transition-colors py-2">
-                <span>UK Services</span>
-                <ChevronDown className="w-4 h-4 text-slate-400" />
-              </button>
-
-              {ukDropdownOpen && (
-                <div className="absolute top-full left-0 w-80 bg-white rounded-xl shadow-2xl border border-slate-100 p-3 grid gap-1 animate-in fade-in slide-in-from-top-2 duration-150">
-                  <Link 
-                    href="/services/uk-company-formation-compliance-services" 
-                    className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-50 transition-colors"
-                  >
-                    <Landmark className="w-5 h-5 text-emerald-600 mt-0.5" />
-                    <div>
-                      <div className="font-semibold text-slate-900 text-xs">UK Company Formation</div>
-                      <div className="text-[11px] text-slate-500">Companies House Ltd registration</div>
-                    </div>
-                  </Link>
-
-                  <Link 
-                    href="/services/uk-tax-compliance-filing-services" 
-                    className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-50 transition-colors"
-                  >
-                    <FileText className="w-5 h-5 text-emerald-600 mt-0.5" />
-                    <div>
-                      <div className="font-semibold text-slate-900 text-xs">UK Tax Compliance & Filing</div>
-                      <div className="text-[11px] text-slate-500">Corporation Tax CT600 & Accounts</div>
-                    </div>
-                  </Link>
-
-                  <Link 
-                    href="/services/uk-vat-registration-compliance" 
-                    className="flex items-start gap-3 p-2.5 rounded-lg hover:bg-slate-50 transition-colors"
-                  >
-                    <Coins className="w-5 h-5 text-emerald-600 mt-0.5" />
-                    <div>
-                      <div className="font-semibold text-slate-900 text-xs">UK VAT Registration & Compliance</div>
-                      <div className="text-[11px] text-slate-500">Making Tax Digital (MTD) quarterly returns</div>
-                    </div>
-                  </Link>
-                </div>
-              )}
-            </div>
-
-            <Link href="/services" className="hover:text-emerald-600 transition-colors">
-              All Services
-            </Link>
-            <Link href="/pricing" className="hover:text-emerald-600 transition-colors">
+            <Link href="/pricing" className="hover:text-[#10b981] transition-colors py-1">
               Pricing
             </Link>
-            <Link href="/blog" className="hover:text-emerald-600 transition-colors">
+            <Link href="/blog" className="hover:text-[#10b981] transition-colors py-1">
               Blog
             </Link>
-            <Link href="/contact" className="hover:text-emerald-600 transition-colors">
-              Contact
+            <Link href="/contact" className="hover:text-[#10b981] transition-colors py-1">
+              Contact Us
             </Link>
           </nav>
 
-          {/* Consultation Button */}
-          <div className="hidden lg:flex items-center gap-4">
-            <Link 
-              href="/contact" 
-              className="bg-emerald-600 hover:bg-emerald-700 text-white font-medium text-sm px-5 py-2.5 rounded-lg shadow-sm shadow-emerald-500/20 hover:shadow-md transition-all duration-150"
-            >
-              Book Free Consultation
-            </Link>
+          {/* Right: Phone CTA Box */}
+          <div className="hidden lg:flex items-center gap-3 pl-6 border-l border-slate-100">
+            <div className="w-10 h-10 rounded-full border-2 border-emerald-500/30 flex items-center justify-center text-emerald-600">
+              <Phone className="w-4 h-4 text-[#10b981]" />
+            </div>
+            <div>
+              <div className="text-[10px] uppercase font-bold text-slate-400 tracking-wider">Free Consultation</div>
+              <a href={`tel:${SITE_INFO.phone}`} className="text-xs font-black text-[#0c1a2e] hover:text-[#10b981] transition-colors block">
+                {SITE_INFO.phone}
+              </a>
+            </div>
           </div>
 
-          {/* Mobile menu toggle */}
+          {/* Mobile hamburger */}
           <div className="flex lg:hidden">
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-slate-700 hover:text-slate-900 p-2"
+              className="text-slate-800 hover:text-emerald-600 p-2 rounded-lg"
               aria-label="Toggle mobile menu"
             >
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
@@ -270,56 +149,32 @@ export default function Navbar() {
 
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-2 pb-6 space-y-3">
-          <Link 
-            href="/" 
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-slate-800 font-medium border-b border-slate-100"
-          >
+        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-2">
+          <Link href="/" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-[#10b981] font-bold border-b border-slate-100">
             Home
           </Link>
-          <Link 
-            href="/about-us" 
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-slate-800 font-medium border-b border-slate-100"
-          >
+          <Link href="/about-us" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-800 font-semibold border-b border-slate-100">
             About Us
           </Link>
-          <Link 
-            href="/services" 
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-slate-800 font-medium border-b border-slate-100"
-          >
-            Services (USA & UK)
+          <Link href="/services" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-800 font-semibold border-b border-slate-100">
+            Services
           </Link>
-          <Link 
-            href="/pricing" 
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-slate-800 font-medium border-b border-slate-100"
-          >
+          <Link href="/pricing" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-800 font-semibold border-b border-slate-100">
             Pricing
           </Link>
-          <Link 
-            href="/blog" 
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-slate-800 font-medium border-b border-slate-100"
-          >
+          <Link href="/blog" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-800 font-semibold border-b border-slate-100">
             Blog
           </Link>
-          <Link 
-            href="/contact" 
-            onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-slate-800 font-medium border-b border-slate-100"
-          >
-            Contact
+          <Link href="/contact" onClick={() => setMobileMenuOpen(false)} className="block py-2 text-slate-800 font-semibold border-b border-slate-100">
+            Contact Us
           </Link>
-          <div className="pt-2">
+          <div className="pt-3">
             <Link 
               href="/contact" 
               onClick={() => setMobileMenuOpen(false)}
-              className="block w-full text-center bg-emerald-600 text-white font-medium py-3 rounded-lg"
+              className="block w-full text-center bg-[#10b981] hover:bg-[#059669] text-white font-bold py-3 rounded-lg text-xs uppercase tracking-wider"
             >
-              Book Free Consultation
+              Get Free Consultation
             </Link>
           </div>
         </div>

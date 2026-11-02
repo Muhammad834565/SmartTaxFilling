@@ -4,7 +4,7 @@ import Navbar from '@/components/Navbar';
 import Footer from '@/components/Footer';
 
 export const metadata: Metadata = {
-  title: 'Smartax Books | Expert Bookkeeping, Accounting & Tax Compliance (US & UK)',
+  title: 'Smartax Books | Finance & Tax Consulting (US & UK) - Inzofin Theme',
   description: 'Specialized bookkeeping, accounting, company formations (LLC/Ltd/EIN), payroll tax management, and corporate tax filings in the United States and United Kingdom.',
   icons: {
     icon: [
@@ -24,6 +24,7 @@ export const metadata: Metadata = {
     'E-commerce accounting',
     'QuickBooks ProAdvisor',
     'HMRC VAT compliance',
+    'Inzofin Finance Theme',
   ],
 };
 

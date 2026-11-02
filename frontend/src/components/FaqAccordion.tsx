@@ -23,18 +23,18 @@ export default function FaqAccordion({ faqs }: FaqAccordionProps) {
         return (
           <div
             key={idx}
-            className={`rounded-2xl border transition-all duration-150 overflow-hidden ${
-              isOpen ? 'border-emerald-500 bg-white shadow-sm' : 'border-slate-200 bg-white'
+            className={`rounded-xl border transition-all duration-200 overflow-hidden ${
+              isOpen ? 'border-amber-500 bg-white shadow-md ring-1 ring-amber-500/20' : 'border-slate-200 bg-white hover:border-slate-300'
             }`}
           >
             <button
               onClick={() => toggle(idx)}
-              className="w-full px-6 py-5 text-left flex items-center justify-between gap-4 font-semibold text-slate-900 text-sm sm:text-base focus:outline-none"
+              className="w-full px-6 py-5 text-left flex items-center justify-between gap-4 font-bold text-[#0c1e36] text-sm sm:text-base focus:outline-none"
             >
               <span>{faq.question}</span>
               <ChevronDown
                 className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200 ${
-                  isOpen ? 'rotate-180 text-emerald-600' : ''
+                  isOpen ? 'rotate-180 text-amber-500' : ''
                 }`}
               />
             </button>

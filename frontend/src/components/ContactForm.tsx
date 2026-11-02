@@ -19,7 +19,7 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
     message: '',
   });
 
-  // Keep service field updated if initialService changes (e.g., navigating between services)
+  // Keep service field updated if initialService changes
   useEffect(() => {
     if (initialService) {
       setFormData((prev) => ({
@@ -58,17 +58,17 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
 
   if (success) {
     return (
-      <div className="bg-emerald-50 border border-emerald-200 rounded-2xl p-8 text-center animate-in fade-in duration-200">
-        <div className="w-12 h-12 bg-emerald-100 text-emerald-600 rounded-full flex items-center justify-center mx-auto mb-4">
+      <div className="bg-amber-50 border border-amber-300 rounded-2xl p-8 text-center animate-in fade-in duration-200">
+        <div className="w-12 h-12 bg-amber-100 text-amber-600 rounded-full flex items-center justify-center mx-auto mb-4 border border-amber-300">
           <CheckCircle2 className="w-6 h-6" />
         </div>
-        <h3 className="text-xl font-bold text-slate-900 mb-2">Consultation Request Received!</h3>
+        <h3 className="text-xl font-bold text-[#0c1e36] mb-2">Consultation Request Received!</h3>
         <p className="text-sm text-slate-600 mb-6 max-w-md mx-auto">
-          Thank you for reaching out to Smartax Books. One of our senior accountants or tax advisors will review your details and contact you within 24 business hours.
+          Thank you for reaching out to Smartax Books. One of our certified tax advisors will review your business requirements and contact you within 24 business hours.
         </p>
         <button
           onClick={() => setSuccess(false)}
-          className="text-xs font-semibold text-emerald-700 bg-emerald-100 hover:bg-emerald-200 px-4 py-2 rounded-lg transition-colors"
+          className="text-xs font-bold uppercase tracking-wider text-slate-900 bg-amber-500 hover:bg-amber-600 px-5 py-2.5 rounded-lg transition-colors shadow-sm"
         >
           Send Another Message
         </button>
@@ -77,7 +77,7 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
   }
 
   return (
-    <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-sm space-y-5">
+    <form onSubmit={handleSubmit} className="bg-white rounded-2xl border border-slate-200 p-6 sm:p-8 shadow-md space-y-5">
       {error && (
         <div className="bg-rose-50 border border-rose-200 text-rose-700 text-xs p-3 rounded-lg flex items-center gap-2">
           <AlertCircle className="w-4 h-4 shrink-0" />
@@ -87,7 +87,7 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+          <label className="block text-xs font-bold uppercase tracking-wider text-[#0c1e36] mb-1.5">
             Full Name <span className="text-rose-500">*</span>
           </label>
           <input
@@ -96,12 +96,12 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
             value={formData.name}
             onChange={(e) => setFormData({ ...formData, name: e.target.value })}
             placeholder="John Doe"
-            className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 transition-colors"
+            className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-colors"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-slate-700 mb-1.5">
+          <label className="block text-xs font-bold uppercase tracking-wider text-[#0c1e36] mb-1.5">
             Email Address <span className="text-rose-500">*</span>
           </label>
           <input
@@ -110,29 +110,29 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
             value={formData.email}
             onChange={(e) => setFormData({ ...formData, email: e.target.value })}
             placeholder="john@example.com"
-            className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 transition-colors"
+            className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-colors"
           />
         </div>
       </div>
 
       <div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
         <div>
-          <label className="block text-xs font-semibold text-slate-700 mb-1.5">Phone Number</label>
+          <label className="block text-xs font-bold uppercase tracking-wider text-[#0c1e36] mb-1.5">Phone Number</label>
           <input
             type="tel"
             value={formData.phone}
             onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
             placeholder="+1 (555) 000-0000"
-            className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 transition-colors"
+            className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-colors"
           />
         </div>
 
         <div>
-          <label className="block text-xs font-semibold text-slate-700 mb-1.5">Country / Region</label>
+          <label className="block text-xs font-bold uppercase tracking-wider text-[#0c1e36] mb-1.5">Country / Region</label>
           <select
             value={formData.country}
             onChange={(e) => setFormData({ ...formData, country: e.target.value })}
-            className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 transition-colors bg-white"
+            className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-colors bg-white font-medium text-slate-800"
           >
             <option value="United States">United States</option>
             <option value="United Kingdom">United Kingdom</option>
@@ -145,11 +145,11 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
       </div>
 
       <div>
-        <label className="block text-xs font-semibold text-slate-700 mb-1.5">Service Required</label>
+        <label className="block text-xs font-bold uppercase tracking-wider text-[#0c1e36] mb-1.5">Service Required</label>
         <select
           value={formData.service}
           onChange={(e) => setFormData({ ...formData, service: e.target.value })}
-          className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 transition-colors bg-white font-medium text-slate-800"
+          className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-colors bg-white font-medium text-slate-800"
         >
           <option value="">Select a service (Optional)</option>
           {SERVICES.map((s) => (
@@ -161,28 +161,28 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
       </div>
 
       <div>
-        <label className="block text-xs font-semibold text-slate-700 mb-1.5">
-          Tell us about your business & requirements <span className="text-rose-500">*</span>
+        <label className="block text-xs font-bold uppercase tracking-wider text-[#0c1e36] mb-1.5">
+          Tell us about your requirements <span className="text-rose-500">*</span>
         </label>
         <textarea
           required
           rows={4}
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
-          placeholder="Briefly describe your business structure, approximate transaction volume, or specific tax filing deadlines..."
-          className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-emerald-600 transition-colors resize-none"
+          placeholder="Briefly describe your business entity (LLC, C-Corp, Ltd), monthly transaction volume, or target filing deadlines..."
+          className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-amber-500/20 focus:border-amber-500 transition-colors resize-none"
         ></textarea>
       </div>
 
       <button
         type="submit"
         disabled={loading}
-        className="w-full bg-emerald-600 hover:bg-emerald-700 disabled:bg-emerald-400 text-white font-medium text-sm py-3 px-6 rounded-lg shadow-sm hover:shadow-md transition-all flex items-center justify-center gap-2 cursor-pointer"
+        className="w-full bg-amber-500 hover:bg-amber-600 disabled:bg-amber-300 text-slate-950 font-bold text-xs uppercase tracking-wider py-3.5 px-6 rounded-lg shadow-md hover:shadow-lg transition-all flex items-center justify-center gap-2 cursor-pointer"
       >
         {loading ? (
           <>
             <Loader2 className="w-4 h-4 animate-spin" />
-            <span>Sending to Advisor...</span>
+            <span>Submitting To Advisor...</span>
           </>
         ) : (
           <>
@@ -193,7 +193,7 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
       </button>
 
       <p className="text-[11px] text-center text-slate-500">
-        🔒 All communications are protected under professional CPA confidentiality and non-disclosure standards.
+        🔒 All communications are protected under strict CPA confidentiality and IRS/HMRC compliance standards.
       </p>
     </form>
   );

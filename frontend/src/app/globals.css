@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=Space+Grotesk:wght@500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800;900&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -9,26 +9,32 @@
     scroll-behavior: smooth;
   }
   body {
-    @apply text-slate-800 bg-white antialiased selection:bg-emerald-500/20 selection:text-emerald-900;
+    @apply text-slate-600 bg-white antialiased selection:bg-emerald-500/20 selection:text-emerald-900;
     font-family: 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Oxygen-Sans, Ubuntu, Cantarell, "Helvetica Neue", sans-serif;
+  }
+  h1, h2, h3, h4, h5, h6 {
+    @apply text-slate-900 font-bold tracking-tight;
   }
 }
 
-.gradient-hero {
-  background: radial-gradient(circle at 50% 0%, rgba(16, 185, 129, 0.08) 0%, transparent 55%),
-              radial-gradient(circle at 85% 20%, rgba(20, 184, 166, 0.06) 0%, transparent 45%),
-              linear-gradient(180deg, #f8fafc 0%, #ffffff 100%);
+.inzofin-header-top {
+  background-color: #0c1a2e;
 }
 
-.ai-grid-pattern {
-  background-image: radial-gradient(rgba(16, 185, 129, 0.14) 1px, transparent 1px);
-  background-size: 28px 28px;
+.inzofin-green {
+  color: #10b981;
 }
 
-.ai-gradient-text {
-  background: linear-gradient(135deg, #059669 0%, #10b981 50%, #0d9488 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
+.inzofin-bg-green {
+  background-color: #10b981;
+}
+
+.inzofin-bg-navy {
+  background-color: #0c1a2e;
+}
+
+.inzofin-section-badge {
+  @apply inline-flex items-center text-xs font-bold uppercase tracking-wider text-emerald-500 mb-2;
 }
 
 .card-hover {
@@ -36,5 +42,5 @@
 }
 .card-hover:hover {
   transform: translateY(-4px);
-  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.08), 0 8px 10px -6px rgba(15, 23, 42, 0.04);
+  box-shadow: 0 14px 25px -5px rgba(12, 26, 46, 0.08), 0 8px 10px -6px rgba(12, 26, 46, 0.04);
 }
