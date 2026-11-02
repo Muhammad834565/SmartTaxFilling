@@ -11,16 +11,16 @@ export default function AboutPage() {
       <section className="bg-[#0c1a2e] text-white py-16 sm:py-20 border-b border-[#152c4e] relative overflow-hidden">
         <div className="absolute inset-0 inzofin-pattern-grid opacity-30 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3 relative z-10">
-          <div className="inzofin-section-subtitle justify-center text-emerald-400">
+          <div className="inzofin-section-subtitle justify-center text-[#2DC55F]">
             <span>// ABOUT OUR FIRM //</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
             Pioneering Financial Clarity For Global Businesses
           </h1>
           <div className="flex items-center justify-center gap-2 text-xs font-semibold text-slate-400 pt-2">
-            <Link href="/" className="hover:text-emerald-400 transition-colors">Home</Link>
+            <Link href="/" className="hover:text-[#2DC55F] transition-colors">Home</Link>
             <span>/</span>
-            <span className="text-emerald-400">About Us</span>
+            <span className="text-[#2DC55F]">About Us</span>
           </div>
         </div>
       </section>
@@ -32,7 +32,7 @@ export default function AboutPage() {
             <div className="relative h-96 sm:h-[480px] w-full rounded-2xl overflow-hidden shadow-2xl border-2 border-slate-200">
               <Image
                 src="/uploads/2025/11/about_img.png"
-                alt="Smartax Financial Team"
+                alt="SMARTax Global Team"
                 fill
                 className="object-cover"
                 priority
@@ -40,10 +40,10 @@ export default function AboutPage() {
             </div>
 
             {/* Overlapping Badge */}
-            <div className="absolute -bottom-6 -right-4 sm:right-6 bg-[#0c1a2e] text-white p-6 rounded-2xl border-2 border-emerald-500 shadow-2xl max-w-xs space-y-2">
-              <div className="flex items-center gap-1 text-emerald-400">
+            <div className="absolute -bottom-6 -right-4 sm:right-6 bg-[#0c1a2e] text-white p-6 rounded-2xl border-2 border-[#2DC55F] shadow-2xl max-w-xs space-y-2">
+              <div className="flex items-center gap-1 text-[#2DC55F]">
                 {[...Array(5)].map((_, i) => (
-                  <Star key={i} className="w-4 h-4 fill-emerald-400" />
+                  <Star key={i} className="w-4 h-4 fill-[#2DC55F]" />
                 ))}
               </div>
               <div className="text-2xl font-black text-white">25+ Years</div>
@@ -61,7 +61,7 @@ export default function AboutPage() {
               Dedicated Bookkeeping, Tax Compliance & Cross-Border Advisory
             </h2>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-              Smartax Books was founded on a simple principle: high-growth businesses and international founders deserve transparent, proactive, and institutional-grade financial guidance without the bureaucratic overhead and surprise fees of legacy accounting firms.
+              SMARTax Global was founded on a simple principle: high-growth businesses and international founders deserve transparent, proactive, and institutional-grade financial guidance without the bureaucratic overhead and surprise fees of legacy accounting firms.
             </p>
             <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
               Our team of experienced accountants, certified tax specialists, and financial consultants works closely with clients worldwide to simplify complex financial regulations, optimize tax deductions, and support long-term business wealth.
@@ -69,7 +69,7 @@ export default function AboutPage() {
 
             <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-4 border-t border-slate-100">
               <div className="flex items-start gap-3">
-                <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-5 h-5 rounded-full bg-emerald-100 text-[#2DC55F] flex items-center justify-center shrink-0 mt-0.5">
                   <Check className="w-3.5 h-3.5" />
                 </div>
                 <div>
@@ -78,7 +78,7 @@ export default function AboutPage() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-5 h-5 rounded-full bg-emerald-100 text-[#2DC55F] flex items-center justify-center shrink-0 mt-0.5">
                   <Check className="w-3.5 h-3.5" />
                 </div>
                 <div>
@@ -87,7 +87,7 @@ export default function AboutPage() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-5 h-5 rounded-full bg-emerald-100 text-[#2DC55F] flex items-center justify-center shrink-0 mt-0.5">
                   <Check className="w-3.5 h-3.5" />
                 </div>
                 <div>
@@ -96,7 +96,7 @@ export default function AboutPage() {
                 </div>
               </div>
               <div className="flex items-start gap-3">
-                <div className="w-5 h-5 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center shrink-0 mt-0.5">
+                <div className="w-5 h-5 rounded-full bg-emerald-100 text-[#2DC55F] flex items-center justify-center shrink-0 mt-0.5">
                   <Check className="w-3.5 h-3.5" />
                 </div>
                 <div>
@@ -122,7 +122,7 @@ export default function AboutPage() {
 
           <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
             <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm card-hover space-y-4 border-t-4 border-t-amber-500">
-              <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-200">
+              <div className="w-12 h-12 rounded-xl bg-emerald-50 text-[#2DC55F] flex items-center justify-center border border-emerald-200">
                 <Target className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-[#0c1e36]">Our Mission</h3>
@@ -132,7 +132,7 @@ export default function AboutPage() {
             </div>
 
             <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm card-hover space-y-4 border-t-4 border-t-amber-500">
-              <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-200">
+              <div className="w-12 h-12 rounded-xl bg-emerald-50 text-[#2DC55F] flex items-center justify-center border border-emerald-200">
                 <Globe className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-[#0c1e36]">Global Reach</h3>
@@ -142,7 +142,7 @@ export default function AboutPage() {
             </div>
 
             <div className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm card-hover space-y-4 border-t-4 border-t-amber-500">
-              <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center border border-emerald-200">
+              <div className="w-12 h-12 rounded-xl bg-emerald-50 text-[#2DC55F] flex items-center justify-center border border-emerald-200">
                 <Users className="w-6 h-6" />
               </div>
               <h3 className="text-lg font-bold text-[#0c1e36]">Dedicated Partnership</h3>
@@ -156,7 +156,7 @@ export default function AboutPage() {
 
       {/* CTA */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-6">
-        <div className="bg-[#0c1a2e] text-white rounded-3xl p-8 sm:p-12 border-2 border-emerald-500 shadow-xl space-y-6">
+        <div className="bg-[#0c1a2e] text-white rounded-3xl p-8 sm:p-12 border-2 border-[#2DC55F] shadow-xl space-y-6">
           <h2 className="text-2xl sm:text-4xl font-black text-white">Work With Our Advisory Team</h2>
           <p className="text-xs sm:text-sm text-slate-300 max-w-xl mx-auto leading-relaxed">
             Experience what stress-free bookkeeping and tax compliance feels like. Let us handle the numbers while you build your dream company.
@@ -164,7 +164,7 @@ export default function AboutPage() {
           <div>
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 bg-emerald-500 hover:bg-emerald-600 text-slate-950 font-bold text-xs uppercase tracking-wider px-8 py-4 rounded-lg shadow-md transition-all"
+              className="inline-flex items-center gap-2 bg-[#2DC55F] hover:bg-[#23a54e] text-slate-950 font-bold text-xs uppercase tracking-wider px-8 py-4 rounded-lg shadow-md transition-all"
             >
               <span>Speak With a Specialist Today</span>
               <ArrowRight className="w-4 h-4" />

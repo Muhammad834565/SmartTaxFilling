@@ -24,7 +24,7 @@ export default function FaqAccordion({ faqs }: FaqAccordionProps) {
           <div
             key={idx}
             className={`rounded-xl border transition-all duration-200 overflow-hidden ${
-              isOpen ? 'border-emerald-500 bg-white shadow-md ring-1 ring-amber-500/20' : 'border-slate-200 bg-white hover:border-slate-300'
+              isOpen ? 'border-[#2DC55F] bg-white shadow-md ring-1 ring-emerald-500/20' : 'border-slate-200 bg-white hover:border-slate-300'
             }`}
           >
             <button
@@ -34,7 +34,7 @@ export default function FaqAccordion({ faqs }: FaqAccordionProps) {
               <span>{faq.question}</span>
               <ChevronDown
                 className={`w-5 h-5 text-slate-400 shrink-0 transition-transform duration-200 ${
-                  isOpen ? 'rotate-180 text-emerald-500' : ''
+                  isOpen ? 'rotate-180 text-[#2DC55F]' : ''
                 }`}
               />
             </button>

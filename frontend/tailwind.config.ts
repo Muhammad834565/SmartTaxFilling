@@ -9,31 +9,37 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
-        inzofin: {
-          navy: '#0c1e36',
-          'navy-dark': '#071224',
-          'navy-light': '#152c4e',
-          gold: '#f5a623',
-          'gold-dark': '#d98e0b',
-          'gold-light': '#fef3c7',
-          blue: '#1b68b3',
-          'blue-dark': '#134e85',
-          'blue-light': '#e8f2fc',
-          gray: '#f7f9fc',
-        },
         brand: {
-          50: '#fffbeb',
-          100: '#fef3c7',
-          200: '#fde68a',
-          500: '#f5a623',
-          600: '#e5a010',
-          700: '#d98e0b',
-          800: '#b45309',
+          50: '#f0fdf4',
+          100: '#dcfce7',
+          200: '#bbf7d0',
+          300: '#86efac',
+          400: '#4ade80',
+          500: '#2DC55F', // Primary Vibrant Green
+          600: '#23a54e',
+          700: '#1c843e',
+          800: '#176933',
+          900: '#14532b',
         },
-        navy: {
-          800: '#152c4e',
-          900: '#0c1e36',
-          950: '#071224',
+        emerald: {
+          50: '#f0fdf4',
+          100: '#dcfce7',
+          200: '#bbf7d0',
+          300: '#86efac',
+          400: '#4ade80',
+          500: '#2DC55F', // Override emerald-500 with #2DC55F
+          600: '#23a54e',
+          700: '#1c843e',
+          800: '#176933',
+          900: '#14532b',
+        },
+        inzofin: {
+          navy: '#0c1a2e',
+          'navy-dark': '#07101e',
+          'navy-light': '#10223b',
+          green: '#2DC55F',
+          'green-dark': '#23a54e',
+          'green-light': '#dcfce7',
         },
       },
       fontFamily: {
@@ -49,9 +55,15 @@ const config: Config = {
           '"Helvetica Neue"',
           'sans-serif',
         ],
+        heading: [
+          '"Space Grotesk"',
+          '"Plus Jakarta Sans"',
+          'sans-serif',
+        ],
       },
     },
   },
   plugins: [],
 };
+
 export default config;

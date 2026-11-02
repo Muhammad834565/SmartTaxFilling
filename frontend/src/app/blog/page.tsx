@@ -11,16 +11,16 @@ export default function BlogListingPage() {
       <section className="bg-[#0c1a2e] text-white py-16 sm:py-20 border-b border-[#152c4e] relative overflow-hidden">
         <div className="absolute inset-0 inzofin-pattern-grid opacity-30 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center space-y-3 relative z-10">
-          <div className="inzofin-section-subtitle justify-center text-emerald-400">
+          <div className="inzofin-section-subtitle justify-center text-[#2DC55F]">
             <span>// ARTICLES & ADVISORY //</span>
           </div>
           <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
             Financial News & Corporate Tax Insights
           </h1>
           <div className="flex items-center justify-center gap-2 text-xs font-semibold text-slate-400 pt-2">
-            <Link href="/" className="hover:text-emerald-400 transition-colors">Home</Link>
+            <Link href="/" className="hover:text-[#2DC55F] transition-colors">Home</Link>
             <span>/</span>
-            <span className="text-emerald-400">Blog</span>
+            <span className="text-[#2DC55F]">Blog</span>
           </div>
         </div>
       </section>
@@ -41,7 +41,7 @@ export default function BlogListingPage() {
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute top-4 left-4 bg-[#0c1a2e] text-emerald-400 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded">
+                  <div className="absolute top-4 left-4 bg-[#0c1a2e] text-[#2DC55F] text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded">
                     {post.category}
                   </div>
                 </div>
@@ -49,16 +49,16 @@ export default function BlogListingPage() {
                 <div className="p-7 space-y-3">
                   <div className="flex items-center gap-4 text-xs text-slate-400">
                     <span className="flex items-center gap-1">
-                      <Calendar className="w-3.5 h-3.5 text-emerald-500" />
+                      <Calendar className="w-3.5 h-3.5 text-[#2DC55F]" />
                       {post.date}
                     </span>
                     <span className="flex items-center gap-1">
-                      <Clock className="w-3.5 h-3.5 text-emerald-500" />
+                      <Clock className="w-3.5 h-3.5 text-[#2DC55F]" />
                       {post.readTime}
                     </span>
                   </div>
 
-                  <h2 className="text-lg font-bold text-[#0c1e36] group-hover:text-emerald-600 transition-colors leading-snug">
+                  <h2 className="text-lg font-bold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors leading-snug">
                     <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                   </h2>
 
@@ -75,7 +75,7 @@ export default function BlogListingPage() {
 
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="text-xs font-bold text-[#0c1e36] group-hover:text-emerald-600 flex items-center gap-1 transition-colors"
+                  className="text-xs font-bold text-[#0c1e36] group-hover:text-[#2DC55F] flex items-center gap-1 transition-colors"
                 >
                   <span>Read Article</span>
                   <ArrowRight className="w-3.5 h-3.5" />

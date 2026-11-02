@@ -23,9 +23,9 @@ export function generateStaticParams() {
 
 export function generateMetadata({ params }: { params: { slug: string } }): Metadata {
   const service = SERVICES.find((s) => s.slug === params.slug);
-  if (!service) return { title: 'Service Not Found | Smartax Books' };
+  if (!service) return { title: 'Service Not Found | SMARTax Global' };
   return {
-    title: `${service.title} | Smartax Books`,
+    title: `${service.title} | SMARTax Global`,
     description: service.shortDescription,
   };
 }
@@ -49,15 +49,15 @@ export default function ServiceDetailPage({
         <div className="absolute inset-0 inzofin-pattern-grid opacity-30 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 relative z-10">
           <div className="flex items-center gap-2 text-xs font-semibold text-slate-400">
-            <Link href="/" className="hover:text-emerald-400 transition-colors">Home</Link>
+            <Link href="/" className="hover:text-[#2DC55F] transition-colors">Home</Link>
             <span>/</span>
-            <Link href="/services" className="hover:text-emerald-400 transition-colors">Services</Link>
+            <Link href="/services" className="hover:text-[#2DC55F] transition-colors">Services</Link>
             <span>/</span>
-            <span className="text-emerald-400 truncate max-w-xs">{service.title}</span>
+            <span className="text-[#2DC55F] truncate max-w-xs">{service.title}</span>
           </div>
 
           <div className="max-w-3xl space-y-3">
-            <div className="inzofin-section-subtitle text-emerald-400">
+            <div className="inzofin-section-subtitle text-[#2DC55F]">
               <span>// {service.category} SERVICE SPECIALIZATION //</span>
             </div>
             <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
@@ -77,7 +77,7 @@ export default function ServiceDetailPage({
           <div className="lg:col-span-7 space-y-10">
             {/* Overview */}
             <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm space-y-4 border-t-4 border-t-amber-500">
-              <div className="inzofin-section-subtitle text-emerald-600">
+              <div className="inzofin-section-subtitle text-[#2DC55F]">
                 <span>// OVERVIEW //</span>
               </div>
               <h2 className="text-2xl font-black text-[#0c1e36]">Service Overview</h2>
@@ -89,14 +89,14 @@ export default function ServiceDetailPage({
             {/* Key Deliverables */}
             <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm space-y-6">
               <h2 className="text-xl font-bold text-[#0c1e36] flex items-center gap-2">
-                <FileCheck2 className="w-5 h-5 text-emerald-500" />
+                <FileCheck2 className="w-5 h-5 text-[#2DC55F]" />
                 <span>Scope of Work & Deliverables</span>
               </h2>
 
               <ul className="grid grid-cols-1 gap-3.5">
                 {service.features.map((feat, idx) => (
                   <li key={idx} className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-100 text-xs sm:text-sm text-slate-700">
-                    <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
+                    <Check className="w-4 h-4 text-[#2DC55F] shrink-0 mt-0.5" />
                     <span>{feat}</span>
                   </li>
                 ))}
@@ -104,9 +104,9 @@ export default function ServiceDetailPage({
             </div>
 
             {/* Software Stack & Tools */}
-            <div className="bg-[#0c1a2e] text-white rounded-2xl p-8 border-2 border-emerald-500/40 shadow-xl space-y-4">
+            <div className="bg-[#0c1a2e] text-white rounded-2xl p-8 border-2 border-[#2DC55F]/40 shadow-xl space-y-4">
               <h2 className="text-xl font-bold flex items-center gap-2 text-white">
-                <Cpu className="w-5 h-5 text-emerald-400" />
+                <Cpu className="w-5 h-5 text-[#2DC55F]" />
                 <span>Supported Software & Platforms</span>
               </h2>
               <p className="text-xs text-slate-300 leading-relaxed">
@@ -116,7 +116,7 @@ export default function ServiceDetailPage({
                 {service.softwareTools.map((tool, idx) => (
                   <span
                     key={idx}
-                    className="bg-white/10 border border-white/20 text-amber-300 text-xs font-bold px-3.5 py-1.5 rounded-lg"
+                    className="bg-white/10 border border-white/20 text-emerald-300 text-xs font-bold px-3.5 py-1.5 rounded-lg"
                   >
                     {tool}
                   </span>
@@ -127,13 +127,13 @@ export default function ServiceDetailPage({
             {/* Workflow / Onboarding Steps */}
             <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm space-y-6">
               <h2 className="text-xl font-bold text-[#0c1e36] flex items-center gap-2">
-                <CalendarClock className="w-5 h-5 text-emerald-500" />
+                <CalendarClock className="w-5 h-5 text-[#2DC55F]" />
                 <span>How Our Engagement Works</span>
               </h2>
 
               <div className="space-y-4 text-xs sm:text-sm text-slate-600">
                 <div className="flex items-start gap-3">
-                  <div className="w-7 h-7 rounded-full bg-emerald-500 text-slate-950 font-black flex items-center justify-center shrink-0 text-xs">
+                  <div className="w-7 h-7 rounded-full bg-[#2DC55F] text-slate-950 font-black flex items-center justify-center shrink-0 text-xs">
                     1
                   </div>
                   <div>
@@ -143,7 +143,7 @@ export default function ServiceDetailPage({
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="w-7 h-7 rounded-full bg-emerald-500 text-slate-950 font-black flex items-center justify-center shrink-0 text-xs">
+                  <div className="w-7 h-7 rounded-full bg-[#2DC55F] text-slate-950 font-black flex items-center justify-center shrink-0 text-xs">
                     2
                   </div>
                   <div>
@@ -153,7 +153,7 @@ export default function ServiceDetailPage({
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="w-7 h-7 rounded-full bg-emerald-500 text-slate-950 font-black flex items-center justify-center shrink-0 text-xs">
+                  <div className="w-7 h-7 rounded-full bg-[#2DC55F] text-slate-950 font-black flex items-center justify-center shrink-0 text-xs">
                     3
                   </div>
                   <div>
@@ -169,7 +169,7 @@ export default function ServiceDetailPage({
           <div className="lg:col-span-5 sticky top-28 space-y-6">
             <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8">
               <div className="mb-6 space-y-2">
-                <div className="inzofin-section-subtitle text-emerald-600">
+                <div className="inzofin-section-subtitle text-[#2DC55F]">
                   <span>// GET STARTED //</span>
                 </div>
                 <h3 className="text-lg font-bold text-[#0c1e36]">
