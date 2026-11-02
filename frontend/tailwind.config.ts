@@ -9,19 +9,31 @@ const config: Config = {
   theme: {
     extend: {
       colors: {
+        inzofin: {
+          navy: '#0c1e36',
+          'navy-dark': '#071224',
+          'navy-light': '#152c4e',
+          gold: '#f5a623',
+          'gold-dark': '#d98e0b',
+          'gold-light': '#fef3c7',
+          blue: '#1b68b3',
+          'blue-dark': '#134e85',
+          'blue-light': '#e8f2fc',
+          gray: '#f7f9fc',
+        },
         brand: {
-          50: '#f0fdf4',
-          100: '#dcfce7',
-          200: '#bbf7d0',
-          500: '#22c55e',
-          600: '#16a34a',
-          700: '#15803d',
-          800: '#166534',
+          50: '#fffbeb',
+          100: '#fef3c7',
+          200: '#fde68a',
+          500: '#f5a623',
+          600: '#e5a010',
+          700: '#d98e0b',
+          800: '#b45309',
         },
         navy: {
-          800: '#0f172a',
-          900: '#0b1120',
-          950: '#030712',
+          800: '#152c4e',
+          900: '#0c1e36',
+          950: '#071224',
         },
       },
       fontFamily: {

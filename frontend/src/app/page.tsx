@@ -19,9 +19,15 @@ import {
   Truck, 
   CreditCard, 
   Landmark, 
-  Coins 
+  Coins,
+  Phone,
+  Check,
+  Star,
+  TrendingUp,
+  FileCheck,
+  HelpCircle
 } from 'lucide-react';
-import { SERVICES, POSTS, TESTIMONIALS, FAQS } from '@/lib/data';
+import { SERVICES, POSTS, TESTIMONIALS, FAQS, SITE_INFO } from '@/lib/data';
 import PricingCalculator from '@/components/PricingCalculator';
 import FaqAccordion from '@/components/FaqAccordion';
 
@@ -38,402 +44,746 @@ export default function HomePage() {
     Coins,
   };
 
+  // 6 Featured Services for Home 1
+  const featuredServices = SERVICES.slice(0, 6);
+
+  // Case Studies
+  const caseStudies = [
+    {
+      title: 'E-Commerce Multi-State Sales Tax Overhaul',
+      category: 'Sales Tax Nexus & IRS Compliance',
+      metric: 'Saved $42,000 in penalties',
+      summary: 'Streamlined automatic tax collection across 16 US states for a high-volume Shopify & Amazon seller, eliminating prior year non-compliance liabilities.',
+      tag: 'E-Commerce'
+    },
+    {
+      title: 'Cross-Border UK to US Corporate Structuring',
+      category: 'International Business Formation',
+      metric: '100% Tax Optimized Entity',
+      summary: 'Formed a Delaware parent entity with UK subsidiary, established US commercial banking, and structured intercompany transfer pricing under dual tax treaties.',
+      tag: 'Corporate'
+    },
+    {
+      title: 'Tech Startup R&D Tax Credit & Bookkeeping',
+      category: 'R&D Credits & Management Accounts',
+      metric: '$85,000 Federal Credit Claimed',
+      summary: 'Cleaned up 2 years of backlog QuickBooks records, prepared audit-proof research documentation, and offset payroll taxes with federal R&D tax credits.',
+      tag: 'Tax Advisory'
+    },
+    {
+      title: 'Real Estate Holding Group Portfolio Cleanup',
+      category: 'Partnership Tax & Bookkeeping',
+      metric: '6 Entities Reconciled & Balanced',
+      summary: 'Reconciled rental cashflows, depreciation schedules, and 1031 exchange ledgers across multiple multi-member LLCs with pristine K-1 issuance.',
+      tag: 'Real Estate'
+    }
+  ];
+
   return (
-    <div className="space-y-24">
-      {/* Hero Section */}
-      <section className="relative pt-12 pb-20 md:pt-20 md:pb-32 gradient-hero overflow-hidden border-b border-slate-100">
-        {/* Subtle AI Grid and Tech Accents */}
-        <div className="absolute inset-0 ai-grid-pattern opacity-60 pointer-events-none" />
-        <div className="absolute top-0 left-1/2 -translate-x-1/2 w-[1000px] h-[500px] bg-gradient-to-b from-emerald-400/10 via-teal-300/5 to-transparent blur-3xl pointer-events-none" />
+    <div className="space-y-24 bg-white overflow-hidden">
+      {/* 1. Hero Section (Inzofin Home 1 Signature Layout) */}
+      <section className="relative pt-16 pb-28 md:pt-24 md:pb-36 inzofin-hero-bg text-white overflow-hidden border-b border-[#152c4e]">
+        {/* Decorative Grid & Glow */}
+        <div className="absolute inset-0 inzofin-pattern-grid opacity-60 pointer-events-none" />
+        <div className="absolute top-0 right-1/4 w-[700px] h-[500px] bg-amber-500/10 blur-[130px] rounded-full pointer-events-none" />
+        <div className="absolute -bottom-20 -left-20 w-[500px] h-[500px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 items-center">
-            {/* Left Content */}
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+            {/* Left Content Column */}
             <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
-              <div className="inline-flex items-center gap-2.5 px-4 py-1.5 rounded-full bg-white/80 backdrop-blur-md border border-emerald-500/25 text-emerald-900 text-xs font-semibold shadow-xs shadow-emerald-500/10 hover:border-emerald-500/40 transition-colors">
-                <span className="flex h-2 w-2 relative">
-                  <span className="animate-ping absolute inline-flex h-full w-full rounded-full bg-emerald-400 opacity-75"></span>
-                  <span className="relative inline-flex rounded-full h-2 w-2 bg-emerald-500"></span>
-                </span>
-                <Sparkles className="w-3.5 h-3.5 text-emerald-600" />
-                <span className="tracking-wide">AI-Powered US & UK Accounting & Tax Advisory</span>
+              {/* Badge */}
+              <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-amber-500/40 text-amber-400 text-xs font-bold uppercase tracking-widest shadow-sm">
+                <Sparkles className="w-3.5 h-3.5 text-amber-400" />
+                <span>Trusted Finance & Tax Consultancy</span>
               </div>
 
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-slate-900 tracking-tight leading-[1.12]">
-                Bookkeeping Services To Evolve Your{' '}
-                <span className="bg-gradient-to-r from-emerald-600 via-teal-600 to-emerald-700 bg-clip-text text-transparent">
-                  Business & Tax Practice
+              {/* Headline */}
+              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.12]">
+                Reliable Financial & Tax Solutions For Your{' '}
+                <span className="inzofin-gold-text">
+                  Business Growth
                 </span>
               </h1>
 
-              <p className="text-base sm:text-lg text-slate-600 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
-                We provide seamless, dependable solutions for international business accounts, company formations, bookkeeping, and corporate tax compliance—helping businesses in the US, UK, and worldwide operate with complete confidence.
+              {/* Subheading */}
+              <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+                IRS Authorized Electronic Return Originator (ERO) & HMRC Making Tax Digital (MTD) Partner. We provide institutional-grade bookkeeping, US & UK tax compliance, and business advisory services that empower entrepreneurs worldwide to scale with complete confidence.
               </p>
 
-              {/* CTAs */}
+              {/* Dual CTA Buttons */}
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
                 <Link
-                  href="/contact"
-                  className="w-full sm:w-auto px-7 py-3.5 bg-gradient-to-r from-emerald-600 to-teal-600 hover:from-emerald-500 hover:to-teal-500 text-white font-semibold text-sm rounded-xl shadow-lg shadow-emerald-600/25 hover:shadow-emerald-500/35 transition-all flex items-center justify-center gap-2 group ring-1 ring-emerald-400/20"
+                  href="/services"
+                  className="w-full sm:w-auto px-8 py-4 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs uppercase tracking-wider rounded-lg shadow-xl shadow-amber-500/20 hover:shadow-amber-500/30 transition-all flex items-center justify-center gap-2 group"
                 >
-                  <span>Book Free Consultation</span>
+                  <span>Our Services</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
                 </Link>
 
                 <Link
-                  href="/services"
-                  className="w-full sm:w-auto px-7 py-3.5 bg-white/90 hover:bg-white text-slate-800 font-semibold text-sm rounded-xl border border-slate-200/90 shadow-xs backdrop-blur-sm transition-all flex items-center justify-center gap-2 hover:border-slate-300"
+                  href="/contact"
+                  className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-lg border border-white/20 backdrop-blur-md transition-all flex items-center justify-center gap-2 hover:border-amber-400"
                 >
-                  <span>Explore All Services</span>
+                  <span>Book Free Consultation</span>
                 </Link>
               </div>
 
-              {/* Trust Badges */}
-              <div className="pt-6 border-t border-slate-200/60 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-semibold text-slate-600">
-                <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-xl bg-white/60 border border-slate-200/60 backdrop-blur-xs">
-                  <ShieldCheck className="w-4 h-4 text-emerald-600 shrink-0" />
+              {/* Inzofin Trust Strip */}
+              <div className="pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-semibold text-slate-300">
+                <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs">
+                  <ShieldCheck className="w-4 h-4 text-amber-400 shrink-0" />
                   <span>IRS Authorized ERO</span>
                 </div>
-                <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-xl bg-white/60 border border-slate-200/60 backdrop-blur-xs">
-                  <Award className="w-4 h-4 text-emerald-600 shrink-0" />
+                <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs">
+                  <Award className="w-4 h-4 text-amber-400 shrink-0" />
                   <span>HMRC MTD Partner</span>
                 </div>
-                <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-xl bg-white/60 border border-slate-200/60 backdrop-blur-xs">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>QuickBooks Pro</span>
+                <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs">
+                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+                  <span>QuickBooks Elite</span>
                 </div>
-                <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-xl bg-white/60 border border-slate-200/60 backdrop-blur-xs">
-                  <CheckCircle2 className="w-4 h-4 text-emerald-600 shrink-0" />
-                  <span>Xero Certified</span>
+                <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs">
+                  <CheckCircle2 className="w-4 h-4 text-amber-400 shrink-0" />
+                  <span>Platinum Xero Partner</span>
                 </div>
               </div>
             </div>
 
-            {/* Right Graphic / Photo Card */}
-            <div className="lg:col-span-5 relative">
+            {/* Right Visual Column (Inzofin Home 1 Composition) */}
+            <div className="lg:col-span-5 relative mt-6 lg:mt-0">
               <div className="relative mx-auto max-w-md lg:max-w-none">
-                {/* Decorative AI Glow */}
-                <div className="absolute -top-8 -right-8 w-80 h-80 bg-gradient-to-tr from-emerald-500/20 via-teal-400/15 to-emerald-300/10 rounded-full blur-3xl pointer-events-none" />
-                <div className="absolute -bottom-6 -left-6 w-60 h-60 bg-teal-500/15 rounded-full blur-2xl pointer-events-none" />
-
-                <div className="relative bg-white/90 backdrop-blur-xl rounded-3xl p-6 sm:p-8 shadow-2xl border border-slate-100 ring-1 ring-slate-900/5">
-                  {/* Top Live AI Engine Pill */}
-                  <div className="flex items-center justify-between pb-4 mb-4 border-b border-slate-100 text-xs font-semibold text-slate-700">
-                    <div className="flex items-center gap-2">
-                      <span className="w-2.5 h-2.5 rounded-full bg-emerald-500 animate-pulse" />
-                      <span className="font-mono text-[11px] uppercase tracking-wider text-slate-500">AI Bookkeeping Sync</span>
-                    </div>
-                    <span className="px-2 py-0.5 rounded-md bg-emerald-50 text-emerald-700 text-[10px] font-bold">
-                      ACTIVE
-                    </span>
-                  </div>
-
-                  <div className="relative h-64 sm:h-72 w-full rounded-2xl overflow-hidden mb-6 bg-slate-50 border border-slate-100">
-                    <Image
-                      src="/uploads/2025/11/about_img.png"
-                      alt="Smartax Financial Advisors"
-                      fill
-                      className="object-cover"
-                      priority
-                    />
-                  </div>
-
-                  {/* Floating Stat Card */}
-                  <div className="bg-slate-900 text-white p-4.5 rounded-2xl flex items-center justify-between gap-4 shadow-xl border border-slate-800">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-emerald-500/20 to-teal-500/20 border border-emerald-500/30 text-emerald-400 flex items-center justify-center shrink-0">
-                        <BarChart3 className="w-5 h-5" />
-                      </div>
-                      <div>
-                        <div className="text-xs text-slate-400">Total Capital Reconciled</div>
-                        <div className="text-lg font-bold text-white tracking-tight">$15,000,000+</div>
-                      </div>
-                    </div>
-                    <div className="text-right">
-                      <div className="text-xs text-slate-400">On-Time Filings</div>
-                      <div className="text-sm font-bold text-emerald-400">99.8%</div>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* Stats Counter Strip */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="bg-slate-900 rounded-3xl p-8 sm:p-12 text-white shadow-xl grid grid-cols-2 md:grid-cols-4 gap-8 divide-y md:divide-y-0 md:divide-x divide-slate-800">
-          <div className="text-center pt-4 md:pt-0">
-            <div className="text-3xl sm:text-4xl font-extrabold text-emerald-400 mb-1">500+</div>
-            <div className="text-xs text-slate-400 font-medium">Businesses Supported</div>
-          </div>
-          <div className="text-center pt-4 md:pt-0">
-            <div className="text-3xl sm:text-4xl font-extrabold text-emerald-400 mb-1">50</div>
-            <div className="text-xs text-slate-400 font-medium">US States & UK Covered</div>
-          </div>
-          <div className="text-center pt-4 md:pt-0">
-            <div className="text-3xl sm:text-4xl font-extrabold text-emerald-400 mb-1">100%</div>
-            <div className="text-xs text-slate-400 font-medium">Tax Compliance Rate</div>
-          </div>
-          <div className="text-center pt-4 md:pt-0">
-            <div className="text-3xl sm:text-4xl font-extrabold text-emerald-400 mb-1">24/7</div>
-            <div className="text-xs text-slate-400 font-medium">Client Advisory Access</div>
-          </div>
-        </div>
-      </section>
-
-      {/* Services Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider">
-            What Services We Offer
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Specialized Accounting & Compliance for High-Growth Companies
-          </h2>
-          <p className="text-sm sm:text-base text-slate-600">
-            From daily transaction reconciliations to cross-border corporate tax returns, our certified CPAs and tax consultants deliver turnkey financial clarity.
-          </p>
-        </div>
-
-        {/* Services Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {SERVICES.map((service) => {
-            const Icon = iconMap[service.icon] || BookOpen;
-
-            return (
-              <div
-                key={service.slug}
-                className="bg-white rounded-2xl border border-slate-200 p-7 flex flex-col justify-between card-hover group"
-              >
-                <div>
-                  <div className="flex items-center justify-between mb-5">
-                    <div className="w-12 h-12 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center group-hover:bg-emerald-600 group-hover:text-white transition-colors duration-200">
-                      <Icon className="w-6 h-6" />
-                    </div>
-                    <span
-                      className={`text-[10px] font-bold uppercase tracking-wider px-2.5 py-0.5 rounded-full ${
-                        service.category === 'UK'
-                          ? 'bg-blue-50 text-blue-700'
-                          : 'bg-emerald-50 text-emerald-700'
-                      }`}
-                    >
-                      {service.category} Service
-                    </span>
-                  </div>
-
-                  <h3 className="text-lg font-bold text-slate-900 mb-3 group-hover:text-emerald-600 transition-colors">
-                    {service.title}
-                  </h3>
-
-                  <p className="text-xs text-slate-600 leading-relaxed mb-6">
-                    {service.shortDescription}
-                  </p>
-
-                  <ul className="space-y-2 mb-6">
-                    {service.features.slice(0, 3).map((feat, i) => (
-                      <li key={i} className="flex items-start gap-2 text-xs text-slate-600">
-                        <CheckCircle2 className="w-3.5 h-3.5 text-emerald-500 shrink-0 mt-0.5" />
-                        <span>{feat}</span>
-                      </li>
-                    ))}
-                  </ul>
+                {/* Main Hero Photo Container */}
+                <div className="relative h-[420px] sm:h-[480px] w-full rounded-2xl overflow-hidden shadow-2xl border-2 border-white/10 bg-[#0c1e36]">
+                  <Image
+                    src="/uploads/2025/12/analyzing-financial-diagram-1536x1025-1.jpg"
+                    alt="Inzofin Tax and Financial Advisory"
+                    fill
+                    className="object-cover"
+                    priority
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#071224] via-transparent to-transparent opacity-60" />
                 </div>
 
-                <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                  <div className="text-[11px] text-slate-400 font-medium">
-                    {service.softwareTools.slice(0, 2).join(', ')}
-                  </div>
-                  <Link
-                    href={`/services/${service.slug}`}
-                    className="text-xs font-bold text-emerald-600 hover:text-emerald-700 flex items-center gap-1 group-hover:translate-x-0.5 transition-all"
-                  >
-                    <span>Learn More</span>
-                    <ArrowRight className="w-3.5 h-3.5" />
-                  </Link>
-                </div>
-              </div>
-            );
-          })}
-        </div>
-      </section>
-
-      {/* Why Choose Smartax Books */}
-      <section className="bg-slate-50 py-20 border-y border-slate-200/60">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
-            <div className="space-y-6">
-              <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-100 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-                Why Choose Us
-              </div>
-              <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight leading-tight">
-                Your Complete Offshore & Onshore Accounting Department
-              </h2>
-              <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
-                Rather than hiring an expensive in-house finance team or juggling disjointed freelancers, Smartax Books provides a dedicated squad of seasoned accountants, tax specialists, and financial controllers at a fraction of the cost.
-              </p>
-
-              <div className="space-y-4 pt-2">
-                <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center shrink-0 mt-1 font-bold text-xs">
-                    01
+                {/* Floating Experience Badge 1 (Top Left) */}
+                <div className="absolute -top-6 -left-6 bg-[#0c1e36] text-white border-2 border-amber-500 rounded-xl p-4 shadow-2xl flex items-center gap-3.5 backdrop-blur-md">
+                  <div className="w-12 h-12 rounded-lg bg-amber-500 text-slate-950 flex items-center justify-center font-black text-xl shrink-0">
+                    25+
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-slate-900">Cross-Border Dual Jurisdiction Mastery</h4>
-                    <p className="text-xs text-slate-600">Specialized expertise in both US IRS and UK HMRC regulatory frameworks, allowing international businesses to scale seamlessly across the Atlantic.</p>
+                    <div className="text-xs font-bold uppercase tracking-wider text-amber-400">Experience</div>
+                    <div className="text-xs text-slate-200">Years in Tax & Finance</div>
                   </div>
                 </div>
 
-                <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center shrink-0 mt-1 font-bold text-xs">
-                    02
+                {/* Floating Metric Card 2 (Bottom Right) */}
+                <div className="absolute -bottom-6 -right-6 bg-white text-slate-900 border border-slate-200 rounded-xl p-4 shadow-2xl flex items-center gap-3.5">
+                  <div className="w-10 h-10 rounded-lg bg-amber-100 text-amber-600 flex items-center justify-center shrink-0">
+                    <TrendingUp className="w-5 h-5" />
                   </div>
                   <div>
-                    <h4 className="text-sm font-bold text-slate-900">Modern Cloud Automation</h4>
-                    <p className="text-xs text-slate-600">Direct API integration with QuickBooks, Xero, Stripe, Shopify, Gusto, and Avalara ensures automated data flows and eliminates manual spreadsheet errors.</p>
+                    <div className="text-sm font-extrabold text-[#0c1e36]">99.9% Accuracy</div>
+                    <div className="text-[11px] text-slate-500 font-medium">Zero-Penalty Guarantee</div>
                   </div>
                 </div>
-
-                <div className="flex items-start gap-4">
-                  <div className="w-8 h-8 rounded-lg bg-emerald-600 text-white flex items-center justify-center shrink-0 mt-1 font-bold text-xs">
-                    03
-                  </div>
-                  <div>
-                    <h4 className="text-sm font-bold text-slate-900">Zero Surprises & Flat-Fee Subscriptions</h4>
-                    <p className="text-xs text-slate-600">Enjoy full cost transparency. You always know exactly what your monthly accounting costs are, with no unexpected hourly bills.</p>
-                  </div>
-                </div>
-              </div>
-
-              <div className="pt-4">
-                <Link
-                  href="/about-us"
-                  className="inline-flex items-center gap-2 text-sm font-semibold text-emerald-600 hover:text-emerald-700"
-                >
-                  <span>Read our full company story & team profile</span>
-                  <ArrowRight className="w-4 h-4" />
-                </Link>
-              </div>
-            </div>
-
-            <div className="relative">
-              <div className="relative h-96 w-full rounded-3xl overflow-hidden shadow-2xl border border-slate-200">
-                <Image
-                  src="/uploads/2025/12/managers-working-with-financial-chart-e1638180766443.jpg"
-                  alt="Team analyzing financial data"
-                  fill
-                  className="object-cover"
-                />
               </div>
             </div>
           </div>
         </div>
       </section>
 
-      {/* Pricing Section */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-12 space-y-4">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider">
-            Transparent Pricing Plans
+      {/* 2. Feature Overlap Boxes (Inzofin Signature 4-Box Row) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-24 sm:-mt-28 relative z-20">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div className="bg-white rounded-xl p-7 border border-slate-200 shadow-xl card-hover border-t-4 border-t-amber-500 space-y-3">
+            <div className="w-12 h-12 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-200">
+              <FileText className="w-6 h-6" />
+            </div>
+            <h3 className="text-base font-extrabold text-[#0c1e36]">Corporate Tax Compliance</h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              IRS Form 1040, 1120, 1120S, 1065, Form 5472 and UK CT600 Corporation Tax prepared with maximum deduction security.
+            </p>
+            <Link href="/services/us-tax-compliance-filing-services" className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 hover:text-amber-700 transition-colors pt-1 group">
+              <span>Learn More</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Affordable Plans Designed for Every Stage of Growth
-          </h2>
-          <p className="text-sm sm:text-base text-slate-600">
-            No hidden fees, no hourly surprises. Select the perfect monthly or annual plan for your business.
-          </p>
-        </div>
 
-        <PricingCalculator />
+          <div className="bg-white rounded-xl p-7 border border-slate-200 shadow-xl card-hover border-t-4 border-t-amber-500 space-y-3">
+            <div className="w-12 h-12 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-200">
+              <BookOpen className="w-6 h-6" />
+            </div>
+            <h3 className="text-base font-extrabold text-[#0c1e36]">Management Bookkeeping</h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              Real-time QuickBooks & Xero ledgers, monthly reconciliations, balance sheets, and cashflow health reporting.
+            </p>
+            <Link href="/services/bookkeeping-accounting-services" className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 hover:text-amber-700 transition-colors pt-1 group">
+              <span>Learn More</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="bg-white rounded-xl p-7 border border-slate-200 shadow-xl card-hover border-t-4 border-t-amber-500 space-y-3">
+            <div className="w-12 h-12 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-200">
+              <Rocket className="w-6 h-6" />
+            </div>
+            <h3 className="text-base font-extrabold text-[#0c1e36]">Cross-Border Formation</h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              End-to-end US LLC (Wyoming, Delaware, Florida) and UK Ltd formation with EIN, BOI, Registered Agent & banking.
+            </p>
+            <Link href="/services/startup-business-formation-usa" className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 hover:text-amber-700 transition-colors pt-1 group">
+              <span>Learn More</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+
+          <div className="bg-white rounded-xl p-7 border border-slate-200 shadow-xl card-hover border-t-4 border-t-amber-500 space-y-3">
+            <div className="w-12 h-12 rounded-lg bg-amber-50 text-amber-600 flex items-center justify-center border border-amber-200">
+              <Coins className="w-6 h-6" />
+            </div>
+            <h3 className="text-base font-extrabold text-[#0c1e36]">Multi-State Sales & Payroll</h3>
+            <p className="text-xs text-slate-600 leading-relaxed">
+              50-state sales tax nexus registration, automated filings, and payroll tax management (941/940/W-2).
+            </p>
+            <Link href="/services/payroll-tax-management" className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 hover:text-amber-700 transition-colors pt-1 group">
+              <span>Learn More</span>
+              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+            </Link>
+          </div>
+        </div>
       </section>
 
-      {/* Testimonials */}
-      <section className="bg-slate-900 py-20 text-white">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-          <div className="text-center max-w-3xl mx-auto mb-16 space-y-4">
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-500/10 text-emerald-400 text-xs font-bold uppercase tracking-wider">
-              Client Testimonials
+      {/* 3. About Us Section (Inzofin Home 1 Layout) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
+          {/* Left Column: Image with Experience Ribbon */}
+          <div className="lg:col-span-6 relative">
+            <div className="relative h-[440px] sm:h-[500px] w-full rounded-2xl overflow-hidden shadow-2xl border-2 border-slate-200">
+              <Image
+                src="/uploads/2025/11/about_img.png"
+                alt="About Smartax Books Financial Consultants"
+                fill
+                className="object-cover"
+              />
             </div>
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-              Trusted by Founders, E-Commerce Sellers & CFOs
+
+            {/* Overlapping Inzofin Gold Experience Badge */}
+            <div className="absolute -bottom-6 -right-4 sm:right-6 bg-[#0c1e36] text-white p-6 rounded-2xl border-2 border-amber-500 shadow-2xl max-w-xs space-y-2">
+              <div className="flex items-center gap-1 text-amber-400">
+                {[...Array(5)].map((_, i) => (
+                  <Star key={i} className="w-4 h-4 fill-amber-400" />
+                ))}
+              </div>
+              <div className="text-2xl font-black text-white">25+ Years</div>
+              <div className="text-xs text-slate-300 font-medium">
+                Proven Excellence in US & UK Corporate Accounting & Tax Advisory
+              </div>
+            </div>
+          </div>
+
+          {/* Right Column: About Details */}
+          <div className="lg:col-span-6 space-y-6">
+            <div className="inzofin-section-subtitle">
+              <span>// ABOUT OUR COMPANY //</span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl font-black text-[#0c1e36] leading-snug">
+              We Are Leading Financial Advisors & Tax Strategists for Growing Businesses
             </h2>
-            <p className="text-sm sm:text-base text-slate-400">
-              Here is what real business owners say about partnering with Smartax Books.
+
+            <p className="text-sm sm:text-base text-slate-600 leading-relaxed">
+              At Smartax Books, we specialize in removing the bureaucratic complexity of accounting, company formation, and tax compliance. Whether you operate an e-commerce brand, a fast-moving SaaS company, or a global enterprise expanding into US and UK markets, our certified specialists ensure your books are pristine and your taxes strictly optimized.
+            </p>
+
+            {/* 4 Feature Points with Checkmarks */}
+            <div className="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-2">
+              <div className="flex items-start gap-3">
+                <div className="w-5 h-5 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center shrink-0 mt-0.5">
+                  <Check className="w-3.5 h-3.5" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-[#0c1e36]">IRS Licensed Originators</div>
+                  <div className="text-[11px] text-slate-500">Authorized E-File Providers</div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="w-5 h-5 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center shrink-0 mt-0.5">
+                  <Check className="w-3.5 h-3.5" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-[#0c1e36]">HMRC MTD Specialists</div>
+                  <div className="text-[11px] text-slate-500">Making Tax Digital verified</div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="w-5 h-5 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center shrink-0 mt-0.5">
+                  <Check className="w-3.5 h-3.5" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-[#0c1e36]">Transparent Pricing</div>
+                  <div className="text-[11px] text-slate-500">Predictable flat rates, no surprises</div>
+                </div>
+              </div>
+
+              <div className="flex items-start gap-3">
+                <div className="w-5 h-5 rounded-full bg-amber-100 text-amber-600 flex items-center justify-center shrink-0 mt-0.5">
+                  <Check className="w-3.5 h-3.5" />
+                </div>
+                <div>
+                  <div className="text-xs font-bold text-[#0c1e36]">100% On-Time Guarantee</div>
+                  <div className="text-[11px] text-slate-500">Zero late penalties assured</div>
+                </div>
+              </div>
+            </div>
+
+            {/* Inzofin Quote Card */}
+            <div className="p-5 rounded-xl bg-slate-50 border border-slate-200 flex items-center gap-4">
+              <div className="w-12 h-12 rounded-full bg-[#0c1e36] text-amber-400 flex items-center justify-center font-bold text-lg shrink-0">
+                SB
+              </div>
+              <div className="space-y-1">
+                <p className="text-xs italic text-slate-700">
+                  &ldquo;We treat your financial books and tax filings with the meticulous care and precision as if they were our own enterprise.&rdquo;
+                </p>
+                <div className="text-xs font-bold text-[#0c1e36]">Senior Tax Advisory Board, Smartax Books</div>
+              </div>
+            </div>
+
+            {/* Discover Button */}
+            <div className="pt-2">
+              <Link
+                href="/about-us"
+                className="inline-flex items-center gap-2 px-7 py-3.5 bg-[#0c1e36] hover:bg-[#152c4e] text-white font-bold text-xs uppercase tracking-wider rounded-lg shadow-md transition-all group"
+              >
+                <span>Discover More About Us</span>
+                <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform text-amber-400" />
+              </Link>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 4. Inzofin Services Grid (Home 1 Layout) */}
+      <section className="bg-[#f7f9fc] py-20 border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+          {/* Section Header */}
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <div className="inzofin-section-subtitle">
+              <span>// WHAT WE OFFER //</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-black text-[#0c1e36]">
+              High-Quality Financial & Corporate Tax Services
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Tailored solutions designed to guarantee strict regulatory compliance and optimize your bottom line.
             </p>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-            {TESTIMONIALS.map((t, idx) => (
-              <div
-                key={idx}
-                className="bg-slate-800/80 rounded-2xl p-8 border border-slate-700 flex flex-col justify-between"
-              >
-                <div>
-                  <div className="flex items-center gap-1 text-emerald-400 mb-6">
-                    {[...Array(t.rating)].map((_, i) => (
-                      <span key={i}>★</span>
-                    ))}
-                  </div>
-                  <p className="text-sm text-slate-200 leading-relaxed italic mb-8">
-                    &ldquo;{t.quote}&rdquo;
-                  </p>
-                </div>
+          {/* 6 Inzofin Service Cards */}
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+            {featuredServices.map((service, index) => {
+              const IconComponent = iconMap[service.icon] || BookOpen;
+              const numberStr = `0${index + 1}`;
 
-                <div className="flex items-center gap-4 pt-4 border-t border-slate-700">
-                  <div className="relative w-11 h-11 rounded-full overflow-hidden bg-slate-700 shrink-0">
-                    <Image
-                      src={t.avatarUrl}
-                      alt={t.clientName}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
+              return (
+                <div
+                  key={service.slug}
+                  className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm card-hover flex flex-col justify-between relative group"
+                >
+                  {/* Top Header: Icon & Number Badge */}
                   <div>
-                    <div className="font-bold text-sm text-white">{t.clientName}</div>
-                    <div className="text-xs text-slate-400">{t.role}, {t.company}</div>
+                    <div className="flex items-center justify-between mb-6">
+                      <div className="w-14 h-14 rounded-xl bg-amber-500/10 text-amber-600 flex items-center justify-center group-hover:bg-amber-500 group-hover:text-slate-950 transition-colors">
+                        <IconComponent className="w-7 h-7" />
+                      </div>
+                      <span className="text-3xl font-black text-slate-200 group-hover:text-amber-500/30 transition-colors">
+                        {numberStr}
+                      </span>
+                    </div>
+
+                    <div className="inline-block text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded bg-slate-100 text-slate-600 mb-2">
+                      {service.category} Service
+                    </div>
+
+                    <h3 className="text-lg font-bold text-[#0c1e36] group-hover:text-amber-600 transition-colors mb-3">
+                      <Link href={`/services/${service.slug}`}>{service.title}</Link>
+                    </h3>
+
+                    <p className="text-xs text-slate-600 leading-relaxed mb-6">
+                      {service.shortDescription}
+                    </p>
+
+                    {/* Features list */}
+                    <ul className="space-y-2 mb-6 border-t border-slate-100 pt-4 text-xs text-slate-500">
+                      {service.features.slice(0, 3).map((f, i) => (
+                        <li key={i} className="flex items-center gap-2">
+                          <Check className="w-3.5 h-3.5 text-amber-500 shrink-0" />
+                          <span className="truncate">{f}</span>
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+
+                  {/* Read More Link */}
+                  <div className="pt-2">
+                    <Link
+                      href={`/services/${service.slug}`}
+                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0c1e36] group-hover:text-amber-600 transition-colors"
+                    >
+                      <span>Explore Service</span>
+                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                    </Link>
                   </div>
                 </div>
-              </div>
-            ))}
+              );
+            })}
+          </div>
+
+          {/* View All Services Button */}
+          <div className="text-center pt-4">
+            <Link
+              href="/services"
+              className="inline-flex items-center gap-2 px-8 py-4 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs uppercase tracking-wider rounded-lg shadow-md transition-all"
+            >
+              <span>View All 12+ Financial Services</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
           </div>
         </div>
       </section>
 
-      {/* FAQs */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-14 space-y-4">
-          <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider">
-            Frequently Asked Questions
+      {/* 5. Why Choose Inzofin Section (Progress Bars & Value Pillars) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-16 items-center">
+          {/* Left Details */}
+          <div className="lg:col-span-6 space-y-6">
+            <div className="inzofin-section-subtitle">
+              <span>// WHY CHOOSE SMARTAX //</span>
+            </div>
+
+            <h2 className="text-3xl sm:text-4xl font-black text-[#0c1e36] leading-snug">
+              We Deliver Measurable Results Through Unrivaled Precision & Insight
+            </h2>
+
+            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+              Unlike traditional accountants who look at your numbers once a year at tax time, our team provides active financial guardianship. We protect your company from punitive tax audits and optimize cash flow month after month.
+            </p>
+
+            {/* Accordion / Highlights */}
+            <div className="space-y-4 pt-2">
+              <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1">
+                <div className="font-bold text-sm text-[#0c1e36] flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+                  <span>Proactive Year-Round Tax Strategy</span>
+                </div>
+                <p className="text-xs text-slate-500 pl-4">
+                  We don&apos;t just prepare tax returns; we actively implement structural legal deductions, entity elections (S-Corp vs LLC), and treaty advantages.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1">
+                <div className="font-bold text-sm text-[#0c1e36] flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+                  <span>Cloud Accounting Tech Stack</span>
+                </div>
+                <p className="text-xs text-slate-500 pl-4">
+                  Full synchronization with QuickBooks Online, Xero, Stripe, Mercury Bank, Shopify, and Amazon Seller Central for instantaneous reporting.
+                </p>
+              </div>
+
+              <div className="p-4 rounded-xl border border-slate-200 bg-white space-y-1">
+                <div className="font-bold text-sm text-[#0c1e36] flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-amber-500"></span>
+                  <span>Dedicated Senior Client Manager</span>
+                </div>
+                <p className="text-xs text-slate-500 pl-4">
+                  Direct WhatsApp, Slack, and email access to your assigned lead accountant. No endless ticket queues or junior staff confusion.
+                </p>
+              </div>
+            </div>
           </div>
-          <h2 className="text-3xl sm:text-4xl font-extrabold text-slate-900 tracking-tight">
-            Have Questions? We Have Answers.
+
+          {/* Right: Performance Bars & Stats */}
+          <div className="lg:col-span-6 bg-[#0c1e36] text-white p-8 sm:p-10 rounded-2xl border-2 border-amber-500/40 shadow-2xl space-y-8 relative overflow-hidden">
+            <div className="absolute inset-0 inzofin-pattern-lines opacity-20 pointer-events-none" />
+
+            <div className="space-y-2 relative z-10">
+              <div className="text-xs font-bold uppercase tracking-wider text-amber-400">Our Performance Standards</div>
+              <h3 className="text-2xl font-black text-white">Consistently Exceeding Industry Benchmarks</h3>
+            </div>
+
+            {/* Progress Bars */}
+            <div className="space-y-6 relative z-10">
+              {/* Bar 1 */}
+              <div className="space-y-2">
+                <div className="flex justify-between text-xs font-bold">
+                  <span>IRS & HMRC Tax Filing Accuracy</span>
+                  <span className="text-amber-400">99.8%</span>
+                </div>
+                <div className="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden">
+                  <div className="h-full bg-amber-500 rounded-full" style={{ width: '99.8%' }}></div>
+                </div>
+              </div>
+
+              {/* Bar 2 */}
+              <div className="space-y-2">
+                <div className="flex justify-between text-xs font-bold">
+                  <span>Bookkeeping Reconciliation Precision</span>
+                  <span className="text-amber-400">100%</span>
+                </div>
+                <div className="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden">
+                  <div className="h-full bg-amber-500 rounded-full" style={{ width: '100%' }}></div>
+                </div>
+              </div>
+
+              {/* Bar 3 */}
+              <div className="space-y-2">
+                <div className="flex justify-between text-xs font-bold">
+                  <span>Client Retention & Satisfaction</span>
+                  <span className="text-amber-400">98.5%</span>
+                </div>
+                <div className="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden">
+                  <div className="h-full bg-amber-500 rounded-full" style={{ width: '98.5%' }}></div>
+                </div>
+              </div>
+
+              {/* Bar 4 */}
+              <div className="space-y-2">
+                <div className="flex justify-between text-xs font-bold">
+                  <span>Audit Defense & Notice Resolution</span>
+                  <span className="text-amber-400">99.2%</span>
+                </div>
+                <div className="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden">
+                  <div className="h-full bg-amber-500 rounded-full" style={{ width: '99.2%' }}></div>
+                </div>
+              </div>
+            </div>
+
+            {/* Callout box */}
+            <div className="pt-4 border-t border-slate-700/60 flex items-center gap-4 relative z-10">
+              <div className="w-12 h-12 rounded-xl bg-amber-500 text-slate-950 flex items-center justify-center font-bold shrink-0">
+                <Award className="w-6 h-6" />
+              </div>
+              <div>
+                <div className="text-xs font-bold text-white">Full Regulatory Defense</div>
+                <div className="text-[11px] text-slate-300">Representation before IRS, state tax commissions & HMRC.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 6. Inzofin Milestones & Counter Bar (Home 1 Dark Navy Strip) */}
+      <section className="bg-[#071224] py-16 border-y border-[#152c4e] relative overflow-hidden">
+        <div className="absolute inset-0 inzofin-pattern-grid opacity-30 pointer-events-none" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-8 text-center">
+            {/* Stat 1 */}
+            <div className="space-y-2 p-4">
+              <div className="text-3xl sm:text-5xl font-black text-amber-400">1,250+</div>
+              <div className="text-xs uppercase font-bold tracking-wider text-slate-300">Active Global Clients</div>
+              <p className="text-[11px] text-slate-400">Businesses in 42+ Countries</p>
+            </div>
+
+            {/* Stat 2 */}
+            <div className="space-y-2 p-4 border-l border-white/10">
+              <div className="text-3xl sm:text-5xl font-black text-amber-400">$45M+</div>
+              <div className="text-xs uppercase font-bold tracking-wider text-slate-300">Tax Deductions Saved</div>
+              <p className="text-[11px] text-slate-400">Legally Optimized Filings</p>
+            </div>
+
+            {/* Stat 3 */}
+            <div className="space-y-2 p-4 border-l border-white/10">
+              <div className="text-3xl sm:text-5xl font-black text-amber-400">15+</div>
+              <div className="text-xs uppercase font-bold tracking-wider text-slate-300">Years Experience</div>
+              <p className="text-[11px] text-slate-400">CPA & Enrolled Agents</p>
+            </div>
+
+            {/* Stat 4 */}
+            <div className="space-y-2 p-4 border-l border-white/10">
+              <div className="text-3xl sm:text-5xl font-black text-amber-400">100%</div>
+              <div className="text-xs uppercase font-bold tracking-wider text-slate-300">On-Time Compliance</div>
+              <p className="text-[11px] text-slate-400">Zero Late Penalties</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* 7. Case Studies / Project Showcase (Home 1 Layout) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-12">
+        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
+          <div className="space-y-3">
+            <div className="inzofin-section-subtitle">
+              <span>// RECENT CASE STUDIES //</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-black text-[#0c1e36]">
+              Real Financial Results & Success Stories
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600 max-w-xl">
+              See how our strategic accounting and compliance frameworks help growing enterprises preserve capital and scale smoothly.
+            </p>
+          </div>
+
+          <Link
+            href="/contact"
+            className="inline-flex items-center gap-2 px-6 py-3 bg-[#0c1e36] hover:bg-[#152c4e] text-white font-bold text-xs uppercase tracking-wider rounded-lg transition-all self-start md:self-auto"
+          >
+            <span>Request A Case Study Review</span>
+            <ArrowRight className="w-4 h-4 text-amber-400" />
+          </Link>
+        </div>
+
+        {/* Case Studies Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
+          {caseStudies.map((cs, idx) => (
+            <div 
+              key={idx}
+              className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm card-hover flex flex-col justify-between space-y-6 group border-l-4 border-l-amber-500"
+            >
+              <div className="space-y-3">
+                <div className="flex items-center justify-between">
+                  <span className="text-[11px] uppercase font-bold tracking-wider px-2.5 py-1 rounded bg-amber-100 text-amber-800">
+                    {cs.tag}
+                  </span>
+                  <span className="text-xs font-bold text-slate-400">
+                    {cs.category}
+                  </span>
+                </div>
+
+                <h3 className="text-xl font-bold text-[#0c1e36] group-hover:text-amber-600 transition-colors">
+                  {cs.title}
+                </h3>
+
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
+                  {cs.summary}
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
+                <div className="flex items-center gap-2 text-xs font-extrabold text-[#0c1e36]">
+                  <CheckCircle2 className="w-4 h-4 text-amber-500" />
+                  <span>Key Result: <span className="text-amber-600">{cs.metric}</span></span>
+                </div>
+                <Link href="/contact" className="text-xs font-bold text-[#0c1e36] group-hover:text-amber-600 flex items-center gap-1">
+                  <span>Consult</span>
+                  <ArrowRight className="w-3.5 h-3.5" />
+                </Link>
+              </div>
+            </div>
+          ))}
+        </div>
+      </section>
+
+      {/* 8. Pricing Plans Section (Home 1 Layout) */}
+      <section className="bg-[#f7f9fc] py-20 border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <div className="inzofin-section-subtitle">
+              <span>// TRANSPARENT PRICING //</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-black text-[#0c1e36]">
+              Clear, Predictable Rates With No Hidden Fees
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600">
+              Select the optimal plan for your transaction volume or speak with us for custom enterprise multi-entity structures.
+            </p>
+          </div>
+
+          {/* Pricing Calculator Component */}
+          <PricingCalculator />
+        </div>
+      </section>
+
+      {/* 9. Client Testimonials (Inzofin Home 1 Reviews) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-12">
+        <div className="text-center max-w-2xl mx-auto space-y-3">
+          <div className="inzofin-section-subtitle">
+            <span>// CLIENT TESTIMONIALS //</span>
+          </div>
+          <h2 className="text-3xl sm:text-4xl font-black text-[#0c1e36]">
+            What Our Valued Clients Say About Us
           </h2>
-          <p className="text-sm sm:text-base text-slate-600">
-            Got questions about company formation, IRS deadlines, or software migrations? Find quick answers below.
+          <p className="text-xs sm:text-sm text-slate-600">
+            Real feedback from startup founders, international merchants, and business leaders.
           </p>
         </div>
 
-        <FaqAccordion faqs={FAQS} />
+        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+          {TESTIMONIALS.map((t, idx) => (
+            <div
+              key={idx}
+              className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm card-hover flex flex-col justify-between space-y-6 relative"
+            >
+              <div className="space-y-4">
+                {/* 5 Gold Stars */}
+                <div className="flex items-center gap-1">
+                  {[...Array(t.rating || 5)].map((_, i) => (
+                    <Star key={i} className="w-4 h-4 fill-amber-400 text-amber-400" />
+                  ))}
+                </div>
+
+                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
+                  &ldquo;{t.quote}&rdquo;
+                </p>
+              </div>
+
+              <div className="pt-4 border-t border-slate-100 flex items-center gap-3.5">
+                <div className="w-11 h-11 rounded-full bg-amber-500 text-slate-950 font-black text-sm flex items-center justify-center shrink-0">
+                  {t.clientName.charAt(0)}
+                </div>
+                <div>
+                  <div className="font-bold text-sm text-[#0c1e36]">{t.clientName}</div>
+                  <div className="text-[11px] text-slate-500">{t.role}, {t.company}</div>
+                </div>
+              </div>
+            </div>
+          ))}
+        </div>
       </section>
 
-      {/* Latest Blog & Articles */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-4 mb-12">
-          <div>
-            <div className="inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-emerald-50 text-emerald-700 text-xs font-bold uppercase tracking-wider mb-3">
-              Knowledge Base
+      {/* 10. Frequently Asked Questions (Home 1 Layout) */}
+      <section className="bg-slate-50 py-16 border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
+          <div className="text-center max-w-2xl mx-auto space-y-3">
+            <div className="inzofin-section-subtitle">
+              <span>// FAQ //</span>
             </div>
-            <h2 className="text-3xl font-extrabold text-slate-900 tracking-tight">
-              Latest Insights & Accounting Guides
+            <h2 className="text-3xl sm:text-4xl font-black text-[#0c1e36]">
+              Frequently Asked Questions
             </h2>
+            <p className="text-xs sm:text-sm text-slate-600">
+              Clear answers regarding our tax filings, onboarding process, and cross-border compliance.
+            </p>
           </div>
+
+          <FaqAccordion faqs={FAQS} />
+        </div>
+      </section>
+
+      {/* 11. Latest Blog & Tax Insights (Inzofin Home 1 News) */}
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-12">
+        <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
+          <div className="space-y-3">
+            <div className="inzofin-section-subtitle">
+              <span>// LATEST ARTICLES //</span>
+            </div>
+            <h2 className="text-3xl sm:text-4xl font-black text-[#0c1e36]">
+              Financial News & Advisory Insights
+            </h2>
+            <p className="text-xs sm:text-sm text-slate-600">
+              Stay ahead of changing IRS codes, HMRC deadlines, and smart accounting strategies.
+            </p>
+          </div>
+
           <Link
             href="/blog"
-            className="inline-flex items-center gap-1.5 text-sm font-semibold text-emerald-600 hover:text-emerald-700"
+            className="inline-flex items-center gap-1.5 text-xs font-bold text-amber-600 hover:text-amber-700 transition-colors self-start sm:self-auto group"
           >
-            <span>View All Articles</span>
-            <ArrowRight className="w-4 h-4" />
+            <span>View All Insights</span>
+            <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
           </Link>
         </div>
 
@@ -441,41 +791,48 @@ export default function HomePage() {
           {POSTS.map((post) => (
             <article
               key={post.slug}
-              className="bg-white rounded-2xl border border-slate-200 overflow-hidden flex flex-col justify-between card-hover group"
+              className="bg-white rounded-2xl border border-slate-200 overflow-hidden shadow-sm card-hover flex flex-col justify-between group"
             >
               <div>
-                <div className="relative h-48 w-full bg-slate-100 overflow-hidden">
+                <div className="relative h-52 w-full bg-slate-100 overflow-hidden">
                   <Image
                     src={post.imageUrl}
                     alt={post.title}
                     fill
                     className="object-cover group-hover:scale-105 transition-transform duration-300"
                   />
-                  <div className="absolute top-3 left-3 bg-slate-900/80 backdrop-blur-md text-white text-[10px] font-bold px-2.5 py-1 rounded-full">
+                  <div className="absolute top-3 left-3 bg-[#0c1e36] text-amber-400 text-[10px] font-bold uppercase tracking-wider px-3 py-1 rounded">
                     {post.category}
                   </div>
                 </div>
 
-                <div className="p-6">
-                  <div className="text-[11px] text-slate-400 font-medium mb-2">
-                    {post.date} • {post.readTime}
+                <div className="p-6 space-y-3">
+                  <div className="flex items-center gap-4 text-xs text-slate-400">
+                    <span className="flex items-center gap-1">
+                      <Clock className="w-3.5 h-3.5 text-amber-500" />
+                      {post.readTime}
+                    </span>
+                    <span>•</span>
+                    <span>{post.date}</span>
                   </div>
-                  <h3 className="text-base font-bold text-slate-900 group-hover:text-emerald-600 transition-colors leading-snug mb-3">
+
+                  <h3 className="text-base font-bold text-[#0c1e36] group-hover:text-amber-600 transition-colors leading-snug">
                     <Link href={`/blog/${post.slug}`}>{post.title}</Link>
                   </h3>
-                  <p className="text-xs text-slate-600 leading-relaxed line-clamp-3">
+
+                  <p className="text-xs text-slate-600 leading-relaxed line-clamp-2">
                     {post.excerpt}
                   </p>
                 </div>
               </div>
 
-              <div className="px-6 pb-6 pt-2">
+              <div className="p-6 pt-0">
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="text-xs font-bold text-emerald-600 hover:text-emerald-700 inline-flex items-center gap-1"
+                  className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0c1e36] group-hover:text-amber-600 transition-colors"
                 >
                   <span>Read Article</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </article>
@@ -483,25 +840,42 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* Call to Action Banner */}
+      {/* 12. Call to Action Banner (Inzofin Home 1) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 pb-12">
-        <div className="bg-gradient-to-r from-emerald-600 to-teal-700 rounded-3xl p-8 sm:p-14 text-white text-center shadow-2xl relative overflow-hidden">
-          <div className="relative z-10 max-w-2xl mx-auto space-y-6">
-            <h2 className="text-3xl sm:text-4xl font-extrabold tracking-tight">
-              Ready to Streamline Your Financial & Tax Operations?
-            </h2>
-            <p className="text-emerald-100 text-sm sm:text-base leading-relaxed">
-              Schedule a 30-minute free discovery call with a senior advisor. We will review your current bookkeeping, analyze your upcoming filing deadlines, and give you an actionable roadmap.
-            </p>
-            <div className="pt-2">
-              <Link
-                href="/contact"
-                className="inline-flex items-center gap-2 bg-slate-900 hover:bg-slate-950 text-white font-semibold text-sm px-8 py-4 rounded-xl shadow-lg transition-all"
-              >
-                <span>Schedule Free Consultation</span>
-                <ArrowRight className="w-4 h-4" />
-              </Link>
+        <div className="bg-[#0c1e36] text-white rounded-3xl p-8 sm:p-14 border-2 border-amber-500 shadow-2xl relative overflow-hidden text-center space-y-8">
+          <div className="absolute inset-0 inzofin-pattern-grid opacity-30 pointer-events-none" />
+
+          <div className="max-w-2xl mx-auto space-y-4 relative z-10">
+            <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-white/10 text-amber-400 text-xs font-bold uppercase tracking-wider">
+              <Sparkles className="w-3.5 h-3.5" />
+              <span>Complimentary Tax Diagnostic</span>
             </div>
+
+            <h2 className="text-3xl sm:text-5xl font-black text-white tracking-tight">
+              Ready To Streamline Your Books & Eliminate Tax Stress?
+            </h2>
+
+            <p className="text-xs sm:text-sm text-slate-300 leading-relaxed">
+              Connect with our senior accountants and tax advisors today for a personalized, zero-obligation financial roadmap. We review your entity structure, past tax filings, and monthly bookkeeping workflows.
+            </p>
+          </div>
+
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 relative z-10">
+            <Link
+              href="/contact"
+              className="w-full sm:w-auto px-8 py-4 bg-amber-500 hover:bg-amber-600 text-slate-950 font-bold text-xs uppercase tracking-wider rounded-lg shadow-xl shadow-amber-500/20 transition-all flex items-center justify-center gap-2"
+            >
+              <span>Schedule Free Consultation</span>
+              <ArrowRight className="w-4 h-4" />
+            </Link>
+
+            <a
+              href={`tel:${SITE_INFO.phone}`}
+              className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-lg border border-white/20 backdrop-blur-md transition-all flex items-center justify-center gap-2 hover:border-amber-400"
+            >
+              <Phone className="w-4 h-4 text-amber-400" />
+              <span>Call Us: {SITE_INFO.phone}</span>
+            </a>
           </div>
         </div>
       </section>

@@ -8,7 +8,8 @@ import {
   ArrowRight, 
   Cpu, 
   FileCheck2, 
-  CalendarClock 
+  CalendarClock,
+  Check
 } from 'lucide-react';
 import { Metadata } from 'next';
 import { SERVICES } from '@/lib/data';
@@ -42,29 +43,30 @@ export default function ServiceDetailPage({
   }
 
   return (
-    <div className="py-12 space-y-16">
-      {/* Top Breadcrumb & Header */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-6">
-        <div>
-          <Link
-            href="/services"
-            className="inline-flex items-center gap-1.5 text-xs font-semibold text-emerald-600 hover:text-emerald-700 transition-colors"
-          >
-            <ArrowLeft className="w-3.5 h-3.5" />
-            <span>Back to All Services</span>
-          </Link>
-        </div>
-
-        <div className="max-w-3xl space-y-4">
-          <div className="inline-flex items-center gap-2 px-3 py-1 rounded-full bg-emerald-50 text-emerald-800 text-xs font-bold uppercase tracking-wider">
-            <span>{service.category} Specialization</span>
+    <div className="space-y-16 pb-20">
+      {/* Inzofin Breadcrumb Header Banner */}
+      <section className="bg-[#0c1a2e] text-white py-16 sm:py-20 border-b border-[#152c4e] relative overflow-hidden">
+        <div className="absolute inset-0 inzofin-pattern-grid opacity-30 pointer-events-none" />
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 relative z-10">
+          <div className="flex items-center gap-2 text-xs font-semibold text-slate-400">
+            <Link href="/" className="hover:text-emerald-400 transition-colors">Home</Link>
+            <span>/</span>
+            <Link href="/services" className="hover:text-emerald-400 transition-colors">Services</Link>
+            <span>/</span>
+            <span className="text-emerald-400 truncate max-w-xs">{service.title}</span>
           </div>
-          <h1 className="text-3xl sm:text-5xl font-extrabold text-slate-900 tracking-tight leading-tight">
-            {service.title}
-          </h1>
-          <p className="text-base sm:text-lg text-slate-600 leading-relaxed">
-            {service.shortDescription}
-          </p>
+
+          <div className="max-w-3xl space-y-3">
+            <div className="inzofin-section-subtitle text-emerald-400">
+              <span>// {service.category} SERVICE SPECIALIZATION //</span>
+            </div>
+            <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
+              {service.title}
+            </h1>
+            <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
+              {service.shortDescription}
+            </p>
+          </div>
         </div>
       </section>
 
@@ -74,24 +76,27 @@ export default function ServiceDetailPage({
           {/* Left Details */}
           <div className="lg:col-span-7 space-y-10">
             {/* Overview */}
-            <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-xs space-y-4">
-              <h2 className="text-xl font-bold text-slate-900">Service Overview</h2>
+            <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm space-y-4 border-t-4 border-t-amber-500">
+              <div className="inzofin-section-subtitle text-emerald-600">
+                <span>// OVERVIEW //</span>
+              </div>
+              <h2 className="text-2xl font-black text-[#0c1e36]">Service Overview</h2>
               <p className="text-sm text-slate-600 leading-relaxed">
                 {service.fullDescription}
               </p>
             </div>
 
             {/* Key Deliverables */}
-            <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-xs space-y-6">
-              <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-                <FileCheck2 className="w-5 h-5 text-emerald-600" />
+            <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm space-y-6">
+              <h2 className="text-xl font-bold text-[#0c1e36] flex items-center gap-2">
+                <FileCheck2 className="w-5 h-5 text-emerald-500" />
                 <span>Scope of Work & Deliverables</span>
               </h2>
 
               <ul className="grid grid-cols-1 gap-3.5">
                 {service.features.map((feat, idx) => (
-                  <li key={idx} className="flex items-start gap-3 p-3 rounded-xl bg-slate-50 border border-slate-100 text-xs sm:text-sm text-slate-700">
-                    <CheckCircle2 className="w-5 h-5 text-emerald-600 shrink-0 mt-0.5" />
+                  <li key={idx} className="flex items-start gap-3 p-3.5 rounded-xl bg-slate-50 border border-slate-100 text-xs sm:text-sm text-slate-700">
+                    <Check className="w-4 h-4 text-emerald-500 shrink-0 mt-0.5" />
                     <span>{feat}</span>
                   </li>
                 ))}
@@ -99,7 +104,7 @@ export default function ServiceDetailPage({
             </div>
 
             {/* Software Stack & Tools */}
-            <div className="bg-slate-900 text-white rounded-3xl p-8 shadow-xl space-y-4">
+            <div className="bg-[#0c1a2e] text-white rounded-2xl p-8 border-2 border-emerald-500/40 shadow-xl space-y-4">
               <h2 className="text-xl font-bold flex items-center gap-2 text-white">
                 <Cpu className="w-5 h-5 text-emerald-400" />
                 <span>Supported Software & Platforms</span>
@@ -111,7 +116,7 @@ export default function ServiceDetailPage({
                 {service.softwareTools.map((tool, idx) => (
                   <span
                     key={idx}
-                    className="bg-slate-800 border border-slate-700 text-emerald-300 text-xs font-semibold px-3.5 py-1.5 rounded-lg"
+                    className="bg-white/10 border border-white/20 text-amber-300 text-xs font-bold px-3.5 py-1.5 rounded-lg"
                   >
                     {tool}
                   </span>
@@ -120,39 +125,39 @@ export default function ServiceDetailPage({
             </div>
 
             {/* Workflow / Onboarding Steps */}
-            <div className="bg-white rounded-3xl border border-slate-200 p-8 shadow-xs space-y-6">
-              <h2 className="text-xl font-bold text-slate-900 flex items-center gap-2">
-                <CalendarClock className="w-5 h-5 text-emerald-600" />
+            <div className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm space-y-6">
+              <h2 className="text-xl font-bold text-[#0c1e36] flex items-center gap-2">
+                <CalendarClock className="w-5 h-5 text-emerald-500" />
                 <span>How Our Engagement Works</span>
               </h2>
 
               <div className="space-y-4 text-xs sm:text-sm text-slate-600">
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center shrink-0 text-xs">
+                  <div className="w-7 h-7 rounded-full bg-emerald-500 text-slate-950 font-black flex items-center justify-center shrink-0 text-xs">
                     1
                   </div>
                   <div>
-                    <span className="font-bold text-slate-900">Discovery Call & Scope Definition: </span>
+                    <span className="font-bold text-[#0c1e36]">Discovery Call & Scope Definition: </span>
                     We review your previous filings, transaction volume, and key compliance requirements.
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center shrink-0 text-xs">
+                  <div className="w-7 h-7 rounded-full bg-emerald-500 text-slate-950 font-black flex items-center justify-center shrink-0 text-xs">
                     2
                   </div>
                   <div>
-                    <span className="font-bold text-slate-900">Secure Onboarding & System Setup: </span>
+                    <span className="font-bold text-[#0c1e36]">Secure Onboarding & System Setup: </span>
                     We establish view-only bank connections or configure your company portal with 256-bit encryption.
                   </div>
                 </div>
 
                 <div className="flex items-start gap-3">
-                  <div className="w-6 h-6 rounded-full bg-emerald-100 text-emerald-700 font-bold flex items-center justify-center shrink-0 text-xs">
+                  <div className="w-7 h-7 rounded-full bg-emerald-500 text-slate-950 font-black flex items-center justify-center shrink-0 text-xs">
                     3
                   </div>
                   <div>
-                    <span className="font-bold text-slate-900">Execution, Reconciliations & Filing: </span>
+                    <span className="font-bold text-[#0c1e36]">Execution, Reconciliations & Filing: </span>
                     Our team executes monthly closings or submits tax returns directly with IRS or HMRC electronically.
                   </div>
                 </div>
@@ -162,10 +167,13 @@ export default function ServiceDetailPage({
 
           {/* Right Inquiry Sticky Card */}
           <div className="lg:col-span-5 sticky top-28 space-y-6">
-            <div className="bg-slate-50 border border-slate-200 rounded-3xl p-6 sm:p-8">
+            <div className="bg-slate-50 border border-slate-200 rounded-2xl p-6 sm:p-8">
               <div className="mb-6 space-y-2">
-                <h3 className="text-lg font-bold text-slate-900">
-                  Request Consultation for This Service
+                <div className="inzofin-section-subtitle text-emerald-600">
+                  <span>// GET STARTED //</span>
+                </div>
+                <h3 className="text-lg font-bold text-[#0c1e36]">
+                  Request Consultation For This Service
                 </h3>
                 <p className="text-xs text-slate-500">
                   Get a personalized quotation or speak directly with an advisor regarding {service.title}.

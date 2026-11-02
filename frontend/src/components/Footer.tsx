@@ -1,17 +1,35 @@
+'use client';
+
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { Phone, Mail, MapPin, Clock, ArrowRight, CheckCircle2 } from 'lucide-react';
+import { 
+  Phone, 
+  Mail, 
+  MapPin, 
+  Clock, 
+  ArrowRight, 
+  CheckCircle2, 
+  ShieldCheck, 
+  Send,
+  Linkedin,
+  Facebook,
+  Twitter,
+  Instagram
+} from 'lucide-react';
 import { SITE_INFO } from '@/lib/data';
 
 export default function Footer() {
   return (
-    <footer className="bg-slate-950 text-slate-300 pt-16 pb-12 border-t border-slate-900">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        {/* Main Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-10 pb-12 border-b border-slate-800">
-          {/* Brand Info */}
-          <div className="lg:col-span-2 space-y-5">
+    <footer className="bg-[#071224] text-slate-300 pt-16 pb-10 border-t-4 border-amber-500 relative overflow-hidden">
+      {/* Background Decorative Mesh */}
+      <div className="absolute inset-0 inzofin-pattern-lines opacity-40 pointer-events-none" />
+
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Main 4-Column Grid */}
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-14 border-b border-[#152c4e]">
+          {/* Column 1: Company Profile (4 cols) */}
+          <div className="lg:col-span-4 space-y-6">
             <div className="relative h-12 w-48 bg-white/10 p-2 rounded-lg">
               <Image 
                 src="/uploads/2025/11/logo-2.png" 
@@ -20,154 +38,214 @@ export default function Footer() {
                 className="object-contain"
               />
             </div>
-            <p className="text-sm text-slate-400 leading-relaxed max-w-sm">
-              Smartax Books provides expert bookkeeping, corporate accounting, and US/UK tax compliance services. Helping startups, online businesses, and growing enterprises maintain financial precision and regulatory compliance globally.
+            
+            <p className="text-xs sm:text-sm text-slate-400 leading-relaxed">
+              Smartax Books delivers institutional-grade bookkeeping, corporate accounting, and dual US/UK tax compliance services for startups, online businesses, and scaling enterprises worldwide.
             </p>
 
-            <div className="space-y-2 text-xs text-slate-400">
+            <div className="space-y-2 text-xs text-slate-300">
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                <CheckCircle2 className="w-4 h-4 text-amber-500 shrink-0" />
                 <span>IRS Registered Electronic Return Originator (ERO)</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500" />
+                <CheckCircle2 className="w-4 h-4 text-amber-500 shrink-0" />
                 <span>HMRC Making Tax Digital (MTD) Recognized Partner</span>
               </div>
               <div className="flex items-center gap-2">
-                <CheckCircle2 className="w-4 h-4 text-emerald-500" />
-                <span>QuickBooks Online & Xero Certified ProAdvisors</span>
+                <CheckCircle2 className="w-4 h-4 text-amber-500 shrink-0" />
+                <span>QuickBooks Online & Xero Certified Advisors</span>
               </div>
+            </div>
+
+            {/* Social Links */}
+            <div className="flex items-center gap-3 pt-2">
+              <a 
+                href="#" 
+                className="w-8 h-8 rounded-full bg-[#0c1e36] border border-[#1e3a63] flex items-center justify-center text-slate-300 hover:text-amber-400 hover:border-amber-500 transition-all"
+                aria-label="LinkedIn"
+              >
+                <Linkedin className="w-4 h-4" />
+              </a>
+              <a 
+                href="#" 
+                className="w-8 h-8 rounded-full bg-[#0c1e36] border border-[#1e3a63] flex items-center justify-center text-slate-300 hover:text-amber-400 hover:border-amber-500 transition-all"
+                aria-label="Twitter"
+              >
+                <Twitter className="w-4 h-4" />
+              </a>
+              <a 
+                href="#" 
+                className="w-8 h-8 rounded-full bg-[#0c1e36] border border-[#1e3a63] flex items-center justify-center text-slate-300 hover:text-amber-400 hover:border-amber-500 transition-all"
+                aria-label="Facebook"
+              >
+                <Facebook className="w-4 h-4" />
+              </a>
+              <a 
+                href="#" 
+                className="w-8 h-8 rounded-full bg-[#0c1e36] border border-[#1e3a63] flex items-center justify-center text-slate-300 hover:text-amber-400 hover:border-amber-500 transition-all"
+                aria-label="Instagram"
+              >
+                <Instagram className="w-4 h-4" />
+              </a>
             </div>
           </div>
 
-          {/* USA Services */}
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-4 tracking-wide uppercase">USA Services</h4>
+          {/* Column 2: Quick Links (2 cols) */}
+          <div className="lg:col-span-2 space-y-4">
+            <h4 className="text-white font-bold text-sm tracking-wider uppercase border-b-2 border-amber-500 pb-2 inline-block">
+              Quick Links
+            </h4>
             <ul className="space-y-2.5 text-xs text-slate-400">
               <li>
-                <Link href="/services/bookkeeping-accounting-services" className="hover:text-emerald-400 transition-colors">
-                  Bookkeeping & Accounting
+                <Link href="/" className="hover:text-amber-400 transition-colors flex items-center gap-1.5 group">
+                  <span className="text-amber-500 group-hover:translate-x-1 transition-transform">›</span>
+                  <span>Home (Home 1)</span>
                 </Link>
               </li>
               <li>
-                <Link href="/services/us-tax-compliance-filing-services" className="hover:text-emerald-400 transition-colors">
-                  US Tax Compliance (1040/1120/1065)
+                <Link href="/about-us" className="hover:text-amber-400 transition-colors flex items-center gap-1.5 group">
+                  <span className="text-amber-500 group-hover:translate-x-1 transition-transform">›</span>
+                  <span>About Our Firm</span>
                 </Link>
               </li>
               <li>
-                <Link href="/services/startup-business-formation-usa" className="hover:text-emerald-400 transition-colors">
-                  Startup Formation (LLC / EIN / BOI)
+                <Link href="/services" className="hover:text-amber-400 transition-colors flex items-center gap-1.5 group">
+                  <span className="text-amber-500 group-hover:translate-x-1 transition-transform">›</span>
+                  <span>All Services</span>
                 </Link>
               </li>
               <li>
-                <Link href="/services/e-commerce-accounting-tax-services-us" className="hover:text-emerald-400 transition-colors">
-                  E-Commerce Accounting (Shopify/Amazon)
+                <Link href="/pricing" className="hover:text-amber-400 transition-colors flex items-center gap-1.5 group">
+                  <span className="text-amber-500 group-hover:translate-x-1 transition-transform">›</span>
+                  <span>Pricing Packages</span>
                 </Link>
               </li>
               <li>
-                <Link href="/services/payroll-tax-management" className="hover:text-emerald-400 transition-colors">
-                  Payroll Tax Filings (941/940/W2)
+                <Link href="/blog" className="hover:text-amber-400 transition-colors flex items-center gap-1.5 group">
+                  <span className="text-amber-500 group-hover:translate-x-1 transition-transform">›</span>
+                  <span>Tax Articles & News</span>
                 </Link>
               </li>
               <li>
-                <Link href="/services/us-sales-use-tax-compliance" className="hover:text-emerald-400 transition-colors">
-                  Multi-State Sales & Use Tax
-                </Link>
-              </li>
-              <li>
-                <Link href="/services/virtual-bank-accounts-payment-solutions" className="hover:text-emerald-400 transition-colors">
-                  US Banking Setup (Mercury/Wise)
+                <Link href="/contact" className="hover:text-amber-400 transition-colors flex items-center gap-1.5 group">
+                  <span className="text-amber-500 group-hover:translate-x-1 transition-transform">›</span>
+                  <span>Contact & Support</span>
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* UK Services */}
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-4 tracking-wide uppercase">UK Services</h4>
+          {/* Column 3: Core Services (3 cols) */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="text-white font-bold text-sm tracking-wider uppercase border-b-2 border-amber-500 pb-2 inline-block">
+              Our Services
+            </h4>
             <ul className="space-y-2.5 text-xs text-slate-400">
               <li>
-                <Link href="/services/uk-company-formation-compliance-services" className="hover:text-emerald-400 transition-colors">
-                  UK Ltd Company Formation
+                <Link href="/services/bookkeeping-accounting-services" className="hover:text-amber-400 transition-colors flex items-center gap-1.5 group">
+                  <span className="text-amber-500 group-hover:translate-x-1 transition-transform">›</span>
+                  <span>Bookkeeping & Ledger Cleanups</span>
                 </Link>
               </li>
               <li>
-                <Link href="/services/uk-tax-compliance-filing-services" className="hover:text-emerald-400 transition-colors">
-                  Corporation Tax (CT600) & Accounts
+                <Link href="/services/us-tax-compliance-filing-services" className="hover:text-amber-400 transition-colors flex items-center gap-1.5 group">
+                  <span className="text-amber-500 group-hover:translate-x-1 transition-transform">›</span>
+                  <span>US Tax Compliance (1040/1120/1065)</span>
                 </Link>
               </li>
               <li>
-                <Link href="/services/uk-vat-registration-compliance" className="hover:text-emerald-400 transition-colors">
-                  UK VAT Registration & MTD Returns
+                <Link href="/services/uk-company-formation-compliance-services" className="hover:text-amber-400 transition-colors flex items-center gap-1.5 group">
+                  <span className="text-amber-500 group-hover:translate-x-1 transition-transform">›</span>
+                  <span>UK Company Formation & CT600</span>
                 </Link>
               </li>
               <li>
-                <Link href="/services/bookkeeping-accounting-services" className="hover:text-emerald-400 transition-colors">
-                  UK Statutory Management Accounts
+                <Link href="/services/startup-business-formation-usa" className="hover:text-amber-400 transition-colors flex items-center gap-1.5 group">
+                  <span className="text-amber-500 group-hover:translate-x-1 transition-transform">›</span>
+                  <span>US LLC & EIN Business Formation</span>
                 </Link>
               </li>
               <li>
-                <Link href="/pricing" className="hover:text-emerald-400 transition-colors">
-                  Pricing & Monthly Packages
+                <Link href="/services/e-commerce-accounting-tax-services-us" className="hover:text-amber-400 transition-colors flex items-center gap-1.5 group">
+                  <span className="text-amber-500 group-hover:translate-x-1 transition-transform">›</span>
+                  <span>E-Commerce & Multi-State Sales Tax</span>
                 </Link>
               </li>
               <li>
-                <Link href="/blog" className="hover:text-emerald-400 transition-colors">
-                  Accounting & Tax Guides
+                <Link href="/services/payroll-tax-management" className="hover:text-amber-400 transition-colors flex items-center gap-1.5 group">
+                  <span className="text-amber-500 group-hover:translate-x-1 transition-transform">›</span>
+                  <span>Payroll Taxes (941/940/W-2)</span>
                 </Link>
               </li>
             </ul>
           </div>
 
-          {/* Contact Details */}
-          <div>
-            <h4 className="text-white font-semibold text-sm mb-4 tracking-wide uppercase">Get In Touch</h4>
+          {/* Column 4: Contact & Newsletter (3 cols) */}
+          <div className="lg:col-span-3 space-y-4">
+            <h4 className="text-white font-bold text-sm tracking-wider uppercase border-b-2 border-amber-500 pb-2 inline-block">
+              Office & Newsletter
+            </h4>
+            
             <div className="space-y-3 text-xs text-slate-400">
               <div className="flex items-start gap-2.5">
-                <MapPin className="w-4 h-4 text-emerald-400 shrink-0 mt-0.5" />
+                <MapPin className="w-4 h-4 text-amber-500 shrink-0 mt-0.5" />
                 <span>{SITE_INFO.address}</span>
               </div>
               <div className="flex items-center gap-2.5">
-                <Phone className="w-4 h-4 text-emerald-400 shrink-0" />
-                <a href={`tel:${SITE_INFO.phone}`} className="hover:text-emerald-400 transition-colors">
+                <Phone className="w-4 h-4 text-amber-500 shrink-0" />
+                <a href={`tel:${SITE_INFO.phone}`} className="hover:text-amber-400 transition-colors">
                   {SITE_INFO.phone}
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
-                <Mail className="w-4 h-4 text-emerald-400 shrink-0" />
-                <a href={`mailto:${SITE_INFO.email}`} className="hover:text-emerald-400 transition-colors">
+                <Mail className="w-4 h-4 text-amber-500 shrink-0" />
+                <a href={`mailto:${SITE_INFO.email}`} className="hover:text-amber-400 transition-colors">
                   {SITE_INFO.email}
                 </a>
               </div>
               <div className="flex items-center gap-2.5">
-                <Clock className="w-4 h-4 text-emerald-400 shrink-0" />
+                <Clock className="w-4 h-4 text-amber-500 shrink-0" />
                 <span>{SITE_INFO.workingHours}</span>
               </div>
+            </div>
 
-              <div className="pt-3">
-                <Link 
-                  href="/contact"
-                  className="inline-flex items-center gap-1.5 text-xs text-emerald-400 font-semibold hover:text-emerald-300 transition-colors"
+            {/* Newsletter input */}
+            <div className="pt-2">
+              <div className="text-xs font-semibold text-white mb-2">Subscribe For Tax Updates:</div>
+              <form onSubmit={(e) => e.preventDefault()} className="flex">
+                <input 
+                  type="email" 
+                  placeholder="Enter your email..." 
+                  className="bg-[#0c1e36] text-xs px-3 py-2.5 rounded-l-lg border border-[#1e3a63] text-white focus:outline-none focus:border-amber-500 w-full"
+                />
+                <button 
+                  type="submit" 
+                  className="bg-amber-500 hover:bg-amber-600 text-slate-950 px-3.5 rounded-r-lg font-bold flex items-center justify-center transition-colors"
+                  aria-label="Subscribe"
                 >
-                  <span>Request a Callback</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
+                  <Send className="w-4 h-4" />
+                </button>
+              </form>
             </div>
           </div>
         </div>
 
         {/* Bottom Bar */}
         <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
-          <p>© {new Date().getFullYear()} Smartax Books. All Rights Reserved.</p>
+          <div>
+            © {new Date().getFullYear()} Smartax Books. All Rights Reserved. Built with Inzofin Finance & Tax Theme.
+          </div>
           <div className="flex items-center gap-6">
-            <Link href="/terms-and-conditions" className="hover:text-slate-400 transition-colors">
-              Terms & Conditions
-            </Link>
-            <Link href="/privacy-policy" className="hover:text-slate-400 transition-colors">
+            <Link href="/privacy-policy" className="hover:text-amber-400 transition-colors">
               Privacy Policy
             </Link>
-            <Link href="/contact" className="hover:text-slate-400 transition-colors">
+            <span>•</span>
+            <Link href="/terms-and-conditions" className="hover:text-amber-400 transition-colors">
+              Terms & Conditions
+            </Link>
+            <span>•</span>
+            <Link href="/contact" className="hover:text-amber-400 transition-colors">
               Support
             </Link>
           </div>
