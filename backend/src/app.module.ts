@@ -4,6 +4,7 @@ import { TypeOrmModule } from '@nestjs/typeorm';
 import { ApiModule } from './api/api.module';
 import { SeedModule } from './seed/seed.module';
 import { AuthModule } from './auth/auth.module';
+import { ChatModule } from './chat/chat.module';
 import { Page } from './entities/page.entity';
 import { Service } from './entities/service.entity';
 import { Post } from './entities/post.entity';
@@ -51,6 +52,7 @@ import { SiteSetting } from './entities/site-setting.entity';
     }),
     ApiModule,
     AuthModule,
+    ChatModule,
     SeedModule,
   ],
 })

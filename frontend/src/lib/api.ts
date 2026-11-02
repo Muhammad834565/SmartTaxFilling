@@ -137,3 +137,38 @@ export async function updateInquiryStatus(id: string, status: string, token: str
   if (!res.ok) throw new Error('Failed to update status');
   return await res.json();
 }
+
+// ─── AI Chat Assistant API ───────────────────────────────────────────────────
+export async function sendChatMessage(message: string, history: Array<{ role: 'user' | 'model'; content: string }> = []) {
+  const res = await fetch(`${API_BASE_URL}/chat/message`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify({ message, history }),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.message || 'Failed to get AI advisor response');
+  }
+  return await res.json();
+}
+
+export async function bookAppointmentFromChat(data: {
+  name: string;
+  email: string;
+  phone?: string;
+  country?: string;
+  service?: string;
+  preferredTime?: string;
+  message: string;
+}) {
+  const res = await fetch(`${API_BASE_URL}/chat/book`, {
+    method: 'POST',
+    headers: { 'Content-Type': 'application/json' },
+    body: JSON.stringify(data),
+  });
+  if (!res.ok) {
+    const err = await res.json().catch(() => ({}));
+    throw new Error(err.message || 'Failed to book appointment');
+  }
+  return await res.json();
+}
