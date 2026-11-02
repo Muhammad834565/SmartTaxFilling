@@ -2,6 +2,7 @@
 
 import React, { useState } from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { usePathname } from 'next/navigation';
 import { 
   Phone, 
@@ -169,11 +170,18 @@ export default function Navbar() {
       {/* Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="flex items-center justify-between h-20">
-          {/* Brand Logo - SMARTax Global with Inzofin styling */}
-          <Link href="/" className="flex items-center gap-2.5 group shrink-0">
-            <span className="w-9 h-9 rounded-xl bg-[#2DC55F] text-slate-950 font-black text-xl flex items-center justify-center shadow-md shadow-[#2DC55F]/25 group-hover:scale-105 transition-transform">
-              ◈
-            </span>
+          {/* Brand Logo - SMARTax Global with brand icon */}
+          <Link href="/" className="flex items-center gap-3 group shrink-0">
+            <div className="relative w-10 h-10 group-hover:scale-105 transition-transform flex items-center justify-center">
+              <Image 
+                src="/logo-icon.png" 
+                alt="SMARTax Global Icon" 
+                width={40} 
+                height={40} 
+                className="object-contain w-full h-full"
+                priority
+              />
+            </div>
             <span className="text-2xl font-black tracking-tight text-[#0c1a2e]">
               SMARTax <span className="text-[#2DC55F] font-extrabold">Global</span>
             </span>

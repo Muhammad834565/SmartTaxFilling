@@ -7,14 +7,9 @@ export const metadata: Metadata = {
   title: 'SMARTax Global | Finance & Tax Consulting (US & UK) - Inzofin Theme',
   description: 'Specialized bookkeeping, accounting, company formations (LLC/Ltd/EIN), payroll tax management, and corporate tax filings in the United States and United Kingdom.',
   icons: {
-    icon: [
-      { url: '/favicon.png' },
-      { url: '/uploads/2025/11/logo-2.png', type: 'image/png' },
-    ],
-    shortcut: ['/uploads/2025/11/logo-2.png'],
-    apple: [
-      { url: '/uploads/2025/11/logo-2.png' },
-    ],
+    icon: '/favicon.ico',
+    shortcut: '/favicon.ico',
+    apple: '/logo-icon.png',
   },
   keywords: [
     'Bookkeeping services',

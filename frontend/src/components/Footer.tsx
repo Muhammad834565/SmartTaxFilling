@@ -30,10 +30,16 @@ export default function Footer() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-12 gap-10 pb-14 border-b border-[#152c4e]">
           {/* Column 1: Company Profile (4 cols) */}
           <div className="lg:col-span-4 space-y-6">
-            <Link href="/" className="inline-flex items-center gap-2.5 group">
-              <span className="w-9 h-9 rounded-xl bg-[#2DC55F] text-slate-950 font-black text-xl flex items-center justify-center shadow-md shadow-[#2DC55F]/25 group-hover:scale-105 transition-transform">
-                ◈
-              </span>
+            <Link href="/" className="inline-flex items-center gap-3 group">
+              <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-md shadow-[#2DC55F]/20 group-hover:scale-105 transition-transform bg-white flex items-center justify-center p-0.5 border border-slate-700/50">
+                <Image 
+                  src="/logo-icon.png" 
+                  alt="SMARTax Global Icon" 
+                  width={40} 
+                  height={40} 
+                  className="object-contain w-full h-full"
+                />
+              </div>
               <span className="text-2xl font-black tracking-tight text-white">
                 SMARTax <span className="text-[#2DC55F] font-extrabold">Global</span>
               </span>
