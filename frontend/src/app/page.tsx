@@ -28,6 +28,7 @@ import {
   HelpCircle
 } from 'lucide-react';
 import { SERVICES, POSTS, TESTIMONIALS, FAQS, SITE_INFO } from '@/lib/data';
+import HoneycombHero from '@/components/HoneycombHero';
 import PricingCalculator from '@/components/PricingCalculator';
 import FaqAccordion from '@/components/FaqAccordion';
 
@@ -91,7 +92,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             {/* Left Content Column */}
-            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <div className="lg:col-span-6 space-y-6 text-center lg:text-left">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-[#2DC55F]/40 text-[#2DC55F] text-xs font-bold uppercase tracking-widest shadow-sm">
                 <Sparkles className="w-3.5 h-3.5 text-[#2DC55F]" />
@@ -150,43 +151,9 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right Visual Column (Inzofin Home 1 Composition) */}
-            <div className="lg:col-span-5 relative mt-6 lg:mt-0">
-              <div className="relative mx-auto max-w-md lg:max-w-none">
-                {/* Main Hero Photo Container */}
-                <div className="relative h-[420px] sm:h-[480px] w-full rounded-2xl overflow-hidden shadow-2xl border-2 border-white/10 bg-[#0c1e36]">
-                  <Image
-                    src="/uploads/2025/12/analyzing-financial-diagram-1536x1025-1.jpg"
-                    alt="Inzofin Tax and Financial Advisory"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#071224] via-transparent to-transparent opacity-60" />
-                </div>
-
-                {/* Floating Experience Badge 1 (Top Left) */}
-                <div className="absolute -top-6 -left-6 bg-[#0c1e36] text-white border-2 border-[#2DC55F] rounded-xl p-4 shadow-2xl flex items-center gap-3.5 backdrop-blur-md">
-                  <div className="w-12 h-12 rounded-lg bg-[#2DC55F] text-slate-950 flex items-center justify-center font-black text-xl shrink-0">
-                    25+
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold uppercase tracking-wider text-[#2DC55F]">Experience</div>
-                    <div className="text-xs text-slate-200">Years in Tax & Finance</div>
-                  </div>
-                </div>
-
-                {/* Floating Metric Card 2 (Bottom Right) */}
-                <div className="absolute -bottom-6 -right-6 bg-white text-slate-900 border border-slate-200 rounded-xl p-4 shadow-2xl flex items-center gap-3.5">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-100 text-[#2DC55F] flex items-center justify-center shrink-0">
-                    <TrendingUp className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-extrabold text-[#0c1e36]">99.9% Accuracy</div>
-                    <div className="text-[11px] text-slate-500 font-medium">Zero-Penalty Guarantee</div>
-                  </div>
-                </div>
-              </div>
+            {/* Right Visual Column (Interactive Services Honeycomb with Zoom-Out Hover & Redirection) */}
+            <div className="lg:col-span-6 relative mt-6 lg:mt-0">
+              <HoneycombHero />
             </div>
           </div>
         </div>
