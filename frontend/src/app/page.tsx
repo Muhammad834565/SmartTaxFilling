@@ -83,7 +83,7 @@ export default function HomePage() {
   return (
     <div className="space-y-24 bg-white overflow-hidden">
       {/* 1. Hero Section (Inzofin Home 1 Signature Layout) */}
-      <section className="relative py-0 inzofin-hero-bg text-white overflow-hidden border-b border-[#152c4e]">
+      <section className="relative pt-6 sm:pt-8 md:pt-10 pb-6 md:pb-8 inzofin-hero-bg text-white overflow-hidden border-b border-[#152c4e]">
         {/* Decorative Grid & Glow */}
         <div className="absolute inset-0 inzofin-pattern-grid opacity-60 pointer-events-none" />
         <div className="absolute top-0 right-1/4 w-[700px] h-[500px] bg-[#2DC55F]/10 blur-[130px] rounded-full pointer-events-none" />
@@ -160,7 +160,7 @@ export default function HomePage() {
       </section>
 
       {/* 2. Feature Overlap Boxes (Inzofin Signature 4-Box Row) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-4 sm:-mt-6 relative z-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-10 relative z-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="bg-white rounded-xl p-7 border border-slate-200 shadow-xl card-hover border-t-4 border-t-amber-500 space-y-3">
             <div className="w-12 h-12 rounded-lg bg-emerald-50 text-[#2DC55F] flex items-center justify-center border border-emerald-200">
