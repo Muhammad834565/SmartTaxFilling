@@ -1,5 +1,6 @@
 import React from 'react';
 import Link from 'next/link';
+import Image from 'next/image';
 import { notFound } from 'next/navigation';
 import { 
   ArrowLeft, 
@@ -9,7 +10,9 @@ import {
   Cpu, 
   FileCheck2, 
   CalendarClock,
-  Check
+  Check,
+  Award,
+  Sparkles
 } from 'lucide-react';
 import { Metadata } from 'next';
 import { SERVICES } from '@/lib/data';
@@ -47,25 +50,54 @@ export default function ServiceDetailPage({
       {/* Inzofin Breadcrumb Header Banner */}
       <section className="bg-[#0c1a2e] text-white py-16 sm:py-20 border-b border-[#152c4e] relative overflow-hidden">
         <div className="absolute inset-0 inzofin-pattern-grid opacity-30 pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-4 relative z-10">
-          <div className="flex items-center gap-2 text-xs font-semibold text-slate-400">
-            <Link href="/" className="hover:text-[#2DC55F] transition-colors">Home</Link>
-            <span>/</span>
-            <Link href="/services" className="hover:text-[#2DC55F] transition-colors">Services</Link>
-            <span>/</span>
-            <span className="text-[#2DC55F] truncate max-w-xs">{service.title}</span>
-          </div>
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+            {/* Header Text */}
+            <div className="lg:col-span-7 space-y-4">
+              <div className="flex items-center gap-2 text-xs font-semibold text-slate-400">
+                <Link href="/" className="hover:text-[#2DC55F] transition-colors">Home</Link>
+                <span>/</span>
+                <Link href="/services" className="hover:text-[#2DC55F] transition-colors">Services</Link>
+                <span>/</span>
+                <span className="text-[#2DC55F] truncate max-w-xs">{service.title}</span>
+              </div>
 
-          <div className="max-w-3xl space-y-3">
-            <div className="inzofin-section-subtitle text-[#2DC55F]">
-              <span>// {service.category} SERVICE SPECIALIZATION //</span>
+              <div className="space-y-3">
+                <div className="inzofin-section-subtitle text-[#2DC55F]">
+                  <span>// {service.category} SERVICE SPECIALIZATION //</span>
+                </div>
+                <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
+                  {service.title}
+                </h1>
+                <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
+                  {service.shortDescription}
+                </p>
+              </div>
             </div>
-            <h1 className="text-3xl sm:text-5xl font-black text-white tracking-tight leading-tight">
-              {service.title}
-            </h1>
-            <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
-              {service.shortDescription}
-            </p>
+
+            {/* Header Right Visual Card */}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end">
+              <div className="relative group w-full max-w-md h-56 sm:h-64 rounded-2xl overflow-hidden border-2 border-[#2DC55F]/40 shadow-2xl bg-[#071324]">
+                {/* Background Pattern */}
+                <div className="absolute inset-0 bg-gradient-to-t from-[#0c1a2e] via-transparent to-transparent z-10" />
+                {/* eslint-disable-next-line @next/next/no-img-element */}
+                <img
+                  src={service.imageUrl || '/sevices/Tax%20Compliance%20&%20Filing%20Services.png'}
+                  alt={service.title}
+                  className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                />
+                {/* Pill Overlay */}
+                <div className="absolute bottom-3 left-3 right-3 z-20 bg-[#0c1a2e]/90 backdrop-blur-md border border-[#2DC55F]/30 rounded-xl px-4 py-2.5 flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[#2DC55F] animate-ping" />
+                    <span className="text-[11px] font-bold text-white tracking-wider uppercase">
+                      {service.category} Verified Compliance
+                    </span>
+                  </div>
+                  <span className="text-[11px] font-extrabold text-[#2DC55F]">100% Guaranteed</span>
+                </div>
+              </div>
+            </div>
           </div>
         </div>
       </section>

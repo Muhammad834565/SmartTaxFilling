@@ -136,7 +136,7 @@ export default function Navbar() {
           <div className="flex items-center gap-4 sm:gap-6">
             <div className="relative inline-flex items-center bg-[#2DC55F] text-slate-950 font-bold px-3 py-1 text-[11px] rounded-r-md -ml-4 sm:-ml-6 pr-4">
               <MapPin className="w-3.5 h-3.5 mr-1 text-slate-950" />
-              <span>401 Timbered Knoll Dr, FL</span>
+              <span>401 Timbered dr. Lufkin Texas 75901</span>
               <span className="ml-2 bg-[#23a54e]/30 text-emerald-950 px-1.5 py-0.5 rounded text-[10px]">24/7 Support</span>
             </div>
             
@@ -251,7 +251,7 @@ export default function Navbar() {
                         }`}
                       >
                         <div className="flex items-center gap-2.5">
-                          <span className="text-base">🇺🇸</span>
+                          <span className="inline-block w-6 h-4 rounded-sm overflow-hidden shrink-0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="16"><rect width="60" height="30" fill="#B22234"/><rect y="4.6" width="60" height="4.6" fill="#fff"/><rect y="9.2" width="60" height="4.6" fill="#B22234"/><rect y="13.8" width="60" height="4.6" fill="#fff"/><rect y="18.4" width="60" height="4.6" fill="#B22234"/><rect y="23" width="60" height="4.6" fill="#fff"/><rect width="24" height="16" fill="#3C3B6E"/></svg></span>
                           <span>USA Services</span>
                         </div>
                         <ChevronRight className={`w-4 h-4 ${activeRegion === 'USA' ? 'text-white' : 'text-slate-400'}`} />
@@ -268,7 +268,7 @@ export default function Navbar() {
                         }`}
                       >
                         <div className="flex items-center gap-2.5">
-                          <span className="text-base">🇬🇧</span>
+                          <span className="inline-block w-6 h-4 rounded-sm overflow-hidden shrink-0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="16"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" strokeWidth="4"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" strokeWidth="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" strokeWidth="6"/></svg></span>
                           <span>UK Services</span>
                         </div>
                         <ChevronRight className={`w-4 h-4 ${activeRegion === 'UK' ? 'text-white' : 'text-slate-400'}`} />
@@ -285,7 +285,7 @@ export default function Navbar() {
                         }`}
                       >
                         <div className="flex items-center gap-2.5">
-                          <span className="text-base">🇵🇰</span>
+                          <span className="inline-block w-6 h-4 rounded-sm overflow-hidden shrink-0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="16"><rect width="60" height="30" fill="#01411C"/><rect width="15" height="30" fill="#fff"/><circle cx="35" cy="15" r="8" fill="#fff"/><circle cx="37" cy="15" r="6.5" fill="#01411C"/></svg></span>
                           <span>Pakistan Services</span>
                         </div>
                         <ChevronRight className={`w-4 h-4 ${activeRegion === 'PAKISTAN' ? 'text-white' : 'text-slate-400'}`} />
@@ -465,7 +465,7 @@ export default function Navbar() {
                   onClick={() => setMobileRegionOpen(mobileRegionOpen === 'USA' ? null : 'USA')}
                   className="w-full flex items-center justify-between py-1.5 text-xs font-bold text-slate-800"
                 >
-                  <span className="flex items-center gap-2">🇺🇸 USA Services</span>
+                  <span className="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" className="w-6 h-4 rounded-sm"><rect width="60" height="30" fill="#B22234"/><rect y="4.6" width="60" height="4.6" fill="#fff"/><rect y="9.2" width="60" height="4.6" fill="#B22234"/><rect y="13.8" width="60" height="4.6" fill="#fff"/><rect y="18.4" width="60" height="4.6" fill="#B22234"/><rect y="23" width="60" height="4.6" fill="#fff"/><rect width="24" height="16" fill="#3C3B6E"/></svg> USA Services</span>
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform ${mobileRegionOpen === 'USA' ? 'rotate-180' : ''}`} />
                 </button>
                 {mobileRegionOpen === 'USA' && (
@@ -490,7 +490,7 @@ export default function Navbar() {
                   onClick={() => setMobileRegionOpen(mobileRegionOpen === 'UK' ? null : 'UK')}
                   className="w-full flex items-center justify-between py-1.5 text-xs font-bold text-slate-800"
                 >
-                  <span className="flex items-center gap-2">🇬🇧 UK Services</span>
+                  <span className="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" className="w-6 h-4 rounded-sm"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" strokeWidth="4"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" strokeWidth="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" strokeWidth="6"/></svg> UK Services</span>
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform ${mobileRegionOpen === 'UK' ? 'rotate-180' : ''}`} />
                 </button>
                 {mobileRegionOpen === 'UK' && (
@@ -515,7 +515,7 @@ export default function Navbar() {
                   onClick={() => setMobileRegionOpen(mobileRegionOpen === 'PAKISTAN' ? null : 'PAKISTAN')}
                   className="w-full flex items-center justify-between py-1.5 text-xs font-bold text-slate-800"
                 >
-                  <span className="flex items-center gap-2">🇵🇰 Pakistan Services</span>
+                  <span className="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" className="w-6 h-4 rounded-sm"><rect width="60" height="30" fill="#01411C"/><rect width="15" height="30" fill="#fff"/><circle cx="34" cy="15" r="8" fill="#fff"/><circle cx="36" cy="15" r="6.5" fill="#01411C"/></svg> Pakistan Services</span>
                   <ChevronDown className={`w-3.5 h-3.5 transition-transform ${mobileRegionOpen === 'PAKISTAN' ? 'rotate-180' : ''}`} />
                 </button>
                 {mobileRegionOpen === 'PAKISTAN' && (
