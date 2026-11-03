@@ -69,7 +69,7 @@ export default function ContactPage({
                   </div>
                   <div>
                     <div className="text-xs text-slate-400">Direct Phone Support</div>
-                    <a href={`tel:${SITE_INFO.phone}`} className="font-semibold text-white hover:text-[#2DC55F] transition-colors mt-0.5 block">
+                    <a href={SITE_INFO.whatsappUrl || `https://wa.me/19362206795`} target="_blank" rel="noopener noreferrer" className="font-semibold text-white hover:text-[#2DC55F] transition-colors mt-0.5 block">
                       {SITE_INFO.phone}
                     </a>
                   </div>

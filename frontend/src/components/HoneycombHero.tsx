@@ -1,6 +1,6 @@
 'use client';
 
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import Link from 'next/link';
 import {
   FileText,
@@ -210,11 +210,11 @@ interface HexService {
 // CX = 460, CY = 360
 // Total Width: ~940px, Total Height: ~740px
 // viewBox: "10 90 900 540"
-const R = 130;
+const R = 100;
 const dx = Math.sqrt(3) * R; // 145.49px
 const dy = 1.5 * R;          // 126px
-const CX = 490;
-const CY = 390;
+const CX = 450;
+const CY = 360;
 
 const HEX_SERVICES: HexService[] = [
   // ── Row 1: Top Peak (1 node: y = CY - 2*dy = 108) ─────────────────
@@ -370,18 +370,52 @@ function getHexPoints(cx: number, cy: number, r: number): string {
 
 export default function HoneycombHero() {
   const [hoveredHex, setHoveredHex] = useState<string | null>(null);
+  const [autoHighlightedId, setAutoHighlightedId] = useState<string | null>(null);
+  const isHoveredRef = useRef(false);
+
+  useEffect(() => {
+    // Dynamic sequence order around the honeycomb
+    const sequence = [
+      'center',
+      'global-tax',
+      'ecommerce',
+      'bookkeeping',
+      'us-formation',
+      'provincial-tax',
+      'us-sales-tax',
+      'real-estate',
+      'payroll',
+      'fbr-pk',
+      'uk-tax',
+      'uk-formation',
+      'uk-vat'
+    ];
+    let idx = 0;
+
+    const interval = setInterval(() => {
+      // If user is hovering any hex, stop/pause the auto animation
+      if (isHoveredRef.current) {
+        setAutoHighlightedId(null);
+        return;
+      }
+      setAutoHighlightedId(sequence[idx % sequence.length]);
+      idx++;
+    }, 2200);
+
+    return () => clearInterval(interval);
+  }, []);
 
   return (
-    <div className="relative w-full h-[700px] sm:h-[800px] lg:h-[880px] flex items-center justify-center select-none">
+    <div className="relative w-full h-[460px] sm:h-[520px] lg:h-[580px] flex items-center justify-center select-none">
       {/* ─── Ambient Glow Layers blending into Hero section ───────────── */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[580px] h-[580px] bg-[#2DC55F]/15 rounded-full blur-[130px] pointer-events-none animate-pulse" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[320px] h-[320px] bg-[#2DC55F]/25 rounded-full blur-[80px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[420px] h-[420px] bg-[#2DC55F]/15 rounded-full blur-[130px] pointer-events-none animate-pulse" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[240px] h-[240px] bg-[#2DC55F]/25 rounded-full blur-[80px] pointer-events-none" />
 
       {/* ─── Large Pointed-Top Interlocking SVG Honeycomb ───────────── */}
       <div className="relative w-full max-w-[760px] h-full flex items-center justify-center z-10">
         <svg
-          viewBox="50 0 1000 820"
-          className="w-full h-full max-h-[880px] drop-shadow-2xl overflow-visible"
+          viewBox="70 -40 760 800"
+          className="w-full h-full max-h-[580px] drop-shadow-2xl overflow-visible"
         >
           <defs>
             {/* Glowing neon filters */}
@@ -430,16 +464,21 @@ export default function HoneycombHero() {
           {/* ── Outer High-Tech Circuit Radiations ────────────────────── */}
           <g opacity="0.55">
             <path
-              d="M 490 390 L 490 30 M 490 390 L 820 120 M 490 390 L 820 660 M 490 390 L 490 760 M 490 390 L 160 660 M 490 390 L 160 120"
+              d="M 450 360 L 450 10 M 450 360 L 760 100 M 450 360 L 760 620 M 450 360 L 450 710 M 450 360 L 140 620 M 450 360 L 140 100"
               stroke="url(#circuitLineGrad)"
               strokeWidth="1.2"
               strokeDasharray="4 4"
               fill="none"
             />
-            <circle cx="160" cy="120" r="3" fill="#2DC55F" filter="url(#hexGlow)" />
-            <circle cx="820" cy="120" r="3" fill="#2DC55F" filter="url(#hexGlow)" />
-            <circle cx="160" cy="660" r="3" fill="#2DC55F" filter="url(#hexGlow)" />
-            <circle cx="820" cy="660" r="3" fill="#2DC55F" filter="url(#hexGlow)" />
+            <circle cx="140" cy="100" r="3" fill="#2DC55F" filter="url(#hexGlow)" />
+            <circle cx="760" cy="100" r="3" fill="#2DC55F" filter="url(#hexGlow)" />
+            <circle cx="140" cy="620" r="3" fill="#2DC55F" filter="url(#hexGlow)" />
+            <circle cx="760" cy="620" r="3" fill="#2DC55F" filter="url(#hexGlow)" />
+
+
+
+
+
           </g>
 
           {/* ── Background Shared Honeycomb Grid Joints ───────────────── */}
@@ -456,7 +495,10 @@ export default function HoneycombHero() {
           {HEX_SERVICES.map((node) => {
             const Icon = node.icon;
             const isCenter = node.id === 'center';
-            const isHovered = hoveredHex === node.id;
+            // User hover takes full priority; otherwise show auto-highlight animation
+            const isUserHovered = hoveredHex === node.id;
+            const isAutoActive = !hoveredHex && autoHighlightedId === node.id;
+            const isHovered = isUserHovered || isAutoActive;
             const tileR = R - 1.2;
 
             return (
@@ -467,8 +509,14 @@ export default function HoneycombHero() {
                 legacyBehavior
               >
                 <g
-                  onMouseEnter={() => setHoveredHex(node.id)}
-                  onMouseLeave={() => setHoveredHex(null)}
+                  onMouseEnter={() => {
+                    isHoveredRef.current = true;
+                    setHoveredHex(node.id);
+                  }}
+                  onMouseLeave={() => {
+                    isHoveredRef.current = false;
+                    setHoveredHex(null);
+                  }}
                   className="cursor-pointer group"
                   style={{
                     transformOrigin: `${node.cx}px ${node.cy}px`,

@@ -200,7 +200,7 @@ export default function Footer() {
               </div>
               <div className="flex items-center gap-2.5">
                 <Phone className="w-4 h-4 text-[#2DC55F] shrink-0" />
-                <a href={`tel:${SITE_INFO.phone}`} className="hover:text-[#2DC55F] transition-colors">
+                <a href={SITE_INFO.whatsappUrl || `https://wa.me/19362206795`} target="_blank" rel="noopener noreferrer" className="hover:text-[#2DC55F] transition-colors">
                   {SITE_INFO.phone}
                 </a>
               </div>

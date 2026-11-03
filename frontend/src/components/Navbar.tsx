@@ -131,13 +131,13 @@ export default function Navbar() {
     <header className="sticky top-0 z-50 w-full bg-white shadow-sm border-b border-slate-100">
       {/* Inzofin Top Bar */}
       <div className="bg-[#0c1a2e] text-slate-300 text-xs border-b border-[#152c4e] relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between h-10">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between min-h-9 py-1 sm:py-0">
           {/* Slanted Green Location Tag */}
           <div className="flex items-center gap-4 sm:gap-6">
-            <div className="relative inline-flex items-center bg-[#2DC55F] text-slate-950 font-bold px-3 py-1 text-[11px] rounded-r-md -ml-4 sm:-ml-6 pr-4">
-              <MapPin className="w-3.5 h-3.5 mr-1 text-slate-950" />
-              <span>401 Timbered dr. Lufkin Texas 75901</span>
-              <span className="ml-2 bg-[#23a54e]/30 text-emerald-950 px-1.5 py-0.5 rounded text-[10px]">24/7 Support</span>
+            <div className="relative inline-flex items-center bg-[#2DC55F] text-slate-950 font-bold px-2.5 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-[11px] rounded-r-md -ml-4 sm:-ml-6 pr-3 sm:pr-4">
+              <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-1 text-slate-950 shrink-0" />
+              <span className="truncate max-w-[150px] sm:max-w-none">401 Timbered dr. Lufkin Texas</span>
+              <span className="hidden xs:inline-block ml-1.5 sm:ml-2 bg-[#23a54e]/30 text-emerald-950 px-1.5 py-0.5 rounded text-[9px] sm:text-[10px] shrink-0 font-extrabold">24/7</span>
             </div>
             
             <a 
@@ -157,8 +157,8 @@ export default function Navbar() {
             </span>
             <span className="hidden sm:inline text-slate-600">|</span>
             <a 
-              href={`tel:${SITE_INFO.phone}`} 
-              className="flex items-center gap-1.5 text-[#2DC55F] font-semibold hover:text-emerald-300 transition-colors"
+              href={SITE_INFO.whatsappUrl || `https://wa.me/19362206795`} target="_blank" rel="noopener noreferrer" 
+              className="flex items-center gap-1 sm:gap-1.5 text-[#2DC55F] font-bold text-[10px] sm:text-[11px] hover:text-emerald-300 transition-colors whitespace-nowrap"
             >
               <Phone className="w-3.5 h-3.5 text-[#2DC55F]" />
               <span>{SITE_INFO.phone}</span>
@@ -169,7 +169,7 @@ export default function Navbar() {
 
       {/* Main Navigation Bar */}
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-20">
+        <div className="flex items-center justify-between h-16 sm:h-20">
           {/* Brand Logo - SMARTax Global with brand icon */}
           <Link href="/" className="flex items-center gap-3 group shrink-0">
             <div className="relative w-10 h-10 group-hover:scale-105 transition-transform flex items-center justify-center">
@@ -395,7 +395,7 @@ export default function Navbar() {
               <div className="text-left leading-tight">
                 <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400">Free Consultation</div>
                 <a 
-                  href={`tel:${SITE_INFO.phone}`} 
+                  href={SITE_INFO.whatsappUrl || `https://wa.me/19362206795`} target="_blank" rel="noopener noreferrer" 
                   className="text-xs xl:text-sm font-extrabold text-[#0c1a2e] hover:text-[#2DC55F] transition-colors"
                 >
                   {SITE_INFO.phone}
@@ -562,7 +562,7 @@ export default function Navbar() {
           
           <div className="pt-3 space-y-2">
             <a 
-              href={`tel:${SITE_INFO.phone}`}
+              href={SITE_INFO.whatsappUrl || `https://wa.me/19362206795`} target="_blank" rel="noopener noreferrer"
               className="flex items-center justify-center gap-2 w-full py-2.5 text-xs font-bold text-slate-800 bg-slate-100 rounded-lg"
             >
               <Phone className="w-4 h-4 text-[#2DC55F]" />
