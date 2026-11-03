@@ -71,6 +71,8 @@ export const SITE_INFO = {
   tagline: 'Bookkeeping, Accounting & Tax Compliance for Growing Businesses in the US & UK',
   email: 'smartaxbooks@gmail.com',
   phone: '+1 936 220 6795',
+  whatsapp: '+19362206795',
+  whatsappUrl: 'https://wa.me/19362206795',
   address: '401 Timbered dr. Lufkin Texas 75901',
   workingHours: 'Mon - Fri: 9:00 AM - 6:00 PM CST',
   logoText: 'SMARTax Global',

@@ -27,7 +27,7 @@ import {
   FileCheck,
   HelpCircle
 } from 'lucide-react';
-import { SERVICES, POSTS, TESTIMONIALS, FAQS, SITE_INFO } from '@/lib/data';
+import { SERVICES, POSTS, FAQS, SITE_INFO } from '@/lib/data';
 import HoneycombHero from '@/components/HoneycombHero';
 import PricingCalculator from '@/components/PricingCalculator';
 import FaqAccordion from '@/components/FaqAccordion';
@@ -83,7 +83,7 @@ export default function HomePage() {
   return (
     <div className="space-y-24 bg-white overflow-hidden">
       {/* 1. Hero Section (Inzofin Home 1 Signature Layout) */}
-      <section className="relative pt-1 pb-2 md:pt-1.5 md:pb-3 inzofin-hero-bg text-white overflow-hidden border-b border-[#152c4e]">
+      <section className="relative pt-6 sm:pt-8 md:pt-10 pb-6 md:pb-8 inzofin-hero-bg text-white overflow-hidden border-b border-[#152c4e]">
         {/* Decorative Grid & Glow */}
         <div className="absolute inset-0 inzofin-pattern-grid opacity-60 pointer-events-none" />
         <div className="absolute top-0 right-1/4 w-[700px] h-[500px] bg-[#2DC55F]/10 blur-[130px] rounded-full pointer-events-none" />
@@ -100,7 +100,7 @@ export default function HomePage() {
               </div>
 
               {/* Headline */}
-              <h1 className="text-4xl sm:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.12]">
+              <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.18]">
                 Reliable Financial & Tax Solutions For Your{' '}
                 <span className="inzofin-emerald-text">
                   Business Growth
@@ -108,7 +108,7 @@ export default function HomePage() {
               </h1>
 
               {/* Subheading */}
-              <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
+              <p className="text-xs sm:text-base md:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
                 Professional bookkeeping, US, UK & Pakistan tax compliance, and business advisory services that empower entrepreneurs and growing companies worldwide to scale with complete confidence.
               </p>
 
@@ -116,7 +116,7 @@ export default function HomePage() {
               <div className="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
                 <Link
                   href="/services"
-                  className="w-full sm:w-auto px-8 py-4 bg-[#2DC55F] hover:bg-[#23a54e] text-slate-950 font-bold text-xs uppercase tracking-wider rounded-lg shadow-xl shadow-[#2DC55F]/20 hover:shadow-[#2DC55F]/30 transition-all flex items-center justify-center gap-2 group"
+                  className="w-full sm:w-auto px-5 py-3 sm:px-8 sm:py-4 bg-[#2DC55F] hover:bg-[#23a54e] text-slate-950 font-bold text-xs uppercase tracking-wider rounded-lg shadow-xl shadow-[#2DC55F]/20 hover:shadow-[#2DC55F]/30 transition-all flex items-center justify-center gap-2 group"
                 >
                   <span>Our Services</span>
                   <ArrowRight className="w-4 h-4 group-hover:translate-x-1 transition-transform" />
@@ -124,14 +124,14 @@ export default function HomePage() {
 
                 <Link
                   href="/contact"
-                  className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-lg border border-white/20 backdrop-blur-md transition-all flex items-center justify-center gap-2 hover:border-[#2DC55F]"
+                  className="w-full sm:w-auto px-5 py-3 sm:px-8 sm:py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-lg border border-white/20 backdrop-blur-md transition-all flex items-center justify-center gap-2 hover:border-[#2DC55F]"
                 >
                   <span>Book Free Consultation</span>
                 </Link>
               </div>
 
               {/* Inzofin Trust Strip */}
-              <div className="pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-semibold text-slate-300">
+              <div className="pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 text-[11px] sm:text-xs font-semibold text-slate-300">
                 <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs">
                   <ShieldCheck className="w-4 h-4 text-[#2DC55F] shrink-0" />
                   <span>US Tax Advisory</span>
@@ -155,67 +155,6 @@ export default function HomePage() {
             <div className="lg:col-span-6 relative mt-6 lg:mt-0">
               <HoneycombHero />
             </div>
-          </div>
-        </div>
-      </section>
-
-      {/* 2. Feature Overlap Boxes (Inzofin Signature 4-Box Row) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 relative z-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white rounded-xl p-7 border border-slate-200 shadow-xl card-hover border-t-4 border-t-amber-500 space-y-3">
-            <div className="w-12 h-12 rounded-lg bg-emerald-50 text-[#2DC55F] flex items-center justify-center border border-emerald-200">
-              <FileText className="w-6 h-6" />
-            </div>
-            <h3 className="text-base font-extrabold text-[#0c1e36]">Corporate Tax Compliance</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              IRS Form 1040, 1120, 1120S, 1065, Form 5472 and UK CT600 Corporation Tax prepared with maximum deduction security.
-            </p>
-            <Link href="/services/us-tax-compliance-filing-services" className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2DC55F] hover:text-emerald-700 transition-colors pt-1 group">
-              <span>Learn More</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-
-          <div className="bg-white rounded-xl p-7 border border-slate-200 shadow-xl card-hover border-t-4 border-t-amber-500 space-y-3">
-            <div className="w-12 h-12 rounded-lg bg-emerald-50 text-[#2DC55F] flex items-center justify-center border border-emerald-200">
-              <BookOpen className="w-6 h-6" />
-            </div>
-            <h3 className="text-base font-extrabold text-[#0c1e36]">Management Bookkeeping</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Real-time QuickBooks & Xero ledgers, monthly reconciliations, balance sheets, and cashflow health reporting.
-            </p>
-            <Link href="/services/bookkeeping-accounting-services" className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2DC55F] hover:text-emerald-700 transition-colors pt-1 group">
-              <span>Learn More</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-
-          <div className="bg-white rounded-xl p-7 border border-slate-200 shadow-xl card-hover border-t-4 border-t-amber-500 space-y-3">
-            <div className="w-12 h-12 rounded-lg bg-emerald-50 text-[#2DC55F] flex items-center justify-center border border-emerald-200">
-              <Rocket className="w-6 h-6" />
-            </div>
-            <h3 className="text-base font-extrabold text-[#0c1e36]">Cross-Border Formation</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              End-to-end US LLC (Wyoming, Delaware, Florida) and UK Ltd formation with EIN, BOI, Registered Agent & banking.
-            </p>
-            <Link href="/services/startup-business-formation-usa" className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2DC55F] hover:text-emerald-700 transition-colors pt-1 group">
-              <span>Learn More</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-
-          <div className="bg-white rounded-xl p-7 border border-slate-200 shadow-xl card-hover border-t-4 border-t-amber-500 space-y-3">
-            <div className="w-12 h-12 rounded-lg bg-emerald-50 text-[#2DC55F] flex items-center justify-center border border-emerald-200">
-              <Coins className="w-6 h-6" />
-            </div>
-            <h3 className="text-base font-extrabold text-[#0c1e36]">Multi-State Sales & Payroll</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              50-state sales tax nexus registration, automated filings, and payroll tax management (941/940/W-2).
-            </p>
-            <Link href="/services/payroll-tax-management" className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2DC55F] hover:text-emerald-700 transition-colors pt-1 group">
-              <span>Learn More</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </Link>
           </div>
         </div>
       </section>
@@ -597,71 +536,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. Case Studies / Project Showcase (Home 1 Layout) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-12">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="space-y-3">
-            <div className="inzofin-section-subtitle">
-              <span>// RECENT CASE STUDIES //</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-black text-[#0c1e36]">
-              Real Financial Results & Success Stories
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-600 max-w-xl">
-              See how our strategic accounting and compliance frameworks help growing enterprises preserve capital and scale smoothly.
-            </p>
-          </div>
-
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#0c1e36] hover:bg-[#152c4e] text-white font-bold text-xs uppercase tracking-wider rounded-lg transition-all self-start md:self-auto"
-          >
-            <span>Request A Case Study Review</span>
-            <ArrowRight className="w-4 h-4 text-[#2DC55F]" />
-          </Link>
-        </div>
-
-        {/* Case Studies Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {caseStudies.map((cs, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm card-hover flex flex-col justify-between space-y-6 group border-l-4 border-l-amber-500"
-            >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] uppercase font-bold tracking-wider px-2.5 py-1 rounded bg-emerald-100 text-emerald-800">
-                    {cs.tag}
-                  </span>
-                  <span className="text-xs font-bold text-slate-400">
-                    {cs.category}
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-bold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors">
-                  {cs.title}
-                </h3>
-
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  {cs.summary}
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs font-extrabold text-[#0c1e36]">
-                  <CheckCircle2 className="w-4 h-4 text-[#2DC55F]" />
-                  <span>Key Result: <span className="text-[#2DC55F]">{cs.metric}</span></span>
-                </div>
-                <Link href="/contact" className="text-xs font-bold text-[#0c1e36] group-hover:text-[#2DC55F] flex items-center gap-1">
-                  <span>Consult</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* 8. Pricing Plans Section (Home 1 Layout) */}
       <section className="bg-[#f7f9fc] py-20 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
@@ -679,53 +553,6 @@ export default function HomePage() {
 
           {/* Pricing Calculator Component */}
           <PricingCalculator />
-        </div>
-      </section>
-
-      {/* 9. Client Testimonials (Inzofin Home 1 Reviews) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-12">
-        <div className="text-center max-w-2xl mx-auto space-y-3">
-          <div className="inzofin-section-subtitle">
-            <span>// CLIENT TESTIMONIALS //</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-[#0c1e36]">
-            What Our Valued Clients Say About Us
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-600">
-            Real feedback from startup founders, international merchants, and business leaders.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {TESTIMONIALS.map((t, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm card-hover flex flex-col justify-between space-y-6 relative"
-            >
-              <div className="space-y-4">
-                {/* 5 Gold Stars */}
-                <div className="flex items-center gap-1">
-                  {[...Array(t.rating || 5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#2DC55F] text-[#2DC55F]" />
-                  ))}
-                </div>
-
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-slate-100 flex items-center gap-3.5">
-                <div className="w-11 h-11 rounded-full bg-[#2DC55F] text-slate-950 font-black text-sm flex items-center justify-center shrink-0">
-                  {t.clientName.charAt(0)}
-                </div>
-                <div>
-                  <div className="font-bold text-sm text-[#0c1e36]">{t.clientName}</div>
-                  <div className="text-[11px] text-slate-500">{t.role}, {t.company}</div>
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
       </section>
 
@@ -843,7 +670,7 @@ export default function HomePage() {
             </Link>
 
             <a
-              href={`tel:${SITE_INFO.phone}`}
+              href={SITE_INFO.whatsappUrl || `https://wa.me/19362206795`} target="_blank" rel="noopener noreferrer"
               className="w-full sm:w-auto px-8 py-4 bg-white/10 hover:bg-white/20 text-white font-bold text-xs uppercase tracking-wider rounded-lg border border-white/20 backdrop-blur-md transition-all flex items-center justify-center gap-2 hover:border-[#2DC55F]"
             >
               <Phone className="w-4 h-4 text-[#2DC55F]" />
