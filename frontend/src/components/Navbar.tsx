@@ -4,19 +4,19 @@ import React, { useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import { usePathname } from 'next/navigation';
-import { 
-  Phone, 
-  Mail, 
-  ChevronDown, 
+import {
+  Phone,
+  Mail,
+  ChevronDown,
   ChevronRight,
-  Menu, 
-  X, 
-  BookOpen, 
-  FileText, 
-  Rocket, 
-  ShoppingBag, 
-  Building, 
-  Coins, 
+  Menu,
+  X,
+  BookOpen,
+  FileText,
+  Rocket,
+  ShoppingBag,
+  Building,
+  Coins,
   CreditCard,
   MapPin,
   ArrowRight,
@@ -124,48 +124,47 @@ export default function Navbar() {
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [activeRegion, setActiveRegion] = useState<'USA' | 'UK' | 'PAKISTAN'>('USA');
 
-  const currentRegionServices = 
-    activeRegion === 'USA' 
-      ? USA_SERVICES 
-      : activeRegion === 'UK' 
-      ? UK_SERVICES 
-      : PAKISTAN_SERVICES;
+  const currentRegionServices =
+    activeRegion === 'USA'
+      ? USA_SERVICES
+      : activeRegion === 'UK'
+        ? UK_SERVICES
+        : PAKISTAN_SERVICES;
 
   return (
-    <header className="sticky top-0 z-50 w-full bg-white shadow-sm border-b border-slate-100">
+    <header className="sticky top-0 z-50 w-full bg-white shadow-sm">
       {/* ─── Top Bar: Inzofin Signature Slanted Theme ─── */}
-      <div className="bg-[#0b1728] text-slate-300 text-xs border-b border-[#13233a] relative h-10 overflow-hidden">
+      <div className="bg-[#0b1728] text-slate-300 text-xs relative h-10 overflow-hidden">
         {/* Full-width flex container */}
         <div className="w-full h-full flex items-stretch justify-between">
-          
-          {/* Left: Solid green polygon with thin white angled separator edge */}
-          <div className="relative flex items-stretch">
-            {/* The Green badge that starts right at screen's edge (x=0) */}
-            <div className="bg-[#2DC55F] text-white font-bold flex items-center pl-4 sm:pl-8 pr-10 text-[11px] sm:text-xs tracking-tight [clip-path:polygon(0_0,calc(100%-24px)_0,100%_100%,0_100%)] z-10">
+
+          {/* Left: Green badge with exact matching white diagonal separator line */}
+          <div className="flex items-stretch h-full">
+            {/* Green rectangle container holding the location text */}
+            <div className="bg-[#2DC55F] text-white font-bold flex items-center pl-4 sm:pl-8 pr-3 text-[11px] sm:text-xs tracking-tight">
               <MapPin className="w-3.5 h-3.5 mr-2 text-white shrink-0" />
-              <span className="truncate max-w-[280px] sm:max-w-none text-white font-semibold">{SITE_INFO.address}</span>
+              <span className="truncate max-w-[260px] sm:max-w-none text-white font-semibold">{SITE_INFO.address}</span>
             </div>
 
-            {/* Crisp 3.5px slanted white line immediately flush against green edge */}
-            <div 
-              className="absolute top-0 bottom-0 pointer-events-none z-20"
-              style={{
-                left: 'calc(100% - 24px)',
-                width: '3.5px',
-                height: '100%',
-                backgroundColor: '#ffffff',
-                transform: 'skewX(-31deg)',
-                transformOrigin: 'top left'
-              }} 
-            />
+            {/* Seamless SVG slanted cap: green triangle + crisp white diagonal stroke */}
+            <svg
+              viewBox="0 0 28 40"
+              className="h-full w-7 block shrink-0 overflow-visible"
+              preserveAspectRatio="none"
+            >
+              {/* Green triangle filling the slant */}
+              <polygon points="0,0 28,40 0,40" fill="#2DC55F" />
+              {/* White diagonal — extended beyond viewBox so butt caps stay outside, parent clips cleanly */}
+              <line x1="-3" y1="-4" x2="31" y2="44" stroke="#ffffff" strokeWidth="5" strokeLinecap="butt" />
+            </svg>
           </div>
 
           {/* Right: Email on the left, then social icons on the far right */}
           <div className="flex items-stretch h-full text-[12px] font-semibold text-slate-300">
             {/* Email item - no border on left so dark navy runs continuous */}
             <div className="flex items-center px-4 sm:px-6">
-              <a 
-                href={`mailto:${SITE_INFO.email}`} 
+              <a
+                href={`mailto:${SITE_INFO.email}`}
                 className="flex items-center gap-2 text-white hover:text-[#2DC55F] transition-colors font-medium"
               >
                 <Mail className="w-4 h-4 text-[#2DC55F]" />
@@ -175,33 +174,33 @@ export default function Navbar() {
 
             {/* Social Icons group (Facebook, X, Instagram, Pinterest) */}
             <div className="flex items-stretch border-l border-slate-700/60">
-              <a 
-                href="#" 
-                aria-label="Facebook" 
+              <a
+                href="#"
+                aria-label="Facebook"
                 className="flex items-center justify-center px-3 sm:px-3.5 border-r border-slate-700/60 text-white hover:text-[#2DC55F] transition-colors"
               >
                 <Facebook className="w-3.5 h-3.5" />
               </a>
 
-              <a 
-                href="#" 
-                aria-label="Twitter / X" 
+              <a
+                href="#"
+                aria-label="Twitter / X"
                 className="flex items-center justify-center px-3 sm:px-3.5 border-r border-slate-700/60 text-white hover:text-[#2DC55F] transition-colors font-bold text-xs"
               >
                 𝕏
               </a>
 
-              <a 
-                href="#" 
-                aria-label="Instagram" 
+              <a
+                href="#"
+                aria-label="Instagram"
                 className="flex items-center justify-center px-3 sm:px-3.5 border-r border-slate-700/60 text-white hover:text-[#2DC55F] transition-colors"
               >
                 <Instagram className="w-3.5 h-3.5" />
               </a>
 
-              <a 
-                href="#" 
-                aria-label="Pinterest" 
+              <a
+                href="#"
+                aria-label="Pinterest"
                 className="flex items-center justify-center px-3 sm:px-3.5 border-r border-slate-700/60 text-white hover:text-[#2DC55F] transition-colors font-bold text-xs"
               >
                 🅿
@@ -213,17 +212,17 @@ export default function Navbar() {
       </div>
 
       {/* ─── Main Navigation Bar ─── */}
-      <div className="w-full pl-4 sm:pl-8 lg:pl-12 pr-0">
+      <div className="w-full pl-4 sm:pl-8 lg:pl-12 pr-0 border-b border-slate-100">
         <div className="flex items-center justify-between h-20">
-          
+
           {/* Brand Logo - SMARTax Global with brand icon */}
           <Link href="/" className="flex items-center gap-3 group shrink-0 py-2">
             <div className="relative w-10 h-10 group-hover:scale-105 transition-transform flex items-center justify-center">
-              <Image 
-                src="/logo-icon.png" 
-                alt="SMARTax Global Icon" 
-                width={40} 
-                height={40} 
+              <Image
+                src="/logo-icon.png"
+                alt="SMARTax Global Icon"
+                width={40}
+                height={40}
                 className="object-contain w-full h-full"
                 priority
               />
@@ -235,13 +234,12 @@ export default function Navbar() {
 
           {/* Desktop Navigation Links */}
           <nav className="hidden lg:flex items-center gap-7 text-[13.5px] font-bold tracking-wide uppercase text-slate-700">
-            <Link 
-              href="/" 
-              className={`transition-colors py-2 relative flex flex-col items-center ${
-                pathname === '/' 
-                  ? 'text-[#2DC55F]' 
+            <Link
+              href="/"
+              className={`transition-colors py-2 relative flex flex-col items-center ${pathname === '/'
+                  ? 'text-[#2DC55F]'
                   : 'hover:text-[#2DC55F]'
-              }`}
+                }`}
             >
               <span>HOME</span>
               {pathname === '/' && (
@@ -252,13 +250,12 @@ export default function Navbar() {
               )}
             </Link>
 
-            <Link 
-              href="/about-us" 
-              className={`transition-colors py-2 relative flex flex-col items-center ${
-                pathname === '/about-us' 
-                  ? 'text-[#2DC55F]' 
+            <Link
+              href="/about-us"
+              className={`transition-colors py-2 relative flex flex-col items-center ${pathname === '/about-us'
+                  ? 'text-[#2DC55F]'
                   : 'hover:text-[#2DC55F]'
-              }`}
+                }`}
             >
               <span>ABOUT US</span>
               {pathname === '/about-us' && (
@@ -270,17 +267,16 @@ export default function Navbar() {
             </Link>
 
             {/* Unified "Services" Menu with UK, USA, Pakistan Flyout */}
-            <div 
+            <div
               className="relative"
               onMouseEnter={() => setServicesDropdownOpen(true)}
               onMouseLeave={() => setServicesDropdownOpen(false)}
             >
-              <button 
-                className={`flex items-center gap-1.5 py-2 transition-colors cursor-pointer uppercase ${
-                  pathname?.startsWith('/services') 
-                    ? 'text-[#2DC55F]' 
+              <button
+                className={`flex items-center gap-1.5 py-2 transition-colors cursor-pointer uppercase ${pathname?.startsWith('/services')
+                    ? 'text-[#2DC55F]'
                     : 'hover:text-[#2DC55F]'
-                }`}
+                  }`}
                 aria-expanded={servicesDropdownOpen}
               >
                 <span>SERVICES</span>
@@ -291,7 +287,7 @@ export default function Navbar() {
               {servicesDropdownOpen && (
                 <div className="absolute top-full -left-20 pt-2 z-50">
                   <div className="w-[680px] bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden flex animate-in fade-in slide-in-from-top-2 duration-150 normal-case tracking-normal">
-                    
+
                     {/* Left Column: Countries Tabs (USA, UK, PAKISTAN) */}
                     <div className="w-52 bg-slate-50/80 p-3 border-r border-slate-100 flex flex-col gap-1.5 shrink-0">
                       <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400 px-3 pt-2 pb-1">
@@ -302,14 +298,13 @@ export default function Navbar() {
                       <button
                         onMouseEnter={() => setActiveRegion('USA')}
                         onClick={() => setActiveRegion('USA')}
-                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all text-left ${
-                          activeRegion === 'USA'
+                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all text-left ${activeRegion === 'USA'
                             ? 'bg-[#2DC55F] text-white shadow-md shadow-[#2DC55F]/25'
                             : 'text-slate-700 hover:bg-slate-100'
-                        }`}
+                          }`}
                       >
                         <div className="flex items-center gap-2.5">
-                          <span className="inline-block w-6 h-4 rounded-sm overflow-hidden shrink-0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="16"><rect width="60" height="30" fill="#B22234"/><rect y="4.6" width="60" height="4.6" fill="#fff"/><rect y="9.2" width="60" height="4.6" fill="#B22234"/><rect y="13.8" width="60" height="4.6" fill="#fff"/><rect y="18.4" width="60" height="4.6" fill="#B22234"/><rect y="23" width="60" height="4.6" fill="#fff"/><rect width="24" height="16" fill="#3C3B6E"/></svg></span>
+                          <span className="inline-block w-6 h-4 rounded-sm overflow-hidden shrink-0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="16"><rect width="60" height="30" fill="#B22234" /><rect y="4.6" width="60" height="4.6" fill="#fff" /><rect y="9.2" width="60" height="4.6" fill="#B22234" /><rect y="13.8" width="60" height="4.6" fill="#fff" /><rect y="18.4" width="60" height="4.6" fill="#B22234" /><rect y="23" width="60" height="4.6" fill="#fff" /><rect width="24" height="16" fill="#3C3B6E" /></svg></span>
                           <span>USA Services</span>
                         </div>
                         <ChevronRight className={`w-4 h-4 ${activeRegion === 'USA' ? 'text-white' : 'text-slate-400'}`} />
@@ -319,14 +314,13 @@ export default function Navbar() {
                       <button
                         onMouseEnter={() => setActiveRegion('UK')}
                         onClick={() => setActiveRegion('UK')}
-                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all text-left ${
-                          activeRegion === 'UK'
+                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all text-left ${activeRegion === 'UK'
                             ? 'bg-[#2DC55F] text-white shadow-md shadow-[#2DC55F]/25'
                             : 'text-slate-700 hover:bg-slate-100'
-                        }`}
+                          }`}
                       >
                         <div className="flex items-center gap-2.5">
-                          <span className="inline-block w-6 h-4 rounded-sm overflow-hidden shrink-0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="16"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" strokeWidth="4"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" strokeWidth="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" strokeWidth="6"/></svg></span>
+                          <span className="inline-block w-6 h-4 rounded-sm overflow-hidden shrink-0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="16"><rect width="60" height="30" fill="#012169" /><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6" /><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" strokeWidth="4" /><path d="M30,0 V30 M0,15 H60" stroke="#fff" strokeWidth="10" /><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" strokeWidth="6" /></svg></span>
                           <span>UK Services</span>
                         </div>
                         <ChevronRight className={`w-4 h-4 ${activeRegion === 'UK' ? 'text-white' : 'text-slate-400'}`} />
@@ -336,14 +330,13 @@ export default function Navbar() {
                       <button
                         onMouseEnter={() => setActiveRegion('PAKISTAN')}
                         onClick={() => setActiveRegion('PAKISTAN')}
-                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all text-left ${
-                          activeRegion === 'PAKISTAN'
+                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all text-left ${activeRegion === 'PAKISTAN'
                             ? 'bg-[#2DC55F] text-white shadow-md shadow-[#2DC55F]/25'
                             : 'text-slate-700 hover:bg-slate-100'
-                        }`}
+                          }`}
                       >
                         <div className="flex items-center gap-2.5">
-                          <span className="inline-block w-6 h-4 rounded-sm overflow-hidden shrink-0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="16"><rect width="60" height="30" fill="#01411C"/><rect width="15" height="30" fill="#fff"/><circle cx="35" cy="15" r="8" fill="#fff"/><circle cx="37" cy="15" r="6.5" fill="#01411C"/></svg></span>
+                          <span className="inline-block w-6 h-4 rounded-sm overflow-hidden shrink-0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="16"><rect width="60" height="30" fill="#01411C" /><rect width="15" height="30" fill="#fff" /><circle cx="35" cy="15" r="8" fill="#fff" /><circle cx="37" cy="15" r="6.5" fill="#01411C" /></svg></span>
                           <span>Pakistan Services</span>
                         </div>
                         <ChevronRight className={`w-4 h-4 ${activeRegion === 'PAKISTAN' ? 'text-white' : 'text-slate-400'}`} />
@@ -351,8 +344,8 @@ export default function Navbar() {
 
                       {/* View all link */}
                       <div className="mt-auto pt-3 border-t border-slate-200/70">
-                        <Link 
-                          href="/services" 
+                        <Link
+                          href="/services"
                           className="flex items-center justify-between px-3 py-2 text-[11px] font-semibold text-[#2DC55F] hover:text-emerald-700 hover:underline"
                         >
                           <span>Explore All Services</span>
@@ -411,13 +404,12 @@ export default function Navbar() {
               )}
             </div>
 
-            <Link 
-              href="/pricing" 
-              className={`transition-colors py-2 relative flex flex-col items-center ${
-                pathname === '/pricing' 
-                  ? 'text-[#2DC55F]' 
+            <Link
+              href="/pricing"
+              className={`transition-colors py-2 relative flex flex-col items-center ${pathname === '/pricing'
+                  ? 'text-[#2DC55F]'
                   : 'hover:text-[#2DC55F]'
-              }`}
+                }`}
             >
               <span>PRICING</span>
               {pathname === '/pricing' && (
@@ -428,13 +420,12 @@ export default function Navbar() {
               )}
             </Link>
 
-            <Link 
-              href="/blog" 
-              className={`transition-colors py-2 relative flex flex-col items-center ${
-                pathname === '/blog' 
-                  ? 'text-[#2DC55F]' 
+            <Link
+              href="/blog"
+              className={`transition-colors py-2 relative flex flex-col items-center ${pathname === '/blog'
+                  ? 'text-[#2DC55F]'
                   : 'hover:text-[#2DC55F]'
-              }`}
+                }`}
             >
               <span>BLOG</span>
               {pathname === '/blog' && (
@@ -445,13 +436,12 @@ export default function Navbar() {
               )}
             </Link>
 
-            <Link 
-              href="/contact" 
-              className={`transition-colors py-2 relative flex flex-col items-center ${
-                pathname === '/contact' 
-                  ? 'text-[#2DC55F]' 
+            <Link
+              href="/contact"
+              className={`transition-colors py-2 relative flex flex-col items-center ${pathname === '/contact'
+                  ? 'text-[#2DC55F]'
                   : 'hover:text-[#2DC55F]'
-              }`}
+                }`}
             >
               <span>CONTACT US</span>
               {pathname === '/contact' && (
@@ -463,9 +453,9 @@ export default function Navbar() {
             </Link>
 
             {/* Search Icon */}
-            <button 
-              type="button" 
-              aria-label="Search" 
+            <button
+              type="button"
+              aria-label="Search"
               className="text-slate-700 hover:text-[#2DC55F] transition-colors p-1"
             >
               <Search className="w-4 h-4" />
@@ -481,10 +471,10 @@ export default function Navbar() {
               </div>
               <div className="text-left leading-tight">
                 <div className="text-xs font-bold text-[#0c1a2e] tracking-tight">Have any question?</div>
-                <a 
-                  href={SITE_INFO.whatsappUrl || `https://wa.me/19362206795`} 
-                  target="_blank" 
-                  rel="noopener noreferrer" 
+                <a
+                  href={SITE_INFO.whatsappUrl || `https://wa.me/19362206795`}
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="text-sm xl:text-[15px] font-black text-[#2DC55F] hover:text-emerald-700 transition-colors tracking-tight block mt-0.5"
                 >
                   {SITE_INFO.phone}
@@ -495,7 +485,7 @@ export default function Navbar() {
 
           {/* Mobile hamburger menu */}
           <div className="flex lg:hidden pr-4 sm:pr-8">
-            <button 
+            <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="text-slate-800 hover:text-[#2DC55F] p-2 rounded-lg"
               aria-label="Toggle mobile menu"
@@ -510,15 +500,15 @@ export default function Navbar() {
       {/* Mobile Drawer */}
       {mobileMenuOpen && (
         <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3">
-          <Link 
-            href="/" 
+          <Link
+            href="/"
             onClick={() => setMobileMenuOpen(false)}
             className="block py-2 text-sm font-bold text-slate-800 hover:text-[#2DC55F]"
           >
             Home
           </Link>
-          <Link 
-            href="/about-us" 
+          <Link
+            href="/about-us"
             onClick={() => setMobileMenuOpen(false)}
             className="block py-2 text-sm font-bold text-slate-800 hover:text-[#2DC55F]"
           >
@@ -575,22 +565,22 @@ export default function Navbar() {
             </div>
           </div>
 
-          <Link 
-            href="/pricing" 
+          <Link
+            href="/pricing"
             onClick={() => setMobileMenuOpen(false)}
             className="block py-2 text-sm font-bold text-slate-800 hover:text-[#2DC55F]"
           >
             Pricing
           </Link>
-          <Link 
-            href="/blog" 
+          <Link
+            href="/blog"
             onClick={() => setMobileMenuOpen(false)}
             className="block py-2 text-sm font-bold text-slate-800 hover:text-[#2DC55F]"
           >
             Blog
           </Link>
-          <Link 
-            href="/contact" 
+          <Link
+            href="/contact"
             onClick={() => setMobileMenuOpen(false)}
             className="block py-2 text-sm font-bold text-slate-800 hover:text-[#2DC55F]"
           >
@@ -598,9 +588,9 @@ export default function Navbar() {
           </Link>
 
           <div className="pt-2">
-            <a 
+            <a
               href={SITE_INFO.whatsappUrl || `https://wa.me/19362206795`}
-              target="_blank" 
+              target="_blank"
               rel="noopener noreferrer"
               className="w-full bg-[#2DC55F] hover:bg-[#23a54e] text-slate-950 font-bold text-xs uppercase tracking-wider py-3 rounded-lg shadow-md flex items-center justify-center gap-2"
             >
