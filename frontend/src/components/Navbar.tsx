@@ -11,7 +11,6 @@ import {
   ChevronRight,
   Menu, 
   X, 
-  ShieldCheck, 
   BookOpen, 
   FileText, 
   Rocket, 
@@ -23,8 +22,11 @@ import {
   ArrowRight,
   Landmark,
   Receipt,
-  Truck,
-  Sparkles
+  MessageSquare,
+  Search,
+  Facebook,
+  Twitter,
+  Instagram
 } from 'lucide-react';
 import { SITE_INFO } from '@/lib/data';
 
@@ -76,43 +78,43 @@ const USA_SERVICES: ServiceLink[] = [
 
 const UK_SERVICES: ServiceLink[] = [
   {
-    title: 'UK Company Formation',
+    title: 'UK Company Formation (Ltd)',
     href: '/services/uk-company-formation-compliance-services',
-    desc: 'Companies House Ltd incorporation & PSC',
-    icon: Landmark,
+    desc: 'Companies House registration, address & registers',
+    icon: Building,
   },
   {
-    title: 'UK Tax Compliance & Filing',
+    title: 'UK CT600 & Statutory Accounts',
     href: '/services/uk-tax-compliance-filing-services',
-    desc: 'Corporation Tax CT600 & Annual Accounts',
+    desc: 'HMRC Corporation Tax, CT600 & balance sheets',
     icon: FileText,
   },
   {
-    title: 'UK VAT Registration & Compliance',
+    title: 'UK VAT Registration & MTD',
     href: '/services/uk-vat-registration-compliance',
-    desc: 'Making Tax Digital (MTD) quarterly returns',
-    icon: Coins,
+    desc: 'MTD-compliant digital quarterly VAT returns',
+    icon: Receipt,
   },
 ];
 
 const PAKISTAN_SERVICES: ServiceLink[] = [
   {
-    title: 'FBR Income Tax & NTN Registration',
+    title: 'FBR Tax Filing & NTN Registration',
     href: '/services/fbr-tax-filing-ntn-registration-pakistan',
-    desc: 'NTN registration, Active Taxpayer (ATL) & IRIS returns',
+    desc: 'Active Taxpayer List (ATL) status & income tax',
     icon: FileText,
   },
   {
     title: 'SECP Company Incorporation',
     href: '/services/secp-company-incorporation-pakistan',
-    desc: 'Private Limited (SMC-Pvt / Pvt Ltd) incorporation & Form 29',
+    desc: 'Private Limited (Pvt Ltd) setup & statutory filings',
     icon: Building,
   },
   {
-    title: 'Provincial Sales Tax (PRA / SRB)',
+    title: 'Provincial Sales Tax (PRA/SRB)',
     href: '/services/sales-tax-pra-srb-fbr-pakistan',
-    desc: 'PRA, SRB, KPRA services sales tax & STRN returns',
-    icon: Receipt,
+    desc: 'PRA, SRB & KPRA service tax registrations',
+    icon: Landmark,
   },
 ];
 
@@ -121,57 +123,101 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [activeRegion, setActiveRegion] = useState<'USA' | 'UK' | 'PAKISTAN'>('USA');
-  const [mobileRegionOpen, setMobileRegionOpen] = useState<'USA' | 'UK' | 'PAKISTAN' | null>('USA');
 
   const currentRegionServices = 
-    activeRegion === 'USA' ? USA_SERVICES :
-    activeRegion === 'UK' ? UK_SERVICES : PAKISTAN_SERVICES;
+    activeRegion === 'USA' 
+      ? USA_SERVICES 
+      : activeRegion === 'UK' 
+      ? UK_SERVICES 
+      : PAKISTAN_SERVICES;
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white shadow-sm border-b border-slate-100">
-      {/* Inzofin Top Bar */}
-      <div className="bg-[#0c1a2e] text-slate-300 text-xs border-b border-[#152c4e] relative">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex items-center justify-between min-h-9 py-1 sm:py-0">
-          {/* Slanted Green Location Tag */}
-          <div className="flex items-center gap-4 sm:gap-6">
-            <div className="relative inline-flex items-center bg-[#2DC55F] text-slate-950 font-bold px-2.5 sm:px-3 py-0.5 sm:py-1 text-[10px] sm:text-[11px] rounded-r-md -ml-4 sm:-ml-6 pr-3 sm:pr-4">
-              <MapPin className="w-3 h-3 sm:w-3.5 sm:h-3.5 mr-1 text-slate-950 shrink-0" />
-              <span className="truncate max-w-[150px] sm:max-w-none">401 Timbered dr. Lufkin Texas</span>
-              <span className="hidden xs:inline-block ml-1.5 sm:ml-2 bg-[#23a54e]/30 text-emerald-950 px-1.5 py-0.5 rounded text-[9px] sm:text-[10px] shrink-0 font-extrabold">24/7</span>
+      {/* ─── Top Bar: Inzofin Signature Slanted Theme ─── */}
+      <div className="bg-[#0b1728] text-slate-300 text-xs border-b border-[#13233a] relative h-10 overflow-hidden">
+        {/* Full-width flex container */}
+        <div className="w-full h-full flex items-stretch justify-between">
+          
+          {/* Left: Solid green polygon with thin white angled separator edge */}
+          <div className="relative flex items-stretch">
+            {/* The Green badge that starts right at screen's edge (x=0) */}
+            <div className="bg-[#2DC55F] text-white font-bold flex items-center pl-4 sm:pl-8 pr-10 text-[11px] sm:text-xs tracking-tight [clip-path:polygon(0_0,calc(100%-24px)_0,100%_100%,0_100%)] z-10">
+              <MapPin className="w-3.5 h-3.5 mr-2 text-white shrink-0" />
+              <span className="truncate max-w-[280px] sm:max-w-none text-white font-semibold">{SITE_INFO.address}</span>
             </div>
-            
-            <a 
-              href={`mailto:${SITE_INFO.email}`} 
-              className="hidden md:flex items-center gap-1.5 hover:text-[#2DC55F] transition-colors"
-            >
-              <Mail className="w-3.5 h-3.5 text-[#2DC55F]" />
-              <span>{SITE_INFO.email}</span>
-            </a>
+
+            {/* Crisp 3.5px slanted white line immediately flush against green edge */}
+            <div 
+              className="absolute top-0 bottom-0 pointer-events-none z-20"
+              style={{
+                left: 'calc(100% - 24px)',
+                width: '3.5px',
+                height: '100%',
+                backgroundColor: '#ffffff',
+                transform: 'skewX(-31deg)',
+                transformOrigin: 'top left'
+              }} 
+            />
           </div>
 
-          {/* Right timing & certifications */}
-          <div className="flex items-center gap-4 text-[11px] text-slate-400">
-            <span className="hidden sm:flex items-center gap-1.5">
-              <ShieldCheck className="w-3.5 h-3.5 text-[#2DC55F]" />
-              <span className="text-slate-300 font-medium">US, UK & Pakistan Tax Advisory</span>
-            </span>
-            <span className="hidden sm:inline text-slate-600">|</span>
-            <a 
-              href={SITE_INFO.whatsappUrl || `https://wa.me/19362206795`} target="_blank" rel="noopener noreferrer" 
-              className="flex items-center gap-1 sm:gap-1.5 text-[#2DC55F] font-bold text-[10px] sm:text-[11px] hover:text-emerald-300 transition-colors whitespace-nowrap"
-            >
-              <Phone className="w-3.5 h-3.5 text-[#2DC55F]" />
-              <span>{SITE_INFO.phone}</span>
-            </a>
+          {/* Right: Email on the left, then social icons on the far right */}
+          <div className="flex items-stretch h-full text-[12px] font-semibold text-slate-300">
+            {/* Email item - no border on left so dark navy runs continuous */}
+            <div className="flex items-center px-4 sm:px-6">
+              <a 
+                href={`mailto:${SITE_INFO.email}`} 
+                className="flex items-center gap-2 text-white hover:text-[#2DC55F] transition-colors font-medium"
+              >
+                <Mail className="w-4 h-4 text-[#2DC55F]" />
+                <span className="hidden sm:inline text-white">{SITE_INFO.email}</span>
+              </a>
+            </div>
+
+            {/* Social Icons group (Facebook, X, Instagram, Pinterest) */}
+            <div className="flex items-stretch border-l border-slate-700/60">
+              <a 
+                href="#" 
+                aria-label="Facebook" 
+                className="flex items-center justify-center px-3 sm:px-3.5 border-r border-slate-700/60 text-white hover:text-[#2DC55F] transition-colors"
+              >
+                <Facebook className="w-3.5 h-3.5" />
+              </a>
+
+              <a 
+                href="#" 
+                aria-label="Twitter / X" 
+                className="flex items-center justify-center px-3 sm:px-3.5 border-r border-slate-700/60 text-white hover:text-[#2DC55F] transition-colors font-bold text-xs"
+              >
+                𝕏
+              </a>
+
+              <a 
+                href="#" 
+                aria-label="Instagram" 
+                className="flex items-center justify-center px-3 sm:px-3.5 border-r border-slate-700/60 text-white hover:text-[#2DC55F] transition-colors"
+              >
+                <Instagram className="w-3.5 h-3.5" />
+              </a>
+
+              <a 
+                href="#" 
+                aria-label="Pinterest" 
+                className="flex items-center justify-center px-3 sm:px-3.5 border-r border-slate-700/60 text-white hover:text-[#2DC55F] transition-colors font-bold text-xs"
+              >
+                🅿
+              </a>
+            </div>
           </div>
+
         </div>
       </div>
 
-      {/* Main Navigation Bar */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex items-center justify-between h-16 sm:h-20">
+      {/* ─── Main Navigation Bar ─── */}
+      <div className="w-full pl-4 sm:pl-8 lg:pl-12 pr-0">
+        <div className="flex items-center justify-between h-20">
+          
           {/* Brand Logo - SMARTax Global with brand icon */}
-          <Link href="/" className="flex items-center gap-3 group shrink-0">
+          <Link href="/" className="flex items-center gap-3 group shrink-0 py-2">
             <div className="relative w-10 h-10 group-hover:scale-105 transition-transform flex items-center justify-center">
               <Image 
                 src="/logo-icon.png" 
@@ -188,51 +234,63 @@ export default function Navbar() {
           </Link>
 
           {/* Desktop Navigation Links */}
-          <nav className="hidden lg:flex items-center gap-7 text-[14px] font-semibold text-slate-700">
+          <nav className="hidden lg:flex items-center gap-7 text-[13.5px] font-bold tracking-wide uppercase text-slate-700">
             <Link 
               href="/" 
-              className={`transition-colors py-2 relative ${
+              className={`transition-colors py-2 relative flex flex-col items-center ${
                 pathname === '/' 
-                  ? 'text-[#2DC55F] font-bold border-b-2 border-[#2DC55F]' 
+                  ? 'text-[#2DC55F]' 
                   : 'hover:text-[#2DC55F]'
               }`}
             >
-              Home
+              <span>HOME</span>
+              {pathname === '/' && (
+                <div className="flex flex-col items-center -mb-2 mt-0.5">
+                  <span className="w-0.5 h-1.5 bg-[#2DC55F]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#2DC55F]" />
+                </div>
+              )}
             </Link>
 
             <Link 
               href="/about-us" 
-              className={`transition-colors py-2 relative ${
+              className={`transition-colors py-2 relative flex flex-col items-center ${
                 pathname === '/about-us' 
-                  ? 'text-[#2DC55F] font-bold border-b-2 border-[#2DC55F]' 
+                  ? 'text-[#2DC55F]' 
                   : 'hover:text-[#2DC55F]'
               }`}
             >
-              About Us
+              <span>ABOUT US</span>
+              {pathname === '/about-us' && (
+                <div className="flex flex-col items-center -mb-2 mt-0.5">
+                  <span className="w-0.5 h-1.5 bg-[#2DC55F]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#2DC55F]" />
+                </div>
+              )}
             </Link>
 
-            {/* SINGLE Unified "Services" Menu with UK, USA, Pakistan Flyout */}
+            {/* Unified "Services" Menu with UK, USA, Pakistan Flyout */}
             <div 
               className="relative"
               onMouseEnter={() => setServicesDropdownOpen(true)}
               onMouseLeave={() => setServicesDropdownOpen(false)}
             >
               <button 
-                className={`flex items-center gap-1.5 transition-colors py-2 group ${
-                  pathname.startsWith('/services') || servicesDropdownOpen
-                    ? 'text-[#2DC55F] font-bold' 
+                className={`flex items-center gap-1.5 py-2 transition-colors cursor-pointer uppercase ${
+                  pathname?.startsWith('/services') 
+                    ? 'text-[#2DC55F]' 
                     : 'hover:text-[#2DC55F]'
                 }`}
                 aria-expanded={servicesDropdownOpen}
               >
-                <span>Services</span>
+                <span>SERVICES</span>
                 <ChevronDown className={`w-3.5 h-3.5 transition-transform duration-200 ${servicesDropdownOpen ? 'rotate-180 text-[#2DC55F]' : 'text-slate-400'}`} />
               </button>
 
               {/* Flyout Submenu */}
               {servicesDropdownOpen && (
                 <div className="absolute top-full -left-20 pt-2 z-50">
-                  <div className="w-[680px] bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden flex animate-in fade-in slide-in-from-top-2 duration-150">
+                  <div className="w-[680px] bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden flex animate-in fade-in slide-in-from-top-2 duration-150 normal-case tracking-normal">
                     
                     {/* Left Column: Countries Tabs (USA, UK, PAKISTAN) */}
                     <div className="w-52 bg-slate-50/80 p-3 border-r border-slate-100 flex flex-col gap-1.5 shrink-0">
@@ -303,50 +361,51 @@ export default function Navbar() {
                       </div>
                     </div>
 
-                    {/* Right Column: Dynamic Services List based on Hovered Country */}
-                    <div className="flex-1 p-4 bg-white">
-                      <div className="flex items-center justify-between pb-3 mb-2 border-b border-slate-100">
-                        <div className="text-xs font-bold text-slate-900 flex items-center gap-2">
-                          <span className="w-2 h-2 rounded-full bg-[#2DC55F]"></span>
-                          <span>
-                            {activeRegion === 'USA' && 'United States Tax & Accounting Solutions'}
-                            {activeRegion === 'UK' && 'United Kingdom HMRC & Company Services'}
-                            {activeRegion === 'PAKISTAN' && 'Pakistan FBR & SECP Compliance'}
+                    {/* Right Column: Dynamic Services of Active Region */}
+                    <div className="flex-1 p-5 bg-white flex flex-col justify-between">
+                      <div>
+                        <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
+                          <div className="text-xs font-bold text-slate-900 flex items-center gap-2">
+                            <span className="w-2 h-2 rounded-full bg-[#2DC55F]" />
+                            <span>
+                              {activeRegion === 'USA' && 'United States Tax & Accounting Solutions'}
+                              {activeRegion === 'UK' && 'United Kingdom Statutory & Tax Solutions'}
+                              {activeRegion === 'PAKISTAN' && 'Pakistan FBR, SECP & Provincial Sales Tax'}
+                            </span>
+                          </div>
+                          <span className="text-[10px] font-semibold text-slate-400">
+                            {currentRegionServices.length} Services
                           </span>
                         </div>
-                        <span className="text-[11px] text-slate-400 font-medium">
-                          {currentRegionServices.length} Services
-                        </span>
-                      </div>
 
-                      <div className="grid grid-cols-1 gap-1.5 max-h-[380px] overflow-y-auto pr-1">
-                        {currentRegionServices.map((service) => {
-                          const IconComp = service.icon;
-                          return (
-                            <Link
-                              key={service.href}
-                              href={service.href}
-                              onClick={() => setServicesDropdownOpen(false)}
-                              className="group flex items-start gap-3 p-2.5 rounded-xl hover:bg-emerald-50/70 transition-colors"
-                            >
-                              <div className="w-8 h-8 rounded-lg bg-emerald-100/70 text-[#2DC55F] flex items-center justify-center shrink-0 mt-0.5 group-hover:bg-[#2DC55F] group-hover:text-white transition-colors">
-                                <IconComp className="w-4 h-4" />
-                              </div>
-                              <div className="flex-1 min-w-0">
-                                <div className="text-xs font-bold text-slate-900 group-hover:text-[#2DC55F] transition-colors flex items-center gap-1.5">
-                                  <span>{service.title}</span>
-                                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-[#2DC55F]" />
+                        <div className="grid grid-cols-1 gap-2.5">
+                          {currentRegionServices.map((service) => {
+                            const IconComponent = service.icon;
+                            return (
+                              <Link
+                                key={service.href}
+                                href={service.href}
+                                className="group flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors"
+                              >
+                                <div className="w-8 h-8 rounded-lg bg-emerald-50 text-[#2DC55F] group-hover:bg-[#2DC55F] group-hover:text-slate-950 flex items-center justify-center shrink-0 transition-colors">
+                                  <IconComponent className="w-4 h-4" />
                                 </div>
-                                <p className="text-[11px] text-slate-500 truncate">
-                                  {service.desc}
-                                </p>
-                              </div>
-                            </Link>
-                          );
-                        })}
+                                <div className="flex-1 min-w-0">
+                                  <div className="text-xs font-bold text-slate-900 group-hover:text-[#2DC55F] transition-colors flex items-center gap-1.5">
+                                    <span>{service.title}</span>
+                                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-[#2DC55F]" />
+                                  </div>
+                                  <p className="text-[11px] text-slate-500 truncate">
+                                    {service.desc}
+                                  </p>
+                                </div>
+                              </Link>
+                            );
+                          })}
+                        </div>
                       </div>
-                    </div>
 
+                    </div>
                   </div>
                 </div>
               )}
@@ -354,66 +413,88 @@ export default function Navbar() {
 
             <Link 
               href="/pricing" 
-              className={`transition-colors py-2 relative ${
+              className={`transition-colors py-2 relative flex flex-col items-center ${
                 pathname === '/pricing' 
-                  ? 'text-[#2DC55F] font-bold border-b-2 border-[#2DC55F]' 
+                  ? 'text-[#2DC55F]' 
                   : 'hover:text-[#2DC55F]'
               }`}
             >
-              Pricing
+              <span>PRICING</span>
+              {pathname === '/pricing' && (
+                <div className="flex flex-col items-center -mb-2 mt-0.5">
+                  <span className="w-0.5 h-1.5 bg-[#2DC55F]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#2DC55F]" />
+                </div>
+              )}
             </Link>
 
             <Link 
               href="/blog" 
-              className={`transition-colors py-2 relative ${
+              className={`transition-colors py-2 relative flex flex-col items-center ${
                 pathname === '/blog' 
-                  ? 'text-[#2DC55F] font-bold border-b-2 border-[#2DC55F]' 
+                  ? 'text-[#2DC55F]' 
                   : 'hover:text-[#2DC55F]'
               }`}
             >
-              Blog
+              <span>BLOG</span>
+              {pathname === '/blog' && (
+                <div className="flex flex-col items-center -mb-2 mt-0.5">
+                  <span className="w-0.5 h-1.5 bg-[#2DC55F]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#2DC55F]" />
+                </div>
+              )}
             </Link>
 
             <Link 
               href="/contact" 
-              className={`transition-colors py-2 relative ${
+              className={`transition-colors py-2 relative flex flex-col items-center ${
                 pathname === '/contact' 
-                  ? 'text-[#2DC55F] font-bold border-b-2 border-[#2DC55F]' 
+                  ? 'text-[#2DC55F]' 
                   : 'hover:text-[#2DC55F]'
               }`}
             >
-              Contact
+              <span>CONTACT US</span>
+              {pathname === '/contact' && (
+                <div className="flex flex-col items-center -mb-2 mt-0.5">
+                  <span className="w-0.5 h-1.5 bg-[#2DC55F]" />
+                  <span className="w-1.5 h-1.5 rounded-full bg-[#2DC55F]" />
+                </div>
+              )}
             </Link>
+
+            {/* Search Icon */}
+            <button 
+              type="button" 
+              aria-label="Search" 
+              className="text-slate-700 hover:text-[#2DC55F] transition-colors p-1"
+            >
+              <Search className="w-4 h-4" />
+            </button>
           </nav>
 
-          {/* Right Side: Consultation Call & CTA */}
-          <div className="hidden lg:flex items-center gap-5">
-            <div className="flex items-center gap-3">
-              <div className="w-10 h-10 rounded-full bg-[#2DC55F]/15 border border-[#2DC55F]/30 flex items-center justify-center text-[#2DC55F] shrink-0">
-                <Phone className="w-4 h-4" />
+          {/* Right Side: Exact Inzofin Full-Height Slanted Callout Box */}
+          <div className="hidden lg:flex items-stretch self-stretch">
+            <div className="relative flex items-center bg-[#def4e5]/70 h-full px-8 xl:px-10 [clip-path:polygon(36px_0,100%_0,100%_100%,0_100%)]">
+              {/* Message outline icon */}
+              <div className="w-10 h-10 rounded-lg flex items-center justify-center text-[#2DC55F] mr-3.5 shrink-0">
+                <MessageSquare className="w-8 h-8 stroke-[2.2]" />
               </div>
               <div className="text-left leading-tight">
-                <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400">Free Consultation</div>
+                <div className="text-xs font-bold text-[#0c1a2e] tracking-tight">Have any question?</div>
                 <a 
-                  href={SITE_INFO.whatsappUrl || `https://wa.me/19362206795`} target="_blank" rel="noopener noreferrer" 
-                  className="text-xs xl:text-sm font-extrabold text-[#0c1a2e] hover:text-[#2DC55F] transition-colors"
+                  href={SITE_INFO.whatsappUrl || `https://wa.me/19362206795`} 
+                  target="_blank" 
+                  rel="noopener noreferrer" 
+                  className="text-sm xl:text-[15px] font-black text-[#2DC55F] hover:text-emerald-700 transition-colors tracking-tight block mt-0.5"
                 >
                   {SITE_INFO.phone}
                 </a>
               </div>
             </div>
-
-            <Link 
-              href="/contact" 
-              className="bg-[#2DC55F] hover:bg-[#23a54e] text-slate-950 font-bold text-xs uppercase tracking-wider px-5 py-3 rounded-lg shadow-md hover:shadow-lg transition-all duration-200 flex items-center gap-2 group"
-            >
-              <span>Get A Free Quote</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </Link>
           </div>
 
           {/* Mobile hamburger menu */}
-          <div className="flex lg:hidden">
+          <div className="flex lg:hidden pr-4 sm:pr-8">
             <button 
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
               className="text-slate-800 hover:text-[#2DC55F] p-2 rounded-lg"
@@ -422,6 +503,7 @@ export default function Navbar() {
               {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
             </button>
           </div>
+
         </div>
       </div>
 
@@ -431,150 +513,100 @@ export default function Navbar() {
           <Link 
             href="/" 
             onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-[#0c1a2e] font-bold border-b border-slate-100"
+            className="block py-2 text-sm font-bold text-slate-800 hover:text-[#2DC55F]"
           >
             Home
           </Link>
-
           <Link 
             href="/about-us" 
             onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-slate-700 font-medium border-b border-slate-100 hover:text-[#2DC55F]"
+            className="block py-2 text-sm font-bold text-slate-800 hover:text-[#2DC55F]"
           >
             About Us
           </Link>
 
-          {/* Mobile Services Accordion */}
-          <div className="border-b border-slate-100 pb-2">
-            <div className="py-2 text-slate-900 font-bold text-sm flex items-center justify-between">
-              <span>Services</span>
-              <Link 
-                href="/services" 
-                onClick={() => setMobileMenuOpen(false)}
-                className="text-xs text-[#2DC55F] font-semibold"
-              >
-                All Services →
-              </Link>
+          {/* Services Accordion in Mobile */}
+          <div className="border-t border-b border-slate-100 py-2 space-y-1">
+            <div className="text-xs uppercase font-extrabold text-[#2DC55F] tracking-wider py-1">
+              All Services
             </div>
-
-            {/* Region toggles for mobile */}
-            <div className="space-y-1.5 pl-2">
-              {/* USA */}
-              <div>
-                <button
-                  onClick={() => setMobileRegionOpen(mobileRegionOpen === 'USA' ? null : 'USA')}
-                  className="w-full flex items-center justify-between py-1.5 text-xs font-bold text-slate-800"
-                >
-                  <span className="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" className="w-6 h-4 rounded-sm"><rect width="60" height="30" fill="#B22234"/><rect y="4.6" width="60" height="4.6" fill="#fff"/><rect y="9.2" width="60" height="4.6" fill="#B22234"/><rect y="13.8" width="60" height="4.6" fill="#fff"/><rect y="18.4" width="60" height="4.6" fill="#B22234"/><rect y="23" width="60" height="4.6" fill="#fff"/><rect width="24" height="16" fill="#3C3B6E"/></svg> USA Services</span>
-                  <ChevronDown className={`w-3.5 h-3.5 transition-transform ${mobileRegionOpen === 'USA' ? 'rotate-180' : ''}`} />
-                </button>
-                {mobileRegionOpen === 'USA' && (
-                  <div className="pl-4 space-y-1 py-1">
-                    {USA_SERVICES.map((s) => (
-                      <Link
-                        key={s.href}
-                        href={s.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="block py-1 text-xs text-slate-600 hover:text-[#2DC55F]"
-                      >
-                        • {s.title}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+            <div className="pl-2 space-y-1">
+              <div className="text-xs font-bold text-slate-700 pt-1 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#2DC55F]" /> USA Services
               </div>
-
-              {/* UK */}
-              <div>
-                <button
-                  onClick={() => setMobileRegionOpen(mobileRegionOpen === 'UK' ? null : 'UK')}
-                  className="w-full flex items-center justify-between py-1.5 text-xs font-bold text-slate-800"
+              {USA_SERVICES.map((s) => (
+                <Link
+                  key={s.href}
+                  href={s.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block pl-3 py-1 text-xs text-slate-600 hover:text-[#2DC55F]"
                 >
-                  <span className="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" className="w-6 h-4 rounded-sm"><rect width="60" height="30" fill="#012169"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6"/><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" strokeWidth="4"/><path d="M30,0 V30 M0,15 H60" stroke="#fff" strokeWidth="10"/><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" strokeWidth="6"/></svg> UK Services</span>
-                  <ChevronDown className={`w-3.5 h-3.5 transition-transform ${mobileRegionOpen === 'UK' ? 'rotate-180' : ''}`} />
-                </button>
-                {mobileRegionOpen === 'UK' && (
-                  <div className="pl-4 space-y-1 py-1">
-                    {UK_SERVICES.map((s) => (
-                      <Link
-                        key={s.href}
-                        href={s.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="block py-1 text-xs text-slate-600 hover:text-[#2DC55F]"
-                      >
-                        • {s.title}
-                      </Link>
-                    ))}
-                  </div>
-                )}
-              </div>
+                  {s.title}
+                </Link>
+              ))}
 
-              {/* PAKISTAN */}
-              <div>
-                <button
-                  onClick={() => setMobileRegionOpen(mobileRegionOpen === 'PAKISTAN' ? null : 'PAKISTAN')}
-                  className="w-full flex items-center justify-between py-1.5 text-xs font-bold text-slate-800"
-                >
-                  <span className="flex items-center gap-2"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" className="w-6 h-4 rounded-sm"><rect width="60" height="30" fill="#01411C"/><rect width="15" height="30" fill="#fff"/><circle cx="34" cy="15" r="8" fill="#fff"/><circle cx="36" cy="15" r="6.5" fill="#01411C"/></svg> Pakistan Services</span>
-                  <ChevronDown className={`w-3.5 h-3.5 transition-transform ${mobileRegionOpen === 'PAKISTAN' ? 'rotate-180' : ''}`} />
-                </button>
-                {mobileRegionOpen === 'PAKISTAN' && (
-                  <div className="pl-4 space-y-1 py-1">
-                    {PAKISTAN_SERVICES.map((s) => (
-                      <Link
-                        key={s.href}
-                        href={s.href}
-                        onClick={() => setMobileMenuOpen(false)}
-                        className="block py-1 text-xs text-slate-600 hover:text-[#2DC55F]"
-                      >
-                        • {s.title}
-                      </Link>
-                    ))}
-                  </div>
-                )}
+              <div className="text-xs font-bold text-slate-700 pt-2 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#2DC55F]" /> UK Services
               </div>
+              {UK_SERVICES.map((s) => (
+                <Link
+                  key={s.href}
+                  href={s.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block pl-3 py-1 text-xs text-slate-600 hover:text-[#2DC55F]"
+                >
+                  {s.title}
+                </Link>
+              ))}
+
+              <div className="text-xs font-bold text-slate-700 pt-2 flex items-center gap-1.5">
+                <span className="w-1.5 h-1.5 rounded-full bg-[#2DC55F]" /> Pakistan Services
+              </div>
+              {PAKISTAN_SERVICES.map((s) => (
+                <Link
+                  key={s.href}
+                  href={s.href}
+                  onClick={() => setMobileMenuOpen(false)}
+                  className="block pl-3 py-1 text-xs text-slate-600 hover:text-[#2DC55F]"
+                >
+                  {s.title}
+                </Link>
+              ))}
             </div>
           </div>
 
           <Link 
             href="/pricing" 
             onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-slate-700 font-medium border-b border-slate-100 hover:text-[#2DC55F]"
+            className="block py-2 text-sm font-bold text-slate-800 hover:text-[#2DC55F]"
           >
             Pricing
           </Link>
-
           <Link 
             href="/blog" 
             onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-slate-700 font-medium border-b border-slate-100 hover:text-[#2DC55F]"
+            className="block py-2 text-sm font-bold text-slate-800 hover:text-[#2DC55F]"
           >
             Blog
           </Link>
-
           <Link 
             href="/contact" 
             onClick={() => setMobileMenuOpen(false)}
-            className="block py-2 text-slate-700 font-medium border-b border-slate-100 hover:text-[#2DC55F]"
+            className="block py-2 text-sm font-bold text-slate-800 hover:text-[#2DC55F]"
           >
             Contact
           </Link>
-          
-          <div className="pt-3 space-y-2">
+
+          <div className="pt-2">
             <a 
-              href={SITE_INFO.whatsappUrl || `https://wa.me/19362206795`} target="_blank" rel="noopener noreferrer"
-              className="flex items-center justify-center gap-2 w-full py-2.5 text-xs font-bold text-slate-800 bg-slate-100 rounded-lg"
+              href={SITE_INFO.whatsappUrl || `https://wa.me/19362206795`}
+              target="_blank" 
+              rel="noopener noreferrer"
+              className="w-full bg-[#2DC55F] hover:bg-[#23a54e] text-slate-950 font-bold text-xs uppercase tracking-wider py-3 rounded-lg shadow-md flex items-center justify-center gap-2"
             >
-              <Phone className="w-4 h-4 text-[#2DC55F]" />
+              <Phone className="w-4 h-4 text-slate-950" />
               <span>{SITE_INFO.phone}</span>
             </a>
-            <Link 
-              href="/contact" 
-              onClick={() => setMobileMenuOpen(false)}
-              className="block w-full text-center bg-[#2DC55F] hover:bg-[#23a54e] text-slate-950 font-bold py-3 rounded-lg text-xs uppercase tracking-wider shadow-sm"
-            >
-              Get A Free Quote
-            </Link>
           </div>
         </div>
       )}

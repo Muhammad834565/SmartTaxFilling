@@ -27,7 +27,7 @@ import {
   FileCheck,
   HelpCircle
 } from 'lucide-react';
-import { SERVICES, POSTS, TESTIMONIALS, FAQS, SITE_INFO } from '@/lib/data';
+import { SERVICES, POSTS, FAQS, SITE_INFO } from '@/lib/data';
 import HoneycombHero from '@/components/HoneycombHero';
 import PricingCalculator from '@/components/PricingCalculator';
 import FaqAccordion from '@/components/FaqAccordion';
@@ -597,71 +597,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 7. Case Studies / Project Showcase (Home 1 Layout) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-12">
-        <div className="flex flex-col md:flex-row md:items-end justify-between gap-6">
-          <div className="space-y-3">
-            <div className="inzofin-section-subtitle">
-              <span>// RECENT CASE STUDIES //</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-black text-[#0c1e36]">
-              Real Financial Results & Success Stories
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-600 max-w-xl">
-              See how our strategic accounting and compliance frameworks help growing enterprises preserve capital and scale smoothly.
-            </p>
-          </div>
-
-          <Link
-            href="/contact"
-            className="inline-flex items-center gap-2 px-6 py-3 bg-[#0c1e36] hover:bg-[#152c4e] text-white font-bold text-xs uppercase tracking-wider rounded-lg transition-all self-start md:self-auto"
-          >
-            <span>Request A Case Study Review</span>
-            <ArrowRight className="w-4 h-4 text-[#2DC55F]" />
-          </Link>
-        </div>
-
-        {/* Case Studies Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-          {caseStudies.map((cs, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm card-hover flex flex-col justify-between space-y-6 group border-l-4 border-l-amber-500"
-            >
-              <div className="space-y-3">
-                <div className="flex items-center justify-between">
-                  <span className="text-[11px] uppercase font-bold tracking-wider px-2.5 py-1 rounded bg-emerald-100 text-emerald-800">
-                    {cs.tag}
-                  </span>
-                  <span className="text-xs font-bold text-slate-400">
-                    {cs.category}
-                  </span>
-                </div>
-
-                <h3 className="text-xl font-bold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors">
-                  {cs.title}
-                </h3>
-
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-                  {cs.summary}
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-slate-100 flex items-center justify-between">
-                <div className="flex items-center gap-2 text-xs font-extrabold text-[#0c1e36]">
-                  <CheckCircle2 className="w-4 h-4 text-[#2DC55F]" />
-                  <span>Key Result: <span className="text-[#2DC55F]">{cs.metric}</span></span>
-                </div>
-                <Link href="/contact" className="text-xs font-bold text-[#0c1e36] group-hover:text-[#2DC55F] flex items-center gap-1">
-                  <span>Consult</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
-                </Link>
-              </div>
-            </div>
-          ))}
-        </div>
-      </section>
-
       {/* 8. Pricing Plans Section (Home 1 Layout) */}
       <section className="bg-[#f7f9fc] py-20 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
@@ -679,53 +614,6 @@ export default function HomePage() {
 
           {/* Pricing Calculator Component */}
           <PricingCalculator />
-        </div>
-      </section>
-
-      {/* 9. Client Testimonials (Inzofin Home 1 Reviews) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-12">
-        <div className="text-center max-w-2xl mx-auto space-y-3">
-          <div className="inzofin-section-subtitle">
-            <span>// CLIENT TESTIMONIALS //</span>
-          </div>
-          <h2 className="text-3xl sm:text-4xl font-black text-[#0c1e36]">
-            What Our Valued Clients Say About Us
-          </h2>
-          <p className="text-xs sm:text-sm text-slate-600">
-            Real feedback from startup founders, international merchants, and business leaders.
-          </p>
-        </div>
-
-        <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
-          {TESTIMONIALS.map((t, idx) => (
-            <div
-              key={idx}
-              className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm card-hover flex flex-col justify-between space-y-6 relative"
-            >
-              <div className="space-y-4">
-                {/* 5 Gold Stars */}
-                <div className="flex items-center gap-1">
-                  {[...Array(t.rating || 5)].map((_, i) => (
-                    <Star key={i} className="w-4 h-4 fill-[#2DC55F] text-[#2DC55F]" />
-                  ))}
-                </div>
-
-                <p className="text-xs sm:text-sm text-slate-600 leading-relaxed italic">
-                  &ldquo;{t.quote}&rdquo;
-                </p>
-              </div>
-
-              <div className="pt-4 border-t border-slate-100 flex items-center gap-3.5">
-                <div className="w-11 h-11 rounded-full bg-[#2DC55F] text-slate-950 font-black text-sm flex items-center justify-center shrink-0">
-                  {t.clientName.charAt(0)}
-                </div>
-                <div>
-                  <div className="font-bold text-sm text-[#0c1e36]">{t.clientName}</div>
-                  <div className="text-[11px] text-slate-500">{t.role}, {t.company}</div>
-                </div>
-              </div>
-            </div>
-          ))}
         </div>
       </section>
 
