@@ -153,7 +153,7 @@ export default function Navbar() {
           <div className="flex items-center gap-4 text-[11px] text-slate-400">
             <span className="hidden sm:flex items-center gap-1.5">
               <ShieldCheck className="w-3.5 h-3.5 text-[#2DC55F]" />
-              <span className="text-slate-300 font-medium">IRS Authorized ERO & HMRC MTD Partner</span>
+              <span className="text-slate-300 font-medium">US, UK & Pakistan Tax Advisory</span>
             </span>
             <span className="hidden sm:inline text-slate-600">|</span>
             <a 

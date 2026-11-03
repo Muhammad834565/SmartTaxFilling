@@ -109,7 +109,7 @@ export default function HomePage() {
 
               {/* Subheading */}
               <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
-                IRS Authorized Electronic Return Originator (ERO) & HMRC Making Tax Digital (MTD) Partner. We provide institutional-grade bookkeeping, US & UK tax compliance, and business advisory services that empower entrepreneurs worldwide to scale with complete confidence.
+                Professional bookkeeping, US, UK & Pakistan tax compliance, and business advisory services that empower entrepreneurs and growing companies worldwide to scale with complete confidence.
               </p>
 
               {/* Dual CTA Buttons */}
@@ -134,7 +134,7 @@ export default function HomePage() {
               <div className="pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-semibold text-slate-300">
                 <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs">
                   <ShieldCheck className="w-4 h-4 text-[#2DC55F] shrink-0" />
-                  <span>IRS Authorized ERO</span>
+                  <span>US Tax Advisory</span>
                 </div>
                 <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs">
                   <Award className="w-4 h-4 text-[#2DC55F] shrink-0" />
@@ -241,9 +241,9 @@ export default function HomePage() {
                   <Star key={i} className="w-4 h-4 fill-[#2DC55F]" />
                 ))}
               </div>
-              <div className="text-2xl font-black text-white">25+ Years</div>
+              <div className="text-2xl font-black text-white">Top Rated</div>
               <div className="text-xs text-slate-300 font-medium">
-                Proven Excellence in US & UK Corporate Accounting & Tax Advisory
+                Proven Excellence in Cross-Border Corporate Accounting & Tax Advisory
               </div>
             </div>
           </div>
@@ -486,7 +486,7 @@ export default function HomePage() {
               {/* Bar 1 */}
               <div className="space-y-2">
                 <div className="flex justify-between text-xs font-bold">
-                  <span>IRS & HMRC Tax Filing Accuracy</span>
+                  <span>US & UK Tax Filing Compliance</span>
                   <span className="text-[#2DC55F]">99.8%</span>
                 </div>
                 <div className="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden">

@@ -52,7 +52,7 @@ export default function Footer() {
             <div className="space-y-2 text-xs text-slate-300">
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#2DC55F] shrink-0" />
-                <span>IRS Registered Electronic Return Originator (ERO)</span>
+                <span>US Federal & Multi-State Tax Compliance</span>
               </div>
               <div className="flex items-center gap-2">
                 <CheckCircle2 className="w-4 h-4 text-[#2DC55F] shrink-0" />
