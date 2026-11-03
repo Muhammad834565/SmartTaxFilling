@@ -83,7 +83,7 @@ export default function HomePage() {
   return (
     <div className="space-y-24 bg-white overflow-hidden">
       {/* 1. Hero Section (Inzofin Home 1 Signature Layout) */}
-      <section className="relative pt-1 pb-2 md:pt-1.5 md:pb-3 inzofin-hero-bg text-white overflow-hidden border-b border-[#152c4e]">
+      <section className="relative py-0 inzofin-hero-bg text-white overflow-hidden border-b border-[#152c4e]">
         {/* Decorative Grid & Glow */}
         <div className="absolute inset-0 inzofin-pattern-grid opacity-60 pointer-events-none" />
         <div className="absolute top-0 right-1/4 w-[700px] h-[500px] bg-[#2DC55F]/10 blur-[130px] rounded-full pointer-events-none" />

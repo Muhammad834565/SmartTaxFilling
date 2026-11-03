@@ -374,33 +374,21 @@ export default function HoneycombHero() {
   const isHoveredRef = useRef(false);
 
   useEffect(() => {
-    // Dynamic sequence order around the honeycomb
-    const sequence = [
-      'center',
-      'global-tax',
-      'ecommerce',
-      'bookkeeping',
-      'us-formation',
-      'provincial-tax',
-      'us-sales-tax',
-      'real-estate',
-      'payroll',
-      'fbr-pk',
-      'uk-tax',
-      'uk-formation',
-      'uk-vat'
-    ];
-    let idx = 0;
+    // Random / organic wind-like wave revealing images softly across tiles
+    const ids = HEX_SERVICES.map((s) => s.id);
+    let lastId: string | null = null;
 
     const interval = setInterval(() => {
-      // If user is hovering any hex, stop/pause the auto animation
       if (isHoveredRef.current) {
         setAutoHighlightedId(null);
         return;
       }
-      setAutoHighlightedId(sequence[idx % sequence.length]);
-      idx++;
-    }, 2200);
+      // Pick random service different from the previous one
+      const available = ids.filter((id) => id !== lastId);
+      const nextId = available[Math.floor(Math.random() * available.length)];
+      lastId = nextId;
+      setAutoHighlightedId(nextId);
+    }, 2600);
 
     return () => clearInterval(interval);
   }, []);
@@ -492,43 +480,51 @@ export default function HoneycombHero() {
           </g>
 
           {/* ── 15 Interactive Interlocking Honeycomb Cells ───────────── */}
-          {HEX_SERVICES.map((node) => {
-            const Icon = node.icon;
-            const isCenter = node.id === 'center';
-            // User hover takes full priority; otherwise show auto-highlight animation
-            const isUserHovered = hoveredHex === node.id;
-            const isAutoActive = !hoveredHex && autoHighlightedId === node.id;
-            const isHovered = isUserHovered || isAutoActive;
-            const tileR = R - 1.2;
+          {[...HEX_SERVICES]
+            .sort((a, b) => {
+              // Bring the hovered/active tile to the front of DOM so no adjacent tile covers its borders
+              const aActive = hoveredHex === a.id || (!hoveredHex && autoHighlightedId === a.id);
+              const bActive = hoveredHex === b.id || (!hoveredHex && autoHighlightedId === b.id);
+              if (aActive) return 1;
+              if (bActive) return -1;
+              return 0;
+            })
+            .map((node) => {
+              const Icon = node.icon;
+              const isCenter = node.id === 'center';
+              const isUserHovered = hoveredHex === node.id;
+              const isAutoActive = !hoveredHex && autoHighlightedId === node.id;
+              const isHovered = isUserHovered || isAutoActive;
+              const tileR = R - 1.2;
 
-            return (
-              <Link
-                key={node.id}
-                href={`/services/${node.slug}`}
-                passHref
-                legacyBehavior
-              >
-                <g
-                  onMouseEnter={() => {
-                    isHoveredRef.current = true;
-                    setHoveredHex(node.id);
-                  }}
-                  onMouseLeave={() => {
-                    isHoveredRef.current = false;
-                    setHoveredHex(null);
-                  }}
-                  className="cursor-pointer group"
-                  style={{
-                    transformOrigin: `${node.cx}px ${node.cy}px`,
-                    transition: 'transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1), filter 0.3s ease',
-                    /* USER REQUEST: little bit zoom (scale up) on hover */
-                    transform: isHovered
-                      ? 'scale(1.10)'
-                      : hoveredHex
-                        ? 'scale(0.97)'
-                        : 'scale(1)',
-                  }}
+              return (
+                <Link
+                  key={node.id}
+                  href={`/services/${node.slug}`}
+                  passHref
+                  legacyBehavior
                 >
+                  <g
+                    onMouseEnter={() => {
+                      isHoveredRef.current = true;
+                      setHoveredHex(node.id);
+                    }}
+                    onMouseLeave={() => {
+                      isHoveredRef.current = false;
+                      setHoveredHex(null);
+                    }}
+                    className="cursor-pointer group"
+                    style={{
+                      transformOrigin: `${node.cx}px ${node.cy}px`,
+                      transition: 'transform 0.35s cubic-bezier(0.2, 0.8, 0.2, 1), filter 0.35s ease',
+                      /* Zoom ONLY when user physically hovers; in auto-wind mode keep scale 1.00 */
+                      transform: isUserHovered
+                        ? 'scale(1.10)'
+                        : hoveredHex
+                          ? 'scale(0.97)'
+                          : 'scale(1)',
+                    }}
+                  >
                   {/* Hexagon Body Polygon */}
                   <polygon
                     points={getHexPoints(node.cx, node.cy, tileR)}
@@ -536,7 +532,7 @@ export default function HoneycombHero() {
                     stroke={isHovered ? '#2DC55F' : isCenter ? '#2DC55F' : '#1e486b'}
                     strokeWidth={isHovered ? 3.5 : isCenter ? 2.5 : 1.5}
                     filter={isHovered ? 'url(#intenseGlow)' : isCenter ? 'url(#hexGlow)' : undefined}
-                    className="transition-all duration-300"
+                    className="transition-all duration-500 ease-in-out"
                   />
 
                   {/* USER REQUEST: "when i hower then show images" */}
@@ -548,7 +544,7 @@ export default function HoneycombHero() {
                       width={tileR * 2}
                       height={tileR * 2}
                       preserveAspectRatio="xMidYMid slice"
-                      className={`transition-opacity duration-500 pointer-events-none ${isHovered ? 'opacity-85' : 'opacity-0'
+                      className={`transition-opacity duration-700 ease-in-out pointer-events-none ${isHovered ? 'opacity-85' : 'opacity-0'
                         }`}
                     />
                     {/* Dark gradient overlay on hover so text is super crisp */}
