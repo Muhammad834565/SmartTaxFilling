@@ -159,67 +159,6 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 2. Feature Overlap Boxes (Inzofin Signature 4-Box Row) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-8 sm:-mt-10 relative z-20">
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          <div className="bg-white rounded-xl p-7 border border-slate-200 shadow-xl card-hover border-t-4 border-t-amber-500 space-y-3">
-            <div className="w-12 h-12 rounded-lg bg-emerald-50 text-[#2DC55F] flex items-center justify-center border border-emerald-200">
-              <FileText className="w-6 h-6" />
-            </div>
-            <h3 className="text-base font-extrabold text-[#0c1e36]">Corporate Tax Compliance</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              IRS Form 1040, 1120, 1120S, 1065, Form 5472 and UK CT600 Corporation Tax prepared with maximum deduction security.
-            </p>
-            <Link href="/services/us-tax-compliance-filing-services" className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2DC55F] hover:text-emerald-700 transition-colors pt-1 group">
-              <span>Learn More</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-
-          <div className="bg-white rounded-xl p-7 border border-slate-200 shadow-xl card-hover border-t-4 border-t-amber-500 space-y-3">
-            <div className="w-12 h-12 rounded-lg bg-emerald-50 text-[#2DC55F] flex items-center justify-center border border-emerald-200">
-              <BookOpen className="w-6 h-6" />
-            </div>
-            <h3 className="text-base font-extrabold text-[#0c1e36]">Management Bookkeeping</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              Real-time QuickBooks & Xero ledgers, monthly reconciliations, balance sheets, and cashflow health reporting.
-            </p>
-            <Link href="/services/bookkeeping-accounting-services" className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2DC55F] hover:text-emerald-700 transition-colors pt-1 group">
-              <span>Learn More</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-
-          <div className="bg-white rounded-xl p-7 border border-slate-200 shadow-xl card-hover border-t-4 border-t-amber-500 space-y-3">
-            <div className="w-12 h-12 rounded-lg bg-emerald-50 text-[#2DC55F] flex items-center justify-center border border-emerald-200">
-              <Rocket className="w-6 h-6" />
-            </div>
-            <h3 className="text-base font-extrabold text-[#0c1e36]">Cross-Border Formation</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              End-to-end US LLC (Wyoming, Delaware, Florida) and UK Ltd formation with EIN, BOI, Registered Agent & banking.
-            </p>
-            <Link href="/services/startup-business-formation-usa" className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2DC55F] hover:text-emerald-700 transition-colors pt-1 group">
-              <span>Learn More</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-
-          <div className="bg-white rounded-xl p-7 border border-slate-200 shadow-xl card-hover border-t-4 border-t-amber-500 space-y-3">
-            <div className="w-12 h-12 rounded-lg bg-emerald-50 text-[#2DC55F] flex items-center justify-center border border-emerald-200">
-              <Coins className="w-6 h-6" />
-            </div>
-            <h3 className="text-base font-extrabold text-[#0c1e36]">Multi-State Sales & Payroll</h3>
-            <p className="text-xs text-slate-600 leading-relaxed">
-              50-state sales tax nexus registration, automated filings, and payroll tax management (941/940/W-2).
-            </p>
-            <Link href="/services/payroll-tax-management" className="inline-flex items-center gap-1.5 text-xs font-bold text-[#2DC55F] hover:text-emerald-700 transition-colors pt-1 group">
-              <span>Learn More</span>
-              <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
-            </Link>
-          </div>
-        </div>
-      </section>
-
       {/* 3. About Us Section (Inzofin Home 1 Layout) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
