@@ -9,29 +9,75 @@ interface ContactFormProps {
   initialService?: string;
 }
 
+// Map service category to country select value
+const CATEGORY_TO_COUNTRY: Record<string, string> = {
+  USA: 'United States',
+  UK: 'United Kingdom',
+  Pakistan: 'Pakistan',
+  General: '',
+};
+
+// Map country select value to service category filter
+const COUNTRY_TO_CATEGORY: Record<string, string> = {
+  'United States': 'USA',
+  'United Kingdom': 'UK',
+  Pakistan: 'Pakistan',
+};
+
 export default function ContactForm({ initialService = '' }: ContactFormProps) {
+  // Derive initial country from initialService if provided
+  const getInitialCountry = (svc: string) => {
+    if (!svc) return '';
+    const match = SERVICES.find((s) => s.title === svc);
+    if (!match) return '';
+    return CATEGORY_TO_COUNTRY[match.category] ?? '';
+  };
+
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     phone: '',
-    country: 'United States',
+    country: getInitialCountry(initialService),
     service: initialService,
     message: '',
   });
 
-  // Keep service field updated if initialService changes
+  // When initialService changes (e.g. from URL params), sync both service + country
   useEffect(() => {
     if (initialService) {
-      setFormData((prev) => ({
-        ...prev,
-        service: initialService,
-      }));
+      const country = getInitialCountry(initialService);
+      setFormData((prev) => ({ ...prev, service: initialService, country }));
     }
   }, [initialService]);
 
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  // Services filtered by selected country
+  const filteredServices =
+    formData.country && COUNTRY_TO_CATEGORY[formData.country]
+      ? SERVICES.filter((s) => s.category === COUNTRY_TO_CATEGORY[formData.country])
+      : SERVICES;
+
+  // When user changes the SERVICE → auto-update country
+  const handleServiceChange = (title: string) => {
+    const match = SERVICES.find((s) => s.title === title);
+    const country = match ? (CATEGORY_TO_COUNTRY[match.category] ?? formData.country) : formData.country;
+    setFormData((prev) => ({ ...prev, service: title, country }));
+  };
+
+  // When user changes the COUNTRY → clear service if it doesn't belong to that country
+  const handleCountryChange = (country: string) => {
+    const cat = COUNTRY_TO_CATEGORY[country];
+    const currentMatch = SERVICES.find((s) => s.title === formData.service);
+    const serviceStillValid = !cat || (currentMatch && currentMatch.category === cat);
+    setFormData((prev) => ({
+      ...prev,
+      country,
+      service: serviceStillValid ? prev.service : '',
+    }));
+  };
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -41,14 +87,7 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
     try {
       await submitInquiry(formData);
       setSuccess(true);
-      setFormData({
-        name: '',
-        email: '',
-        phone: '',
-        country: 'United States',
-        service: '',
-        message: '',
-      });
+      setFormData({ name: '', email: '', phone: '', country: '', service: '', message: '' });
     } catch (err: any) {
       setError(err.message || 'There was an issue submitting your request. Please try again.');
     } finally {
@@ -131,13 +170,14 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
           <label className="block text-xs font-bold uppercase tracking-wider text-[#0c1e36] mb-1.5">Country / Region</label>
           <select
             value={formData.country}
-            onChange={(e) => setFormData({ ...formData, country: e.target.value })}
+            onChange={(e) => handleCountryChange(e.target.value)}
             className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-[#2DC55F] transition-colors bg-white font-medium text-slate-800"
           >
-            <option value="United States">United States</option>
-            <option value="United Kingdom">United Kingdom</option>
+            <option value="">— Select Country —</option>
+            <option value="United States">🇺🇸 United States</option>
+            <option value="United Kingdom">🇬🇧 United Kingdom</option>
+            <option value="Pakistan">🇵🇰 Pakistan</option>
             <option value="Canada">Canada</option>
-            <option value="Pakistan">Pakistan</option>
             <option value="United Arab Emirates">United Arab Emirates</option>
             <option value="Other">Other International</option>
           </select>
@@ -145,14 +185,21 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
       </div>
 
       <div>
-        <label className="block text-xs font-bold uppercase tracking-wider text-[#0c1e36] mb-1.5">Service Required</label>
+        <label className="block text-xs font-bold uppercase tracking-wider text-[#0c1e36] mb-1.5">
+          Service Required
+          {formData.country && COUNTRY_TO_CATEGORY[formData.country] && (
+            <span className="ml-2 normal-case font-normal text-[#2DC55F]">
+              — showing {formData.country} services
+            </span>
+          )}
+        </label>
         <select
           value={formData.service}
-          onChange={(e) => setFormData({ ...formData, service: e.target.value })}
+          onChange={(e) => handleServiceChange(e.target.value)}
           className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-[#2DC55F] transition-colors bg-white font-medium text-slate-800"
         >
           <option value="">Select a service (Optional)</option>
-          {SERVICES.map((s) => (
+          {filteredServices.map((s) => (
             <option key={s.slug} value={s.title}>
               {s.title}
             </option>
@@ -171,7 +218,7 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           placeholder="Briefly describe your business entity (LLC, C-Corp, Ltd), monthly transaction volume, or target filing deadlines..."
           className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-[#2DC55F] transition-colors resize-none"
-        ></textarea>
+        />
       </div>
 
       <button

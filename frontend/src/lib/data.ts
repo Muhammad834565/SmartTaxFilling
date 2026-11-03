@@ -7,7 +7,26 @@ export interface ServiceItem {
   fullDescription: string;
   features: string[];
   softwareTools: string[];
+  imageUrl?: string;
 }
+
+export const SERVICE_IMAGES: Record<string, string> = {
+  'bookkeeping-accounting-services': '/sevices/Bookkeeping%20&%20Tax%20Compliance.png',
+  'us-tax-compliance-filing-services': '/sevices/US%20Tax%20Compliance%20&%20Filing%20Services.png',
+  'payroll-tax-management': '/sevices/Payroll%20Tax%20Management.png',
+  'us-sales-use-tax-compliance': '/sevices/US%20Sales%20&%20Use%20Tax%20Compliance.png',
+  'startup-business-formation-usa': '/sevices/UK%20Company%20Formation%20&%20Compliance.png',
+  'e-commerce-accounting-tax-services-us': '/sevices/E-Commerce%20Accounting%20&%20Tax%20Services%20(US).png',
+  'real-estate-financial-tax-services-us': '/sevices/Real%20Estate%20Financial%20&%20Tax%20Services.png',
+  'logistics-transport-accounting-tax-support': '/sevices/Logistics%20&%20Transport%20Accounting%20&%20Tax%20Support.jpg',
+  'virtual-bank-accounts-payment-solutions': '/sevices/Virtual%20Bank%20Accounts%20&%20Payment%20Solutions.png',
+  'uk-company-formation-compliance-services': '/sevices/UK%20Company%20Formation%20&%20Compliance.png',
+  'uk-tax-compliance-filing-services': '/sevices/UK%20Tax%20Compliance%20&%20Filing%20Services.png',
+  'uk-vat-registration-compliance': '/sevices/UK%20VAT%20Registration%20&%20Compliance.jpg',
+  'fbr-tax-filing-ntn-registration-pakistan': '/sevices/FBR%20Income%20Tax%20&%20NTN%20Registration%20(Pakistan).png',
+  'secp-company-incorporation-pakistan': '/sevices/SECP%20Company%20Incorporation%20(Pakistan).png',
+  'sales-tax-pra-srb-fbr-pakistan': '/sevices/Provincial%20Sales%20Tax%20PRA%20SRB%20KPRA%20(Pakistan).png',
+};
 
 export interface PostItem {
   slug: string;
@@ -50,15 +69,15 @@ export interface FaqItem {
 export const SITE_INFO = {
   title: 'SMARTax Global',
   tagline: 'Bookkeeping, Accounting & Tax Compliance for Growing Businesses in the US & UK',
-  email: 'info@smartaxglobal.com',
-  phone: '+1 (813) 555-0199',
-  address: '401 Timbered Knoll Dr, Valrico, FL 33594, United States',
-  workingHours: 'Mon - Fri: 9:00 AM - 6:00 PM EST',
+  email: 'smartaxbooks@gmail.com',
+  phone: '+1 936 220 6795',
+  address: '401 Timbered dr. Lufkin Texas 75901',
+  workingHours: 'Mon - Fri: 9:00 AM - 6:00 PM CST',
   logoText: 'SMARTax Global',
   logoImage: '/uploads/2025/11/logo-2.png',
 };
 
-export const SERVICES: ServiceItem[] = [
+const BASE_SERVICES: Omit<ServiceItem, 'imageUrl'>[] = [
   // USA Services
   {
     slug: 'bookkeeping-accounting-services',
@@ -306,6 +325,11 @@ export const SERVICES: ServiceItem[] = [
     softwareTools: ['PRA Portal', 'SRB Portal', 'FBR IRIS']
   }
 ];
+
+export const SERVICES: ServiceItem[] = BASE_SERVICES.map((s): ServiceItem => ({
+  ...s,
+  imageUrl: SERVICE_IMAGES[s.slug] || '/sevices/Tax%20Compliance%20&%20Filing%20Services.png'
+}));
 
 export const POSTS: PostItem[] = [
   {

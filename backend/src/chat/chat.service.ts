@@ -8,24 +8,16 @@ import { MailService } from '../mail/mail.service';
 import { ChatHistoryItem, BookFromChatDto } from './dto/chat-message.dto';
 
 const SYSTEM_INSTRUCTION = `
-You are the elite "SMARTax Global AI Senior Tax & Corporate Advisor" for SMARTax Global (smartaxglobal.com).
+You are the official "SMARTax Global AI Tax Advisor" for SMARTax Global (smartaxglobal.com).
 Our firm specializes in US, UK, and Pakistan cross-border accounting, taxation, company incorporation, and bookkeeping.
 
-YOUR RESPONSIBILITIES:
-1. Understand the user's situation/problem thoroughly.
-2. Outline the exact legal/tax PROCEDURE step-by-step in clear, easy-to-follow bullet points.
-3. Explicitly list the REQUIRED DOCUMENTS (e.g., Passport, Articles of Organization, Proof of Address, SSN/ITIN/EIN, Bank Statements, Invoices, NTN, etc.) in a distinct "📋 Required Documents" section.
-4. Estimate realistic timelines (e.g., 2-5 business days for EIN, 2-3 weeks for ITIN).
-5. Recommend the specific SMARTax Global service that matches their case:
-   - USA: US LLC / C-Corp Formation & Registered Agent, EIN & ITIN Application, Corporate Tax (Form 1120 / 5472 / 1040-NR), US Sales Tax & Nexus, Multi-State Bookkeeping (QuickBooks/Xero).
-   - UK: UK Ltd Company Formation, Companies House Confirmation Statement, HMRC Corporation Tax (CT600), UK VAT Registration & MTD Returns, UK Payroll & PAYE.
-   - Pakistan: SECP Private Limited Incorporation, FBR NTN & Active Taxpayer List (ATL) Filing, PRA/SRB Provincial Sales Tax.
-6. Invite the user to book a free consultation appointment directly inside this chat! When you identify a specific service, mention: "You can book this service directly below by clicking 'Book Free Appointment'".
-
-COMMUNICATION STYLE:
-- Professional, reassuring, authoritative yet friendly.
-- Format with clean Markdown headers, bold highlights, and clean bullet lists.
-- Keep answers concise, actionable, and structured. Do not overwhelm with excessive legal jargon.
+STRICT CONVERSATION RULES:
+1. GREETINGS (CRITICAL): If the user says "hi", "hello", "hey", "good morning", "salam", etc., respond ONLY with a short, warm, polite greeting (1-2 sentences). Welcome them and ask how you can help with their taxes, bookkeeping, or business setup today.
+   ❌ NEVER output a document checklist, procedure, or service breakdown on a simple greeting!
+2. DOCUMENT CHECKLISTS: ONLY provide a "📋 Required Documents" section IF the user explicitly asks for documents, requirements, or paperwork (e.g. "what documents do I need?", "required documents", "what is required to start?"). If they did not ask for documents, DO NOT include a document checklist.
+3. ADVICE & PROCEDURES: When the user describes their business problem (e.g. "I want to form a US LLC from Pakistan" or "how to file UK VAT"), explain the high-level steps concisely and clearly.
+4. SERVICE RECOMMENDATION: If a specific service matches their request (US LLC, US Tax, UK Ltd, VAT, Pakistan FBR/SECP, Bookkeeping), mention it and invite them to schedule a free appointment if they'd like our CPAs to assist.
+5. STYLE: Concise, conversational, structured with clean Markdown, and directly answering what was asked. Keep messages digestible.
 `;
 
 @Injectable()
@@ -61,6 +53,18 @@ export class ChatService {
   }
 
   async processMessage(userMessage: string, history: ChatHistoryItem[] = []) {
+    const trimmed = userMessage.trim().toLowerCase().replace(/[^a-z0-9\s]/g, '');
+    const isSimpleGreeting = ['hi', 'hello', 'hey', 'salam', 'assalam', 'good morning', 'good afternoon', 'good evening', 'how are you', 'aoa'].includes(trimmed);
+
+    // Fast response for simple greetings (prevents unnecessary API calls & ensures clean greeting)
+    if (isSimpleGreeting) {
+      return {
+        reply: `Hello! 👋 Welcome to **SMARTax Global**.\n\nHow can I help you today with your US, UK, or Pakistan tax filing, business formation, or bookkeeping?`,
+        suggestedService: undefined,
+        canBook: false,
+      };
+    }
+
     // Refresh client if env changed
     const liveKey = this.config.get<string>('GEMINI_API_KEY');
     if (liveKey && liveKey !== this.currentApiKey) {
@@ -72,7 +76,6 @@ export class ChatService {
       try {
         const modelName = this.config.get<string>('GEMINI_MODEL', 'gemini-3.1-flash-lite');
 
-        // Build contents from history + current message
         const contents: any[] = [];
         if (Array.isArray(history)) {
           for (const item of history.slice(-6)) {
@@ -92,11 +95,11 @@ export class ChatService {
           contents,
           config: {
             systemInstruction: SYSTEM_INSTRUCTION,
-            temperature: 0.4,
+            temperature: 0.3,
           },
         });
 
-        const replyText = response.text || 'I am reviewing your request. Please book a free appointment below.';
+        const replyText = response.text || 'How can I assist you with your tax or accounting requirements?';
         const detectedService = this.detectRecommendedService(userMessage + ' ' + replyText);
 
         return {
@@ -109,12 +112,12 @@ export class ChatService {
       }
     }
 
-    // Intelligent Fallback Knowledge Base if key is not configured or network error
+    // Fallback Knowledge Base with user-context awareness
     const fallback = this.getFallbackConsultation(userMessage);
     return {
       reply: fallback.text,
       suggestedService: fallback.service,
-      canBook: true,
+      canBook: Boolean(fallback.service),
       isFallback: !this.aiClient,
     };
   }
@@ -149,7 +152,7 @@ export class ChatService {
     };
   }
 
-  private detectRecommendedService(text: string): string {
+  private detectRecommendedService(text: string): string | undefined {
     const lower = text.toLowerCase();
     if (lower.includes('llc') || lower.includes('wyoming') || lower.includes('delaware') || lower.includes('formation') || lower.includes('register company in us')) {
       return 'US LLC Formation & Registered Agent';
@@ -172,113 +175,103 @@ export class ChatService {
     if (lower.includes('quickbooks') || lower.includes('xero') || lower.includes('bookkeeping') || lower.includes('reconciliation')) {
       return 'Monthly Accounting & Catch-up Bookkeeping';
     }
-    return 'Comprehensive Tax & Accounting Consultation';
+    return undefined;
   }
 
-  private getFallbackConsultation(message: string): { text: string; service: string } {
+  private getFallbackConsultation(message: string): { text: string; service?: string } {
     const lower = message.toLowerCase();
+    const isAskingForDocs = lower.includes('document') || lower.includes('doc') || lower.includes('paper') || lower.includes('checklist') || lower.includes('what is needed') || lower.includes('what do i need');
 
-    if (lower.includes('llc') || lower.includes('usa company') || lower.includes('formation')) {
+    // 1. US LLC / Company Formation
+    if (lower.includes('llc') || lower.includes('formation') || lower.includes('incorporate in us') || lower.includes('wyoming') || lower.includes('delaware')) {
+      const docsSection = isAskingForDocs ? `\n\n#### 📋 Required Documents:\n- **Passport** (clear valid copy of foreign owner/director)\n- **Proof of Address** (Utility bill or bank statement within 90 days)\n- **Company Name Choice** (Primary name + backup)` : '';
+
       return {
         service: 'US LLC Formation & Registered Agent',
-        text: `### 🇺🇸 US LLC Formation Procedure & Requirements
+        text: `### 🇺🇸 US LLC Formation Procedure
 
-Forming a US LLC as a non-resident or resident is straightforward with SMARTax Global. Here is the step-by-step process:
+We help international and US founders incorporate limited liability companies with full banking and IRS compliance:
 
-#### 1. Procedure & Steps:
-1. **Choose State of Registration**: Most international entrepreneurs choose **Wyoming** (privacy & low fees) or **Delaware** (ideal for venture funding).
-2. **Name Availability Check**: We verify your business name with the Secretary of State.
-3. **Appoint Registered Agent**: SMARTax Global provides continuous registered office compliance in all 50 states.
-4. **File Articles of Organization**: Electronic filing with the State authority (2-4 business days).
-5. **Draft Operating Agreement**: Formalizes ownership structure and bank readiness.
-6. **Apply for Federal EIN**: Directly with the IRS for opening US bank accounts (Mercury, Relay) and Stripe.
+1. **State Selection**: We recommend **Wyoming** for low maintenance & asset privacy, or **Delaware** for venture-backed startups.
+2. **Name Clearance & Registered Agent**: We verify name availability and assign our registered office.
+3. **Articles of Organization**: Electronic filing with the State authority (2-4 business days).
+4. **Operating Agreement**: Formalized for US bank accounts (Mercury, Relay) and Stripe.
+5. **Federal EIN**: Direct application with the IRS.${docsSection}
 
-#### 📋 Required Documents:
-- **Valid International Passport** (photo page, clear PDF copy)
-- **Proof of Residential Address** (Utility bill or bank statement within the last 90 days)
-- **Proposed Company Names** (Primary name + 2 backups)
-- **Business Description / Website** (Brief 2-line explanation of your business model)
-
-*Estimated Timeline:* State Approval: 2–4 business days | IRS EIN: 4–7 business days.
-
-👉 **Ready to begin? Click "Book Free Appointment" below to schedule a 1-on-1 session with our US CPA.**`,
+Would you like to book a free consultation to set up your US LLC? Click below to schedule!`,
       };
     }
 
+    // 2. EIN / ITIN
     if (lower.includes('ein') || lower.includes('itin') || lower.includes('tax id')) {
+      const docsSection = isAskingForDocs ? `\n\n#### 📋 Required Documents:\n- **For EIN**: Approved Certificate of Formation / Articles of Organization + Owner Passport.\n- **For ITIN**: Form W-7, certified passport, and federal tax return justification.` : '';
+
       return {
         service: 'EIN & ITIN Tax ID Processing',
-        text: `### 🏛️ US EIN & ITIN Tax ID Processing
+        text: `### 🏛️ US Tax ID (EIN & ITIN)
 
-#### 1. Procedure:
-- **EIN (Employer Identification Number)**: For US LLCs/Corps. Foreign owners without an SSN require Form SS-4 filing via IRS third-party authorization.
-- **ITIN (Individual Taxpayer Identification Number)**: For foreign individuals with US tax filing obligations (Form W-7).
+- **Federal EIN**: Required for US LLCs to open bank accounts, hire employees, or process payments on Stripe/PayPal. Foreign-owned single-member LLCs do not require an SSN.
+- **ITIN (Individual Tax ID)**: Issued by the IRS for foreign individuals with US filing obligations (Form 1040-NR).${docsSection}
 
-#### 📋 Required Documents:
-- **For EIN**: Approved Articles of Organization + Owner Passport.
-- **For ITIN**: Certified passport copy or original passport, Form W-7, and federal income tax return justification.
-
-*Timeline:* EIN (Foreign-owned): 3-7 business days | ITIN: 4-7 weeks.
-
-👉 **Click "Book Free Appointment" below to have our certified Acceptance Agents handle your IRS filing.**`,
+Our certified team can file this directly with the IRS for you. Click below to schedule a quick call!`,
       };
     }
 
+    // 3. UK Ltd & VAT
     if (lower.includes('uk') || lower.includes('ltd') || lower.includes('vat') || lower.includes('hmrc')) {
+      const docsSection = isAskingForDocs ? `\n\n#### 📋 Required Documents:\n- **Passport or National ID** of Directors / Shareholders\n- **Proof of Residential Address** (Bank statement or utility bill within 3 months)\n- **Registered Office Address** (Provided by SMARTax Global if needed)` : '';
+
       return {
         service: 'UK Ltd Company Incorporation & VAT',
-        text: `### 🇬🇧 UK Ltd Company Formation & HMRC Compliance
+        text: `### 🇬🇧 UK Company Formation & HMRC Compliance
 
-#### 1. Procedure:
-1. **Companies House Registration**: Incorporate private limited company within 24 hours.
-2. **Registered Office & Service Address**: London/UK address provided for privacy.
-3. **HMRC Corporate Tax Registration**: Activation within 3 months of trading.
-4. **VAT & MTD Registration**: Mandatory if turnover exceeds £90,000 or voluntary for B2B reclaim.
+1. **Companies House Filing**: Official incorporation within 24 hours.
+2. **HMRC Corporation Tax Activation**: Set up within 3 months of commencement.
+3. **UK VAT & MTD**: Mandatory if taxable turnover exceeds £90,000, or voluntary for input tax reclaiming.${docsSection}
 
-#### 📋 Required Documents:
-- **Valid Passport or National ID** of all Directors and PSCs (Significant Controllers).
-- **Proof of Address** (Bank statement or utility bill within 3 months).
-- **Company Name & Shareholder Allocation Details**.
-
-👉 **Click "Book Free Appointment" below to finalize your UK expansion with our London-certified accountants.**`,
+Our London-certified specialists can assist you. Click below to book a free appointment!`,
       };
     }
 
-    if (lower.includes('fbr') || lower.includes('ntn') || lower.includes('secp') || lower.includes('pakistan')) {
+    // 4. Pakistan SECP / FBR
+    if (lower.includes('pakistan') || lower.includes('fbr') || lower.includes('ntn') || lower.includes('secp')) {
+      const docsSection = isAskingForDocs ? `\n\n#### 📋 Required Documents:\n- **CNIC / NICOP copies** of all Directors\n- **Office Electricity Bill / Tenancy Agreement**\n- **Mobile SIM registered on Director's CNIC**\n- **Bank Account Maintenance Certificate**` : '';
+
       return {
         service: 'Pakistan SECP & FBR Tax Compliance',
-        text: `### 🇵🇰 Pakistan SECP Incorporation & FBR NTN Registration
+        text: `### 🇵🇰 Pakistan SECP & FBR Tax Compliance
 
-#### 1. Procedure:
-1. **Name Reservation with SECP**: Via eServices portal.
-2. **Digital Signatures & Incorporation**: Preparation of Memorandum and Articles of Association.
-3. **FBR NTN Registration & Active Taxpayer List (ATL)**.
-4. **Provincial Sales Tax**: Registration with PRA (Punjab) / SRB (Sindh) for service businesses.
+1. **SECP Incorporation**: Name reservation, digital signature, and certificate of incorporation.
+2. **FBR NTN & Active Taxpayer List (ATL)**: Registration on Iris portal for 100% tax benefits.
+3. **Provincial Sales Tax**: Registration with PRA (Punjab) / SRB (Sindh) for service providers.${docsSection}
 
-#### 📋 Required Documents:
-- **Original CNIC / NICOP copies** of directors.
-- **Electricity Bill of Office / Premises** (or registered co-working agreement).
-- **Mobile SIM registered on Director's CNIC** for OTP verification.
-- **Bank Account Maintenance Certificate**.
-
-👉 **Click "Book Free Appointment" below to discuss your Pakistan corporate setup.**`,
+Schedule a free session below to get started with our Pakistan corporate advisors!`,
       };
     }
 
+    // 5. Bookkeeping
+    if (lower.includes('bookkeeping') || lower.includes('accounting') || lower.includes('quickbooks') || lower.includes('xero')) {
+      return {
+        service: 'Monthly Accounting & Catch-up Bookkeeping',
+        text: `### 📊 Bookkeeping & Monthly Accounting
+
+SMARTax Global provides certified QuickBooks Elite & Xero Platinum bookkeeping:
+- Monthly bank and credit card reconciliations.
+- Accurate Profit & Loss, Balance Sheet, and Cash Flow statements.
+- Historical ledger cleanup and catch-up bookkeeping.
+
+Would you like to schedule a free review of your books? Click below to book a call!`,
+      };
+    }
+
+    // 6. Generic query
     return {
-      service: 'Comprehensive Tax & Accounting Consultation',
-      text: `### 💼 SMARTax Global Consultation & Assessment
+      service: undefined,
+      text: `Thank you for reaching out to **SMARTax Global**.
 
-Welcome to **SMARTax Global**. Our certified CPAs and tax advisors handle complete cross-border compliance across the United States, United Kingdom, and Pakistan.
+We provide specialized corporate accounting, tax compliance, and business formation across the **United States**, **United Kingdom**, and **Pakistan**.
 
-#### 📋 General Documentation Checklist:
-- **Identity Verification**: Valid Passport or National ID.
-- **Entity Documents**: Prior Certificate of Incorporation, Operating Agreement, or Articles.
-- **Financial Records**: Prior year tax returns, QuickBooks/Xero ledger, or bank statements.
-- **Tax IDs**: Existing EIN, ITIN, UK UTR, or FBR NTN (if applicable).
-
-#### Next Steps:
-Please tell me more about your business or target country, or **book an appointment directly below** to speak directly with an advisor!`,
+Could you please share a few more details about what you need assistance with (for example: US LLC formation, UK VAT, Pakistan FBR, or bookkeeping)?`,
     };
   }
 }

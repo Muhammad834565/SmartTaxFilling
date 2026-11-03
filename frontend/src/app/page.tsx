@@ -1,24 +1,24 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
-import { 
-  ArrowRight, 
-  CheckCircle2, 
-  ShieldCheck, 
-  Award, 
-  BarChart3, 
-  Clock, 
-  Sparkles, 
-  Users2, 
-  Globe2, 
-  BookOpen, 
-  FileText, 
-  Rocket, 
-  ShoppingBag, 
-  Building, 
-  Truck, 
-  CreditCard, 
-  Landmark, 
+import {
+  ArrowRight,
+  CheckCircle2,
+  ShieldCheck,
+  Award,
+  BarChart3,
+  Clock,
+  Sparkles,
+  Users2,
+  Globe2,
+  BookOpen,
+  FileText,
+  Rocket,
+  ShoppingBag,
+  Building,
+  Truck,
+  CreditCard,
+  Landmark,
   Coins,
   Phone,
   Check,
@@ -28,6 +28,7 @@ import {
   HelpCircle
 } from 'lucide-react';
 import { SERVICES, POSTS, TESTIMONIALS, FAQS, SITE_INFO } from '@/lib/data';
+import HoneycombHero from '@/components/HoneycombHero';
 import PricingCalculator from '@/components/PricingCalculator';
 import FaqAccordion from '@/components/FaqAccordion';
 
@@ -82,7 +83,7 @@ export default function HomePage() {
   return (
     <div className="space-y-24 bg-white overflow-hidden">
       {/* 1. Hero Section (Inzofin Home 1 Signature Layout) */}
-      <section className="relative pt-16 pb-28 md:pt-24 md:pb-36 inzofin-hero-bg text-white overflow-hidden border-b border-[#152c4e]">
+      <section className="relative pt-1 pb-2 md:pt-1.5 md:pb-3 inzofin-hero-bg text-white overflow-hidden border-b border-[#152c4e]">
         {/* Decorative Grid & Glow */}
         <div className="absolute inset-0 inzofin-pattern-grid opacity-60 pointer-events-none" />
         <div className="absolute top-0 right-1/4 w-[700px] h-[500px] bg-[#2DC55F]/10 blur-[130px] rounded-full pointer-events-none" />
@@ -91,7 +92,7 @@ export default function HomePage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             {/* Left Content Column */}
-            <div className="lg:col-span-7 space-y-6 text-center lg:text-left">
+            <div className="lg:col-span-6 space-y-4 text-center lg:text-left">
               {/* Badge */}
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-full bg-white/10 backdrop-blur-md border border-[#2DC55F]/40 text-[#2DC55F] text-xs font-bold uppercase tracking-widest shadow-sm">
                 <Sparkles className="w-3.5 h-3.5 text-[#2DC55F]" />
@@ -108,7 +109,7 @@ export default function HomePage() {
 
               {/* Subheading */}
               <p className="text-base sm:text-lg text-slate-300 leading-relaxed max-w-2xl mx-auto lg:mx-0 font-normal">
-                IRS Authorized Electronic Return Originator (ERO) & HMRC Making Tax Digital (MTD) Partner. We provide institutional-grade bookkeeping, US & UK tax compliance, and business advisory services that empower entrepreneurs worldwide to scale with complete confidence.
+                Professional bookkeeping, US, UK & Pakistan tax compliance, and business advisory services that empower entrepreneurs and growing companies worldwide to scale with complete confidence.
               </p>
 
               {/* Dual CTA Buttons */}
@@ -133,7 +134,7 @@ export default function HomePage() {
               <div className="pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-3 text-xs font-semibold text-slate-300">
                 <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs">
                   <ShieldCheck className="w-4 h-4 text-[#2DC55F] shrink-0" />
-                  <span>IRS Authorized ERO</span>
+                  <span>US Tax Advisory</span>
                 </div>
                 <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs">
                   <Award className="w-4 h-4 text-[#2DC55F] shrink-0" />
@@ -150,50 +151,16 @@ export default function HomePage() {
               </div>
             </div>
 
-            {/* Right Visual Column (Inzofin Home 1 Composition) */}
-            <div className="lg:col-span-5 relative mt-6 lg:mt-0">
-              <div className="relative mx-auto max-w-md lg:max-w-none">
-                {/* Main Hero Photo Container */}
-                <div className="relative h-[420px] sm:h-[480px] w-full rounded-2xl overflow-hidden shadow-2xl border-2 border-white/10 bg-[#0c1e36]">
-                  <Image
-                    src="/uploads/2025/12/analyzing-financial-diagram-1536x1025-1.jpg"
-                    alt="Inzofin Tax and Financial Advisory"
-                    fill
-                    className="object-cover"
-                    priority
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-[#071224] via-transparent to-transparent opacity-60" />
-                </div>
-
-                {/* Floating Experience Badge 1 (Top Left) */}
-                <div className="absolute -top-6 -left-6 bg-[#0c1e36] text-white border-2 border-[#2DC55F] rounded-xl p-4 shadow-2xl flex items-center gap-3.5 backdrop-blur-md">
-                  <div className="w-12 h-12 rounded-lg bg-[#2DC55F] text-slate-950 flex items-center justify-center font-black text-xl shrink-0">
-                    25+
-                  </div>
-                  <div>
-                    <div className="text-xs font-bold uppercase tracking-wider text-[#2DC55F]">Experience</div>
-                    <div className="text-xs text-slate-200">Years in Tax & Finance</div>
-                  </div>
-                </div>
-
-                {/* Floating Metric Card 2 (Bottom Right) */}
-                <div className="absolute -bottom-6 -right-6 bg-white text-slate-900 border border-slate-200 rounded-xl p-4 shadow-2xl flex items-center gap-3.5">
-                  <div className="w-10 h-10 rounded-lg bg-emerald-100 text-[#2DC55F] flex items-center justify-center shrink-0">
-                    <TrendingUp className="w-5 h-5" />
-                  </div>
-                  <div>
-                    <div className="text-sm font-extrabold text-[#0c1e36]">99.9% Accuracy</div>
-                    <div className="text-[11px] text-slate-500 font-medium">Zero-Penalty Guarantee</div>
-                  </div>
-                </div>
-              </div>
+            {/* Right Visual Column (Interactive Services Honeycomb with Zoom-Out Hover & Redirection) */}
+            <div className="lg:col-span-6 relative mt-6 lg:mt-0">
+              <HoneycombHero />
             </div>
           </div>
         </div>
       </section>
 
       {/* 2. Feature Overlap Boxes (Inzofin Signature 4-Box Row) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-24 sm:-mt-28 relative z-20">
+      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 -mt-6 sm:-mt-8 relative z-20">
         <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
           <div className="bg-white rounded-xl p-7 border border-slate-200 shadow-xl card-hover border-t-4 border-t-amber-500 space-y-3">
             <div className="w-12 h-12 rounded-lg bg-emerald-50 text-[#2DC55F] flex items-center justify-center border border-emerald-200">
@@ -274,9 +241,9 @@ export default function HomePage() {
                   <Star key={i} className="w-4 h-4 fill-[#2DC55F]" />
                 ))}
               </div>
-              <div className="text-2xl font-black text-white">25+ Years</div>
+              <div className="text-2xl font-black text-white">Top Rated</div>
               <div className="text-xs text-slate-300 font-medium">
-                Proven Excellence in US & UK Corporate Accounting & Tax Advisory
+                Proven Excellence in Cross-Border Corporate Accounting & Tax Advisory
               </div>
             </div>
           </div>
@@ -381,42 +348,60 @@ export default function HomePage() {
             </p>
           </div>
 
-          {/* 6 Inzofin Service Cards */}
+          {/* 6 Inzofin Service Cards - Matching Reference Design */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredServices.map((service, index) => {
               const IconComponent = iconMap[service.icon] || BookOpen;
-              const numberStr = `0${index + 1}`;
+              const numberStr = String(index + 1).padStart(2, '0');
 
               return (
                 <div
                   key={service.slug}
-                  className="bg-white rounded-2xl p-8 border border-slate-200 shadow-sm card-hover flex flex-col justify-between relative group"
+                  className="group relative bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col justify-between pt-12 pb-8 px-7 text-center"
                 >
-                  {/* Top Header: Icon & Number Badge */}
-                  <div>
-                    <div className="flex items-center justify-between mb-6">
-                      <div className="w-14 h-14 rounded-xl bg-[#2DC55F]/10 text-[#2DC55F] flex items-center justify-center group-hover:bg-[#2DC55F] group-hover:text-slate-950 transition-colors">
-                        <IconComponent className="w-7 h-7" />
-                      </div>
-                      <span className="text-3xl font-black text-slate-200 group-hover:text-[#2DC55F]/30 transition-colors">
-                        {numberStr}
-                      </span>
+                  {/* Top Angled Green Number Badge (matching reference 01, 02, 03) */}
+                  <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20">
+                    <div className="bg-[#2DC55F] text-slate-950 font-black text-xs px-5 py-1.5 rounded-b-md shadow-md tracking-wider flex items-center justify-center">
+                      {numberStr}
+                    </div>
+                  </div>
+
+                  {/* Background Image Container with Smooth Fade & Zoom on Hover */}
+                  {service.imageUrl && (
+                    <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none overflow-hidden">
+                      {/* Lighter, brighter dark overlay allowing the image details to shine through */}
+                      <div className="absolute inset-0 bg-[#071324]/60 z-10" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#071324]/80 via-[#071324]/40 to-[#071324]/70 z-10" />
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={service.imageUrl}
+                        alt={service.title}
+                        className="w-full h-full object-cover object-center transform scale-100 group-hover:scale-105 transition-transform duration-700 ease-out brightness-105 contrast-105"
+                      />
+                    </div>
+                  )}
+
+                  {/* Card Content (z-10 to stay above background image) */}
+                  <div className="relative z-10 flex flex-col items-center">
+                    {/* Centered Outline Icon matching reference */}
+                    <div className="w-16 h-16 mb-5 rounded-2xl flex items-center justify-center text-[#2DC55F] group-hover:text-[#2DC55F] transition-all duration-300">
+                      <IconComponent className="w-10 h-10 stroke-[1.75]" />
                     </div>
 
-                    <div className="inline-block text-[10px] uppercase font-bold tracking-wider px-2.5 py-1 rounded bg-slate-100 text-slate-600 mb-2">
-                      {service.category} Service
-                    </div>
-
-                    <h3 className="text-lg font-bold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors mb-3">
-                      <Link href={`/services/${service.slug}`}>{service.title}</Link>
+                    {/* Service Title */}
+                    <h3 className="text-xl font-extrabold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors duration-300 mb-3 px-2">
+                      <Link href={`/services/${service.slug}`} className="hover:underline">
+                        {service.title}
+                      </Link>
                     </h3>
 
-                    <p className="text-xs text-slate-600 leading-relaxed mb-6">
+                    {/* Short Description */}
+                    <p className="text-xs text-slate-600 group-hover:text-slate-200 transition-colors duration-300 leading-relaxed mb-6 px-1">
                       {service.shortDescription}
                     </p>
 
                     {/* Features list */}
-                    <ul className="space-y-2 mb-6 border-t border-slate-100 pt-4 text-xs text-slate-500">
+                    <ul className="w-full space-y-2 mb-6 border-t border-slate-100 group-hover:border-slate-700/60 pt-4 text-xs text-slate-500 group-hover:text-slate-300 transition-colors duration-300 text-left">
                       {service.features.slice(0, 3).map((f, i) => (
                         <li key={i} className="flex items-center gap-2">
                           <Check className="w-3.5 h-3.5 text-[#2DC55F] shrink-0" />
@@ -426,14 +411,14 @@ export default function HomePage() {
                     </ul>
                   </div>
 
-                  {/* Read More Link */}
-                  <div className="pt-2">
+                  {/* Centered READ MORE Button with Green Underline matching reference */}
+                  <div className="relative z-10 pt-2 border-t border-slate-100 group-hover:border-slate-700/60 transition-colors duration-300 flex justify-center">
                     <Link
                       href={`/services/${service.slug}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-bold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors"
+                      className="inline-flex items-center gap-1.5 text-xs font-black tracking-wider uppercase text-[#0c1e36] group-hover:text-white transition-colors duration-300 group/link relative pb-1"
                     >
-                      <span>Explore Service</span>
-                      <ArrowRight className="w-3.5 h-3.5 group-hover:translate-x-1 transition-transform" />
+                      <span>READ MORE</span>
+                      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#2DC55F] rounded-full transform origin-left group-hover:scale-x-105 transition-transform" />
                     </Link>
                   </div>
                 </div>
@@ -519,7 +504,7 @@ export default function HomePage() {
               {/* Bar 1 */}
               <div className="space-y-2">
                 <div className="flex justify-between text-xs font-bold">
-                  <span>IRS & HMRC Tax Filing Accuracy</span>
+                  <span>US & UK Tax Filing Compliance</span>
                   <span className="text-[#2DC55F]">99.8%</span>
                 </div>
                 <div className="w-full h-2.5 bg-slate-800 rounded-full overflow-hidden">
@@ -639,7 +624,7 @@ export default function HomePage() {
         {/* Case Studies Grid */}
         <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
           {caseStudies.map((cs, idx) => (
-            <div 
+            <div
               key={idx}
               className="bg-white rounded-2xl border border-slate-200 p-8 shadow-sm card-hover flex flex-col justify-between space-y-6 group border-l-4 border-l-amber-500"
             >
@@ -744,21 +729,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 10. Frequently Asked Questions (Home 1 Layout) */}
-      <section className="bg-slate-50 py-16 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-10">
-          <div className="text-center max-w-2xl mx-auto space-y-3">
-            <div className="inzofin-section-subtitle">
-              <span>// FAQ //</span>
-            </div>
-            <h2 className="text-3xl sm:text-4xl font-black text-[#0c1e36]">
-              Frequently Asked Questions
-            </h2>
-            <p className="text-xs sm:text-sm text-slate-600">
-              Clear answers regarding our tax filings, onboarding process, and cross-border compliance.
-            </p>
-          </div>
-
+      {/* 10. Frequently Asked Questions (Matching Reference Layout) */}
+      <section className="bg-slate-50 py-16 sm:py-20 border-y border-slate-200">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FaqAccordion faqs={FAQS} />
         </div>
       </section>
