@@ -25,7 +25,10 @@ import {
   Star,
   TrendingUp,
   FileCheck,
-  HelpCircle
+  HelpCircle,
+  CalendarCheck,
+  MessageSquareMore,
+  Handshake
 } from 'lucide-react';
 import { SERVICES, POSTS, FAQS, SITE_INFO } from '@/lib/data';
 import HoneycombHero from '@/components/HoneycombHero';
@@ -443,7 +446,7 @@ export default function HomePage() {
         <div className="-mt-20 pb-16 relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <div className="grid grid-cols-1 md:grid-cols-3 bg-white shadow-2xl rounded-sm border border-slate-200 divide-y md:divide-y-0 md:divide-x divide-slate-200">
 
-            {/* Card 1 — High Quality */}
+            {/* Card 1 — Make An Appointment */}
             {(() => {
               const s = SERVICES[0];
               return (
@@ -465,7 +468,7 @@ export default function HomePage() {
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={s.imageUrl}
-                        alt="High Quality"
+                        alt="Make An Appointment"
                         className="w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700"
                       />
                     </div>
@@ -473,23 +476,23 @@ export default function HomePage() {
 
                   {/* Icon */}
                   <div className="relative z-20 w-16 h-16 flex items-center justify-center text-[#2DC55F] group-hover:text-white transition-colors duration-300 mb-4">
-                    <ShieldCheck className="w-12 h-12 stroke-[1.75]" />
+                    <CalendarCheck className="w-12 h-12 stroke-[1.75]" />
                   </div>
 
                   {/* Title */}
                   <h3 className="relative z-20 text-xl font-extrabold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors duration-300 mb-3">
-                    High Quality
+                    Make An Appointment
                   </h3>
 
                   {/* Description */}
                   <p className="relative z-20 text-xs sm:text-sm text-slate-500 group-hover:text-slate-200 transition-colors duration-300 leading-relaxed mb-6">
-                    We deliver high-precision financial solutions, tailored tax strategies, and compliance services
+                    Book an appointment effortlessly and connect with our experts to receive personalized guidance, tailored solutions, and professional support for business.
                   </p>
 
                   {/* READ MORE link */}
                   <div className="relative z-20 mt-auto">
                     <Link
-                      href="/services/bookkeeping-accounting-services"
+                      href="/services"
                       className="inline-block text-xs font-black tracking-wider uppercase text-[#2DC55F] group-hover:text-white transition-colors duration-300 underline underline-offset-4 decoration-2 decoration-[#2DC55F]"
                     >
                       READ MORE
@@ -499,7 +502,7 @@ export default function HomePage() {
               );
             })()}
 
-            {/* Card 2 — Advanced Analytics */}
+            {/* Card 2 — Get Consultation */}
             {(() => {
               const s = SERVICES[1];
               return (
@@ -521,7 +524,7 @@ export default function HomePage() {
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={s.imageUrl}
-                        alt="Advanced Analytics"
+                        alt="Get Consultation"
                         className="w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700"
                       />
                     </div>
@@ -529,23 +532,23 @@ export default function HomePage() {
 
                   {/* Icon */}
                   <div className="relative z-20 w-16 h-16 flex items-center justify-center text-[#2DC55F] group-hover:text-white transition-colors duration-300 mb-4">
-                    <BarChart3 className="w-12 h-12 stroke-[1.75]" />
+                    <MessageSquareMore className="w-12 h-12 stroke-[1.75]" />
                   </div>
 
                   {/* Title */}
                   <h3 className="relative z-20 text-xl font-extrabold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors duration-300 mb-3">
-                    Advanced Analytics
+                    Get Consultation
                   </h3>
 
                   {/* Description */}
                   <p className="relative z-20 text-xs sm:text-sm text-slate-500 group-hover:text-slate-200 transition-colors duration-300 leading-relaxed mb-6">
-                    Our data-driven approach uncovers key insights into spending patterns, revenue trends, tax efficiency
+                    Get expert consultation tailored to your needs, providing clear guidance, strategic support, and professional insights to help your business succeed confidently.
                   </p>
 
                   {/* READ MORE link */}
                   <div className="relative z-20 mt-auto">
                     <Link
-                      href="/services/us-tax-compliance-filing-services"
+                      href="/services"
                       className="inline-block text-xs font-black tracking-wider uppercase text-[#2DC55F] group-hover:text-white transition-colors duration-300 underline underline-offset-4 decoration-2 decoration-[#2DC55F]"
                     >
                       READ MORE
@@ -555,7 +558,7 @@ export default function HomePage() {
               );
             })()}
 
-            {/* Card 3 — Growth Strategies */}
+            {/* Card 3 — Your Problem Solved */}
             {(() => {
               const s = SERVICES[2];
               return (
@@ -577,7 +580,7 @@ export default function HomePage() {
                       {/* eslint-disable-next-line @next/next/no-img-element */}
                       <img
                         src={s.imageUrl}
-                        alt="Growth Strategies"
+                        alt="Your Problem Solved"
                         className="w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700"
                       />
                     </div>
@@ -585,23 +588,23 @@ export default function HomePage() {
 
                   {/* Icon */}
                   <div className="relative z-20 w-16 h-16 flex items-center justify-center text-[#2DC55F] group-hover:text-white transition-colors duration-300 mb-4">
-                    <TrendingUp className="w-12 h-12 stroke-[1.75]" />
+                    <Handshake className="w-12 h-12 stroke-[1.75]" />
                   </div>
 
                   {/* Title */}
                   <h3 className="relative z-20 text-xl font-extrabold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors duration-300 mb-3">
-                    Growth Strategies
+                    Your Problem Solved
                   </h3>
 
                   {/* Description */}
                   <p className="relative z-20 text-xs sm:text-sm text-slate-500 group-hover:text-slate-200 transition-colors duration-300 leading-relaxed mb-6">
-                    We design intelligent growth strategies that align with your business goals and financial capacity
+                    We deliver effective, reliable solutions tailored to your challenges, ensuring your business problems are resolved quickly, professionally, and with lasting results.
                   </p>
 
                   {/* READ MORE link */}
                   <div className="relative z-20 mt-auto">
                     <Link
-                      href="/services/startup-business-formation-usa"
+                      href="/services"
                       className="inline-block text-xs font-black tracking-wider uppercase text-[#2DC55F] group-hover:text-white transition-colors duration-300 underline underline-offset-4 decoration-2 decoration-[#2DC55F]"
                     >
                       READ MORE
