@@ -534,47 +534,70 @@ export default function HomePage() {
             </h2>
           </div>
 
-          {/* Service Cards matching the new design: White card with top-right green angled ribbon badge */}
+          {/* Service Cards matching the new design: Entire card clickable Link with hover transformation */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredServices.map((service, index) => {
               const IconComponent = iconMap[service.icon] || BookOpen;
               const numberStr = String(index + 1).padStart(2, '0');
 
               return (
-                <div
+                <Link
                   key={service.slug}
-                  className="group relative bg-white rounded-md border border-slate-100 shadow-md hover:shadow-2xl transition-all duration-300 p-8 flex flex-col justify-between overflow-hidden"
+                  href={`/services/${service.slug}`}
+                  className="group relative bg-white rounded-md border border-slate-100 shadow-md hover:shadow-2xl transition-all duration-300 p-8 flex flex-col justify-between overflow-hidden cursor-pointer block"
                 >
-                  {/* Top-Right Angled Green Badge with Number */}
-                  <div className="absolute top-6 right-0 z-20">
+                  {/* Top-Right Badge: switches from number to organic green arrow circle on hover */}
+                  <div className="absolute top-6 right-0 z-20 transition-all duration-300">
+                    {/* Default: Angled Ribbon with larger size and bigger number */}
                     <div
-                      className="bg-[#2DC55F] text-white font-extrabold text-sm sm:text-base pl-6 pr-4 py-1.5 shadow-md flex items-center justify-center tracking-wider"
-                      style={{ clipPath: 'polygon(18px 0, 100% 0, 100% 100%, 0 100%)' }}
+                      className="bg-[#2DC55F] text-white font-black text-lg sm:text-xl pl-9 pr-6 py-2 shadow-lg flex items-center justify-center tracking-widest transition-all duration-300 group-hover:opacity-0 group-hover:scale-75 group-hover:pointer-events-none"
+                      style={{ clipPath: 'polygon(24px 0, 100% 0, 100% 100%, 0 100%)' }}
                     >
                       {numberStr}
                     </div>
+
+                    {/* Hover State: Organic shape badge with arrow right */}
+                    <div className="absolute top-0 right-6 w-12 h-12 bg-[#2DC55F] text-white flex items-center justify-center opacity-0 group-hover:opacity-100 scale-75 group-hover:scale-100 transition-all duration-300 shadow-lg shadow-[#2DC55F]/30"
+                      style={{ borderRadius: '58% 42% 65% 35% / 46% 56% 44% 54%' }}>
+                      <ArrowRight className="w-6 h-6 text-white transition-transform duration-300 group-hover:translate-x-0.5" />
+                    </div>
                   </div>
 
+                  {/* Hover background image with dark overlay */}
+                  {service.imageUrl && (
+                    <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none overflow-hidden">
+                      <div className="absolute inset-0 bg-[#071324]/80 z-10" />
+                      <div className="absolute inset-0 bg-gradient-to-t from-[#071324]/90 via-[#071324]/50 to-transparent z-10" />
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={service.imageUrl}
+                        alt={service.title}
+                        className="w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700 ease-out"
+                      />
+                    </div>
+                  )}
+
                   {/* Card Content */}
-                  <div className="space-y-4">
+                  <div className="space-y-4 relative z-10">
                     {/* Outline Icon */}
-                    <div className="w-14 h-14 rounded-lg flex items-center justify-start text-[#2DC55F]">
+                    <div className="w-14 h-14 rounded-lg flex items-center justify-start text-[#2DC55F] group-hover:text-white transition-colors duration-300">
                       <IconComponent className="w-12 h-12 stroke-[1.6]" />
                     </div>
 
                     {/* Title */}
                     <h3 className="text-xl font-black text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors duration-200">
-                      <Link href={`/services/${service.slug}`} className="hover:underline">
-                        {service.title}
-                      </Link>
+                      {service.title}
                     </h3>
 
                     {/* Description */}
-                    <p className="text-xs sm:text-sm text-slate-500 leading-relaxed line-clamp-3">
+                    <p className="text-xs sm:text-sm text-slate-500 group-hover:text-slate-200 transition-colors duration-300 leading-relaxed line-clamp-3">
                       {service.shortDescription}
                     </p>
                   </div>
-                </div>
+
+                  {/* Bottom Hover Accent Bar */}
+                  <div className="absolute bottom-0 left-0 right-0 h-1 bg-[#2DC55F] transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left" />
+                </Link>
               );
             })}
           </div>
