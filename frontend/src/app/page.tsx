@@ -505,23 +505,36 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4b. Full Services Grid */}
-      <section className="bg-[#f7f9fc] py-20 border-y border-slate-200">
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
+      {/* 4b. Our Services / What We Provide Grid */}
+      <section className="bg-[#f7f9fc] py-20 border-y border-slate-200 relative overflow-hidden">
+        {/* Subtle abstract wavy line pattern in background */}
+        <div className="absolute inset-0 pointer-events-none opacity-40">
+          <svg
+            className="w-full h-full"
+            xmlns="http://www.w3.org/2000/svg"
+            preserveAspectRatio="none"
+            viewBox="0 0 1440 600"
+          >
+            <path d="M0,120 C320,180 480,40 800,140 C1120,240 1280,60 1440,120" fill="none" stroke="#2DC55F" strokeWidth="1.5" strokeOpacity="0.15" />
+            <path d="M0,280 C360,200 600,340 960,220 C1200,140 1360,260 1440,240" fill="none" stroke="#2DC55F" strokeWidth="1.5" strokeOpacity="0.12" />
+            <path d="M0,450 C280,520 560,380 900,480 C1180,560 1340,420 1440,450" fill="none" stroke="#2DC55F" strokeWidth="1.5" strokeOpacity="0.08" />
+          </svg>
+        </div>
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12 relative z-10">
           {/* Section Header */}
-          <div className="text-center max-w-2xl mx-auto space-y-3">
-            <div className="inzofin-section-subtitle">
-              <span>// WHAT WE OFFER //</span>
+          <div className="text-center max-w-2xl mx-auto space-y-2">
+            <div className="flex items-center justify-center gap-2">
+              <span className="w-6 h-0.5 bg-[#2DC55F]" />
+              <span className="text-[#2DC55F] text-xs font-black uppercase tracking-widest">OUR SERVICES</span>
+              <span className="w-6 h-0.5 bg-[#2DC55F]" />
             </div>
-            <h2 className="text-3xl sm:text-4xl font-black text-[#0c1e36]">
-              High-Quality Financial &amp; Corporate Tax Services
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-[#0c1e36] tracking-tight">
+              What We Provide
             </h2>
-            <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
-              Tailored solutions designed to guarantee strict regulatory compliance and optimize your bottom line.
-            </p>
           </div>
 
-          {/* 6 Service Cards */}
+          {/* Service Cards matching the new design: White card with top-right green angled ribbon badge */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredServices.map((service, index) => {
               const IconComponent = iconMap[service.icon] || BookOpen;
@@ -530,61 +543,36 @@ export default function HomePage() {
               return (
                 <div
                   key={service.slug}
-                  className="group relative bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col justify-between pt-12 pb-8 px-7 text-center"
+                  className="group relative bg-white rounded-md border border-slate-100 shadow-md hover:shadow-2xl transition-all duration-300 p-8 flex flex-col justify-between overflow-hidden"
                 >
-                  {/* Number Badge */}
-                  <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20">
-                    <div className="bg-[#2DC55F] text-slate-950 font-black text-xs px-5 py-1.5 rounded-b-md shadow-md tracking-wider flex items-center justify-center">
+                  {/* Top-Right Angled Green Badge with Number */}
+                  <div className="absolute top-6 right-0 z-20">
+                    <div
+                      className="bg-[#2DC55F] text-white font-extrabold text-sm sm:text-base pl-6 pr-4 py-1.5 shadow-md flex items-center justify-center tracking-wider"
+                      style={{ clipPath: 'polygon(18px 0, 100% 0, 100% 100%, 0 100%)' }}
+                    >
                       {numberStr}
                     </div>
                   </div>
 
-                  {/* Hover background image */}
-                  {service.imageUrl && (
-                    <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none overflow-hidden">
-                      <div className="absolute inset-0 bg-[#071324]/60 z-10" />
-                      <div className="absolute inset-0 bg-gradient-to-t from-[#071324]/80 via-[#071324]/40 to-[#071324]/70 z-10" />
-                      {/* eslint-disable-next-line @next/next/no-img-element */}
-                      <img
-                        src={service.imageUrl}
-                        alt={service.title}
-                        className="w-full h-full object-cover object-center transform scale-100 group-hover:scale-105 transition-transform duration-700 ease-out brightness-105 contrast-105"
-                      />
-                    </div>
-                  )}
-
                   {/* Card Content */}
-                  <div className="relative z-10 flex flex-col items-center">
-                    <div className="w-16 h-16 mb-5 rounded-2xl flex items-center justify-center text-[#2DC55F] transition-all duration-300">
-                      <IconComponent className="w-10 h-10 stroke-[1.75]" />
+                  <div className="space-y-4">
+                    {/* Outline Icon */}
+                    <div className="w-14 h-14 rounded-lg flex items-center justify-start text-[#2DC55F]">
+                      <IconComponent className="w-12 h-12 stroke-[1.6]" />
                     </div>
-                    <h3 className="text-xl font-extrabold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors duration-300 mb-3 px-2">
+
+                    {/* Title */}
+                    <h3 className="text-xl font-black text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors duration-200">
                       <Link href={`/services/${service.slug}`} className="hover:underline">
                         {service.title}
                       </Link>
                     </h3>
-                    <p className="text-xs text-slate-600 group-hover:text-slate-200 transition-colors duration-300 leading-relaxed mb-6 px-1">
+
+                    {/* Description */}
+                    <p className="text-xs sm:text-sm text-slate-500 leading-relaxed line-clamp-3">
                       {service.shortDescription}
                     </p>
-                    <ul className="w-full space-y-2 mb-6 border-t border-slate-100 group-hover:border-slate-700/60 pt-4 text-xs text-slate-500 group-hover:text-slate-300 transition-colors duration-300 text-left">
-                      {service.features.slice(0, 3).map((f, i) => (
-                        <li key={i} className="flex items-center gap-2">
-                          <Check className="w-3.5 h-3.5 text-[#2DC55F] shrink-0" />
-                          <span className="truncate">{f}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-
-                  {/* Read More */}
-                  <div className="relative z-10 pt-2 border-t border-slate-100 group-hover:border-slate-700/60 transition-colors duration-300 flex justify-center">
-                    <Link
-                      href={`/services/${service.slug}`}
-                      className="inline-flex items-center gap-1.5 text-xs font-black tracking-wider uppercase text-[#0c1e36] group-hover:text-white transition-colors duration-300 group/link relative pb-1"
-                    >
-                      <span>READ MORE</span>
-                      <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#2DC55F] rounded-full transform origin-left group-hover:scale-x-105 transition-transform" />
-                    </Link>
                   </div>
                 </div>
               );
