@@ -140,7 +140,7 @@ export default function HomeServicesGrid({ services }: HomeServicesGridProps) {
             <Link
               key={service.slug}
               href={`/services/${service.slug}`}
-              className="group relative bg-white rounded-md border border-slate-100 shadow-md hover:shadow-2xl transition-all duration-300 p-8 flex flex-col justify-between overflow-hidden cursor-pointer block min-h-[320px]"
+              className="group relative bg-white rounded-md border border-slate-100 shadow-md hover:shadow-2xl transition-all duration-300 p-8 flex flex-col justify-between overflow-hidden cursor-pointer min-h-[320px]"
             >
               {/* Top-Right Badge: switches from number to organic green arrow circle on hover */}
               <div className="absolute top-6 right-0 z-20 transition-all duration-300">
