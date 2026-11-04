@@ -271,7 +271,241 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 4. Inzofin Services Grid (Home 1 Layout) */}
+      {/* 4. Services Working Process Section */}
+      <section className="relative">
+        {/* Dark top banner with dot-grid pattern */}
+        <div className="relative bg-[#0b1728] pt-16 pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
+          {/* Abstract wavy line pattern */}
+          <div className="absolute inset-0 pointer-events-none overflow-hidden">
+            <svg
+              className="absolute inset-0 w-full h-full"
+              xmlns="http://www.w3.org/2000/svg"
+              preserveAspectRatio="none"
+              viewBox="0 0 1440 400"
+            >
+              <path d="M0,80 C180,140 360,20 540,100 C720,180 900,40 1080,120 C1260,200 1350,80 1440,100" fill="none" stroke="#2DC55F" strokeWidth="1.5" strokeOpacity="0.18" />
+              <path d="M0,140 C200,200 400,80 600,160 C800,240 1000,100 1200,180 C1320,220 1400,150 1440,160" fill="none" stroke="#2DC55F" strokeWidth="1.5" strokeOpacity="0.13" />
+              <path d="M0,200 C160,260 360,140 540,220 C720,300 920,160 1100,240 C1280,310 1380,210 1440,220" fill="none" stroke="#2DC55F" strokeWidth="1.5" strokeOpacity="0.10" />
+              <path d="M0,260 C220,310 440,200 640,275 C840,350 1040,230 1240,290 C1360,330 1420,270 1440,280" fill="none" stroke="#2DC55F" strokeWidth="1.5" strokeOpacity="0.08" />
+              <path d="M0,320 C180,360 400,280 600,330 C800,380 1000,300 1200,350 C1360,390 1420,330 1440,340" fill="none" stroke="#2DC55F" strokeWidth="1.5" strokeOpacity="0.06" />
+              {/* Brighter accent waves */}
+              <path d="M0,60 C240,0 480,120 720,60 C960,0 1200,120 1440,60" fill="none" stroke="#2DC55F" strokeWidth="2" strokeOpacity="0.22" />
+              <path d="M0,180 C300,120 600,240 900,180 C1200,120 1350,200 1440,180" fill="none" stroke="#2DC55F" strokeWidth="1.8" strokeOpacity="0.15" />
+            </svg>
+          </div>
+          <div className="max-w-7xl mx-auto flex flex-col lg:flex-row items-start lg:items-center justify-between gap-8">
+            {/* Left: heading block */}
+            <div className="max-w-2xl space-y-4">
+              <div className="flex items-center gap-3">
+                <span className="block w-8 h-0.5 bg-[#2DC55F]" />
+                <span className="text-[#2DC55F] text-xs font-extrabold uppercase tracking-widest">WORKING PROCESS!</span>
+              </div>
+              <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-snug">
+                We Provide Best Finance and Tax Solutions Enjoy Full-Service Finance Expertise
+              </h2>
+              <p className="text-sm text-slate-300">
+                How do we generate new ideas?{' '}
+              </p>
+            </div>
+            {/* Right: play button — double ring effect */}
+            <div className="shrink-0">
+              <Link
+                href={SITE_INFO.whatsappUrl || `https://wa.me/19362206795`}
+                target="_blank"
+                rel="noopener noreferrer"
+                className="relative w-24 h-24 rounded-full flex items-center justify-center group"
+                aria-label="Contact us"
+              >
+                {/* Outer ring */}
+                <span className="absolute inset-0 rounded-full border-4 border-[#1a7a40] bg-[#1a7a40]/40" />
+                {/* Inner filled circle */}
+                <span className="absolute inset-3 rounded-full bg-[#2DC55F] group-hover:bg-emerald-400 transition-colors shadow-lg shadow-[#2DC55F]/40" />
+                {/* Play icon */}
+                <svg viewBox="0 0 24 24" className="relative z-10 w-7 h-7 fill-white translate-x-0.5" xmlns="http://www.w3.org/2000/svg">
+                  <polygon points="6,3 20,12 6,21" />
+                </svg>
+              </Link>
+            </div>
+          </div>
+        </div>
+
+        {/* 3 Process Cards: Unified single bar with visible vertical dividing lines between sections */}
+        <div className="-mt-20 pb-16 relative z-10 max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+          <div className="grid grid-cols-1 md:grid-cols-3 bg-white shadow-2xl rounded-sm border border-slate-200 divide-y md:divide-y-0 md:divide-x divide-slate-200">
+
+            {/* Card 1 — High Quality */}
+            {(() => {
+              const s = SERVICES[0];
+              return (
+                <div className="group relative bg-white pt-14 pb-10 px-8 flex flex-col items-center text-center overflow-visible">
+                  {/* Angled Polygon Badge hanging half-above top border */}
+                  <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+                    <div
+                      className="bg-[#2DC55F] text-white font-black text-sm px-6 py-2.5 inline-block shadow-md tracking-wider"
+                      style={{ clipPath: 'polygon(0 0, 100% 0, 80% 100%, 20% 100%)' }}
+                    >
+                      01
+                    </div>
+                  </div>
+
+                  {/* Hover Image Overlay */}
+                  {s?.imageUrl && (
+                    <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none overflow-hidden">
+                      <div className="absolute inset-0 bg-[#071324]/80 z-10" />
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={s.imageUrl}
+                        alt="High Quality"
+                        className="w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700"
+                      />
+                    </div>
+                  )}
+
+                  {/* Icon */}
+                  <div className="relative z-20 w-16 h-16 flex items-center justify-center text-[#2DC55F] group-hover:text-white transition-colors duration-300 mb-4">
+                    <ShieldCheck className="w-12 h-12 stroke-[1.75]" />
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="relative z-20 text-xl font-extrabold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors duration-300 mb-3">
+                    High Quality
+                  </h3>
+
+                  {/* Description */}
+                  <p className="relative z-20 text-xs sm:text-sm text-slate-500 group-hover:text-slate-200 transition-colors duration-300 leading-relaxed mb-6">
+                    We deliver high-precision financial solutions, tailored tax strategies, and compliance services
+                  </p>
+
+                  {/* READ MORE link */}
+                  <div className="relative z-20 mt-auto">
+                    <Link
+                      href="/services/bookkeeping-accounting-services"
+                      className="inline-block text-xs font-black tracking-wider uppercase text-[#2DC55F] group-hover:text-white transition-colors duration-300 underline underline-offset-4 decoration-2 decoration-[#2DC55F]"
+                    >
+                      READ MORE
+                    </Link>
+                  </div>
+                </div>
+              );
+            })()}
+
+            {/* Card 2 — Advanced Analytics */}
+            {(() => {
+              const s = SERVICES[1];
+              return (
+                <div className="group relative bg-white pt-14 pb-10 px-8 flex flex-col items-center text-center overflow-visible">
+                  {/* Angled Polygon Badge hanging half-above top border */}
+                  <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+                    <div
+                      className="bg-[#2DC55F] text-white font-black text-sm px-6 py-2.5 inline-block shadow-md tracking-wider"
+                      style={{ clipPath: 'polygon(0 0, 100% 0, 80% 100%, 20% 100%)' }}
+                    >
+                      02
+                    </div>
+                  </div>
+
+                  {/* Hover Image Overlay */}
+                  {s?.imageUrl && (
+                    <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none overflow-hidden">
+                      <div className="absolute inset-0 bg-[#071324]/80 z-10" />
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={s.imageUrl}
+                        alt="Advanced Analytics"
+                        className="w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700"
+                      />
+                    </div>
+                  )}
+
+                  {/* Icon */}
+                  <div className="relative z-20 w-16 h-16 flex items-center justify-center text-[#2DC55F] group-hover:text-white transition-colors duration-300 mb-4">
+                    <BarChart3 className="w-12 h-12 stroke-[1.75]" />
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="relative z-20 text-xl font-extrabold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors duration-300 mb-3">
+                    Advanced Analytics
+                  </h3>
+
+                  {/* Description */}
+                  <p className="relative z-20 text-xs sm:text-sm text-slate-500 group-hover:text-slate-200 transition-colors duration-300 leading-relaxed mb-6">
+                    Our data-driven approach uncovers key insights into spending patterns, revenue trends, tax efficiency
+                  </p>
+
+                  {/* READ MORE link */}
+                  <div className="relative z-20 mt-auto">
+                    <Link
+                      href="/services/us-tax-compliance-filing-services"
+                      className="inline-block text-xs font-black tracking-wider uppercase text-[#2DC55F] group-hover:text-white transition-colors duration-300 underline underline-offset-4 decoration-2 decoration-[#2DC55F]"
+                    >
+                      READ MORE
+                    </Link>
+                  </div>
+                </div>
+              );
+            })()}
+
+            {/* Card 3 — Growth Strategies */}
+            {(() => {
+              const s = SERVICES[2];
+              return (
+                <div className="group relative bg-white pt-14 pb-10 px-8 flex flex-col items-center text-center overflow-visible">
+                  {/* Angled Polygon Badge hanging half-above top border */}
+                  <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+                    <div
+                      className="bg-[#2DC55F] text-white font-black text-sm px-6 py-2.5 inline-block shadow-md tracking-wider"
+                      style={{ clipPath: 'polygon(0 0, 100% 0, 80% 100%, 20% 100%)' }}
+                    >
+                      03
+                    </div>
+                  </div>
+
+                  {/* Hover Image Overlay */}
+                  {s?.imageUrl && (
+                    <div className="absolute inset-0 z-10 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none overflow-hidden">
+                      <div className="absolute inset-0 bg-[#071324]/80 z-10" />
+                      {/* eslint-disable-next-line @next/next/no-img-element */}
+                      <img
+                        src={s.imageUrl}
+                        alt="Growth Strategies"
+                        className="w-full h-full object-cover object-center scale-100 group-hover:scale-105 transition-transform duration-700"
+                      />
+                    </div>
+                  )}
+
+                  {/* Icon */}
+                  <div className="relative z-20 w-16 h-16 flex items-center justify-center text-[#2DC55F] group-hover:text-white transition-colors duration-300 mb-4">
+                    <TrendingUp className="w-12 h-12 stroke-[1.75]" />
+                  </div>
+
+                  {/* Title */}
+                  <h3 className="relative z-20 text-xl font-extrabold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors duration-300 mb-3">
+                    Growth Strategies
+                  </h3>
+
+                  {/* Description */}
+                  <p className="relative z-20 text-xs sm:text-sm text-slate-500 group-hover:text-slate-200 transition-colors duration-300 leading-relaxed mb-6">
+                    We design intelligent growth strategies that align with your business goals and financial capacity
+                  </p>
+
+                  {/* READ MORE link */}
+                  <div className="relative z-20 mt-auto">
+                    <Link
+                      href="/services/startup-business-formation-usa"
+                      className="inline-block text-xs font-black tracking-wider uppercase text-[#2DC55F] group-hover:text-white transition-colors duration-300 underline underline-offset-4 decoration-2 decoration-[#2DC55F]"
+                    >
+                      READ MORE
+                    </Link>
+                  </div>
+                </div>
+              );
+            })()}
+
+          </div>
+        </div>
+      </section>
+
+      {/* 4b. Full Services Grid */}
       <section className="bg-[#f7f9fc] py-20 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-14">
           {/* Section Header */}
@@ -280,14 +514,14 @@ export default function HomePage() {
               <span>// WHAT WE OFFER //</span>
             </div>
             <h2 className="text-3xl sm:text-4xl font-black text-[#0c1e36]">
-              High-Quality Financial & Corporate Tax Services
+              High-Quality Financial &amp; Corporate Tax Services
             </h2>
             <p className="text-xs sm:text-sm text-slate-600 leading-relaxed">
               Tailored solutions designed to guarantee strict regulatory compliance and optimize your bottom line.
             </p>
           </div>
 
-          {/* 6 Inzofin Service Cards - Matching Reference Design */}
+          {/* 6 Service Cards */}
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
             {featuredServices.map((service, index) => {
               const IconComponent = iconMap[service.icon] || BookOpen;
@@ -298,17 +532,16 @@ export default function HomePage() {
                   key={service.slug}
                   className="group relative bg-white rounded-2xl border border-slate-200 shadow-sm hover:shadow-2xl transition-all duration-500 overflow-hidden flex flex-col justify-between pt-12 pb-8 px-7 text-center"
                 >
-                  {/* Top Angled Green Number Badge (matching reference 01, 02, 03) */}
+                  {/* Number Badge */}
                   <div className="absolute top-0 left-1/2 -translate-x-1/2 z-20">
                     <div className="bg-[#2DC55F] text-slate-950 font-black text-xs px-5 py-1.5 rounded-b-md shadow-md tracking-wider flex items-center justify-center">
                       {numberStr}
                     </div>
                   </div>
 
-                  {/* Background Image Container with Smooth Fade & Zoom on Hover */}
+                  {/* Hover background image */}
                   {service.imageUrl && (
                     <div className="absolute inset-0 z-0 opacity-0 group-hover:opacity-100 transition-opacity duration-500 pointer-events-none overflow-hidden">
-                      {/* Lighter, brighter dark overlay allowing the image details to shine through */}
                       <div className="absolute inset-0 bg-[#071324]/60 z-10" />
                       <div className="absolute inset-0 bg-gradient-to-t from-[#071324]/80 via-[#071324]/40 to-[#071324]/70 z-10" />
                       {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -320,26 +553,19 @@ export default function HomePage() {
                     </div>
                   )}
 
-                  {/* Card Content (z-10 to stay above background image) */}
+                  {/* Card Content */}
                   <div className="relative z-10 flex flex-col items-center">
-                    {/* Centered Outline Icon matching reference */}
-                    <div className="w-16 h-16 mb-5 rounded-2xl flex items-center justify-center text-[#2DC55F] group-hover:text-[#2DC55F] transition-all duration-300">
+                    <div className="w-16 h-16 mb-5 rounded-2xl flex items-center justify-center text-[#2DC55F] transition-all duration-300">
                       <IconComponent className="w-10 h-10 stroke-[1.75]" />
                     </div>
-
-                    {/* Service Title */}
                     <h3 className="text-xl font-extrabold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors duration-300 mb-3 px-2">
                       <Link href={`/services/${service.slug}`} className="hover:underline">
                         {service.title}
                       </Link>
                     </h3>
-
-                    {/* Short Description */}
                     <p className="text-xs text-slate-600 group-hover:text-slate-200 transition-colors duration-300 leading-relaxed mb-6 px-1">
                       {service.shortDescription}
                     </p>
-
-                    {/* Features list */}
                     <ul className="w-full space-y-2 mb-6 border-t border-slate-100 group-hover:border-slate-700/60 pt-4 text-xs text-slate-500 group-hover:text-slate-300 transition-colors duration-300 text-left">
                       {service.features.slice(0, 3).map((f, i) => (
                         <li key={i} className="flex items-center gap-2">
@@ -350,7 +576,7 @@ export default function HomePage() {
                     </ul>
                   </div>
 
-                  {/* Centered READ MORE Button with Green Underline matching reference */}
+                  {/* Read More */}
                   <div className="relative z-10 pt-2 border-t border-slate-100 group-hover:border-slate-700/60 transition-colors duration-300 flex justify-center">
                     <Link
                       href={`/services/${service.slug}`}
