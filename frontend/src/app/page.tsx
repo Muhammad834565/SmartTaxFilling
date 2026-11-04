@@ -411,10 +411,10 @@ export default function HomePage() {
                 <span className="text-[#2DC55F] text-xs font-extrabold uppercase tracking-widest">WORKING PROCESS!</span>
               </div>
               <h2 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white leading-snug">
-                We Provide Best Finance and Tax Solutions Enjoy Full-Service Finance Expertise
+                Easy Steps To Get Your Solutions
               </h2>
               <p className="text-sm text-slate-300">
-                How do we generate new ideas?{' '}
+                We guide you through simple, streamlined steps to quickly receive the professional solutions your business needs.
               </p>
             </div>
             {/* Right: play button — double ring effect */}
