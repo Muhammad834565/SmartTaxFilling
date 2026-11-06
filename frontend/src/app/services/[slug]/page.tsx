@@ -75,26 +75,32 @@ export default function ServiceDetailPage({
               </div>
             </div>
 
-            {/* Header Right Visual Card */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="relative group w-full max-w-md h-56 sm:h-64 rounded-2xl overflow-hidden border-2 border-[#2DC55F]/40 shadow-2xl bg-[#071324]">
-                {/* Background Pattern */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0c1a2e] via-transparent to-transparent z-10" />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={service.imageUrl || '/sevices/Tax%20Compliance%20&%20Filing%20Services.png'}
-                  alt={service.title}
-                  className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                {/* Pill Overlay */}
-                <div className="absolute bottom-3 left-3 right-3 z-20 bg-[#0c1a2e]/90 backdrop-blur-md border border-[#2DC55F]/30 rounded-xl px-4 py-2.5 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#2DC55F] animate-ping" />
-                    <span className="text-[11px] font-bold text-white tracking-wider uppercase">
-                      {service.category} Verified Compliance
-                    </span>
+            {/* Header Right Visual Card — Hexagon Shape */}
+            <div className="lg:col-span-5 flex justify-center lg:justify-end py-2">
+              <div className="relative group flex items-center justify-center">
+                {/* Ambient Hex Glow */}
+                <div className="absolute w-72 h-72 sm:w-80 sm:h-80 bg-[#2DC55F]/20 rounded-full blur-3xl pointer-events-none" />
+
+                {/* Main Hexagon Image Container */}
+                <div className="relative w-[275px] h-[318px] sm:w-[310px] sm:h-[358px] transition-transform duration-500 group-hover:scale-[1.02]">
+                  {/* Clipped image wrapper */}
+                  <div
+                    className="w-full h-full relative overflow-hidden bg-[#071324] shadow-2xl"
+                    style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
+                  >
+                    {/* Dark gradient overlay for readability and depth */}
+                    <div className="absolute inset-0 bg-gradient-to-t from-[#0c1a2e]/90 via-[#0c1a2e]/25 to-transparent z-10 pointer-events-none" />
+
+                    {/* Service Image */}
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={service.imageUrl || '/sevices/Tax%20Compliance%20&%20Filing%20Services.png'}
+                      alt={service.title}
+                      className="w-full h-full object-cover object-center transform group-hover:scale-110 transition-transform duration-700 ease-out"
+                    />
                   </div>
-                  <span className="text-[11px] font-extrabold text-[#2DC55F]">100% Guaranteed</span>
+
+
                 </div>
               </div>
             </div>
