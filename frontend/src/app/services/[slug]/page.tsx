@@ -51,7 +51,7 @@ export default function ServiceDetailPage({
       <section className="bg-[#0c1a2e] text-white py-16 sm:py-20 border-b border-[#152c4e] relative overflow-hidden">
         <div className="absolute inset-0 inzofin-pattern-grid opacity-30 pointer-events-none" />
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 lg:gap-12 items-center">
             {/* Header Text */}
             <div className="lg:col-span-7 space-y-4">
               <div className="flex items-center gap-2 text-xs font-semibold text-slate-400">
@@ -76,13 +76,13 @@ export default function ServiceDetailPage({
             </div>
 
             {/* Header Right Visual Card — Hexagon Shape */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end py-2">
+            <div className="lg:col-span-5 flex justify-center lg:justify-start lg:pl-12 xl:pl-16 py-2">
               <div className="relative group flex items-center justify-center">
-                {/* Ambient Hex Glow */}
-                <div className="absolute w-72 h-72 sm:w-80 sm:h-80 bg-[#2DC55F]/20 rounded-full blur-3xl pointer-events-none" />
+                {/* Ambient Dark Shade */}
+                <div className="absolute w-72 h-72 sm:w-80 sm:h-80 bg-black/70 rounded-full blur-3xl pointer-events-none" />
 
                 {/* Main Hexagon Image Container */}
-                <div className="relative w-[275px] h-[318px] sm:w-[310px] sm:h-[358px] transition-transform duration-500 group-hover:scale-[1.02]">
+                <div className="relative w-[275px] h-[318px] sm:w-[310px] sm:h-[358px] transition-transform duration-500 group-hover:scale-[1.02] drop-shadow-[0_20px_35px_rgba(0,0,0,0.8)]">
                   {/* Clipped image wrapper */}
                   <div
                     className="w-full h-full relative overflow-hidden bg-[#071324] shadow-2xl"
