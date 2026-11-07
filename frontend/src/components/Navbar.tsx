@@ -250,7 +250,7 @@ export default function Navbar() {
               {/* Flyout Submenu */}
               {servicesDropdownOpen && (
                 <div className="absolute top-full -left-20 pt-2 z-50">
-                  <div className="w-[680px] bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden flex animate-in fade-in slide-in-from-top-2 duration-150 normal-case tracking-normal">
+                  <div className="w-[680px] max-h-[80vh] sm:max-h-[540px] bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden flex animate-in fade-in slide-in-from-top-2 duration-150 normal-case tracking-normal">
 
                     {/* Left Column: Countries Tabs (USA, UK, PAKISTAN) */}
                     <div className="w-52 bg-slate-50/80 p-3 border-r border-slate-100 flex flex-col gap-1.5 shrink-0">
@@ -319,49 +319,49 @@ export default function Navbar() {
                     </div>
 
                     {/* Right Column: Dynamic Services of Active Region */}
-                    <div className="flex-1 p-5 bg-white flex flex-col justify-between">
-                      <div>
-                        <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
-                          <div className="text-xs font-bold text-slate-900 flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full bg-[#2DC55F]" />
-                            <span>
-                              {activeRegion === 'USA' && 'United States Tax & Accounting Solutions'}
-                              {activeRegion === 'UK' && 'United Kingdom Statutory & Tax Solutions'}
-                              {activeRegion === 'PAKISTAN' && 'Pakistan FBR, SECP & Provincial Sales Tax'}
-                            </span>
-                          </div>
-                          <span className="text-[10px] font-semibold text-slate-400">
-                            {currentRegionServices.length} Services
+                    <div className="flex-1 p-5 bg-white flex flex-col overflow-hidden">
+                      {/* Pinned Header */}
+                      <div className="flex items-center justify-between pb-3 mb-2 border-b border-slate-100 shrink-0">
+                        <div className="text-xs font-bold text-slate-900 flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-[#2DC55F]" />
+                          <span>
+                            {activeRegion === 'USA' && 'United States Tax & Accounting Solutions'}
+                            {activeRegion === 'UK' && 'United Kingdom Statutory & Tax Solutions'}
+                            {activeRegion === 'PAKISTAN' && 'Pakistan FBR, SECP & Provincial Sales Tax'}
                           </span>
                         </div>
-
-                        <div className="grid grid-cols-1 gap-2.5">
-                          {currentRegionServices.map((service) => {
-                            const IconComponent = service.icon;
-                            return (
-                              <Link
-                                key={service.href}
-                                href={service.href}
-                                className="group flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors"
-                              >
-                                <div className="w-8 h-8 rounded-lg bg-emerald-50 text-[#2DC55F] group-hover:bg-[#2DC55F] group-hover:text-slate-950 flex items-center justify-center shrink-0 transition-colors">
-                                  <IconComponent className="w-4 h-4" />
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                  <div className="text-xs font-bold text-slate-900 group-hover:text-[#2DC55F] transition-colors flex items-center gap-1.5">
-                                    <span>{service.title}</span>
-                                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-[#2DC55F]" />
-                                  </div>
-                                  <p className="text-[11px] text-slate-500 truncate">
-                                    {service.desc}
-                                  </p>
-                                </div>
-                              </Link>
-                            );
-                          })}
-                        </div>
+                        <span className="text-[10px] font-semibold text-slate-400">
+                          {currentRegionServices.length} Services
+                        </span>
                       </div>
 
+                      {/* Scrollable List with custom-scrollbar */}
+                      <div className="overflow-y-auto pr-1.5 custom-scrollbar flex-1 space-y-1.5 max-h-[440px]">
+                        {currentRegionServices.map((service) => {
+                          const IconComponent = service.icon;
+                          return (
+                            <Link
+                              key={service.href}
+                              href={service.href}
+                              onClick={() => setServicesDropdownOpen(false)}
+                              className="group flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors"
+                            >
+                              <div className="w-8 h-8 rounded-lg bg-emerald-50 text-[#2DC55F] group-hover:bg-[#2DC55F] group-hover:text-slate-950 flex items-center justify-center shrink-0 transition-colors">
+                                <IconComponent className="w-4 h-4" />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <div className="text-xs font-bold text-slate-900 group-hover:text-[#2DC55F] transition-colors flex items-center gap-1.5">
+                                  <span>{service.title}</span>
+                                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-[#2DC55F]" />
+                                </div>
+                                <p className="text-[11px] text-slate-500 truncate">
+                                  {service.desc}
+                                </p>
+                              </div>
+                            </Link>
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
                 </div>
