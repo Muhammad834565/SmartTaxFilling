@@ -360,11 +360,11 @@ export default function HomePage() {
               const s = SERVICES[0];
               return (
                 <div className="group relative bg-white pt-14 pb-10 px-8 flex flex-col items-center text-center overflow-visible">
-                  {/* Angled Polygon Badge hanging half-above top border */}
-                  <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+                  {/* Honeycomb Hexagon Badge hanging half-above top border */}
+                  <div className="absolute -top-7 left-1/2 -translate-x-1/2 z-30 pointer-events-none drop-shadow-md">
                     <div
-                      className="bg-[#2DC55F] text-white font-black text-sm px-6 py-2.5 inline-block shadow-md tracking-wider"
-                      style={{ clipPath: 'polygon(0 0, 100% 0, 80% 100%, 20% 100%)' }}
+                      className="bg-[#2DC55F] text-slate-950 font-black text-sm w-12 h-14 flex items-center justify-center tracking-wider"
+                      style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
                     >
                       01
                     </div>
@@ -416,11 +416,11 @@ export default function HomePage() {
               const s = SERVICES[1];
               return (
                 <div className="group relative bg-white pt-14 pb-10 px-8 flex flex-col items-center text-center overflow-visible">
-                  {/* Angled Polygon Badge hanging half-above top border */}
-                  <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+                  {/* Honeycomb Hexagon Badge hanging half-above top border */}
+                  <div className="absolute -top-7 left-1/2 -translate-x-1/2 z-30 pointer-events-none drop-shadow-md">
                     <div
-                      className="bg-[#2DC55F] text-white font-black text-sm px-6 py-2.5 inline-block shadow-md tracking-wider"
-                      style={{ clipPath: 'polygon(0 0, 100% 0, 80% 100%, 20% 100%)' }}
+                      className="bg-[#2DC55F] text-slate-950 font-black text-sm w-12 h-14 flex items-center justify-center tracking-wider"
+                      style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
                     >
                       02
                     </div>
@@ -472,11 +472,11 @@ export default function HomePage() {
               const s = SERVICES[2];
               return (
                 <div className="group relative bg-white pt-14 pb-10 px-8 flex flex-col items-center text-center overflow-visible">
-                  {/* Angled Polygon Badge hanging half-above top border */}
-                  <div className="absolute -top-5 left-1/2 -translate-x-1/2 z-30 pointer-events-none">
+                  {/* Honeycomb Hexagon Badge hanging half-above top border */}
+                  <div className="absolute -top-7 left-1/2 -translate-x-1/2 z-30 pointer-events-none drop-shadow-md">
                     <div
-                      className="bg-[#2DC55F] text-white font-black text-sm px-6 py-2.5 inline-block shadow-md tracking-wider"
-                      style={{ clipPath: 'polygon(0 0, 100% 0, 80% 100%, 20% 100%)' }}
+                      className="bg-[#2DC55F] text-slate-950 font-black text-sm w-12 h-14 flex items-center justify-center tracking-wider"
+                      style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
                     >
                       03
                     </div>
