@@ -129,8 +129,29 @@ export default function HomeServicesGrid({ services }: HomeServicesGridProps) {
         </div>
       </div>
 
-      {/* Service Cards: Grid of 6 (or remaining) services */}
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-300">
+      {/* Service Cards: Grid of 6 services wrapped in relative container with floating arrows */}
+      <div className="relative group/grid">
+        {/* Floating Left Arrow */}
+        <button
+          onClick={handlePrev}
+          aria-label="Previous services page"
+          title="Previous services"
+          className="absolute -left-4 sm:-left-5 lg:-left-7 top-1/2 -translate-y-1/2 z-30 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white text-[#0c1e36] shadow-xl border border-slate-200/80 flex items-center justify-center hover:bg-[#2DC55F] hover:text-white hover:border-[#2DC55F] hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer backdrop-blur-sm"
+        >
+          <ChevronLeft className="w-6 h-6 stroke-[2.5] -translate-x-0.5" />
+        </button>
+
+        {/* Floating Right Arrow */}
+        <button
+          onClick={handleNext}
+          aria-label="Next services page"
+          title="Next services"
+          className="absolute -right-4 sm:-right-5 lg:-right-7 top-1/2 -translate-y-1/2 z-30 w-12 h-12 sm:w-14 sm:h-14 rounded-full bg-white text-[#0c1e36] shadow-xl border border-slate-200/80 flex items-center justify-center hover:bg-[#2DC55F] hover:text-white hover:border-[#2DC55F] hover:scale-110 active:scale-95 transition-all duration-300 cursor-pointer backdrop-blur-sm"
+        >
+          <ChevronRight className="w-6 h-6 stroke-[2.5] translate-x-0.5" />
+        </button>
+
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-300">
         {visibleServices.map((service, index) => {
           const IconComponent = iconMap[service.icon] || BookOpen;
           const globalIndex = startIndex + index;
@@ -198,6 +219,7 @@ export default function HomeServicesGrid({ services }: HomeServicesGridProps) {
             </Link>
           );
         })}
+        </div>
       </div>
 
       {/* Bottom Pagination & Arrow Navigation Bar */}
