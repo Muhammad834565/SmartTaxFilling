@@ -36,6 +36,7 @@
 .inzofin-emerald-text {
   background: linear-gradient(135deg, #2DC55F 0%, #4ade80 50%, #23a54e 100%);
   -webkit-background-clip: text;
+  background-clip: text;
   -webkit-text-fill-color: transparent;
 }
 
