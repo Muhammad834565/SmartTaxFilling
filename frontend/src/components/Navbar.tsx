@@ -22,13 +22,16 @@ import {
   ArrowRight,
   Landmark,
   Receipt,
+  FileSpreadsheet,
+  Users,
+  Truck,
   MessageSquare,
   Search,
   Facebook,
   Twitter,
   Instagram
 } from 'lucide-react';
-import { SITE_INFO } from '@/lib/data';
+import { SERVICES, SITE_INFO } from '@/lib/data';
 
 interface ServiceLink {
   title: string;
@@ -37,86 +40,47 @@ interface ServiceLink {
   icon: React.ComponentType<{ className?: string }>;
 }
 
-const USA_SERVICES: ServiceLink[] = [
-  {
-    title: 'Bookkeeping & Accounting',
-    href: '/services/bookkeeping-accounting-services',
-    desc: 'Monthly books, bank recs & ledger balancing',
-    icon: BookOpen,
-  },
-  {
-    title: 'US Tax Compliance & Filing',
-    href: '/services/us-tax-compliance-filing-services',
-    desc: 'Forms 1040, 1120, 1065, 5472 filings',
-    icon: FileText,
-  },
-  {
-    title: 'Startup Business Formation',
-    href: '/services/startup-business-formation-usa',
-    desc: 'US LLC, C-Corp, EIN & BOI registration',
-    icon: Rocket,
-  },
-  {
-    title: 'E-Commerce Accounting & Tax',
-    href: '/services/e-commerce-accounting-tax-services-us',
-    desc: 'Shopify, Amazon & Stripe reconciliations',
-    icon: ShoppingBag,
-  },
-  {
-    title: 'Payroll Tax Management',
-    href: '/services/payroll-tax-management',
-    desc: 'Forms 941, 940, W-2 & 1099 compliance',
-    icon: Coins,
-  },
-  {
-    title: 'Virtual Bank Accounts & Payment',
-    href: '/services/virtual-bank-accounts-payment-solutions',
-    desc: 'Mercury, Relay, Wise & Stripe onboarding',
-    icon: CreditCard,
-  },
-];
+const navIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  BookOpen,
+  FileText,
+  Rocket,
+  ShoppingBag,
+  Coins,
+  CreditCard,
+  Building,
+  Landmark,
+  Receipt,
+  FileSpreadsheet,
+  Users,
+  Truck,
+};
 
-const UK_SERVICES: ServiceLink[] = [
-  {
-    title: 'UK Company Formation (Ltd)',
-    href: '/services/uk-company-formation-compliance-services',
-    desc: 'Companies House registration, address & registers',
-    icon: Building,
-  },
-  {
-    title: 'UK CT600 & Statutory Accounts',
-    href: '/services/uk-tax-compliance-filing-services',
-    desc: 'HMRC Corporation Tax, CT600 & balance sheets',
-    icon: FileText,
-  },
-  {
-    title: 'UK VAT Registration & MTD',
-    href: '/services/uk-vat-registration-compliance',
-    desc: 'MTD-compliant digital quarterly VAT returns',
-    icon: Receipt,
-  },
-];
+const USA_SERVICES: ServiceLink[] = SERVICES
+  .filter((s) => s.category === 'USA')
+  .map((s) => ({
+    title: s.title,
+    href: `/services/${s.slug}`,
+    desc: s.shortDescription,
+    icon: navIconMap[s.icon] || BookOpen,
+  }));
 
-const PAKISTAN_SERVICES: ServiceLink[] = [
-  {
-    title: 'FBR Tax Filing & NTN Registration',
-    href: '/services/fbr-tax-filing-ntn-registration-pakistan',
-    desc: 'Active Taxpayer List (ATL) status & income tax',
-    icon: FileText,
-  },
-  {
-    title: 'SECP Company Incorporation',
-    href: '/services/secp-company-incorporation-pakistan',
-    desc: 'Private Limited (Pvt Ltd) setup & statutory filings',
-    icon: Building,
-  },
-  {
-    title: 'Provincial Sales Tax (PRA/SRB)',
-    href: '/services/sales-tax-pra-srb-fbr-pakistan',
-    desc: 'PRA, SRB & KPRA service tax registrations',
-    icon: Landmark,
-  },
-];
+const UK_SERVICES: ServiceLink[] = SERVICES
+  .filter((s) => s.category === 'UK')
+  .map((s) => ({
+    title: s.title,
+    href: `/services/${s.slug}`,
+    desc: s.shortDescription,
+    icon: navIconMap[s.icon] || Landmark,
+  }));
+
+const PAKISTAN_SERVICES: ServiceLink[] = SERVICES
+  .filter((s) => s.category === 'Pakistan')
+  .map((s) => ({
+    title: s.title,
+    href: `/services/${s.slug}`,
+    desc: s.shortDescription,
+    icon: navIconMap[s.icon] || FileText,
+  }));
 
 export default function Navbar() {
   const pathname = usePathname();
