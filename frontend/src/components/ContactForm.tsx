@@ -1,7 +1,7 @@
 'use client';
 
-import React, { useState, useEffect } from 'react';
-import { Send, CheckCircle2, AlertCircle, Loader2 } from 'lucide-react';
+import React, { useState, useEffect, useRef } from 'react';
+import { Send, CheckCircle2, AlertCircle, Loader2, ChevronDown } from 'lucide-react';
 import { submitInquiry } from '@/lib/api';
 import { SERVICES } from '@/lib/data';
 
@@ -23,6 +23,49 @@ const COUNTRY_TO_CATEGORY: Record<string, string> = {
   'United Kingdom': 'UK',
   Pakistan: 'Pakistan',
 };
+
+const COUNTRIES = [
+  {
+    value: 'United States',
+    label: 'United States',
+    flag: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" className="w-5 h-3.5 rounded-xs shrink-0 shadow-xs">
+        <rect width="60" height="30" fill="#B22234" />
+        <rect y="4.6" width="60" height="4.6" fill="#fff" />
+        <rect y="9.2" width="60" height="4.6" fill="#B22234" />
+        <rect y="13.8" width="60" height="4.6" fill="#fff" />
+        <rect y="18.4" width="60" height="4.6" fill="#B22234" />
+        <rect y="23" width="60" height="4.6" fill="#fff" />
+        <rect width="24" height="16" fill="#3C3B6E" />
+      </svg>
+    ),
+  },
+  {
+    value: 'United Kingdom',
+    label: 'United Kingdom',
+    flag: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" className="w-5 h-3.5 rounded-xs shrink-0 shadow-xs">
+        <rect width="60" height="30" fill="#012169" />
+        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6" />
+        <path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" strokeWidth="4" />
+        <path d="M30,0 V30 M0,15 H60" stroke="#fff" strokeWidth="10" />
+        <path d="M30,0 V30 M0,15 H60" stroke="#C8102E" strokeWidth="6" />
+      </svg>
+    ),
+  },
+  {
+    value: 'Pakistan',
+    label: 'Pakistan',
+    flag: (
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" className="w-5 h-3.5 rounded-xs shrink-0 shadow-xs">
+        <rect width="60" height="30" fill="#01411C" />
+        <rect width="15" height="30" fill="#fff" />
+        <circle cx="35" cy="15" r="8" fill="#fff" />
+        <circle cx="37" cy="15" r="6.5" fill="#01411C" />
+      </svg>
+    ),
+  },
+];
 
 export default function ContactForm({ initialService = '' }: ContactFormProps) {
   // Derive initial country from initialService if provided
@@ -53,6 +96,21 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
   const [loading, setLoading] = useState(false);
   const [success, setSuccess] = useState(false);
   const [error, setError] = useState<string | null>(null);
+
+  const [isCountryOpen, setIsCountryOpen] = useState(false);
+  const countryDropdownRef = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (countryDropdownRef.current && !countryDropdownRef.current.contains(event.target as Node)) {
+        setIsCountryOpen(false);
+      }
+    };
+    document.addEventListener('mousedown', handleClickOutside);
+    return () => document.removeEventListener('mousedown', handleClickOutside);
+  }, []);
+
+  const selectedCountryObj = COUNTRIES.find((c) => c.value === formData.country);
 
   // Services filtered by selected country
   const filteredServices =
@@ -166,32 +224,70 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
           />
         </div>
 
-        <div>
+        <div className="relative" ref={countryDropdownRef}>
           <label className="block text-xs font-bold uppercase tracking-wider text-[#0c1e36] mb-1.5">Country / Region</label>
-          <select
-            value={formData.country}
-            onChange={(e) => handleCountryChange(e.target.value)}
-            className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-[#2DC55F] transition-colors bg-white font-medium text-slate-800"
+          <button
+            type="button"
+            onClick={() => setIsCountryOpen((prev) => !prev)}
+            className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-[#2DC55F] transition-colors bg-white font-medium text-slate-800 flex items-center justify-between cursor-pointer"
           >
-            <option value="">— Select Country —</option>
-            <option value="United States">🇺🇸 United States</option>
-            <option value="United Kingdom">🇬🇧 United Kingdom</option>
-            <option value="Pakistan">🇵🇰 Pakistan</option>
-            <option value="Canada">Canada</option>
-            <option value="United Arab Emirates">United Arab Emirates</option>
-            <option value="Other">Other International</option>
-          </select>
+            <div className="flex items-center gap-2.5 truncate">
+              {selectedCountryObj ? (
+                <>
+                  {selectedCountryObj.flag}
+                  <span className="font-semibold text-slate-800">{selectedCountryObj.label}</span>
+                </>
+              ) : (
+                <span className="text-slate-400 font-normal">— Select Country —</span>
+              )}
+            </div>
+            <ChevronDown className={`w-4 h-4 text-slate-400 transition-transform duration-200 ${isCountryOpen ? 'rotate-180 text-[#2DC55F]' : ''}`} />
+          </button>
+
+          {/* Custom Dropdown Menu with real flags and only US, UK, Pakistan */}
+          {isCountryOpen && (
+            <div className="absolute left-0 right-0 top-full mt-1.5 bg-white rounded-xl border border-slate-200 shadow-xl py-1.5 z-40 animate-in fade-in zoom-in-95 duration-150">
+              <button
+                type="button"
+                onClick={() => {
+                  handleCountryChange('');
+                  setIsCountryOpen(false);
+                }}
+                className={`w-full px-3.5 py-2 text-xs font-medium text-left flex items-center gap-2 hover:bg-slate-50 transition-colors ${
+                  !formData.country ? 'text-[#2DC55F] font-bold bg-emerald-50/50' : 'text-slate-500'
+                }`}
+              >
+                — Select Country —
+              </button>
+              {COUNTRIES.map((c) => {
+                const isSelected = formData.country === c.value;
+                return (
+                  <button
+                    key={c.value}
+                    type="button"
+                    onClick={() => {
+                      handleCountryChange(c.value);
+                      setIsCountryOpen(false);
+                    }}
+                    className={`w-full px-3.5 py-2.5 text-xs font-semibold text-left flex items-center gap-2.5 transition-colors cursor-pointer ${
+                      isSelected
+                        ? 'bg-[#2DC55F] text-white'
+                        : 'text-slate-800 hover:bg-slate-100'
+                    }`}
+                  >
+                    {c.flag}
+                    <span>{c.label}</span>
+                  </button>
+                );
+              })}
+            </div>
+          )}
         </div>
       </div>
 
       <div>
         <label className="block text-xs font-bold uppercase tracking-wider text-[#0c1e36] mb-1.5">
           Service Required
-          {formData.country && COUNTRY_TO_CATEGORY[formData.country] && (
-            <span className="ml-2 normal-case font-normal text-[#2DC55F]">
-              — showing {formData.country} services
-            </span>
-          )}
         </label>
         <select
           value={formData.service}

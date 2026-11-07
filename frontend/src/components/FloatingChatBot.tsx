@@ -453,9 +453,6 @@ export default function FloatingChatBot() {
                         <option value="United States">United States</option>
                         <option value="United Kingdom">United Kingdom</option>
                         <option value="Pakistan">Pakistan</option>
-                        <option value="Canada">Canada</option>
-                        <option value="UAE">United Arab Emirates</option>
-                        <option value="Other">Other</option>
                       </select>
                     </div>
                     <div>
