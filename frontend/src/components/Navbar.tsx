@@ -104,24 +104,24 @@ export default function Navbar() {
         {/* Full-width flex container */}
         <div className="w-full h-full flex items-stretch justify-between">
 
-          {/* Left: Green badge with exact matching white diagonal separator line */}
+          {/* Left: Green badge with chevron point (> shape) */}
           <div className="flex items-stretch h-full">
             {/* Green rectangle container holding the location text */}
-            <div className="bg-[#2DC55F] text-white font-bold flex items-center pl-4 sm:pl-8 pr-3 text-[11px] sm:text-xs tracking-tight">
+            <div className="bg-[#2DC55F] text-white font-bold flex items-center pl-4 sm:pl-8 pr-2 text-[11px] sm:text-xs tracking-tight">
               <MapPin className="w-3.5 h-3.5 mr-2 text-white shrink-0" />
               <span className="truncate max-w-[260px] sm:max-w-none text-white font-semibold">{SITE_INFO.address}</span>
             </div>
 
-            {/* Seamless SVG slanted cap: green triangle + crisp white diagonal stroke */}
+            {/* Seamless SVG chevron pointer (> shape with white stroke) */}
             <svg
-              viewBox="0 0 28 40"
-              className="h-full w-7 block shrink-0 overflow-visible"
+              viewBox="0 0 24 40"
+              className="h-full w-6 block shrink-0 overflow-visible"
               preserveAspectRatio="none"
             >
-              {/* Green triangle filling the slant */}
-              <polygon points="0,0 28,40 0,40" fill="#2DC55F" />
-              {/* White diagonal — extended beyond viewBox so butt caps stay outside, parent clips cleanly */}
-              <line x1="-3" y1="-4" x2="31" y2="44" stroke="#ffffff" strokeWidth="5" strokeLinecap="butt" />
+              {/* Green chevron fill */}
+              <polygon points="0,0 20,20 0,40" fill="#2DC55F" />
+              {/* Crisp white chevron stroke on top */}
+              <polyline points="0,0 20,20 0,40" fill="none" stroke="#ffffff" strokeWidth="3.5" strokeLinejoin="miter" strokeLinecap="square" />
             </svg>
           </div>
 
@@ -429,9 +429,9 @@ export default function Navbar() {
             </button>
           </nav>
 
-          {/* Right Side: Exact Inzofin Full-Height Slanted Callout Box */}
+          {/* Right Side: Exact Inzofin Full-Height Chevron (> shape) Callout Box */}
           <div className="hidden lg:flex items-stretch self-stretch">
-            <div className="relative flex items-center bg-[#def4e5]/70 h-full px-8 xl:px-10 [clip-path:polygon(36px_0,100%_0,100%_100%,0_100%)]">
+            <div className="relative flex items-center bg-[#def4e5]/70 h-full pl-12 pr-8 xl:pr-10 [clip-path:polygon(28px_0,100%_0,100%_100%,28px_100%,0_50%)]">
               {/* Message outline icon */}
               <div className="w-10 h-10 rounded-lg flex items-center justify-center text-[#2DC55F] mr-3.5 shrink-0">
                 <MessageSquare className="w-8 h-8 stroke-[2.2]" />
