@@ -450,14 +450,25 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile hamburger menu */}
-          <div className="flex lg:hidden pr-4 sm:pr-8">
+          {/* Mobile Right Controls: Search Icon + Hamburger Menu */}
+          <div className="flex items-center gap-1 lg:hidden pr-4 sm:pr-8">
+            {/* Mobile Search Button */}
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
+              className="text-slate-700 hover:text-[#2DC55F] p-2 rounded-lg transition-colors cursor-pointer"
+              aria-label="Search website"
+            >
+              <Search className="w-5 h-5 stroke-[2.2]" />
+            </button>
+
+            {/* Mobile Menu Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-slate-800 hover:text-[#2DC55F] p-2 rounded-lg"
+              className="text-slate-800 hover:text-[#2DC55F] p-2 rounded-lg transition-colors cursor-pointer"
               aria-label="Toggle mobile menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-6 h-6 stroke-[2.2]" /> : <Menu className="w-6 h-6 stroke-[2.2]" />}
             </button>
           </div>
 
