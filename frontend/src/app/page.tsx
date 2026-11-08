@@ -682,15 +682,15 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 10. Frequently Asked Questions (Matching Reference Layout) */}
-      <section className="bg-slate-50 py-16 sm:py-20 border-y border-slate-200">
+      {/* 10. Frequently Asked Questions (Matching Reference Layout) - Hidden on mobile view */}
+      <section className="hidden md:block bg-slate-50 py-16 sm:py-20 border-y border-slate-200">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
           <FaqAccordion faqs={FAQS} />
         </div>
       </section>
 
-      {/* 11. Latest Blog & Tax Insights (Inzofin Home 1 News) */}
-      <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-12">
+      {/* 11. Latest Blog & Tax Insights (Inzofin Home 1 News) - Hidden on mobile view */}
+      <section className="hidden md:block max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6 space-y-12">
         <div className="flex flex-col sm:flex-row sm:items-end justify-between gap-6">
           <div className="space-y-3">
             <div className="inzofin-section-subtitle">
