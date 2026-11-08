@@ -61,8 +61,8 @@ export default function Footer() {
               </div>
             </div>
 
-            {/* Block 3: Slanted Green Phone / Question Banner */}
-            <div className="relative py-8 md:pl-8 flex items-center bg-[#2DC55F] text-slate-950 md:[clip-path:polygon(32px_0,100%_0,100%_100%,0_100%)] -mx-4 sm:-mx-6 lg:-mx-8 px-8 sm:px-10">
+            {/* Block 3: Chevron (> shape) Green Phone / Question Banner */}
+            <div className="relative py-8 md:pl-12 flex items-center bg-[#2DC55F] text-slate-950 md:[clip-path:polygon(28px_0,100%_0,100%_100%,28px_100%,0_50%)] -mx-4 sm:-mx-6 lg:-mx-8 px-8 sm:px-10">
               <div className="w-13 h-13 rounded-lg bg-[#0c1a2e] text-[#2DC55F] flex items-center justify-center shrink-0 mr-4 shadow-md">
                 <Headphones className="w-6 h-6 text-[#2DC55F]" />
               </div>

@@ -104,24 +104,24 @@ export default function Navbar() {
         {/* Full-width flex container */}
         <div className="w-full h-full flex items-stretch justify-between">
 
-          {/* Left: Green badge with exact matching white diagonal separator line */}
+          {/* Left: Green badge with chevron point (> shape) */}
           <div className="flex items-stretch h-full">
             {/* Green rectangle container holding the location text */}
-            <div className="bg-[#2DC55F] text-white font-bold flex items-center pl-4 sm:pl-8 pr-3 text-[11px] sm:text-xs tracking-tight">
+            <div className="bg-[#2DC55F] text-white font-bold flex items-center pl-4 sm:pl-8 pr-2 text-[11px] sm:text-xs tracking-tight">
               <MapPin className="w-3.5 h-3.5 mr-2 text-white shrink-0" />
               <span className="truncate max-w-[260px] sm:max-w-none text-white font-semibold">{SITE_INFO.address}</span>
             </div>
 
-            {/* Seamless SVG slanted cap: green triangle + crisp white diagonal stroke */}
+            {/* Seamless SVG chevron pointer (> shape with white stroke) */}
             <svg
-              viewBox="0 0 28 40"
-              className="h-full w-7 block shrink-0 overflow-visible"
+              viewBox="0 0 24 40"
+              className="h-full w-6 block shrink-0 overflow-visible"
               preserveAspectRatio="none"
             >
-              {/* Green triangle filling the slant */}
-              <polygon points="0,0 28,40 0,40" fill="#2DC55F" />
-              {/* White diagonal — extended beyond viewBox so butt caps stay outside, parent clips cleanly */}
-              <line x1="-3" y1="-4" x2="31" y2="44" stroke="#ffffff" strokeWidth="5" strokeLinecap="butt" />
+              {/* Green chevron fill */}
+              <polygon points="0,0 20,20 0,40" fill="#2DC55F" />
+              {/* Crisp white chevron stroke on top */}
+              <polyline points="0,0 20,20 0,40" fill="none" stroke="#ffffff" strokeWidth="3.5" strokeLinejoin="miter" strokeLinecap="square" />
             </svg>
           </div>
 
@@ -429,9 +429,9 @@ export default function Navbar() {
             </button>
           </nav>
 
-          {/* Right Side: Exact Inzofin Full-Height Slanted Callout Box */}
+          {/* Right Side: Exact Inzofin Full-Height Chevron (> shape) Callout Box */}
           <div className="hidden lg:flex items-stretch self-stretch">
-            <div className="relative flex items-center bg-[#def4e5]/70 h-full px-8 xl:px-10 [clip-path:polygon(36px_0,100%_0,100%_100%,0_100%)]">
+            <div className="relative flex items-center bg-[#def4e5]/70 h-full pl-12 pr-8 xl:pr-10 [clip-path:polygon(28px_0,100%_0,100%_100%,28px_100%,0_50%)]">
               {/* Message outline icon */}
               <div className="w-10 h-10 rounded-lg flex items-center justify-center text-[#2DC55F] mr-3.5 shrink-0">
                 <MessageSquare className="w-8 h-8 stroke-[2.2]" />
@@ -450,23 +450,34 @@ export default function Navbar() {
             </div>
           </div>
 
-          {/* Mobile hamburger menu */}
-          <div className="flex lg:hidden pr-4 sm:pr-8">
+          {/* Mobile Right Controls: Search Icon + Hamburger Menu */}
+          <div className="flex items-center gap-1 lg:hidden pr-4 sm:pr-8">
+            {/* Mobile Search Button */}
+            <button
+              type="button"
+              onClick={() => setSearchOpen(true)}
+              className="text-slate-700 hover:text-[#2DC55F] p-2 rounded-lg transition-colors cursor-pointer"
+              aria-label="Search website"
+            >
+              <Search className="w-5 h-5 stroke-[2.2]" />
+            </button>
+
+            {/* Mobile Menu Toggle Button */}
             <button
               onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
-              className="text-slate-800 hover:text-[#2DC55F] p-2 rounded-lg"
+              className="text-slate-800 hover:text-[#2DC55F] p-2 rounded-lg transition-colors cursor-pointer"
               aria-label="Toggle mobile menu"
             >
-              {mobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
+              {mobileMenuOpen ? <X className="w-6 h-6 stroke-[2.2]" /> : <Menu className="w-6 h-6 stroke-[2.2]" />}
             </button>
           </div>
 
         </div>
       </div>
 
-      {/* Mobile Drawer */}
+      {/* Mobile Drawer with smooth scroll and max-height */}
       {mobileMenuOpen && (
-        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-6 space-y-3">
+        <div className="lg:hidden bg-white border-b border-slate-200 px-4 pt-3 pb-8 space-y-3 max-h-[calc(100vh-120px)] overflow-y-auto overscroll-contain shadow-2xl">
           <Link
             href="/"
             onClick={() => setMobileMenuOpen(false)}
@@ -484,12 +495,16 @@ export default function Navbar() {
 
           {/* Services Accordion in Mobile */}
           <div className="border-t border-b border-slate-100 py-2 space-y-1">
-            <div className="text-xs uppercase font-extrabold text-[#2DC55F] tracking-wider py-1">
-              All Services
-            </div>
+            <Link
+              href="/services"
+              onClick={() => setMobileMenuOpen(false)}
+              className="text-xs uppercase font-extrabold text-[#2DC55F] hover:text-emerald-700 tracking-wider py-1 block"
+            >
+              All Services (15) →
+            </Link>
             <div className="pl-2 space-y-1">
               <div className="text-xs font-bold text-slate-700 pt-1 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#2DC55F]" /> USA Services
+                <span className="w-1.5 h-1.5 rounded-full bg-[#2DC55F]" /> USA Services ({USA_SERVICES.length})
               </div>
               {USA_SERVICES.map((s) => (
                 <Link
@@ -503,7 +518,7 @@ export default function Navbar() {
               ))}
 
               <div className="text-xs font-bold text-slate-700 pt-2 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#2DC55F]" /> UK Services
+                <span className="w-1.5 h-1.5 rounded-full bg-[#2DC55F]" /> UK Services ({UK_SERVICES.length})
               </div>
               {UK_SERVICES.map((s) => (
                 <Link
@@ -517,7 +532,7 @@ export default function Navbar() {
               ))}
 
               <div className="text-xs font-bold text-slate-700 pt-2 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#2DC55F]" /> Pakistan Services
+                <span className="w-1.5 h-1.5 rounded-full bg-[#2DC55F]" /> Pakistan Services ({PAKISTAN_SERVICES.length})
               </div>
               {PAKISTAN_SERVICES.map((s) => (
                 <Link
