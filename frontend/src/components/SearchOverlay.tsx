@@ -165,8 +165,8 @@ export default function SearchOverlay({ isOpen, onClose }: Props) {
       {/* Top Banner Search Bar (Full-width Inzofin Slanted Style) */}
       <div className="w-full bg-white shadow-2xl border-b border-slate-200">
         <div className="flex items-stretch h-20 w-full">
-          {/* Slanted Green Brand Icon Block */}
-          <div className="bg-[#2DC55F] text-white flex items-center justify-center px-6 sm:px-10 shrink-0 [clip-path:polygon(0_0,100%_0,72%_100%,0_100%)] pr-10 sm:pr-14">
+          {/* Chevron (> shape) Green Brand Icon Block */}
+          <div className="bg-[#2DC55F] text-white flex items-center justify-center pl-6 sm:pl-10 pr-10 sm:pr-14 shrink-0 [clip-path:polygon(0_0,calc(100%-20px)_0,100%_50%,calc(100%-20px)_100%,0_100%)]">
             <Search className="w-6 h-6 stroke-[2.5]" />
           </div>
 
