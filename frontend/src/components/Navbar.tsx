@@ -87,6 +87,8 @@ export default function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
+  const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
+  const [mobileActiveRegion, setMobileActiveRegion] = useState<'USA' | 'UK' | 'PAKISTAN' | null>('USA');
   const [activeRegion, setActiveRegion] = useState<'USA' | 'UK' | 'PAKISTAN'>('USA');
   const [searchOpen, setSearchOpen] = useState(false);
 
@@ -493,58 +495,79 @@ export default function Navbar() {
             About Us
           </Link>
 
-          {/* Services Accordion in Mobile */}
-          <div className="border-t border-b border-slate-100 py-2 space-y-1">
-            <Link
-              href="/services"
-              onClick={() => setMobileMenuOpen(false)}
-              className="text-xs uppercase font-extrabold text-[#2DC55F] hover:text-emerald-700 tracking-wider py-1 block"
+          {/* Services Collapsible Accordion in Mobile */}
+          <div className="border-t border-b border-slate-100 py-1">
+            <button
+              type="button"
+              onClick={() => setMobileServicesOpen((prev) => !prev)}
+              className="w-full flex items-center justify-between py-2 text-sm font-bold text-slate-800 hover:text-[#2DC55F] cursor-pointer"
             >
-              All Services (15) →
-            </Link>
-            <div className="pl-2 space-y-1">
-              <div className="text-xs font-bold text-slate-700 pt-1 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#2DC55F]" /> USA Services ({USA_SERVICES.length})
-              </div>
-              {USA_SERVICES.map((s) => (
-                <Link
-                  key={s.href}
-                  href={s.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block pl-3 py-1 text-xs text-slate-600 hover:text-[#2DC55F]"
-                >
-                  {s.title}
-                </Link>
-              ))}
+              <span>Services</span>
+              <ChevronDown
+                className={`w-4 h-4 text-slate-500 transition-transform duration-200 ${
+                  mobileServicesOpen ? 'rotate-180 text-[#2DC55F]' : ''
+                }`}
+              />
+            </button>
 
-              <div className="text-xs font-bold text-slate-700 pt-2 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#2DC55F]" /> UK Services ({UK_SERVICES.length})
-              </div>
-              {UK_SERVICES.map((s) => (
-                <Link
-                  key={s.href}
-                  href={s.href}
-                  onClick={() => setMobileMenuOpen(false)}
-                  className="block pl-3 py-1 text-xs text-slate-600 hover:text-[#2DC55F]"
-                >
-                  {s.title}
-                </Link>
-              ))}
+            {/* Accordion Content */}
+            {mobileServicesOpen && (
+              <div className="space-y-3 pb-2 pt-1 animate-in fade-in duration-150">
+                {/* Region Selector Pills */}
+                <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-xl">
+                  {(['USA', 'UK', 'PAKISTAN'] as const).map((r) => {
+                    const isActive = mobileActiveRegion === r;
+                    const label = r === 'USA' ? 'USA' : r === 'UK' ? 'UK' : 'Pakistan';
+                    const count = r === 'USA' ? USA_SERVICES.length : r === 'UK' ? UK_SERVICES.length : PAKISTAN_SERVICES.length;
+                    return (
+                      <button
+                        key={r}
+                        type="button"
+                        onClick={() => setMobileActiveRegion(r)}
+                        className={`flex-1 py-1.5 px-2 text-xs font-bold rounded-lg transition-all text-center flex items-center justify-center gap-1 cursor-pointer ${
+                          isActive
+                            ? 'bg-[#2DC55F] text-white shadow-sm font-extrabold'
+                            : 'text-slate-600 hover:text-slate-900'
+                        }`}
+                      >
+                        <span>{label}</span>
+                        <span className={`text-[10px] px-1 rounded-full ${isActive ? 'bg-white/25 text-white' : 'bg-slate-200 text-slate-700'}`}>
+                          {count}
+                        </span>
+                      </button>
+                    );
+                  })}
+                </div>
 
-              <div className="text-xs font-bold text-slate-700 pt-2 flex items-center gap-1.5">
-                <span className="w-1.5 h-1.5 rounded-full bg-[#2DC55F]" /> Pakistan Services ({PAKISTAN_SERVICES.length})
-              </div>
-              {PAKISTAN_SERVICES.map((s) => (
+                {/* Filtered Services List based on active region tab */}
+                <div className="space-y-1 pl-1">
+                  {(mobileActiveRegion === 'USA'
+                    ? USA_SERVICES
+                    : mobileActiveRegion === 'UK'
+                    ? UK_SERVICES
+                    : PAKISTAN_SERVICES
+                  ).map((s) => (
+                    <Link
+                      key={s.href}
+                      href={s.href}
+                      onClick={() => setMobileMenuOpen(false)}
+                      className="block px-3 py-2 rounded-lg text-xs font-medium text-slate-700 hover:bg-emerald-50 hover:text-[#2DC55F] transition-colors"
+                    >
+                      {s.title}
+                    </Link>
+                  ))}
+                </div>
+
+                {/* Explore all services link */}
                 <Link
-                  key={s.href}
-                  href={s.href}
+                  href="/services"
                   onClick={() => setMobileMenuOpen(false)}
-                  className="block pl-3 py-1 text-xs text-slate-600 hover:text-[#2DC55F]"
+                  className="block text-center py-2 text-xs font-black uppercase tracking-wider text-[#2DC55F] hover:underline border-t border-slate-100 pt-2"
                 >
-                  {s.title}
+                  View All 15 Services →
                 </Link>
-              ))}
-            </div>
+              </div>
+            )}
           </div>
 
           <Link
