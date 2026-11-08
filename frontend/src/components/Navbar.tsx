@@ -22,13 +22,17 @@ import {
   ArrowRight,
   Landmark,
   Receipt,
+  FileSpreadsheet,
+  Users,
+  Truck,
   MessageSquare,
   Search,
   Facebook,
   Twitter,
   Instagram
 } from 'lucide-react';
-import { SITE_INFO } from '@/lib/data';
+import { SERVICES, SITE_INFO } from '@/lib/data';
+import SearchOverlay from '@/components/SearchOverlay';
 
 interface ServiceLink {
   title: string;
@@ -37,92 +41,54 @@ interface ServiceLink {
   icon: React.ComponentType<{ className?: string }>;
 }
 
-const USA_SERVICES: ServiceLink[] = [
-  {
-    title: 'Bookkeeping & Accounting',
-    href: '/services/bookkeeping-accounting-services',
-    desc: 'Monthly books, bank recs & ledger balancing',
-    icon: BookOpen,
-  },
-  {
-    title: 'US Tax Compliance & Filing',
-    href: '/services/us-tax-compliance-filing-services',
-    desc: 'Forms 1040, 1120, 1065, 5472 filings',
-    icon: FileText,
-  },
-  {
-    title: 'Startup Business Formation',
-    href: '/services/startup-business-formation-usa',
-    desc: 'US LLC, C-Corp, EIN & BOI registration',
-    icon: Rocket,
-  },
-  {
-    title: 'E-Commerce Accounting & Tax',
-    href: '/services/e-commerce-accounting-tax-services-us',
-    desc: 'Shopify, Amazon & Stripe reconciliations',
-    icon: ShoppingBag,
-  },
-  {
-    title: 'Payroll Tax Management',
-    href: '/services/payroll-tax-management',
-    desc: 'Forms 941, 940, W-2 & 1099 compliance',
-    icon: Coins,
-  },
-  {
-    title: 'Virtual Bank Accounts & Payment',
-    href: '/services/virtual-bank-accounts-payment-solutions',
-    desc: 'Mercury, Relay, Wise & Stripe onboarding',
-    icon: CreditCard,
-  },
-];
+const navIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
+  BookOpen,
+  FileText,
+  Rocket,
+  ShoppingBag,
+  Coins,
+  CreditCard,
+  Building,
+  Landmark,
+  Receipt,
+  FileSpreadsheet,
+  Users,
+  Truck,
+};
 
-const UK_SERVICES: ServiceLink[] = [
-  {
-    title: 'UK Company Formation (Ltd)',
-    href: '/services/uk-company-formation-compliance-services',
-    desc: 'Companies House registration, address & registers',
-    icon: Building,
-  },
-  {
-    title: 'UK CT600 & Statutory Accounts',
-    href: '/services/uk-tax-compliance-filing-services',
-    desc: 'HMRC Corporation Tax, CT600 & balance sheets',
-    icon: FileText,
-  },
-  {
-    title: 'UK VAT Registration & MTD',
-    href: '/services/uk-vat-registration-compliance',
-    desc: 'MTD-compliant digital quarterly VAT returns',
-    icon: Receipt,
-  },
-];
+const USA_SERVICES: ServiceLink[] = SERVICES
+  .filter((s) => s.category === 'USA')
+  .map((s) => ({
+    title: s.title,
+    href: `/services/${s.slug}`,
+    desc: s.shortDescription,
+    icon: navIconMap[s.icon] || BookOpen,
+  }));
 
-const PAKISTAN_SERVICES: ServiceLink[] = [
-  {
-    title: 'FBR Tax Filing & NTN Registration',
-    href: '/services/fbr-tax-filing-ntn-registration-pakistan',
-    desc: 'Active Taxpayer List (ATL) status & income tax',
-    icon: FileText,
-  },
-  {
-    title: 'SECP Company Incorporation',
-    href: '/services/secp-company-incorporation-pakistan',
-    desc: 'Private Limited (Pvt Ltd) setup & statutory filings',
-    icon: Building,
-  },
-  {
-    title: 'Provincial Sales Tax (PRA/SRB)',
-    href: '/services/sales-tax-pra-srb-fbr-pakistan',
-    desc: 'PRA, SRB & KPRA service tax registrations',
-    icon: Landmark,
-  },
-];
+const UK_SERVICES: ServiceLink[] = SERVICES
+  .filter((s) => s.category === 'UK')
+  .map((s) => ({
+    title: s.title,
+    href: `/services/${s.slug}`,
+    desc: s.shortDescription,
+    icon: navIconMap[s.icon] || Landmark,
+  }));
+
+const PAKISTAN_SERVICES: ServiceLink[] = SERVICES
+  .filter((s) => s.category === 'Pakistan')
+  .map((s) => ({
+    title: s.title,
+    href: `/services/${s.slug}`,
+    desc: s.shortDescription,
+    icon: navIconMap[s.icon] || FileText,
+  }));
 
 export default function Navbar() {
   const pathname = usePathname();
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [activeRegion, setActiveRegion] = useState<'USA' | 'UK' | 'PAKISTAN'>('USA');
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const currentRegionServices =
     activeRegion === 'USA'
@@ -286,7 +252,7 @@ export default function Navbar() {
               {/* Flyout Submenu */}
               {servicesDropdownOpen && (
                 <div className="absolute top-full -left-20 pt-2 z-50">
-                  <div className="w-[680px] bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden flex animate-in fade-in slide-in-from-top-2 duration-150 normal-case tracking-normal">
+                  <div className="w-[680px] max-h-[80vh] sm:max-h-[540px] bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden flex animate-in fade-in slide-in-from-top-2 duration-150 normal-case tracking-normal">
 
                     {/* Left Column: Countries Tabs (USA, UK, PAKISTAN) */}
                     <div className="w-52 bg-slate-50/80 p-3 border-r border-slate-100 flex flex-col gap-1.5 shrink-0">
@@ -355,49 +321,49 @@ export default function Navbar() {
                     </div>
 
                     {/* Right Column: Dynamic Services of Active Region */}
-                    <div className="flex-1 p-5 bg-white flex flex-col justify-between">
-                      <div>
-                        <div className="flex items-center justify-between pb-3 mb-3 border-b border-slate-100">
-                          <div className="text-xs font-bold text-slate-900 flex items-center gap-2">
-                            <span className="w-2 h-2 rounded-full bg-[#2DC55F]" />
-                            <span>
-                              {activeRegion === 'USA' && 'United States Tax & Accounting Solutions'}
-                              {activeRegion === 'UK' && 'United Kingdom Statutory & Tax Solutions'}
-                              {activeRegion === 'PAKISTAN' && 'Pakistan FBR, SECP & Provincial Sales Tax'}
-                            </span>
-                          </div>
-                          <span className="text-[10px] font-semibold text-slate-400">
-                            {currentRegionServices.length} Services
+                    <div className="flex-1 p-5 bg-white flex flex-col overflow-hidden">
+                      {/* Pinned Header */}
+                      <div className="flex items-center justify-between pb-3 mb-2 border-b border-slate-100 shrink-0">
+                        <div className="text-xs font-bold text-slate-900 flex items-center gap-2">
+                          <span className="w-2 h-2 rounded-full bg-[#2DC55F]" />
+                          <span>
+                            {activeRegion === 'USA' && 'United States Tax & Accounting Solutions'}
+                            {activeRegion === 'UK' && 'United Kingdom Statutory & Tax Solutions'}
+                            {activeRegion === 'PAKISTAN' && 'Pakistan FBR, SECP & Provincial Sales Tax'}
                           </span>
                         </div>
-
-                        <div className="grid grid-cols-1 gap-2.5">
-                          {currentRegionServices.map((service) => {
-                            const IconComponent = service.icon;
-                            return (
-                              <Link
-                                key={service.href}
-                                href={service.href}
-                                className="group flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors"
-                              >
-                                <div className="w-8 h-8 rounded-lg bg-emerald-50 text-[#2DC55F] group-hover:bg-[#2DC55F] group-hover:text-slate-950 flex items-center justify-center shrink-0 transition-colors">
-                                  <IconComponent className="w-4 h-4" />
-                                </div>
-                                <div className="flex-1 min-w-0">
-                                  <div className="text-xs font-bold text-slate-900 group-hover:text-[#2DC55F] transition-colors flex items-center gap-1.5">
-                                    <span>{service.title}</span>
-                                    <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-[#2DC55F]" />
-                                  </div>
-                                  <p className="text-[11px] text-slate-500 truncate">
-                                    {service.desc}
-                                  </p>
-                                </div>
-                              </Link>
-                            );
-                          })}
-                        </div>
+                        <span className="text-[10px] font-semibold text-slate-400">
+                          {currentRegionServices.length} Services
+                        </span>
                       </div>
 
+                      {/* Scrollable List with custom-scrollbar */}
+                      <div className="overflow-y-auto pr-1.5 custom-scrollbar flex-1 space-y-1.5 max-h-[440px]">
+                        {currentRegionServices.map((service) => {
+                          const IconComponent = service.icon;
+                          return (
+                            <Link
+                              key={service.href}
+                              href={service.href}
+                              onClick={() => setServicesDropdownOpen(false)}
+                              className="group flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors"
+                            >
+                              <div className="w-8 h-8 rounded-lg bg-emerald-50 text-[#2DC55F] group-hover:bg-[#2DC55F] group-hover:text-slate-950 flex items-center justify-center shrink-0 transition-colors">
+                                <IconComponent className="w-4 h-4" />
+                              </div>
+                              <div className="flex-1 min-w-0">
+                                <div className="text-xs font-bold text-slate-900 group-hover:text-[#2DC55F] transition-colors flex items-center gap-1.5">
+                                  <span>{service.title}</span>
+                                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-[#2DC55F]" />
+                                </div>
+                                <p className="text-[11px] text-slate-500 truncate">
+                                  {service.desc}
+                                </p>
+                              </div>
+                            </Link>
+                          );
+                        })}
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -456,7 +422,8 @@ export default function Navbar() {
             <button
               type="button"
               aria-label="Search"
-              className="text-slate-700 hover:text-[#2DC55F] transition-colors p-1"
+              onClick={() => setSearchOpen(true)}
+              className="text-slate-700 hover:text-[#2DC55F] transition-colors p-1 cursor-pointer"
             >
               <Search className="w-4 h-4" />
             </button>
@@ -600,6 +567,9 @@ export default function Navbar() {
           </div>
         </div>
       )}
+
+      {/* Search Overlay — rendered outside <header> flow so it covers full viewport */}
+      <SearchOverlay isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 }

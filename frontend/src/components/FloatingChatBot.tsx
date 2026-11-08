@@ -179,22 +179,25 @@ export default function FloatingChatBot() {
     <>
       {/* ─── Floating Trigger Button (Hidden when chat window is open) ─ */}
       {!isOpen && (
-        <div className="fixed bottom-6 right-6 z-50 flex items-center animate-in fade-in zoom-in-95 duration-200 group">
-          <div className="hidden sm:flex items-center gap-2 mr-3 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-full shadow-lg border border-slate-200 text-xs font-semibold text-slate-800 opacity-0 group-hover:opacity-100 transition-opacity duration-200 pointer-events-none group-hover:pointer-events-auto">
-            <span className="w-2 h-2 rounded-full bg-[#2DC55F] animate-ping" />
-            <span>Consultation & Booking</span>
-          </div>
+        <div className="fixed bottom-6 right-6 z-50 pointer-events-none">
+          <div className="relative flex items-center justify-end">
+            <button
+              onClick={() => setIsOpen(true)}
+              aria-label="Open SMARTax Support Chat"
+              className="peer pointer-events-auto relative w-14 h-14 rounded-full bg-[#0c1a2e] hover:bg-[#122642] text-white flex items-center justify-center shadow-xl hover:shadow-2xl hover:scale-105 transition-all border-2 border-[#2DC55F] cursor-pointer"
+            >
+              <MessageSquare className="w-6 h-6 text-[#2DC55F]" />
+              <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#2DC55F] rounded-full border-2 border-white flex items-center justify-center">
+                <Sparkles className="w-2.5 h-2.5 text-slate-950" />
+              </span>
+            </button>
 
-          <button
-            onClick={() => setIsOpen(true)}
-            aria-label="Open SMARTax Support Chat"
-            className="relative w-14 h-14 rounded-full bg-[#0c1a2e] hover:bg-[#122642] text-white flex items-center justify-center shadow-xl hover:shadow-2xl hover:scale-105 transition-all border-2 border-[#2DC55F] cursor-pointer group"
-          >
-            <MessageSquare className="w-6 h-6 text-[#2DC55F]" />
-            <span className="absolute -top-1 -right-1 w-4 h-4 bg-[#2DC55F] rounded-full border-2 border-white flex items-center justify-center">
-              <Sparkles className="w-2.5 h-2.5 text-slate-950" />
-            </span>
-          </button>
+            {/* Tooltip appears ONLY when directly hovering over the button (peer-hover) */}
+            <div className="absolute right-full mr-3 hidden sm:flex items-center gap-2 bg-white/95 backdrop-blur-md px-3.5 py-2 rounded-full shadow-lg border border-slate-200 text-xs font-semibold text-slate-800 whitespace-nowrap opacity-0 peer-hover:opacity-100 transition-opacity duration-200 pointer-events-none">
+              <span className="w-2 h-2 rounded-full bg-[#2DC55F] animate-ping" />
+              <span>Consultation & Booking</span>
+            </div>
+          </div>
         </div>
       )}
 
@@ -450,9 +453,6 @@ export default function FloatingChatBot() {
                         <option value="United States">United States</option>
                         <option value="United Kingdom">United Kingdom</option>
                         <option value="Pakistan">Pakistan</option>
-                        <option value="Canada">Canada</option>
-                        <option value="UAE">United Arab Emirates</option>
-                        <option value="Other">Other</option>
                       </select>
                     </div>
                     <div>

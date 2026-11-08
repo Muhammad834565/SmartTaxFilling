@@ -50,10 +50,10 @@ export default function ServiceDetailPage({
       {/* Inzofin Breadcrumb Header Banner */}
       <section className="bg-[#0c1a2e] text-white py-16 sm:py-20 border-b border-[#152c4e] relative overflow-hidden">
         <div className="absolute inset-0 inzofin-pattern-grid opacity-30 pointer-events-none" />
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+        <div className="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+          <div className="flex flex-col lg:flex-row items-center justify-between gap-10 lg:gap-16">
             {/* Header Text */}
-            <div className="lg:col-span-7 space-y-4">
+            <div className="flex-1 max-w-xl lg:max-w-2xl space-y-4 text-left">
               <div className="flex items-center gap-2 text-xs font-semibold text-slate-400">
                 <Link href="/" className="hover:text-[#2DC55F] transition-colors">Home</Link>
                 <span>/</span>
@@ -69,32 +69,30 @@ export default function ServiceDetailPage({
                 <h1 className="text-3xl sm:text-4xl lg:text-5xl font-black text-white tracking-tight leading-tight">
                   {service.title}
                 </h1>
-                <p className="text-sm sm:text-base text-slate-300 leading-relaxed max-w-2xl">
+                <p className="text-sm sm:text-base text-slate-300 leading-relaxed">
                   {service.shortDescription}
                 </p>
               </div>
             </div>
 
-            {/* Header Right Visual Card */}
-            <div className="lg:col-span-5 flex justify-center lg:justify-end">
-              <div className="relative group w-full max-w-md h-56 sm:h-64 rounded-2xl overflow-hidden border-2 border-[#2DC55F]/40 shadow-2xl bg-[#071324]">
-                {/* Background Pattern */}
-                <div className="absolute inset-0 bg-gradient-to-t from-[#0c1a2e] via-transparent to-transparent z-10" />
-                {/* eslint-disable-next-line @next/next/no-img-element */}
-                <img
-                  src={service.imageUrl || '/sevices/Tax%20Compliance%20&%20Filing%20Services.png'}
-                  alt={service.title}
-                  className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
-                />
-                {/* Pill Overlay */}
-                <div className="absolute bottom-3 left-3 right-3 z-20 bg-[#0c1a2e]/90 backdrop-blur-md border border-[#2DC55F]/30 rounded-xl px-4 py-2.5 flex items-center justify-between">
-                  <div className="flex items-center gap-2">
-                    <span className="w-2.5 h-2.5 rounded-full bg-[#2DC55F] animate-ping" />
-                    <span className="text-[11px] font-bold text-white tracking-wider uppercase">
-                      {service.category} Verified Compliance
-                    </span>
-                  </div>
-                  <span className="text-[11px] font-extrabold text-[#2DC55F]">100% Guaranteed</span>
+            {/* Header Right Visual Card — Hexagon Shape */}
+            <div className="shrink-0 flex items-center justify-center py-2">
+              <div className="relative group w-[285px] h-[330px] sm:w-[325px] sm:h-[375px] transition-transform duration-500 group-hover:scale-[1.02] drop-shadow-[0_15px_30px_rgba(0,0,0,0.6)]">
+                {/* Clipped image wrapper */}
+                <div
+                  className="w-full h-full relative overflow-hidden bg-[#071324]"
+                  style={{ clipPath: 'polygon(50% 0%, 100% 25%, 100% 75%, 50% 100%, 0% 75%, 0% 25%)' }}
+                >
+                  {/* Subtle dark gradient overlay */}
+                  <div className="absolute inset-0 bg-gradient-to-t from-[#0c1a2e]/40 via-transparent to-transparent z-10 pointer-events-none" />
+
+                  {/* Service Image */}
+                  {/* eslint-disable-next-line @next/next/no-img-element */}
+                  <img
+                    src={service.imageUrl || '/sevices/Tax%20Compliance%20&%20Filing%20Services.png'}
+                    alt={service.title}
+                    className="w-full h-full object-cover object-center transform group-hover:scale-105 transition-transform duration-700 ease-out"
+                  />
                 </div>
               </div>
             </div>
