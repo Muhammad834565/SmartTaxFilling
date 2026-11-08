@@ -73,13 +73,27 @@ export default function HomePage() {
   return (
     <div className="space-y-24 bg-white overflow-hidden">
       {/* 1. Hero Section (Inzofin Home 1 Signature Layout) */}
-      <section className="relative pt-6 sm:pt-8 md:pt-10 pb-6 md:pb-8 inzofin-hero-bg text-white overflow-hidden border-b border-[#152c4e]">
-        {/* Decorative Grid & Glow */}
-        <div className="absolute inset-0 inzofin-pattern-grid opacity-60 pointer-events-none" />
-        <div className="absolute top-0 right-1/4 w-[700px] h-[500px] bg-[#2DC55F]/10 blur-[130px] rounded-full pointer-events-none" />
-        <div className="absolute -bottom-20 -left-20 w-[500px] h-[500px] bg-blue-600/10 blur-[120px] rounded-full pointer-events-none" />
+      <section className="relative pt-6 sm:pt-8 md:pt-10 pb-6 md:pb-8 text-white overflow-hidden border-b border-[#152c4e]">
+        {/* Background Image */}
+        <div className="absolute inset-0 z-0">
+          {/* eslint-disable-next-line @next/next/no-img-element */}
+          <img
+            src="/HeroSection.png"
+            alt="Hero background"
+            className="w-full h-full object-cover object-center"
+          />
+          {/* Dark overlay to keep text readable */}
+          <div className="absolute inset-0 bg-[#07101e]/55" />
+          {/* Extra emerald tint gradient — dark on RIGHT side where honeycomb sits */}
+          <div className="absolute inset-0 bg-gradient-to-l from-[#07101e]/75 via-[#0c1a2e]/45 to-transparent" />
+        </div>
 
-        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10">
+        {/* Decorative Grid & Glow — on top of image */}
+        <div className="absolute inset-0 inzofin-pattern-grid opacity-30 pointer-events-none z-10" />
+        <div className="absolute top-0 right-1/4 w-[700px] h-[500px] bg-[#2DC55F]/8 blur-[130px] rounded-full pointer-events-none z-10" />
+        <div className="absolute -bottom-20 -left-20 w-[500px] h-[500px] bg-blue-600/8 blur-[120px] rounded-full pointer-events-none z-10" />
+
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
           <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
             {/* Left Content Column */}
             <div className="lg:col-span-6 space-y-4 text-center lg:text-left">

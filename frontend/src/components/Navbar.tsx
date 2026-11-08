@@ -32,6 +32,7 @@ import {
   Instagram
 } from 'lucide-react';
 import { SERVICES, SITE_INFO } from '@/lib/data';
+import SearchOverlay from '@/components/SearchOverlay';
 
 interface ServiceLink {
   title: string;
@@ -87,6 +88,7 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [activeRegion, setActiveRegion] = useState<'USA' | 'UK' | 'PAKISTAN'>('USA');
+  const [searchOpen, setSearchOpen] = useState(false);
 
   const currentRegionServices =
     activeRegion === 'USA'
@@ -420,7 +422,8 @@ export default function Navbar() {
             <button
               type="button"
               aria-label="Search"
-              className="text-slate-700 hover:text-[#2DC55F] transition-colors p-1"
+              onClick={() => setSearchOpen(true)}
+              className="text-slate-700 hover:text-[#2DC55F] transition-colors p-1 cursor-pointer"
             >
               <Search className="w-4 h-4" />
             </button>
@@ -564,6 +567,9 @@ export default function Navbar() {
           </div>
         </div>
       )}
+
+      {/* Search Overlay — rendered outside <header> flow so it covers full viewport */}
+      <SearchOverlay isOpen={searchOpen} onClose={() => setSearchOpen(false)} />
     </header>
   );
 }
