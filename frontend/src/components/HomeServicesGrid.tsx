@@ -21,6 +21,7 @@ import {
   FileSpreadsheet,
 } from 'lucide-react';
 import type { ServiceItem } from '@/lib/data';
+import { ServiceCardSkeleton } from '@/components/ui/Skeleton';
 
 const iconMap: Record<string, React.ComponentType<{ className?: string }>> = {
   BookOpen,
@@ -45,6 +46,7 @@ const CARDS_PER_PAGE = 6;
 
 export default function HomeServicesGrid({ services }: HomeServicesGridProps) {
   const [currentPage, setCurrentPage] = useState(0);
+  const [isPaging, setIsPaging] = useState(false);
   const totalPages = Math.ceil(services.length / CARDS_PER_PAGE);
 
   const startIndex = currentPage * CARDS_PER_PAGE;
@@ -53,6 +55,15 @@ export default function HomeServicesGrid({ services }: HomeServicesGridProps) {
   const endNum = Math.min(startIndex + CARDS_PER_PAGE, services.length);
 
   const mobileScrollRef = useRef<HTMLDivElement>(null);
+
+  const changePage = (newPage: number) => {
+    if (newPage === currentPage) return;
+    setIsPaging(true);
+    setCurrentPage(newPage);
+    setTimeout(() => {
+      setIsPaging(false);
+    }, 220);
+  };
 
   const scrollMobile = (direction: 'left' | 'right') => {
     if (mobileScrollRef.current) {
@@ -65,11 +76,11 @@ export default function HomeServicesGrid({ services }: HomeServicesGridProps) {
   };
 
   const handlePrev = () => {
-    setCurrentPage((prev) => (prev > 0 ? prev - 1 : totalPages - 1));
+    changePage(currentPage > 0 ? currentPage - 1 : totalPages - 1);
   };
 
   const handleNext = () => {
-    setCurrentPage((prev) => (prev < totalPages - 1 ? prev + 1 : 0));
+    changePage(currentPage < totalPages - 1 ? currentPage + 1 : 0);
   };
 
   // Shared card renderer
@@ -171,7 +182,7 @@ export default function HomeServicesGrid({ services }: HomeServicesGridProps) {
                 return (
                   <button
                     key={pageIdx}
-                    onClick={() => setCurrentPage(pageIdx)}
+                    onClick={() => changePage(pageIdx)}
                     aria-label={`Go to page ${pageIdx + 1}`}
                     className={`h-9 px-3 rounded-lg text-xs font-black transition-all cursor-pointer ${
                       isActive
@@ -275,9 +286,11 @@ export default function HomeServicesGrid({ services }: HomeServicesGridProps) {
           </button>
 
           <div className="grid grid-cols-2 lg:grid-cols-3 gap-8 transition-all duration-300">
-            {visibleServices.map((service, index) =>
-              renderCard(service, startIndex + index)
-            )}
+            {isPaging
+              ? Array.from({ length: 6 }).map((_, i) => <ServiceCardSkeleton key={i} />)
+              : visibleServices.map((service, index) =>
+                  renderCard(service, startIndex + index)
+                )}
           </div>
         </div>
 
@@ -303,7 +316,7 @@ export default function HomeServicesGrid({ services }: HomeServicesGridProps) {
                 return (
                   <button
                     key={pageIdx}
-                    onClick={() => setCurrentPage(pageIdx)}
+                    onClick={() => changePage(pageIdx)}
                     aria-label={`Page ${pageIdx + 1}`}
                     className={`transition-all rounded-full cursor-pointer ${
                       isActive ? 'w-6 h-2 bg-[#2DC55F]' : 'w-2 h-2 bg-slate-300 hover:bg-slate-400'
