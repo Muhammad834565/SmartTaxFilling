@@ -205,8 +205,8 @@ export default function Navbar() {
             <Link
               href="/"
               className={`transition-colors py-2 relative flex flex-col items-center ${pathname === '/'
-                  ? 'text-[#2DC55F]'
-                  : 'hover:text-[#2DC55F]'
+                ? 'text-[#2DC55F]'
+                : 'hover:text-[#2DC55F]'
                 }`}
             >
               <span>HOME</span>
@@ -221,8 +221,8 @@ export default function Navbar() {
             <Link
               href="/about-us"
               className={`transition-colors py-2 relative flex flex-col items-center ${pathname === '/about-us'
-                  ? 'text-[#2DC55F]'
-                  : 'hover:text-[#2DC55F]'
+                ? 'text-[#2DC55F]'
+                : 'hover:text-[#2DC55F]'
                 }`}
             >
               <span>ABOUT US</span>
@@ -242,8 +242,8 @@ export default function Navbar() {
             >
               <button
                 className={`flex items-center gap-1.5 py-2 transition-colors cursor-pointer uppercase ${pathname?.startsWith('/services')
-                    ? 'text-[#2DC55F]'
-                    : 'hover:text-[#2DC55F]'
+                  ? 'text-[#2DC55F]'
+                  : 'hover:text-[#2DC55F]'
                   }`}
                 aria-expanded={servicesDropdownOpen}
               >
@@ -267,8 +267,8 @@ export default function Navbar() {
                         onMouseEnter={() => setActiveRegion('USA')}
                         onClick={() => setActiveRegion('USA')}
                         className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all text-left ${activeRegion === 'USA'
-                            ? 'bg-[#2DC55F] text-white shadow-md shadow-[#2DC55F]/25'
-                            : 'text-slate-700 hover:bg-slate-100'
+                          ? 'bg-[#2DC55F] text-white shadow-md shadow-[#2DC55F]/25'
+                          : 'text-slate-700 hover:bg-slate-100'
                           }`}
                       >
                         <div className="flex items-center gap-2.5">
@@ -283,8 +283,8 @@ export default function Navbar() {
                         onMouseEnter={() => setActiveRegion('UK')}
                         onClick={() => setActiveRegion('UK')}
                         className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all text-left ${activeRegion === 'UK'
-                            ? 'bg-[#2DC55F] text-white shadow-md shadow-[#2DC55F]/25'
-                            : 'text-slate-700 hover:bg-slate-100'
+                          ? 'bg-[#2DC55F] text-white shadow-md shadow-[#2DC55F]/25'
+                          : 'text-slate-700 hover:bg-slate-100'
                           }`}
                       >
                         <div className="flex items-center gap-2.5">
@@ -299,8 +299,8 @@ export default function Navbar() {
                         onMouseEnter={() => setActiveRegion('PAKISTAN')}
                         onClick={() => setActiveRegion('PAKISTAN')}
                         className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all text-left ${activeRegion === 'PAKISTAN'
-                            ? 'bg-[#2DC55F] text-white shadow-md shadow-[#2DC55F]/25'
-                            : 'text-slate-700 hover:bg-slate-100'
+                          ? 'bg-[#2DC55F] text-white shadow-md shadow-[#2DC55F]/25'
+                          : 'text-slate-700 hover:bg-slate-100'
                           }`}
                       >
                         <div className="flex items-center gap-2.5">
@@ -375,8 +375,8 @@ export default function Navbar() {
             <Link
               href="/pricing"
               className={`transition-colors py-2 relative flex flex-col items-center ${pathname === '/pricing'
-                  ? 'text-[#2DC55F]'
-                  : 'hover:text-[#2DC55F]'
+                ? 'text-[#2DC55F]'
+                : 'hover:text-[#2DC55F]'
                 }`}
             >
               <span>PRICING</span>
@@ -391,8 +391,8 @@ export default function Navbar() {
             <Link
               href="/blog"
               className={`transition-colors py-2 relative flex flex-col items-center ${pathname === '/blog'
-                  ? 'text-[#2DC55F]'
-                  : 'hover:text-[#2DC55F]'
+                ? 'text-[#2DC55F]'
+                : 'hover:text-[#2DC55F]'
                 }`}
             >
               <span>BLOG</span>
@@ -407,8 +407,8 @@ export default function Navbar() {
             <Link
               href="/contact"
               className={`transition-colors py-2 relative flex flex-col items-center ${pathname === '/contact'
-                  ? 'text-[#2DC55F]'
-                  : 'hover:text-[#2DC55F]'
+                ? 'text-[#2DC55F]'
+                : 'hover:text-[#2DC55F]'
                 }`}
             >
               <span>CONTACT US</span>
@@ -504,9 +504,8 @@ export default function Navbar() {
             >
               <span>Services</span>
               <ChevronDown
-                className={`w-4 h-4 text-slate-500 transition-transform duration-200 ${
-                  mobileServicesOpen ? 'rotate-180 text-[#2DC55F]' : ''
-                }`}
+                className={`w-4 h-4 text-slate-500 transition-transform duration-200 ${mobileServicesOpen ? 'rotate-180 text-[#2DC55F]' : ''
+                  }`}
               />
             </button>
 
@@ -524,11 +523,10 @@ export default function Navbar() {
                         key={r}
                         type="button"
                         onClick={() => setMobileActiveRegion(r)}
-                        className={`flex-1 py-1.5 px-2 text-xs font-bold rounded-lg transition-all text-center flex items-center justify-center gap-1 cursor-pointer ${
-                          isActive
-                            ? 'bg-[#2DC55F] text-white shadow-sm font-extrabold'
-                            : 'text-slate-600 hover:text-slate-900'
-                        }`}
+                        className={`flex-1 py-1.5 px-2 text-xs font-bold rounded-lg transition-all text-center flex items-center justify-center gap-1 cursor-pointer ${isActive
+                          ? 'bg-[#2DC55F] text-white shadow-sm font-extrabold'
+                          : 'text-slate-600 hover:text-slate-900'
+                          }`}
                       >
                         <span>{label}</span>
                         <span className={`text-[10px] px-1 rounded-full ${isActive ? 'bg-white/25 text-white' : 'bg-slate-200 text-slate-700'}`}>
@@ -544,8 +542,8 @@ export default function Navbar() {
                   {(mobileActiveRegion === 'USA'
                     ? USA_SERVICES
                     : mobileActiveRegion === 'UK'
-                    ? UK_SERVICES
-                    : PAKISTAN_SERVICES
+                      ? UK_SERVICES
+                      : PAKISTAN_SERVICES
                   ).map((s) => (
                     <Link
                       key={s.href}

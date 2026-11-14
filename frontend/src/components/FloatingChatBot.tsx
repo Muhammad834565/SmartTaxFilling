@@ -204,7 +204,7 @@ export default function FloatingChatBot() {
       {/* ─── Floating Chat & Booking Window ──────────────────────────── */}
       {isOpen && (
         <div className="fixed bottom-6 right-4 sm:right-6 z-50 w-[94vw] sm:w-[420px] max-w-[440px] h-[600px] max-h-[88vh] bg-white rounded-2xl shadow-2xl border border-slate-200 flex flex-col overflow-hidden animate-in fade-in slide-in-from-bottom-4 duration-200">
-          
+
           {/* Header - Cleaned up: Removed 'SMARTax Advisor AI' and 'Gemini' */}
           <div className="bg-[#0c1a2e] px-4 py-3.5 text-white flex items-center justify-between border-b border-white/10 shrink-0">
             <div className="flex items-center gap-3">
@@ -218,7 +218,7 @@ export default function FloatingChatBot() {
                 </button>
               ) : (
                 <div className="flex items-center gap-2.5">
-                  <div className="relative w-8 h-8 rounded-full bg-white/10 p-1 flex items-center justify-center border border-[#2DC55F]/40">
+                  <div className="relative w-8 h-8 rounded-full bg-white p-1 flex items-center justify-center border border-[#2DC55F]/40 shadow-sm">
                     <Image src="/logo-icon.png" alt="SMARTax Global" width={24} height={24} className="object-contain" />
                   </div>
                   <div>
@@ -256,11 +256,10 @@ export default function FloatingChatBot() {
                     )}
 
                     <div
-                      className={`max-w-[85%] rounded-2xl p-3.5 text-xs leading-relaxed ${
-                        m.role === 'user'
-                          ? 'bg-[#2DC55F] text-slate-950 font-medium rounded-tr-none shadow-sm'
-                          : 'bg-white text-slate-800 rounded-tl-none border border-slate-200/80 shadow-sm'
-                      }`}
+                      className={`max-w-[85%] rounded-2xl p-3.5 text-xs leading-relaxed ${m.role === 'user'
+                        ? 'bg-[#2DC55F] text-slate-950 font-medium rounded-tr-none shadow-sm'
+                        : 'bg-white text-slate-800 rounded-tl-none border border-slate-200/80 shadow-sm'
+                        }`}
                     >
                       <div className="space-y-1">
                         {m.text.split('\n').map((line, idx) => {
