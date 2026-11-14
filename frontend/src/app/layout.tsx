@@ -8,7 +8,7 @@ export const metadata: Metadata = {
   icons: {
     icon: '/favicon.ico',
     shortcut: '/favicon.ico',
-    apple: '/logo-icon.jpg',
+    apple: '/logo-icon.png',
   },
   keywords: [
     'Bookkeeping services',

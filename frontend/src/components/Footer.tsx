@@ -95,7 +95,7 @@ export default function Footer() {
             <Link href="/" className="inline-flex items-center gap-3 group">
               <div className="relative w-10 h-10 rounded-xl overflow-hidden shadow-md shadow-[#2DC55F]/20 group-hover:scale-105 transition-transform bg-white flex items-center justify-center p-0.5 border border-slate-700/50">
                 <Image
-                  src="/logo-icon.jpg"
+                  src="/logo-icon.png"
                   alt="SMARTax Global Icon"
                   width={40}
                   height={40}

@@ -126,7 +126,7 @@ export default function AdminInquiriesPage() {
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
             <div className="w-9 h-9 bg-white rounded-lg p-0.5 flex items-center justify-center shrink-0">
-              <Image src="/logo-icon.jpg" alt="SMARTax" width={32} height={32} className="object-contain" />
+              <Image src="/logo-icon.png" alt="SMARTax" width={32} height={32} className="object-contain" />
             </div>
             <div>
               <span className="text-white font-black text-lg">SMARTax <span className="text-[#2DC55F]">Global</span></span>
