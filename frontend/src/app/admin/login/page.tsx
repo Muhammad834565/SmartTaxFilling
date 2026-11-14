@@ -99,8 +99,8 @@ export default function AdminLoginPage() {
         {/* Brand Header */}
         <div className="text-center mb-8">
           <div className="flex items-center justify-center gap-3 mb-2">
-            <div className="relative w-12 h-12 flex items-center justify-center">
-              <Image src="/logo-icon.png" alt="SMARTax Global" width={48} height={48} className="object-contain" />
+            <div className="relative w-12 h-12 bg-white rounded-xl p-1 shadow-sm flex items-center justify-center">
+              <Image src="/logo-icon.png" alt="SMARTax Global" width={44} height={44} className="object-contain" />
             </div>
             <span className="text-3xl font-black text-white tracking-tight">
               SMARTax <span className="text-[#2DC55F]">Global</span>
@@ -196,11 +196,10 @@ export default function AdminLoginPage() {
             <button
               type="submit"
               disabled={isLocked || loading}
-              className={`w-full font-bold text-xs uppercase tracking-wider py-3.5 rounded-lg transition-all flex items-center justify-center gap-2 shadow-md cursor-pointer ${
-                isLocked
-                  ? 'bg-slate-300 text-slate-600 cursor-not-allowed shadow-none'
-                  : 'bg-[#2DC55F] hover:bg-[#23a54e] disabled:bg-emerald-300 text-slate-950 hover:shadow-lg'
-              }`}
+              className={`w-full font-bold text-xs uppercase tracking-wider py-3.5 rounded-lg transition-all flex items-center justify-center gap-2 shadow-md cursor-pointer ${isLocked
+                ? 'bg-slate-300 text-slate-600 cursor-not-allowed shadow-none'
+                : 'bg-[#2DC55F] hover:bg-[#23a54e] disabled:bg-emerald-300 text-slate-950 hover:shadow-lg'
+                }`}
             >
               {loading ? (
                 <>

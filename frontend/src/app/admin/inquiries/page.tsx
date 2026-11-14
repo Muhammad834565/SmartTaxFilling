@@ -125,7 +125,9 @@ export default function AdminInquiriesPage() {
       <header className="bg-[#0c1a2e] border-b border-white/10 sticky top-0 z-40">
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-16 flex items-center justify-between">
           <div className="flex items-center gap-3">
-            <Image src="/logo-icon.png" alt="SMARTax" width={34} height={34} className="object-contain" />
+            <div className="w-9 h-9 bg-white rounded-lg p-0.5 flex items-center justify-center shrink-0">
+              <Image src="/logo-icon.png" alt="SMARTax" width={32} height={32} className="object-contain" />
+            </div>
             <div>
               <span className="text-white font-black text-lg">SMARTax <span className="text-[#2DC55F]">Global</span></span>
               <span className="text-slate-400 text-xs ml-3">Admin Portal</span>
