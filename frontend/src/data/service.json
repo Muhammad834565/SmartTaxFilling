@@ -331,6 +331,27 @@
         "FBR IRIS"
       ],
       "imageUrl": "/sevices/Provincial%20Sales%20Tax%20PRA%20SRB%20KPRA%20(Pakistan).png"
+    },
+    {
+      "slug": "web and app development",
+      "title": "development ",
+      "category": "Pakistan",
+      "icon": "Receipt",
+      "shortDescription": "app developmen",
+      "fullDescription": "Complete provincial and federal sales tax compliance across Punjab (PRA), Sindh (SRB), Islamabad (ICT), and KPK (KPRA) for service and goods businesses.",
+      "features": [
+        "Provincial Sales Tax registration (PRA, SRB, KPRA, BRA)",
+        "Sales Tax on Goods registration (STRN) with FBR",
+        "Monthly sales tax return preparation and submission",
+        "Sales tax audit support and notice handling",
+        "Input tax adjustments and invoice reconciliation"
+      ],
+      "softwareTools": [
+        "PRA Portal",
+        "SRB Portal",
+        "FBR IRIS"
+      ],
+      "imageUrl": "/sevices/Provincial%20Sales%20Tax%20PRA%20SRB%20KPRA%20(Pakistan).png"
     }
   ]
 }
