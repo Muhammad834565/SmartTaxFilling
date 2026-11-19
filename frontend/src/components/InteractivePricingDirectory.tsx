@@ -64,14 +64,11 @@ export default function InteractivePricingDirectory() {
   // Expanded sub-services state for collapsible view
   const [expandedSubServices, setExpandedSubServices] = useState<Record<string, boolean>>({});
 
-  // Expanded state for service category boxes (collapsed by default, expanded if user searches)
-  const [expandedServices, setExpandedServices] = useState<Record<string, boolean>>({});
+  // Expanded service slug for accordion mode (only 1 open at a time)
+  const [expandedServiceSlug, setExpandedServiceSlug] = useState<string | null>(null);
 
   const toggleServiceExpand = (slug: string) => {
-    setExpandedServices((prev) => ({
-      ...prev,
-      [slug]: !prev[slug],
-    }));
+    setExpandedServiceSlug((prev) => (prev === slug ? null : slug));
   };
 
   const toggleSubServiceExpand = (e: React.MouseEvent, id: string) => {
@@ -331,18 +328,18 @@ export default function InteractivePricingDirectory() {
             </div>
           </div>
 
-          {/* Service Categories and Sub-Service Rates Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
+          {/* Service Categories and Sub-Service Rates Masonry Columns */}
+          <div className="columns-1 lg:columns-2 gap-6 space-y-6">
             {filteredServices.map((service) => {
               const IconComponent = iconMap[service.icon] || BookOpen;
               const subServices = service.subServices || [];
-              const isServiceOpen = searchQuery.trim().length > 0 || !!expandedServices[service.slug];
+              const isServiceOpen = searchQuery.trim().length > 0 || expandedServiceSlug === service.slug;
               const selectedCountInService = subServices.filter((s) => isSubSelected(s.id)).length;
 
               return (
                 <div
                   key={service.slug}
-                  className={`bg-white rounded-2xl border transition-all shadow-sm relative overflow-hidden border-t-4 border-t-[#2DC55F] ${
+                  className={`break-inside-avoid bg-white rounded-2xl border transition-all shadow-sm relative overflow-hidden border-t-4 border-t-[#2DC55F] ${
                     isServiceOpen ? 'p-6 sm:p-7 shadow-md' : 'p-5 hover:shadow-md'
                   }`}
                 >
