@@ -1,12 +1,16 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Send, CheckCircle2, AlertCircle, Loader2, ChevronDown } from 'lucide-react';
+import { Send, CheckCircle2, AlertCircle, Loader2, ChevronDown, Check } from 'lucide-react';
 import { submitInquiry } from '@/lib/api';
-import { SERVICES } from '@/lib/data';
+import { SERVICES, SubServiceItem, ServiceItem } from '@/lib/data';
 
-interface ContactFormProps {
+export interface ContactFormProps {
   initialService?: string;
+  initialSubServices?: SubServiceItem[];
+  selectedSubServicesExternal?: SubServiceItem[];
+  onSelectedSubServicesChange?: (subServices: SubServiceItem[]) => void;
+  onClientInfoChange?: (info: { name: string; email: string; phone: string }) => void;
 }
 
 // Map service category to country select value
@@ -67,11 +71,17 @@ const COUNTRIES = [
   },
 ];
 
-export default function ContactForm({ initialService = '' }: ContactFormProps) {
+export default function ContactForm({
+  initialService = '',
+  initialSubServices = [],
+  selectedSubServicesExternal,
+  onSelectedSubServicesChange,
+  onClientInfoChange,
+}: ContactFormProps) {
   // Derive initial country from initialService if provided
   const getInitialCountry = (svc: string) => {
     if (!svc) return '';
-    const match = SERVICES.find((s) => s.title === svc);
+    const match = SERVICES.find((s) => s.title.toLowerCase() === svc.toLowerCase() || s.slug === svc);
     if (!match) return '';
     return CATEGORY_TO_COUNTRY[match.category] ?? '';
   };
@@ -85,7 +95,16 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
     message: '',
   });
 
-  // When initialService changes (e.g. from URL params), sync both service + country
+  const [selectedSubServices, setSelectedSubServices] = useState<SubServiceItem[]>(initialSubServices);
+
+  // Sync external selected sub-services if controlled from parent
+  useEffect(() => {
+    if (selectedSubServicesExternal !== undefined) {
+      setSelectedSubServices(selectedSubServicesExternal);
+    }
+  }, [selectedSubServicesExternal]);
+
+  // When initialService changes (e.g. from URL params or navigation), sync both service + country
   useEffect(() => {
     if (initialService) {
       const country = getInitialCountry(initialService);
@@ -118,24 +137,64 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
       ? SERVICES.filter((s) => s.category === COUNTRY_TO_CATEGORY[formData.country])
       : SERVICES;
 
-  // When user changes the SERVICE → auto-update country
+  // Find active service object
+  const activeServiceObj: ServiceItem | undefined = SERVICES.find(
+    (s) => s.title.toLowerCase() === formData.service.toLowerCase() || s.slug === formData.service
+  );
+
+  const availableSubServices: SubServiceItem[] = activeServiceObj?.subServices || [];
+
+  // Notify parent on client info change
+  const handleInputChange = (field: 'name' | 'email' | 'phone', val: string) => {
+    const updated = { ...formData, [field]: val };
+    setFormData(updated);
+    onClientInfoChange?.({
+      name: updated.name,
+      email: updated.email,
+      phone: updated.phone,
+    });
+  };
+
+  // When user changes the SERVICE → auto-update country and clear/adjust subservices
   const handleServiceChange = (title: string) => {
-    const match = SERVICES.find((s) => s.title === title);
+    const match = SERVICES.find((s) => s.title === title || s.slug === title);
     const country = match ? (CATEGORY_TO_COUNTRY[match.category] ?? formData.country) : formData.country;
-    setFormData((prev) => ({ ...prev, service: title, country }));
+    setFormData((prev) => ({ ...prev, service: match ? match.title : title, country }));
+    // Reset selected sub-services
+    setSelectedSubServices([]);
+    onSelectedSubServicesChange?.([]);
   };
 
   // When user changes the COUNTRY → clear service if it doesn't belong to that country
   const handleCountryChange = (country: string) => {
     const cat = COUNTRY_TO_CATEGORY[country];
-    const currentMatch = SERVICES.find((s) => s.title === formData.service);
+    const currentMatch = SERVICES.find((s) => s.title === formData.service || s.slug === formData.service);
     const serviceStillValid = !cat || (currentMatch && currentMatch.category === cat);
     setFormData((prev) => ({
       ...prev,
       country,
       service: serviceStillValid ? prev.service : '',
     }));
+    if (!serviceStillValid) {
+      setSelectedSubServices([]);
+      onSelectedSubServicesChange?.([]);
+    }
   };
+
+  // Toggle sub-service selection
+  const handleToggleSubService = (sub: SubServiceItem) => {
+    const exists = selectedSubServices.some((item) => item.id === sub.id);
+    const updated = exists
+      ? selectedSubServices.filter((item) => item.id !== sub.id)
+      : [...selectedSubServices, sub];
+
+    setSelectedSubServices(updated);
+    onSelectedSubServicesChange?.(updated);
+  };
+
+  // Total price calculation
+  const totalSelectedPrice = selectedSubServices.reduce((sum, item) => sum + item.price, 0);
+  const currencySymbol = selectedSubServices[0]?.currency || '$';
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
@@ -143,9 +202,24 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
     setError(null);
 
     try {
-      await submitInquiry(formData);
+      // Append selected sub-services to message for full administrative audit
+      let fullMessage = formData.message;
+      if (selectedSubServices.length > 0) {
+        const subServicesSummary = selectedSubServices
+          .map((s) => `${s.name} (${s.formattedPrice})`)
+          .join(', ');
+        fullMessage += `\n\n[SELECTED SUB-SERVICES]: ${subServicesSummary}\n[ESTIMATED QUOTATION]: ${currencySymbol}${totalSelectedPrice.toLocaleString()}`;
+      }
+
+      await submitInquiry({
+        ...formData,
+        message: fullMessage,
+      });
+
       setSuccess(true);
       setFormData({ name: '', email: '', phone: '', country: '', service: '', message: '' });
+      setSelectedSubServices([]);
+      onSelectedSubServicesChange?.([]);
     } catch (err: any) {
       setError(err.message || 'There was an issue submitting your request. Please try again.');
     } finally {
@@ -161,11 +235,11 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
         </div>
         <h3 className="text-xl font-bold text-[#0c1e36] mb-2">Consultation Request Received!</h3>
         <p className="text-sm text-slate-600 mb-6 max-w-md mx-auto">
-          Thank you for reaching out to SMARTax Global. One of our certified tax advisors will review your business requirements and contact you within 24 business hours.
+          Thank you for reaching out to SMARTax Global. One of our certified tax advisors will review your selected services and contact you within 24 business hours.
         </p>
         <button
           onClick={() => setSuccess(false)}
-          className="text-xs font-bold uppercase tracking-wider text-slate-900 bg-[#2DC55F] hover:bg-[#23a54e] px-5 py-2.5 rounded-lg transition-colors shadow-sm"
+          className="text-xs font-bold uppercase tracking-wider text-slate-900 bg-[#2DC55F] hover:bg-[#23a54e] px-5 py-2.5 rounded-lg transition-colors shadow-sm cursor-pointer"
         >
           Send Another Message
         </button>
@@ -191,7 +265,7 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
             type="text"
             required
             value={formData.name}
-            onChange={(e) => setFormData({ ...formData, name: e.target.value })}
+            onChange={(e) => handleInputChange('name', e.target.value)}
             placeholder="John Doe"
             className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-[#2DC55F] transition-colors"
           />
@@ -205,7 +279,7 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
             type="email"
             required
             value={formData.email}
-            onChange={(e) => setFormData({ ...formData, email: e.target.value })}
+            onChange={(e) => handleInputChange('email', e.target.value)}
             placeholder="john@example.com"
             className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-[#2DC55F] transition-colors"
           />
@@ -218,7 +292,7 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
           <input
             type="tel"
             value={formData.phone}
-            onChange={(e) => setFormData({ ...formData, phone: e.target.value })}
+            onChange={(e) => handleInputChange('phone', e.target.value)}
             placeholder="+1 (555) 000-0000"
             className="w-full text-sm px-3.5 py-2.5 rounded-lg border border-slate-200 focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-[#2DC55F] transition-colors"
           />
@@ -303,13 +377,88 @@ export default function ContactForm({ initialService = '' }: ContactFormProps) {
         </select>
       </div>
 
+      {/* ─── MCQs / Checkbox Options for Selected Service ─── */}
+      {availableSubServices.length > 0 && (
+        <div className="space-y-3 pt-2 pb-1 border-t border-slate-100">
+          <div className="flex items-center justify-between">
+            <label className="block text-xs font-bold uppercase tracking-wider text-[#0c1e36]">
+              Service Options Required <span className="text-rose-500">*</span>
+            </label>
+            <span className="text-[11px] font-semibold text-slate-400">
+              Select one, two, or more
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 gap-2.5">
+            {availableSubServices.map((sub) => {
+              const isChecked = selectedSubServices.some((s) => s.id === sub.id);
+              return (
+                <div
+                  key={sub.id}
+                  onClick={() => handleToggleSubService(sub)}
+                  className={`p-3 sm:p-3.5 rounded-xl border transition-all cursor-pointer flex items-start gap-3 select-none ${
+                    isChecked
+                      ? 'border-[#2DC55F] bg-emerald-50/70 shadow-xs ring-1 ring-[#2DC55F]'
+                      : 'border-slate-200 bg-slate-50/70 hover:bg-slate-100 hover:border-slate-300'
+                  }`}
+                >
+                  <div className="pt-0.5 shrink-0">
+                    <div
+                      className={`w-4 h-4 rounded-md flex items-center justify-center border transition-colors ${
+                        isChecked
+                          ? 'bg-[#2DC55F] border-[#2DC55F] text-slate-950 font-black'
+                          : 'border-slate-300 bg-white'
+                      }`}
+                    >
+                      {isChecked && <Check className="w-3 h-3 stroke-[3]" />}
+                    </div>
+                  </div>
+
+                  <div className="flex-1 min-w-0">
+                    <div className="flex items-center justify-between gap-2">
+                      <span className={`text-xs sm:text-sm font-bold leading-tight ${isChecked ? 'text-slate-900' : 'text-slate-800'}`}>
+                        {sub.name}
+                      </span>
+                      <span className="shrink-0 text-xs font-extrabold px-2.5 py-0.5 rounded-md bg-white border border-slate-200 text-slate-900 shadow-2xs">
+                        {sub.formattedPrice}
+                      </span>
+                    </div>
+                    {sub.description && (
+                      <p className="text-[11px] text-slate-500 mt-1 leading-relaxed">
+                        {sub.description}
+                      </p>
+                    )}
+                  </div>
+                </div>
+              );
+            })}
+          </div>
+
+          {/* Dynamic Price Summary Bar */}
+          {selectedSubServices.length > 0 && (
+            <div className="flex items-center justify-between p-3.5 rounded-xl bg-[#0c1a2e] text-white shadow-md border border-[#2DC55F]/40 animate-in fade-in duration-200">
+              <div className="flex items-center gap-2">
+                <span className="w-2 h-2 rounded-full bg-[#2DC55F] animate-pulse" />
+                <span className="text-xs font-semibold text-slate-200">
+                  Total for {selectedSubServices.length} {selectedSubServices.length === 1 ? 'Service Option' : 'Service Options'}:
+                </span>
+              </div>
+              <div className="text-base sm:text-lg font-black text-[#2DC55F] tracking-tight">
+                {currencySymbol}
+                {totalSelectedPrice.toLocaleString()}
+              </div>
+            </div>
+          )}
+        </div>
+      )}
+
       <div>
         <label className="block text-xs font-bold uppercase tracking-wider text-[#0c1e36] mb-1.5">
           Tell us about your requirements <span className="text-rose-500">*</span>
         </label>
         <textarea
           required
-          rows={4}
+          rows={3}
           value={formData.message}
           onChange={(e) => setFormData({ ...formData, message: e.target.value })}
           placeholder="Briefly describe your business entity (LLC, C-Corp, Ltd), monthly transaction volume, or target filing deadlines..."

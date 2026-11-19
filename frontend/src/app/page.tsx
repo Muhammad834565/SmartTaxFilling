@@ -328,7 +328,7 @@ export default function HomePage() {
               href="/services"
               className="inline-flex items-center gap-2 px-8 py-4 bg-[#2DC55F] hover:bg-[#23a54e] text-slate-950 font-bold text-xs uppercase tracking-wider rounded-lg shadow-md transition-all"
             >
-              <span>View All 15 Financial Services</span>
+              <span>View All Financial Services</span>
               <ArrowRight className="w-4 h-4" />
             </Link>
           </div>

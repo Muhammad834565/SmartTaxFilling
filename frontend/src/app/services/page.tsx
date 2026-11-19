@@ -22,7 +22,7 @@ import {
 } from 'lucide-react';
 import { SERVICES } from '@/lib/data';
 
-type CategoryFilter = 'All' | 'USA' | 'UK' | 'Pakistan';
+type CategoryFilter = 'All' | 'USA' | 'UK' | 'Pakistan' | 'General';
 
 export default function ServicesPage() {
   const [selectedCategory, setSelectedCategory] = useState<CategoryFilter>('All');
@@ -48,6 +48,7 @@ export default function ServicesPage() {
   const usaCount = SERVICES.filter(s => s.category === 'USA').length;
   const ukCount = SERVICES.filter(s => s.category === 'UK').length;
   const pkCount = SERVICES.filter(s => s.category === 'Pakistan').length;
+  const generalCount = SERVICES.filter(s => s.category === 'General').length;
 
   const renderCard = (service: (typeof SERVICES)[0], index: number) => {
     const Icon = iconMap[service.icon] || BookOpen;
@@ -98,12 +99,42 @@ export default function ServicesPage() {
             </Link>
           </h3>
 
-          <p className="text-xs text-slate-600 group-hover:text-slate-200 transition-colors duration-300 leading-relaxed mb-6 px-1">
+          <p className="text-xs text-slate-600 group-hover:text-slate-200 transition-colors duration-300 leading-relaxed mb-4 px-1">
             {service.shortDescription}
           </p>
 
+          {/* Sub-Services Badge & Preview */}
+          {service.subServices && service.subServices.length > 0 && (
+            <div className="w-full mb-4 pt-2 border-t border-slate-100 group-hover:border-slate-700/60 transition-colors">
+              <div className="flex items-center justify-between text-[11px] mb-2 font-bold">
+                <span className="text-[#2DC55F] uppercase tracking-wider text-[10px]">
+                  Sub-Services Included ({service.subServices.length})
+                </span>
+                <span className="text-slate-700 group-hover:text-slate-300 font-extrabold">
+                  From {service.subServices[0].formattedPrice}
+                </span>
+              </div>
+              <div className="flex flex-wrap gap-1.5 justify-center">
+                {service.subServices.slice(0, 3).map((sub) => (
+                  <Link
+                    key={sub.id}
+                    href={`/services/${service.slug}?sub=${sub.id}`}
+                    className="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-slate-100 group-hover:bg-white/15 text-slate-700 group-hover:text-slate-200 border border-slate-200 group-hover:border-white/20 transition-colors hover:!bg-[#2DC55F] hover:!text-slate-950"
+                  >
+                    {sub.name} <span className="font-bold opacity-80">({sub.formattedPrice})</span>
+                  </Link>
+                ))}
+                {service.subServices.length > 3 && (
+                  <span className="text-[10px] font-semibold px-1.5 py-0.5 text-slate-400 group-hover:text-slate-300">
+                    +{service.subServices.length - 3} more
+                  </span>
+                )}
+              </div>
+            </div>
+          )}
+
           <ul className="w-full space-y-2 mb-6 border-t border-slate-100 group-hover:border-slate-700/60 pt-4 text-xs text-slate-500 group-hover:text-slate-300 transition-colors duration-300 text-left">
-            {service.features.slice(0, 4).map((feat, i) => (
+            {service.features.slice(0, 3).map((feat, i) => (
               <li key={i} className="flex items-start gap-2">
                 <Check className="w-3.5 h-3.5 text-[#2DC55F] shrink-0 mt-0.5" />
                 <span className="truncate">{feat}</span>
@@ -120,7 +151,7 @@ export default function ServicesPage() {
             href={`/services/${service.slug}`}
             className="inline-flex items-center gap-1.5 text-xs font-black tracking-wider uppercase text-[#0c1e36] group-hover:text-white transition-colors duration-300 relative pb-1 group/link"
           >
-            <span>READ MORE</span>
+            <span>GET INVOICE</span>
             <div className="absolute bottom-0 left-0 right-0 h-0.5 bg-[#2DC55F] rounded-full transform origin-left group-hover:scale-x-105 transition-transform" />
           </Link>
         </div>
@@ -154,9 +185,9 @@ export default function ServicesPage() {
       {/* Main Filter / Region Bar */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="bg-white rounded-2xl border border-slate-200 p-4 sm:p-5 shadow-sm flex flex-col md:flex-row items-center justify-between gap-4">
-          {/* Region Tabs (All, USA, UK, Pakistan) */}
+          {/* Region Tabs (All, USA, UK, Pakistan, General) */}
           <div className="flex items-center flex-wrap gap-2.5 w-full">
-            {(['All', 'USA', 'UK', 'Pakistan'] as CategoryFilter[]).map((cat) => {
+            {(['All', 'USA', 'UK', 'Pakistan', 'General'] as CategoryFilter[]).map((cat) => {
               const isActive = selectedCategory === cat;
               const count = cat === 'All' 
                 ? SERVICES.length 
@@ -164,7 +195,9 @@ export default function ServicesPage() {
                 ? usaCount 
                 : cat === 'UK' 
                 ? ukCount 
-                : pkCount;
+                : cat === 'Pakistan'
+                ? pkCount
+                : generalCount;
 
               const label = cat === 'All' 
                 ? 'All Jurisdictions' 
@@ -172,7 +205,9 @@ export default function ServicesPage() {
                 ? 'United States' 
                 : cat === 'UK' 
                 ? 'United Kingdom' 
-                : 'Pakistan';
+                : cat === 'Pakistan'
+                ? 'Pakistan'
+                : 'Global & Specialized';
 
               return (
                 <button
@@ -273,6 +308,32 @@ export default function ServicesPage() {
                 {SERVICES.filter(s => s.category === 'Pakistan').map((service, index) => renderCard(service, index))}
               </div>
             </div>
+
+            {/* 4. Global / Specialized Section */}
+            {generalCount > 0 && (
+              <div className="space-y-6 pt-6">
+                <div className="flex flex-col sm:flex-row sm:items-center justify-between border-b border-slate-200 pb-4 gap-2">
+                  <div>
+                    <div className="inzofin-section-subtitle text-[#2DC55F]">
+                      <span>// GLOBAL & SPECIALIZED //</span>
+                    </div>
+                    <h2 className="text-2xl sm:text-3xl font-black text-[#0c1e36]">
+                      Cross-Border Banking, Payments & E-Commerce
+                    </h2>
+                  </div>
+                  <div className="flex items-center gap-2 shrink-0">
+                    <span className="text-xs font-bold text-slate-500">Region: <strong className="text-slate-800">Global</strong></span>
+                    <span className="text-xs font-black uppercase tracking-wider bg-emerald-100 text-emerald-800 px-3 py-1 rounded-full border border-emerald-300">
+                      {generalCount} Services
+                    </span>
+                  </div>
+                </div>
+
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                  {SERVICES.filter(s => s.category === 'General').map((service, index) => renderCard(service, index))}
+                </div>
+              </div>
+            )}
           </div>
         ) : (
           /* Filtered Single Region Section */
@@ -286,6 +347,7 @@ export default function ServicesPage() {
                   {selectedCategory === 'USA' && 'USA Federal & State Tax, LLC & Compliance'}
                   {selectedCategory === 'UK' && 'UK Companies House, HMRC & VAT Solutions'}
                   {selectedCategory === 'Pakistan' && 'Pakistan FBR Tax, SECP & Provincial Sales Tax'}
+                  {selectedCategory === 'General' && 'Global Banking, Payment Gateway & E-Commerce Setup'}
                 </h2>
               </div>
               <div className="flex items-center gap-3">

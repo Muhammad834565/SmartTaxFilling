@@ -2,6 +2,16 @@ import serviceData from '../data/service.json';
 
 export type ServiceCategory = 'USA' | 'UK' | 'Pakistan' | 'General';
 
+export interface SubServiceItem {
+  id: string;
+  name: string;
+  price: number;
+  currency: string;
+  formattedPrice: string;
+  description?: string;
+  items?: string[];
+}
+
 export interface ServiceItem {
   slug: string;
   title: string;
@@ -12,6 +22,7 @@ export interface ServiceItem {
   features: string[];
   softwareTools: string[];
   imageUrl?: string;
+  subServices?: SubServiceItem[];
 }
 
 // Flat array of all services loaded dynamically from service.json
@@ -25,11 +36,12 @@ export const SERVICES: ServiceItem[] = Array.isArray(serviceData)
     ];
 
 // Grouped services by region for convenient regional access
-export const SERVICES_BY_REGION: Record<'USA' | 'UK' | 'Pakistan', ServiceItem[]> = Array.isArray(serviceData)
+export const SERVICES_BY_REGION: Record<'USA' | 'UK' | 'Pakistan' | 'General', ServiceItem[]> = Array.isArray(serviceData)
   ? {
       USA: SERVICES.filter((s) => s.category === 'USA'),
       UK: SERVICES.filter((s) => s.category === 'UK'),
       Pakistan: SERVICES.filter((s) => s.category === 'Pakistan'),
+      General: SERVICES.filter((s) => s.category === 'General'),
     }
   : (serviceData as any);
 
