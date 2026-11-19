@@ -43,6 +43,8 @@ export class SeedService implements OnApplicationBootstrap {
       { key: 'phone', value: '+1 (813) 555-0199' },
       { key: 'address', value: '401 Timbered Knoll Dr, Valrico, FL 33594, United States' },
       { key: 'working_hours', value: 'Mon - Fri: 9:00 AM - 6:00 PM EST' },
+      { key: 'developer_name', value: 'Muhammad' },
+      { key: 'developer_url', value: 'https://muhammad834565.github.io/Muhammad/' },
     ];
 
     for (const s of settings) {
