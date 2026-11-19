@@ -37,6 +37,8 @@ export default function AdminInquiriesPage() {
   const [selected, setSelected] = useState<Inquiry | null>(null);
   const [adminEmail, setAdminEmail] = useState('');
   const [updatingId, setUpdatingId] = useState<string | null>(null);
+  const [developerUrl, setDeveloperUrl] = useState('https://muhammad834565.github.io/Muhammad/');
+  const [developerName, setDeveloperName] = useState('Muhammad');
 
   const getToken = useCallback(() => {
     if (typeof window === 'undefined') return null;
@@ -68,6 +70,15 @@ export default function AdminInquiriesPage() {
     if (!token) { router.push('/admin/login'); return; }
     setAdminEmail(localStorage.getItem('smartax_admin_email') || '');
     fetchInquiries();
+
+    // Fetch site settings for developer attribution
+    fetch('http://localhost:4000/api/settings')
+      .then((res) => (res.ok ? res.json() : null))
+      .then((settings) => {
+        if (settings?.developer_url) setDeveloperUrl(settings.developer_url);
+        if (settings?.developer_name) setDeveloperName(settings.developer_name);
+      })
+      .catch(() => {});
   }, [fetchInquiries, getToken, router]);
 
   const updateStatus = async (id: string, status: string) => {
@@ -389,6 +400,26 @@ export default function AdminInquiriesPage() {
           </div>
         </div>
       )}
+
+      {/* Admin Dashboard Footer */}
+      <footer className="mt-auto border-t border-slate-200 py-6 bg-white">
+        <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-3 text-xs text-slate-500">
+          <div>
+            © {new Date().getFullYear()} SMARTax Global Admin Portal. All Rights Reserved.
+          </div>
+          <div>
+            Developed by{' '}
+            <a
+              href={developerUrl}
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-[#2DC55F] hover:underline font-semibold"
+            >
+              {developerName}
+            </a>
+          </div>
+        </div>
+      </footer>
     </div>
   );
 }

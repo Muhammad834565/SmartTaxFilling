@@ -1,6 +1,6 @@
 'use client';
 
-import React from 'react';
+import React, { useEffect, useState } from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
 import {
@@ -18,8 +18,31 @@ import {
   Headphones
 } from 'lucide-react';
 import { SITE_INFO } from '@/lib/data';
+import { fetchSiteSettings } from '@/lib/api';
 
 export default function Footer() {
+  const [developerUrl, setDeveloperUrl] = useState<string>(
+    SITE_INFO.developerUrl || 'https://muhammad834565.github.io/Muhammad/'
+  );
+  const [developerName, setDeveloperName] = useState<string>(
+    SITE_INFO.developerName || 'Muhammad'
+  );
+
+  useEffect(() => {
+    let isMounted = true;
+    fetchSiteSettings()
+      .then((settings) => {
+        if (!isMounted || !settings) return;
+        if (settings.developer_url) setDeveloperUrl(settings.developer_url);
+        if (settings.developer_name) setDeveloperName(settings.developer_name);
+      })
+      .catch(() => {
+        // Fallback to defaults already set
+      });
+    return () => {
+      isMounted = false;
+    };
+  }, []);
   return (
     <footer className="bg-[#071224] text-slate-300 relative overflow-hidden">
       {/* ─── Top Contact Strip (Exact Inzofin Signature 3-Block Header) ─── */}
@@ -267,6 +290,19 @@ export default function Footer() {
         <div className="pt-8 flex flex-col sm:flex-row justify-between items-center gap-4 text-xs text-slate-500">
           <div>
             © {new Date().getFullYear()} SMARTax Global. All Rights Reserved.
+            {developerUrl && (
+              <span className="ml-2">
+                | Developed by{' '}
+                <a
+                  href={developerUrl}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="text-slate-400 hover:text-[#2DC55F] transition-colors font-semibold underline underline-offset-2"
+                >
+                  {developerName || 'Muhammad'}
+                </a>
+              </span>
+            )}
           </div>
           <div className="flex items-center gap-6">
             <Link href="/privacy-policy" className="hover:text-[#2DC55F] transition-colors">Privacy Policy</Link>

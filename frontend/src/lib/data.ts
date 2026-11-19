@@ -99,6 +99,8 @@ export const SITE_INFO = {
   workingHours: 'Mon - Fri: 9:00 AM - 6:00 PM CST',
   logoText: 'SMARTax Global',
   logoImage: '/uploads/2025/11/logo-2.png',
+  developerName: 'Muhammad',
+  developerUrl: 'https://muhammad834565.github.io/Muhammad/',
 };
 
 export const POSTS: PostItem[] = [
