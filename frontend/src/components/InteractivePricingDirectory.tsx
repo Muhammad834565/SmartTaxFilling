@@ -25,6 +25,7 @@ import {
   Calendar,
   Layers,
   ChevronRight,
+  ChevronDown,
   Filter
 } from 'lucide-react';
 import { SERVICES, PRICING_PLANS, SubServiceItem, ServiceItem } from '@/lib/data';
@@ -59,6 +60,27 @@ export default function InteractivePricingDirectory() {
   const [selectedSubServices, setSelectedSubServices] = useState<
     Array<{ serviceTitle: string; serviceSlug: string; sub: SubServiceItem }>
   >([]);
+
+  // Expanded sub-services state for collapsible view
+  const [expandedSubServices, setExpandedSubServices] = useState<Record<string, boolean>>({});
+
+  // Expanded state for service category boxes (collapsed by default, expanded if user searches)
+  const [expandedServices, setExpandedServices] = useState<Record<string, boolean>>({});
+
+  const toggleServiceExpand = (slug: string) => {
+    setExpandedServices((prev) => ({
+      ...prev,
+      [slug]: !prev[slug],
+    }));
+  };
+
+  const toggleSubServiceExpand = (e: React.MouseEvent, id: string) => {
+    e.stopPropagation();
+    setExpandedSubServices((prev) => ({
+      ...prev,
+      [id]: !prev[id],
+    }));
+  };
 
   // Filter services by region
   const regionServices = useMemo(() => {
@@ -310,104 +332,156 @@ export default function InteractivePricingDirectory() {
           </div>
 
           {/* Service Categories and Sub-Service Rates Grid */}
-          <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
+          <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 items-start">
             {filteredServices.map((service) => {
               const IconComponent = iconMap[service.icon] || BookOpen;
               const subServices = service.subServices || [];
+              const isServiceOpen = searchQuery.trim().length > 0 || !!expandedServices[service.slug];
+              const selectedCountInService = subServices.filter((s) => isSubSelected(s.id)).length;
 
               return (
                 <div
                   key={service.slug}
-                  className="bg-white rounded-2xl border border-slate-200 shadow-sm p-6 sm:p-7 flex flex-col justify-between hover:shadow-md transition-shadow relative overflow-hidden border-t-4 border-t-[#2DC55F]"
+                  className={`bg-white rounded-2xl border transition-all shadow-sm relative overflow-hidden border-t-4 border-t-[#2DC55F] ${
+                    isServiceOpen ? 'p-6 sm:p-7 shadow-md' : 'p-5 hover:shadow-md'
+                  }`}
                 >
-                  {/* Service Header */}
-                  <div className="pb-4 mb-4 border-b border-slate-100 flex items-start justify-between gap-3">
-                    <div className="flex items-center gap-3">
-                      <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#2DC55F] flex items-center justify-center shrink-0 border border-emerald-200">
+                  {/* Service Header - Clickable to Expand / Collapse */}
+                  <div
+                    onClick={() => toggleServiceExpand(service.slug)}
+                    className="flex items-start justify-between gap-3 cursor-pointer select-none group"
+                  >
+                    <div className="flex items-center gap-3 min-w-0 flex-1">
+                      <div className="w-10 h-10 rounded-xl bg-emerald-50 text-[#2DC55F] flex items-center justify-center shrink-0 border border-emerald-200 group-hover:scale-105 transition-transform">
                         <IconComponent className="w-5 h-5" />
                       </div>
-                      <div>
-                        <h3 className="font-extrabold text-[#0c1e36] text-base leading-tight">
-                          <Link href={`/services/${service.slug}`} className="hover:text-[#2DC55F] transition-colors">
+                      <div className="min-w-0 flex-1">
+                        <div className="flex items-center gap-2 flex-wrap">
+                          <h3 className="font-extrabold text-[#0c1e36] text-base leading-tight group-hover:text-[#2DC55F] transition-colors">
                             {service.title}
-                          </Link>
-                        </h3>
-                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400">
+                          </h3>
+                          {selectedCountInService > 0 && (
+                            <span className="text-[10px] font-extrabold bg-[#2DC55F] text-slate-950 px-2 py-0.5 rounded-full">
+                              {selectedCountInService} in basket
+                            </span>
+                          )}
+                        </div>
+                        <span className="text-[10px] font-bold uppercase tracking-wider text-slate-400 block mt-0.5">
                           {service.category} Jurisdiction • {subServices.length} Fixed-Fee Options
                         </span>
                       </div>
                     </div>
 
-                    <Link
-                      href={`/services/${service.slug}`}
-                      className="shrink-0 text-[11px] font-bold text-[#2DC55F] hover:underline flex items-center gap-1"
-                    >
-                      <span>Full Scope</span>
-                      <ArrowRight className="w-3 h-3" />
-                    </Link>
+                    <div className="flex items-center gap-2 shrink-0 pt-1">
+                      <span className="text-[11px] font-medium text-slate-400 group-hover:text-slate-600 hidden sm:inline">
+                        {isServiceOpen ? 'Collapse' : 'View Rates'}
+                      </span>
+                      <div
+                        className={`w-7 h-7 rounded-lg bg-slate-100 group-hover:bg-slate-200 flex items-center justify-center transition-all ${
+                          isServiceOpen ? 'rotate-180 bg-emerald-100 text-[#2DC55F]' : 'text-slate-500'
+                        }`}
+                      >
+                        <ChevronDown className="w-4 h-4" />
+                      </div>
+                    </div>
                   </div>
 
-                  {/* Sub-Services Checklist with Prices */}
-                  <div className="space-y-2.5 flex-1">
-                    {subServices.map((sub) => {
-                      const selected = isSubSelected(sub.id);
-                      return (
-                        <div
-                          key={sub.id}
-                          onClick={() => toggleSubService(service, sub)}
-                          className={`p-3 rounded-xl border transition-all cursor-pointer flex items-start gap-3 select-none ${
-                            selected
-                              ? 'bg-emerald-50/70 border-[#2DC55F] shadow-xs ring-1 ring-[#2DC55F]'
-                              : 'bg-slate-50/70 border-slate-200/80 hover:bg-slate-100 hover:border-slate-300'
-                          }`}
-                        >
-                          {/* Checkbox indicator */}
-                          <div className="pt-0.5 shrink-0">
+                  {/* Collapsible Body: Sub-Services & Links */}
+                  {isServiceOpen && (
+                    <div className="pt-5 mt-4 border-t border-slate-100 space-y-4 animate-in fade-in slide-in-from-top-2 duration-200">
+                      {/* Sub-Services Checklist with Prices */}
+                      <div className="space-y-2">
+                        {subServices.map((sub) => {
+                          const selected = isSubSelected(sub.id);
+                          const isExpanded = !!expandedSubServices[sub.id];
+
+                          return (
                             <div
-                              className={`w-4 h-4 rounded-md flex items-center justify-center border transition-colors ${
+                              key={sub.id}
+                              className={`rounded-xl border transition-all select-none overflow-hidden ${
                                 selected
-                                  ? 'bg-[#2DC55F] border-[#2DC55F] text-slate-950 font-black'
-                                  : 'border-slate-300 bg-white'
+                                  ? 'bg-emerald-50/70 border-[#2DC55F] shadow-xs ring-1 ring-[#2DC55F]'
+                                  : 'bg-slate-50/70 border-slate-200/80 hover:bg-slate-100 hover:border-slate-300'
                               }`}
                             >
-                              {selected && <Check className="w-3 h-3 stroke-[3]" />}
-                            </div>
-                          </div>
+                              {/* Compact Row: Checkbox + Name + Expand Arrow */}
+                              <div
+                                onClick={() => toggleSubService(service, sub)}
+                                className="p-3 flex items-center justify-between gap-3 cursor-pointer"
+                              >
+                                <div className="flex items-center gap-3 min-w-0 flex-1">
+                                  {/* Checkbox indicator */}
+                                  <div
+                                    className={`w-4 h-4 rounded-md flex items-center justify-center border shrink-0 transition-colors ${
+                                      selected
+                                        ? 'bg-[#2DC55F] border-[#2DC55F] text-slate-950 font-black'
+                                        : 'border-slate-300 bg-white'
+                                    }`}
+                                  >
+                                    {selected && <Check className="w-3 h-3 stroke-[3]" />}
+                                  </div>
 
-                          {/* Details */}
-                          <div className="flex-1 min-w-0">
-                            <div className="flex items-center justify-between gap-2">
-                              <span className={`text-xs font-bold leading-tight ${selected ? 'text-slate-950' : 'text-slate-800'}`}>
-                                {sub.name}
-                              </span>
-                              <span className="shrink-0 text-xs font-black px-2.5 py-0.5 rounded-md bg-white border border-slate-200 text-slate-900 shadow-2xs">
-                                {sub.formattedPrice}
-                              </span>
-                            </div>
-                            {sub.description && (
-                              <p className="text-[11px] text-slate-500 mt-1 line-clamp-2 leading-relaxed">
-                                {sub.description}
-                              </p>
-                            )}
-                          </div>
-                        </div>
-                      );
-                    })}
-                  </div>
+                                  {/* Title (truncated when collapsed, full on expand) */}
+                                  <span
+                                    className={`text-xs sm:text-sm font-semibold ${
+                                      isExpanded ? 'break-words leading-snug' : 'truncate'
+                                    } ${selected ? 'text-slate-950 font-bold' : 'text-slate-800'}`}
+                                  >
+                                    {sub.name}
+                                  </span>
+                                </div>
 
-                  {/* Bottom link to service page */}
-                  <div className="pt-4 mt-4 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
-                    <span className="text-[11px] text-slate-400">
-                      Standard CPA turnaround: 24–48 hrs
-                    </span>
-                    <Link
-                      href={`/services/${service.slug}`}
-                      className="text-xs font-bold text-slate-800 hover:text-[#2DC55F] transition-colors flex items-center gap-1"
-                    >
-                      <span>Configure Quote on Service Page</span>
-                      <ChevronRight className="w-3.5 h-3.5" />
-                    </Link>
-                  </div>
+                                {/* Arrow button to expand details & price */}
+                                <button
+                                  type="button"
+                                  onClick={(e) => toggleSubServiceExpand(e, sub.id)}
+                                  title={isExpanded ? 'Hide details & fee' : 'Show details & fee'}
+                                  className={`p-1 rounded-md text-slate-400 hover:text-slate-700 hover:bg-white/80 transition-all shrink-0 cursor-pointer ${
+                                    isExpanded ? 'text-[#2DC55F] bg-white shadow-2xs rotate-180' : ''
+                                  }`}
+                                >
+                                  <ChevronDown className="w-4 h-4 transition-transform duration-200" />
+                                </button>
+                              </div>
+
+                              {/* Expanded Details: Fee Badge & Full Description */}
+                              {isExpanded && (
+                                <div className="px-3 pb-3 pt-1 border-t border-slate-200/60 bg-white/60 space-y-2 animate-in fade-in slide-in-from-top-1 duration-150">
+                                  <div className="flex items-center justify-between gap-2 pt-1">
+                                    <span className="text-[11px] font-bold text-slate-500 uppercase tracking-wider">
+                                      Fixed Fee Rate:
+                                    </span>
+                                    <span className="text-xs font-black px-2.5 py-0.5 rounded-md bg-white border border-slate-200 text-slate-900 shadow-2xs">
+                                      {sub.formattedPrice}
+                                    </span>
+                                  </div>
+                                  {sub.description && (
+                                    <p className="text-[11px] text-slate-600 leading-relaxed">
+                                      {sub.description}
+                                    </p>
+                                  )}
+                                </div>
+                              )}
+                            </div>
+                          );
+                        })}
+                      </div>
+
+                      {/* Bottom link to service page */}
+                      <div className="pt-3 border-t border-slate-100 flex items-center justify-between text-xs text-slate-500">
+                        <span className="text-[11px] text-slate-400">
+                          Standard CPA turnaround: 24–48 hrs
+                        </span>
+                        <Link
+                          href={`/services/${service.slug}`}
+                          className="text-xs font-bold text-slate-800 hover:text-[#2DC55F] transition-colors flex items-center gap-1"
+                        >
+                          <span>Full Scope Details</span>
+                          <ChevronRight className="w-3.5 h-3.5" />
+                        </Link>
+                      </div>
+                    </div>
+                  )}
                 </div>
               );
             })}

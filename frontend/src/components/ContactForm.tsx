@@ -428,9 +428,8 @@ export default function ContactForm({
 
                       {/* Sub-service Name */}
                       <span
-                        className={`text-xs sm:text-sm font-semibold ${
-                          isExpanded ? 'break-words leading-snug' : 'truncate'
-                        } ${isChecked ? 'text-slate-950 font-bold' : 'text-slate-800'}`}
+                        className={`text-xs sm:text-sm font-semibold ${isExpanded ? 'break-words leading-snug' : 'truncate'
+                          } ${isChecked ? 'text-slate-950 font-bold' : 'text-slate-800'}`}
                       >
                         {sub.name}
                       </span>

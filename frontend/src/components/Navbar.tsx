@@ -374,7 +374,7 @@ export default function Navbar() {
                           }`}
                       >
                         <div className="flex items-center gap-2">
-                          <span className="inline-block w-5 h-3.5 rounded-xs overflow-hidden shrink-0 bg-slate-800 text-emerald-400 flex items-center justify-center text-[9px] font-black">
+                          <span className="w-5 h-3.5 rounded-xs overflow-hidden shrink-0 bg-slate-800 text-emerald-400 inline-flex items-center justify-center text-[9px] font-black">
                             GL
                           </span>
                           <span className="truncate">Global / Other</span>
