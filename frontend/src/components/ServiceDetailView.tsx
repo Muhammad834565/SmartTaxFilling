@@ -383,10 +383,10 @@ export default function ServiceDetailView({ service }: ServiceDetailViewProps) {
                   <span>// GET STARTED //</span>
                 </div>
                 <h3 className="text-lg font-bold text-[#0c1e36] mt-1">
-                  Request Consultation For This Service
+                  Request Consultation
                 </h3>
                 <p className="text-xs text-slate-500 mt-1">
-                  Select sub-service options below to generate your real-time invoice quotation and schedule your discovery call.
+                  Select options below for an instant quote and to book your discovery call.
                 </p>
               </div>
 
