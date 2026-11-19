@@ -29,7 +29,7 @@ const STATIC_PAGES = [
 function buildIndex(): SearchResult[] {
   const results: SearchResult[] = [];
 
-  // Services
+  // Services & Sub-Services
   SERVICES.forEach((s) => {
     results.push({
       type: 'service',
@@ -38,6 +38,17 @@ function buildIndex(): SearchResult[] {
       href: `/services/${s.slug}`,
       icon: <Briefcase className="w-4 h-4" />,
       badge: s.category,
+    });
+
+    s.subServices?.forEach((sub) => {
+      results.push({
+        type: 'service',
+        title: `${sub.name} (${sub.formattedPrice})`,
+        description: `${s.title} • ${sub.description || s.shortDescription}`,
+        href: `/services/${s.slug}?sub=${sub.id}`,
+        icon: <Briefcase className="w-4 h-4" />,
+        badge: `${s.category} • ${sub.formattedPrice}`,
+      });
     });
   });
 

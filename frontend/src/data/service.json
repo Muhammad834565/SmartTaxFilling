@@ -1,43 +1,19 @@
 {
   "USA": [
     {
-      "slug": "bookkeeping-accounting-services",
-      "title": "Bookkeeping & Accounting Services",
-      "category": "USA",
-      "icon": "BookOpen",
-      "shortDescription": "Comprehensive bookkeeping and monthly management accounting for small businesses, startups, and e-commerce sellers.",
-      "fullDescription": "Comprehensive bookkeeping and accounting for small businesses, startups, and e-commerce sellers. Our dedicated accounting team reconciles transactions, balances books, and ensures complete financial transparency with monthly reports.",
-      "features": [
-        "Bank reconciliations and account balancing",
-        "Accounts Receivable (AR) management",
-        "Accounts Payable (AP) management",
-        "Financial statements: P&L, Balance Sheet, Cash Flow",
-        "General ledger maintenance & ledger cleanups",
-        "Monthly management reporting & financial analysis"
-      ],
-      "softwareTools": [
-        "QuickBooks Online",
-        "Xero",
-        "Wave",
-        "FreshBooks",
-        "Zoho Books"
-      ],
-      "imageUrl": "/sevices/Bookkeeping%20&%20Tax%20Compliance.png"
-    },
-    {
-      "slug": "us-tax-compliance-filing-services",
-      "title": "US Tax Compliance & Filing Services",
+      "slug": "individual-tax-filing",
+      "title": "Individual Tax Filing",
       "category": "USA",
       "icon": "FileText",
-      "shortDescription": "Professional US federal and state tax filing for individuals, single-member LLCs, multi-member partnerships, and corporations.",
-      "fullDescription": "Professional US tax filing for individuals and businesses. We guarantee maximum deductions, strict IRS compliance, and timely filing across all 50 states.",
+      "shortDescription": "Professional US individual federal and state tax returns for residents, nonresidents, sole proprietors, and rental property owners.",
+      "fullDescription": "Comprehensive US individual income tax preparation and advisory. We ensure full IRS and state compliance, maximize your allowable deductions and credits, and guarantee accurate, on-time electronic filing across all 50 states.",
       "features": [
-        "Individual Tax Returns: Forms 1040, 1040-SR, 1040-NR",
-        "Business Tax Returns: Form 1120 (C-Corp), Form 1120-S (S-Corp)",
-        "Partnership Tax Returns: Form 1065 & Schedule K-1s",
-        "Foreign-Owned US Disregarded Entities: Form 5472 & Form 1120",
-        "State tax filings & multi-state apportionment",
-        "IRS notice responses, audit support & correspondence"
+        "Individual Tax Return preparation (Form 1040 & 1040-SR)",
+        "Nonresident Alien Income Tax Return (Form 1040-NR)",
+        "Amended Federal Income Tax Returns (Form 1040-X)",
+        "Sole Proprietorship & Single-Member LLC reporting (Schedule C)",
+        "Rental Property & Real Estate Income/Loss reporting (Schedule E)",
+        "State and local income tax returns across all applicable jurisdictions"
       ],
       "softwareTools": [
         "ProConnect Tax",
@@ -45,21 +21,129 @@
         "Lacerte",
         "UltraTax"
       ],
-      "imageUrl": "/sevices/US%20Tax%20Compliance%20&%20Filing%20Services.png"
+      "imageUrl": "/sevices/Tax%20Compliance%20&%20Filing%20Services.png",
+      "subServices": [
+        {
+          "id": "individual-1040",
+          "name": "Individual Return (1040)",
+          "price": 180,
+          "currency": "$",
+          "formattedPrice": "$180",
+          "description": "Standard federal Form 1040 filing with W-2, 1099-INT/DIV, and standard deduction."
+        },
+        {
+          "id": "nonresident-1040nr",
+          "name": "Nonresident Return (1040-NR)",
+          "price": 250,
+          "currency": "$",
+          "formattedPrice": "$250",
+          "description": "Specialized Form 1040-NR for non-US residents earning US-sourced income or trade."
+        },
+        {
+          "id": "amended-1040x",
+          "name": "Amended Return (1040-X)",
+          "price": 220,
+          "currency": "$",
+          "formattedPrice": "$220",
+          "description": "Correction and refiling of prior-year tax returns to claim missed refunds or credits."
+        },
+        {
+          "id": "sole-prop-sched-c",
+          "name": "Sole Proprietors & Single-Member LLCs (1040, Schedule C, where applicable)",
+          "price": 320,
+          "currency": "$",
+          "formattedPrice": "$320",
+          "description": "Business revenue, expense categorization, and self-employment tax calculation."
+        },
+        {
+          "id": "rental-property-sched-e",
+          "name": "Rental Property Income (1040, Schedule E, where applicable)",
+          "price": 160,
+          "currency": "$",
+          "formattedPrice": "$160",
+          "description": "Rental real estate schedules, passive loss limits, and asset depreciation."
+        }
+      ]
+    },
+    {
+      "slug": "us-tax-compliance-filing-services",
+      "title": "Business & Trust Tax Filing",
+      "category": "USA",
+      "icon": "Building",
+      "shortDescription": "Corporate, partnership, fiduciary, and foreign-owned US entity federal and state income tax compliance.",
+      "fullDescription": "Professional business tax filings for partnerships, corporations, and fiduciary trusts. We navigate federal corporate code, state apportionment, and cross-border 5472 disclosures with precision.",
+      "features": [
+        "Partnership Tax Returns: Form 1065 & Partner Schedule K-1s",
+        "C Corporation Federal Tax Returns: Form 1120",
+        "S Corporation Tax Returns: Form 1120-S & Shareholder K-1s",
+        "Foreign-Owned US Disregarded Single-Member LLCs: Form 5472 + Pro Forma 1120",
+        "Estates & Trusts Income Tax Filing: Form 1041",
+        "Multi-state corporate income & franchise tax returns"
+      ],
+      "softwareTools": [
+        "ProConnect Tax",
+        "Drake",
+        "Lacerte",
+        "UltraTax"
+      ],
+      "imageUrl": "/sevices/US%20Tax%20Compliance%20&%20Filing%20Services.png",
+      "subServices": [
+        {
+          "id": "partnerships-1065",
+          "name": "Partnerships & Multi-Member LLCs (1065)",
+          "price": 450,
+          "currency": "$",
+          "formattedPrice": "$450",
+          "description": "Complete Form 1065, balance sheet M-1/M-2 reconciliations, and partner K-1s."
+        },
+        {
+          "id": "c-corps-1120",
+          "name": "C Corporations (1120)",
+          "price": 550,
+          "currency": "$",
+          "formattedPrice": "$550",
+          "description": "Federal corporate tax return Form 1120 with retained earnings reconciliation."
+        },
+        {
+          "id": "s-corps-1120s",
+          "name": "S Corporations (1120-S)",
+          "price": 490,
+          "currency": "$",
+          "formattedPrice": "$490",
+          "description": "Pass-through S-Corp filing, shareholder distributions, and basis calculations."
+        },
+        {
+          "id": "foreign-owned-llc-5472",
+          "name": "Foreign-Owned Single-Member LLCs (5472 + Pro Forma 1120, where applicable)",
+          "price": 390,
+          "currency": "$",
+          "formattedPrice": "$390",
+          "description": "Mandatory Section 6038A information reporting for non-US owners of US LLCs."
+        },
+        {
+          "id": "estates-trusts-1041",
+          "name": "Estates & Trusts (1041)",
+          "price": 420,
+          "currency": "$",
+          "formattedPrice": "$420",
+          "description": "Fiduciary income tax reporting, distributable net income (DNI), and beneficiary K-1s."
+        }
+      ]
     },
     {
       "slug": "payroll-tax-management",
-      "title": "Payroll Tax Management",
+      "title": "Payroll & Contractor Reporting",
       "category": "USA",
       "icon": "Users",
-      "shortDescription": "End-to-end payroll tax processing, automated filings, quarterly reporting, and year-end tax compliance.",
-      "fullDescription": "End-to-end payroll tax services for US businesses. From wage calculations to timely payroll tax deposits and reporting, we keep you fully compliant with federal and state regulations.",
+      "shortDescription": "Federal payroll tax deposits, quarterly 941 filings, annual FUTA 940, W-2s, and 1099-NEC contractor reporting.",
+      "fullDescription": "End-to-end US payroll and independent contractor compliance. From automated FICA tax withholding and federal deposits to year-end W-2 and 1099 filings, we protect your business from hefty penalties.",
       "features": [
-        "Federal quarterly payroll tax filings: Form 941 & Annual Form 940 (FUTA)",
-        "State payroll tax & unemployment insurance filings (SUTA)",
-        "Employee W-2 and independent contractor 1099-NEC preparation & filing",
-        "Automated direct deposit calculation & withholding management",
-        "Payroll reconciliations & journal entries"
+        "Federal Payroll Deposits (FICA & Federal Income Tax Withholding)",
+        "Quarterly Federal Payroll Tax Return: Form 941",
+        "Annual Federal Unemployment Tax Return: Form 940 (FUTA)",
+        "Year-End Wage & Tax Reporting: Form W-2 & Transmittal Form W-3",
+        "Contractor Reporting Preparation & Electronic Filing: Form 1099-NEC",
+        "State unemployment (SUTA) and state withholding reconciliations"
       ],
       "softwareTools": [
         "QuickBooks Payroll",
@@ -68,21 +152,63 @@
         "Paychex",
         "Rippling"
       ],
-      "imageUrl": "/sevices/Payroll%20Tax%20Management.png"
+      "imageUrl": "/sevices/Payroll%20Tax%20Management.png",
+      "subServices": [
+        {
+          "id": "payroll-deposits-fica",
+          "name": "Federal Payroll Deposits (FICA & Income Tax Withholding)",
+          "price": 95,
+          "currency": "$",
+          "formattedPrice": "$95",
+          "description": "Timely semi-weekly or monthly electronic federal tax deposit (EFTPS) execution."
+        },
+        {
+          "id": "quarterly-payroll-941",
+          "name": "Quarterly Payroll Return (941)",
+          "price": 140,
+          "currency": "$",
+          "formattedPrice": "$140",
+          "description": "Quarterly wage, social security, Medicare, and withholding reconciliation."
+        },
+        {
+          "id": "annual-unemployment-940",
+          "name": "Annual Federal Unemployment Return (940)",
+          "price": 120,
+          "currency": "$",
+          "formattedPrice": "$120",
+          "description": "Annual calculation and filing of employer FUTA tax liability and state credits."
+        },
+        {
+          "id": "year-end-w2-w3",
+          "name": "Year-End Wage Reporting (W-2 & W-3)",
+          "price": 150,
+          "currency": "$",
+          "formattedPrice": "$150",
+          "description": "Employee W-2 preparation, SSA electronic dispatch, and summary Form W-3."
+        },
+        {
+          "id": "contractor-1099-nec",
+          "name": "Contractor Reporting Preparation & Filing (1099-NEC)",
+          "price": 110,
+          "currency": "$",
+          "formattedPrice": "$110",
+          "description": "1099-NEC and 1099-MISC nonemployee compensation preparation and IRS filing."
+        }
+      ]
     },
     {
       "slug": "us-sales-use-tax-compliance",
-      "title": "US Sales & Use Tax Compliance",
+      "title": "Sales & Use Tax",
       "category": "USA",
       "icon": "Receipt",
-      "shortDescription": "Multi-state sales tax registration, economic nexus analysis, exemption certificate management, and return filings.",
-      "fullDescription": "Sales tax registration and compliance support for online and brick-and-mortar merchants. We identify where you have physical or economic nexus and handle all registrations and returns.",
+      "shortDescription": "Multi-state seller's permit registrations, economic nexus reviews, resale certificate management, and return filings.",
+      "fullDescription": "Sales & use tax registration and compliance for brick-and-mortar stores, remote sellers, and online merchants. We evaluate your physical and economic nexus thresholds and handle ongoing state filings.",
       "features": [
-        "Multi-state economic and physical nexus analysis",
-        "State sales tax permit registrations",
-        "Periodic sales tax return filings (monthly, quarterly, annual)",
-        "E-commerce marketplace facilitator reconciliation (Amazon, Shopify, Etsy)",
-        "Local jurisdiction rate tracking & compliance monitoring"
+        "Sales Tax Registration & Seller’s Permits in all 45 sales-tax states",
+        "Resale Certificate Support & vendor exemption documentation",
+        "Periodic Sales & Use Tax Return preparation and electronic filing",
+        "Sales Tax Nexus Review & physical/economic threshold assessment",
+        "Exemption Certificate Support and state audit defense"
       ],
       "softwareTools": [
         "Avalara",
@@ -90,21 +216,64 @@
         "Vertex",
         "TaxCloud"
       ],
-      "imageUrl": "/sevices/US%20Sales%20&%20Use%20Tax%20Compliance.png"
+      "imageUrl": "/sevices/US%20Sales%20&%20Use%20Tax%20Compliance.png",
+      "subServices": [
+        {
+          "id": "sales-tax-registration",
+          "name": "Sales Tax Registration & Seller’s Permits",
+          "price": 160,
+          "currency": "$",
+          "formattedPrice": "$160",
+          "description": "State-level sales tax account application and seller's permit issuance."
+        },
+        {
+          "id": "resale-certificate-support",
+          "name": "Resale Certificate Support",
+          "price": 95,
+          "currency": "$",
+          "formattedPrice": "$95",
+          "description": "Issuance and verification of sales tax resale certificates for exempt wholesale purchases."
+        },
+        {
+          "id": "sales-use-tax-returns",
+          "name": "Sales & Use Tax Returns",
+          "price": 135,
+          "currency": "$",
+          "formattedPrice": "$135",
+          "description": "Monthly, quarterly, or annual return preparation with local jurisdiction tax rates."
+        },
+        {
+          "id": "sales-tax-nexus-review",
+          "name": "Sales Tax Nexus Review",
+          "price": 250,
+          "currency": "$",
+          "formattedPrice": "$250",
+          "description": "In-depth Wayfair economic nexus evaluation across 50 states for remote sellers."
+        },
+        {
+          "id": "exemption-certificate-support",
+          "name": "Exemption Certificate Support",
+          "price": 110,
+          "currency": "$",
+          "formattedPrice": "$110",
+          "description": "Management and audit compliance validation of customer exemption certificates."
+        }
+      ]
     },
     {
       "slug": "startup-business-formation-usa",
-      "title": "Startup Business Formation – USA",
+      "title": "Business Formation & Tax IDs",
       "category": "USA",
       "icon": "Rocket",
-      "shortDescription": "Full setup for US LLCs and C-Corps in Delaware, Wyoming, Florida, and other states including EIN and BOI filings.",
-      "fullDescription": "Full support for US startups and foreign founders. We register your LLC or Corporation, acquire your IRS EIN, prepare your Operating Agreement, and advise on opening US business bank accounts.",
+      "shortDescription": "Complete LLC and C-Corp formation in Wyoming, Delaware, Florida, plus IRS EIN, ITIN support, and BOI filing.",
+      "fullDescription": "Launch your US enterprise with full legal, structural, and tax compliance. We handle Secretary of State filings, IRS Employer Identification Numbers (EIN), Individual Taxpayer Identification Numbers (ITIN), and mandatory FinCEN BOI filings.",
       "features": [
-        "LLC & Corporation registration in DE, WY, FL, TX, NM, and all 50 states",
-        "Federal Employer Identification Number (EIN) acquisition with the IRS",
-        "Custom Operating Agreement & Corporate Bylaws drafting guidance",
+        "Complete LLC Formation in Wyoming, Delaware, Florida, Texas, or any US state",
+        "C Corporation Formation with custom Articles of Incorporation & Bylaws",
+        "Federal Employer Identification Number (EIN) Application (Form SS-4)",
+        "ITIN Application Support (Form W-7) for foreign owners and non-citizens",
         "Corporate Transparency Act / FinCEN BOI (Beneficial Ownership Information) filing",
-        "Registered Agent service coordination & Annual Report filing reminders"
+        "Registered Agent service coordination and Operating Agreement drafting"
       ],
       "softwareTools": [
         "Stripe Atlas",
@@ -112,132 +281,379 @@
         "Clerky",
         "Firstbase"
       ],
-      "imageUrl": "/sevices/UK%20Company%20Formation%20&%20Compliance.png"
+      "imageUrl": "/sevices/UK%20Company%20Formation%20&%20Compliance.png",
+      "subServices": [
+        {
+          "id": "complete-llc-formation",
+          "name": "Complete LLC Formation",
+          "price": 299,
+          "currency": "$",
+          "formattedPrice": "$299",
+          "description": "State filing, certified Articles of Organization, and initial operating resolutions."
+        },
+        {
+          "id": "c-corp-formation",
+          "name": "C Corporation Formation",
+          "price": 399,
+          "currency": "$",
+          "formattedPrice": "$399",
+          "description": "Certificate of Incorporation, corporate bylaws, stock ledger, and founder shares."
+        },
+        {
+          "id": "ein-application-ss4",
+          "name": "EIN Application (SS-4)",
+          "price": 99,
+          "currency": "$",
+          "formattedPrice": "$99",
+          "description": "Direct IRS Employer Identification Number (EIN) procurement for domestic or foreign owners."
+        },
+        {
+          "id": "itin-application-w7",
+          "name": "ITIN Application Support (W-7)",
+          "price": 280,
+          "currency": "$",
+          "formattedPrice": "$280",
+          "description": "Certified Acceptance Agent (CAA) guidance and Form W-7 submission with IRS."
+        },
+        {
+          "id": "boi-filing-support",
+          "name": "BOI Filing Support (where applicable)",
+          "price": 120,
+          "currency": "$",
+          "formattedPrice": "$120",
+          "description": "FinCEN Beneficial Ownership Information reporting compliance under Corporate Transparency Act."
+        }
+      ]
     },
     {
-      "slug": "e-commerce-accounting-tax-services-us",
-      "title": "E-Commerce Accounting & Tax Services (US)",
+      "slug": "bookkeeping-accounting-services",
+      "title": "Bookkeeping & Accounting",
+      "category": "USA",
+      "icon": "BookOpen",
+      "shortDescription": "Monthly bookkeeping, historical cleanups, bank reconciliations, and GAAP financial statements from bank records.",
+      "fullDescription": "Accurate, timely, and organized bookkeeping services tailored to small businesses and growing enterprises. We reconcile all bank and credit card accounts, manage ledgers, and deliver investor-ready financial statements.",
+      "features": [
+        "Monthly Books & Financial Reports (Profit & Loss, Balance Sheet, Cash Flow)",
+        "Bookkeeping Cleanup & catch-up for neglected or disorganized accounts",
+        "Financial Statements generated directly from bank records and invoices",
+        "Bank & Credit Card Reconciliation across multiple financial institutions",
+        "General ledger maintenance, accounts receivable, and accounts payable tracking"
+      ],
+      "softwareTools": [
+        "QuickBooks Online",
+        "Xero",
+        "Wave",
+        "FreshBooks",
+        "Zoho Books"
+      ],
+      "imageUrl": "/sevices/Bookkeeping%20&%20Tax%20Compliance.png",
+      "subServices": [
+        {
+          "id": "monthly-books-financial-reports",
+          "name": "Monthly Books & Financial Reports",
+          "price": 250,
+          "currency": "$",
+          "formattedPrice": "$250",
+          "description": "Monthly transaction categorization, balance sheet balancing, and executive P&L statement."
+        },
+        {
+          "id": "bookkeeping-cleanup",
+          "name": "Bookkeeping Cleanup",
+          "price": 450,
+          "currency": "$",
+          "formattedPrice": "$450",
+          "description": "Comprehensive audit and reconstruction of multi-month or annual backlogged financial records."
+        },
+        {
+          "id": "financial-statements-bank-records",
+          "name": "Financial Statements from Bank Records",
+          "price": 300,
+          "currency": "$",
+          "formattedPrice": "$300",
+          "description": "Drafting formal P&L, balance sheet, and equity statements directly from raw banking data."
+        },
+        {
+          "id": "bank-reconciliation",
+          "name": "Bank Reconciliation",
+          "price": 150,
+          "currency": "$",
+          "formattedPrice": "$150",
+          "description": "Matching bank statement balances against general ledger transactions and clearing discrepancies."
+        }
+      ]
+    },
+    {
+      "slug": "industry-accounting-tax",
+      "title": "Industry Accounting & Tax",
       "category": "USA",
       "icon": "ShoppingBag",
-      "shortDescription": "Specialized inventory accounting, multi-channel payment reconciliation, COGS tracking, and marketplace tax compliance.",
-      "fullDescription": "Accounting and tax services tailored specifically for US e-commerce sellers. We automate the sync between your selling platforms, payment processors, and accounting software.",
+      "shortDescription": "Tailored accounting and tax advisory for E-Commerce merchants, Real Estate investors, and Trucking/Logistics fleets.",
+      "fullDescription": "Industry-specific accounting and tax strategies that address the unique challenges of modern verticals: multi-channel e-commerce inventory, real estate depreciation schedules, and trucking per-mile fleet costs.",
       "features": [
-        "Sales and gross revenue reconciliation across channels",
-        "COGS (Cost of Goods Sold) and inventory tracking",
-        "Multi-channel payment processor clearing (Shopify Payments, Stripe, PayPal, Amazon Pay)",
-        "Marketplace fee breakdown and margin optimization",
-        "Annual income tax return preparation for online merchants"
+        "E-Commerce: Marketplace settlement reconciliation (Amazon, Shopify, Walmart) & COGS tracking",
+        "Real Estate: Property rental accounting, 1031 exchanges, and MACRS cost segregation",
+        "Trucking & Logistics: Per-mile cost analysis, fuel tax allocations, and Heavy Highway Use Tax (Form 2290)",
+        "Specialized industry deductions and tax shelter optimization"
       ],
       "softwareTools": [
         "Shopify",
         "Amazon Seller Central",
         "A2X",
+        "Buildium",
+        "TruckingOffice",
         "QuickBooks Online"
       ],
-      "imageUrl": "/sevices/E-Commerce%20Accounting%20&%20Tax%20Services%20(US).png"
-    },
-    {
-      "slug": "real-estate-financial-tax-services-us",
-      "title": "Real Estate Financial & Tax Services (US)",
-      "category": "USA",
-      "icon": "Building",
-      "shortDescription": "Dedicated financial and tax services for real estate investors, property managers, syndications, and landlords.",
-      "fullDescription": "Accounting and tax support for real estate investors. We maximize cash flow and minimize tax liability with depreciation schedules, 1031 exchanges, and passive activity loss planning.",
-      "features": [
-        "Property rental income tracking & tenant deposit accounting",
-        "Mortgage interest, property tax, and operating expense categorization",
-        "MACRS depreciation and cost segregation analysis",
-        "Tax returns: Form 1040 Schedule E, Form 1065, Form 1120",
-        "Capital gains and 1031 exchange transaction support"
-      ],
-      "softwareTools": [
-        "QuickBooks",
-        "Stessa",
-        "Buildium",
-        "AppFolio"
-      ],
-      "imageUrl": "/sevices/Real%20Estate%20Financial%20&%20Tax%20Services.png"
-    },
-    {
-      "slug": "logistics-transport-accounting-tax-support",
-      "title": "Logistics & Transport Accounting & Tax Support",
-      "category": "USA",
-      "icon": "Truck",
-      "shortDescription": "Specialized financial services for freight companies, owner-operators, trucking fleets, and logistics providers.",
-      "fullDescription": "Specialized accounting and tax services for logistics and transportation fleets. We understand per-mile costs, fuel tax compliance, and fleet depreciation.",
-      "features": [
-        "Trucking bookkeeping and per-truck profitability reporting",
-        "Payroll tax filings for fleet drivers and dispatchers",
-        "Heavy Highway Vehicle Use Tax (Form 2290 / HVUT)",
-        "Corporate tax filings (Forms 1120, 1120-S, 1065)",
-        "IFTA fuel tax recordkeeping & expense allocation"
-      ],
-      "softwareTools": [
-        "TruckingOffice",
-        "Axon",
-        "QuickBooks",
-        "Gusto"
-      ],
-      "imageUrl": "/sevices/Logistics%20&%20Transport%20Accounting%20&%20Tax%20Support.jpg"
+      "imageUrl": "/sevices/E-Commerce%20Accounting%20&%20Tax%20Services%20(US).png",
+      "subServices": [
+        {
+          "id": "industry-ecommerce",
+          "name": "E-Commerce Accounting & Tax",
+          "price": 350,
+          "currency": "$",
+          "formattedPrice": "$350",
+          "description": "Multi-channel settlement reconciliation, merchant processor clearing, and inventory COGS."
+        },
+        {
+          "id": "industry-real-estate",
+          "name": "Real Estate Accounting & Tax",
+          "price": 320,
+          "currency": "$",
+          "formattedPrice": "$320",
+          "description": "Rental cash flows, tenant escrow accounting, 1031 exchange support, and depreciation."
+        },
+        {
+          "id": "industry-trucking-logistics",
+          "name": "Trucking & Logistics Accounting & Tax",
+          "price": 380,
+          "currency": "$",
+          "formattedPrice": "$380",
+          "description": "Fleet expense allocation, dispatcher payroll, per-mile margins, and Form 2290 filings."
+        }
+      ]
     },
     {
       "slug": "virtual-bank-accounts-payment-solutions",
-      "title": "Virtual Bank Accounts & Payment Solutions",
+      "title": "Virtual Banking & Payments",
       "category": "USA",
       "icon": "CreditCard",
-      "shortDescription": "Guidance and setup assistance for US & international business banking, merchant gateways, and multicurrency accounts.",
-      "fullDescription": "We help global businesses and US entities establish compliant commercial bank accounts and payment processing systems to receive international funds friction-free.",
+      "shortDescription": "Virtual business bank account setup (Wise, Payoneer, nsave) and merchant payment processing (Stripe & PayPal).",
+      "fullDescription": "We guide global businesses and US entities in establishing compliant commercial virtual banking and merchant payment processing systems to receive international funds friction-free.",
       "features": [
-        "US business bank account onboarding guidance (Mercury, Relay, Wise Business)",
-        "Payment processor application setup (Stripe, PayPal, Payoneer)",
-        "Multicurrency conversion and international wire reconciliation",
-        "KYC/AML documentation review and compliance preparation"
+        "Virtual Business Account Setup Support (Wise Business, Payoneer, nsave, where eligible)",
+        "Online Payment Setup Support (Stripe Business & PayPal Business)",
+        "Corporate KYC/AML documentation preparation and proof-of-business review",
+        "Multi-currency conversion routing and merchant gateway integration"
       ],
       "softwareTools": [
-        "Mercury",
         "Wise",
-        "Relay",
+        "Payoneer",
+        "nsave",
         "Stripe",
-        "Payoneer"
+        "PayPal",
+        "Mercury"
       ],
-      "imageUrl": "/sevices/Virtual%20Bank%20Accounts%20&%20Payment%20Solutions.png"
+      "imageUrl": "/sevices/Virtual%20Bank%20Accounts%20&%20Payment%20Solutions.png",
+      "subServices": [
+        {
+          "id": "virtual-biz-account-support",
+          "name": "Virtual Business Account Setup Support (Wise, Payoneer, nsave, where eligible)",
+          "price": 199,
+          "currency": "$",
+          "formattedPrice": "$199",
+          "description": "Comprehensive document review, application filing, and compliance assistance for virtual commercial accounts."
+        },
+        {
+          "id": "online-payment-setup-support",
+          "name": "Online Payment Setup Support (Stripe & PayPal)",
+          "price": 149,
+          "currency": "$",
+          "formattedPrice": "$149",
+          "description": "Merchant gateway configuration, API keys setup, website checkout review, and identity clearance."
+        }
+      ]
     }
   ],
   "UK": [
     {
       "slug": "uk-company-formation-compliance-services",
-      "title": "UK Company Formation & Compliance Services",
+      "title": "Company Setup",
       "category": "UK",
       "icon": "Landmark",
-      "shortDescription": "Complete UK Private Limited Company (Ltd) incorporation via Companies House with registered address and statutory registers.",
-      "fullDescription": "Full support for UK company formations and continuous Companies House compliance. Suitable for UK residents and international entrepreneurs establishing a British corporate entity.",
+      "shortDescription": "Complete UK Private Limited Company (Ltd) incorporation via Companies House, digital ID verification & statutory registers.",
+      "fullDescription": "Full support for UK company formations and continuous Companies House compliance. Suitable for UK residents and international entrepreneurs establishing a British corporate entity with digital ID verification.",
       "features": [
-        "UK Private Limited Company (Ltd) registration with Companies House",
+        "Companies House Registration & Certificate of Incorporation",
+        "Director & PSC Digital ID Verification Support",
+        "UK Registered Office Address service provision",
         "Memorandum & Articles of Association and Share Certificates",
-        "Companies House Annual Confirmation Statement (CS01) filing",
-        "PSC (Persons with Significant Control) register maintenance",
-        "Company secretary and statutory compliance advisory"
+        "HMRC UTR Letter acquisition and tax registration",
+        "Companies House Authentication Code procurement"
       ],
       "softwareTools": [
         "Companies House Direct",
         "Inform Direct",
         "Docracy"
       ],
-      "imageUrl": "/sevices/UK%20Company%20Formation%20&%20Compliance.png"
+      "imageUrl": "/sevices/UK%20Company%20Formation%20&%20Compliance.png",
+      "subServices": [
+        {
+          "id": "uk-id-verification",
+          "name": "ID Verification",
+          "price": 50,
+          "currency": "£",
+          "formattedPrice": "£50",
+          "description": "Identity verification assistance for directors and Persons with Significant Control (PSC)."
+        },
+        {
+          "id": "uk-ltd-formation",
+          "name": "UK Ltd Formation (Companies House, ID Verification, Address, Articles, UTR, Auth Code)",
+          "price": 180,
+          "currency": "£",
+          "formattedPrice": "£180",
+          "description": "Complete incorporation package: Companies House filing, registered office, M&A, HMRC UTR, and auth code."
+        }
+      ]
+    },
+    {
+      "slug": "uk-virtual-business-accounts-payments",
+      "title": "Virtual Business Accounts & Payments",
+      "category": "UK",
+      "icon": "CreditCard",
+      "shortDescription": "UK commercial receiving accounts (Wise, Payoneer, WorldFirst, Taptap Send) and payment gateway setup (Stripe & PayPal).",
+      "fullDescription": "Establish commercial payment facilities and multicurrency UK bank accounts to invoice international clients and accept global debit/credit cards with zero friction.",
+      "features": [
+        "Business Account Applications (Wise Business, Payoneer Business, Taptap Send Business & WorldFirst, where eligible)",
+        "Online Payment Setup (Stripe UK & PayPal Business)",
+        "UK Sort Code & Account Number receiving setup for international founders",
+        "Corporate KYC documentation and compliance submission support"
+      ],
+      "softwareTools": [
+        "Wise Business",
+        "Payoneer",
+        "Stripe",
+        "WorldFirst"
+      ],
+      "imageUrl": "/sevices/Virtual%20Bank%20Accounts%20&%20Payment%20Solutions.png",
+      "subServices": [
+        {
+          "id": "uk-biz-account-apps",
+          "name": "Business Account Applications (Wise Business, Payoneer Business, Taptap Send Business & WorldFirst, where eligible)",
+          "price": 150,
+          "currency": "£",
+          "formattedPrice": "£150",
+          "description": "Document preparation and eligibility alignment for UK & EU multi-currency commercial banking."
+        },
+        {
+          "id": "uk-online-payment-setup",
+          "name": "Online Payment Setup (Stripe & PayPal)",
+          "price": 120,
+          "currency": "£",
+          "formattedPrice": "£120",
+          "description": "Merchant payment gateway onboarding, verification, and checkout integration."
+        }
+      ]
+    },
+    {
+      "slug": "uk-companies-house-filings",
+      "title": "Companies House Filings",
+      "category": "UK",
+      "icon": "FileText",
+      "shortDescription": "Statutory Confirmation Statements (CS01), Annual Accounts, Dormant Accounts, officer appointments, and strike-offs.",
+      "fullDescription": "Maintain statutory good standing with the UK Registrar of Companies. We handle your annual confirmation statements, officer appointments, registered address changes, and voluntary dissolution.",
+      "features": [
+        "Confirmation Statement (CS01) annual preparation & submission",
+        "Annual Accounts Preparation & Electronic Filing with Companies House",
+        "Dormant Company Accounts (Form AA02 / DCA)",
+        "Registered Office Address Change (Form AD01)",
+        "Director Appointment (AP01) and Director Removal (TM01)",
+        "Company Name Change (NM01) & Company Strike-Off (DS01)"
+      ],
+      "softwareTools": [
+        "Companies House Direct",
+        "Inform Direct",
+        "Taxfiler"
+      ],
+      "imageUrl": "/sevices/UK%20Tax%20Compliance%20&%20Filing%20Services.png",
+      "subServices": [
+        {
+          "id": "confirmation-statement-cs01",
+          "name": "Confirmation Statement (CS01)",
+          "price": 85,
+          "currency": "£",
+          "formattedPrice": "£85",
+          "description": "Annual review and filing of company shareholders, PSC register, and SIC code information."
+        },
+        {
+          "id": "annual-accounts-filing",
+          "name": "Annual Accounts Preparation & Filing",
+          "price": 280,
+          "currency": "£",
+          "formattedPrice": "£280",
+          "description": "Micro-entity or small company statutory accounts prepared to FRS 105 / FRS 102 1A standards."
+        },
+        {
+          "id": "dormant-company-accounts",
+          "name": "Dormant Company Accounts",
+          "price": 120,
+          "currency": "£",
+          "formattedPrice": "£120",
+          "description": "Simplified balance sheet filing for non-trading or dormant UK corporate entities."
+        },
+        {
+          "id": "registered-office-change-ad01",
+          "name": "Registered Office Address Change (AD01)",
+          "price": 60,
+          "currency": "£",
+          "formattedPrice": "£60",
+          "description": "Official update of your company's registered correspondence address with Companies House."
+        },
+        {
+          "id": "director-appointment-ap01",
+          "name": "Director Appointment (AP01)",
+          "price": 60,
+          "currency": "£",
+          "formattedPrice": "£60",
+          "description": "Notification and statutory recording of a new company director."
+        },
+        {
+          "id": "director-removal-tm01",
+          "name": "Director Removal (TM01)",
+          "price": 60,
+          "currency": "£",
+          "formattedPrice": "£60",
+          "description": "Termination of appointment of an outgoing corporate officer or director."
+        },
+        {
+          "id": "company-name-change-nm01",
+          "name": "Company Name Change (NM01)",
+          "price": 95,
+          "currency": "£",
+          "formattedPrice": "£95",
+          "description": "Special resolution preparation and registration of a new company trading name."
+        },
+        {
+          "id": "company-strike-off-ds01",
+          "name": "Company Strike-Off (DS01)",
+          "price": 110,
+          "currency": "£",
+          "formattedPrice": "£110",
+          "description": "Voluntary dissolution and closing down of a solvent UK limited company."
+        }
+      ]
     },
     {
       "slug": "uk-tax-compliance-filing-services",
-      "title": "UK Tax Compliance & Filing Services",
+      "title": "Tax Returns",
       "category": "UK",
       "icon": "FileSpreadsheet",
-      "shortDescription": "HMRC Corporation Tax returns (CT600), Statutory Annual Accounts, and Individual Self-Assessment tax filings.",
-      "fullDescription": "Comprehensive UK tax compliance and filing for companies and directors. We ensure full HMRC compliance while optimizing allowable business expense claims.",
+      "shortDescription": "HMRC Corporation Tax returns (CT600), statutory iXBRL accounts calculations, and Director Self Assessment (SA100).",
+      "fullDescription": "Comprehensive UK tax compliance and filing for limited companies and directors. We ensure full HMRC compliance while optimizing allowable business expense claims and capital allowances.",
       "features": [
-        "Corporation Tax Return (Form CT600) preparation and HMRC electronic submission",
-        "Statutory Annual Accounts preparation in iXBRL format for Companies House",
-        "Director Self-Assessment Tax Returns (SA100)",
+        "Corporation Tax Return (Form CT600) preparation and electronic HMRC submission",
+        "Statutory Annual Accounts preparation in iXBRL format with tax computations",
+        "Director Self-Assessment Tax Returns (Form SA100)",
         "Dividend vouchers and board minutes preparation",
-        "HMRC correspondence and payment scheduling"
+        "HMRC correspondence, payment scheduling, and tax clearance support"
       ],
       "softwareTools": [
         "Taxfiler",
@@ -245,92 +661,953 @@
         "QuickBooks UK",
         "FreeAgent"
       ],
-      "imageUrl": "/sevices/UK%20Tax%20Compliance%20&%20Filing%20Services.png"
+      "imageUrl": "/sevices/UK%20Tax%20Compliance%20&%20Filing%20Services.png",
+      "subServices": [
+        {
+          "id": "corporation-tax-ct600",
+          "name": "Corporation Tax Return (CT600)",
+          "price": 320,
+          "currency": "£",
+          "formattedPrice": "£320",
+          "description": "Corporate profit calculation, capital allowances computation, and electronic CT600 return."
+        },
+        {
+          "id": "ixbrl-accounts-tax-calc",
+          "name": "iXBRL Accounts & Tax Calculations",
+          "price": 220,
+          "currency": "£",
+          "formattedPrice": "£220",
+          "description": "Conversion and digital tagging of statutory financial statements into HMRC-compliant iXBRL format."
+        },
+        {
+          "id": "self-assessment-sa100",
+          "name": "Self Assessment Return (SA100)",
+          "price": 160,
+          "currency": "£",
+          "formattedPrice": "£160",
+          "description": "Individual tax return for company directors, sole traders, and high earners."
+        }
+      ]
     },
     {
       "slug": "uk-vat-registration-compliance",
-      "title": "UK VAT Registration & Compliance",
+      "title": "VAT & EORI",
       "category": "UK",
       "icon": "Coins",
-      "shortDescription": "HMRC VAT registration, Making Tax Digital (MTD) quarterly submissions, and cross-border VAT reconciliation.",
-      "fullDescription": "Expert guidance on UK Value Added Tax. We monitor your rolling 12-month taxable turnover, register your company for VAT, and submit digital quarterly returns.",
+      "shortDescription": "HMRC VAT registration, Making Tax Digital (MTD) quarterly submissions, VAT deregistration, and EORI applications.",
+      "fullDescription": "Expert guidance on UK Value Added Tax and customs identifiers. We monitor your taxable turnover threshold, register your company for VAT, and submit digital quarterly returns via Making Tax Digital.",
       "features": [
-        "HMRC VAT registration & VAT number acquisition",
+        "HMRC VAT Registration & VAT number acquisition",
         "Making Tax Digital (MTD) compliant quarterly VAT return filings",
-        "Standard rate, Flat Rate Scheme, and Cash Accounting evaluations",
-        "Import VAT & Postponed VAT Accounting (PVA) reconciliations",
-        "Cross-border digital services and Amazon/eBay marketplace VAT analysis"
+        "Voluntary or compulsory VAT Deregistration",
+        "Economic Operators Registration and Identification (EORI) Application",
+        "Import VAT & Postponed VAT Accounting (PVA) reconciliations"
       ],
       "softwareTools": [
         "HMRC Online Services",
         "Xero MTD",
         "QuickBooks Online"
       ],
-      "imageUrl": "/sevices/UK%20VAT%20Registration%20&%20Compliance.jpg"
+      "imageUrl": "/sevices/UK%20VAT%20Registration%20&%20Compliance.jpg",
+      "subServices": [
+        {
+          "id": "vat-registration",
+          "name": "VAT Registration",
+          "price": 140,
+          "currency": "£",
+          "formattedPrice": "£140",
+          "description": "Registration of UK domestic or non-established taxable person (NETP) with HMRC."
+        },
+        {
+          "id": "vat-returns-mtd",
+          "name": "VAT Returns (Making Tax Digital)",
+          "price": 120,
+          "currency": "£",
+          "formattedPrice": "£120",
+          "description": "Quarterly input/output tax calculation and automated MTD submission to HMRC."
+        },
+        {
+          "id": "vat-deregistration",
+          "name": "VAT Deregistration",
+          "price": 95,
+          "currency": "£",
+          "formattedPrice": "£95",
+          "description": "Formal cancellation of VAT registration when turnover falls below cancellation threshold."
+        },
+        {
+          "id": "eori-application",
+          "name": "EORI Application",
+          "price": 75,
+          "currency": "£",
+          "formattedPrice": "£75",
+          "description": "Acquisition of an GB EORI number for importing or exporting goods into Great Britain."
+        }
+      ]
+    },
+    {
+      "slug": "uk-payroll-paye-management",
+      "title": "Payroll & PAYE",
+      "category": "UK",
+      "icon": "Users",
+      "shortDescription": "HMRC PAYE registration, payroll & payslips, Real-Time Information (FPS/EPS), P60, P45, and P11D reporting.",
+      "fullDescription": "End-to-end UK payroll management for employers. We calculate national insurance contributions, income tax deductions, and submit Real-Time Information directly to HMRC.",
+      "features": [
+        "HMRC Employer PAYE Registration and scheme setup",
+        "Monthly or weekly payroll processing with itemized payslips",
+        "PAYE & National Insurance Contributions (NIC) calculations",
+        "HMRC Real-Time Information (RTI) submissions: FPS & EPS",
+        "Year-End Pay & Tax Statement (P60) and Employee Leaver Statement (P45)",
+        "Employee Benefits in Kind Reporting (Form P11D, where applicable)"
+      ],
+      "softwareTools": [
+        "BrightPay",
+        "Xero Payroll",
+        "Moneysoft",
+        "QuickBooks"
+      ],
+      "imageUrl": "/sevices/Payroll%20Tax%20Management.png",
+      "subServices": [
+        {
+          "id": "paye-registration",
+          "name": "PAYE Registration",
+          "price": 90,
+          "currency": "£",
+          "formattedPrice": "£90",
+          "description": "Registration of your UK enterprise as an employer with HMRC."
+        },
+        {
+          "id": "payroll-payslips",
+          "name": "Payroll & Payslips",
+          "price": 80,
+          "currency": "£",
+          "formattedPrice": "£80",
+          "description": "Monthly payroll calculation, automated digital payslip generation, and pension staging."
+        },
+        {
+          "id": "paye-nic-calculations",
+          "name": "PAYE & National Insurance Calculations",
+          "price": 70,
+          "currency": "£",
+          "formattedPrice": "£70",
+          "description": "Detailed computation of employee Class 1 NIC and employer secondary NIC liability."
+        },
+        {
+          "id": "hmrc-payroll-submissions",
+          "name": "HMRC Payroll Submissions (FPS & EPS)",
+          "price": 90,
+          "currency": "£",
+          "formattedPrice": "£90",
+          "description": "On-time electronic Full Payment Submission (FPS) and Employer Payment Summary (EPS)."
+        },
+        {
+          "id": "yearend-p60",
+          "name": "Year-End Pay & Tax Statement (P60)",
+          "price": 85,
+          "currency": "£",
+          "formattedPrice": "£85",
+          "description": "Annual statutory summary of total pay and tax deducted for each active employee."
+        },
+        {
+          "id": "employee-leaver-p45",
+          "name": "Employee Leaver Statement (P45)",
+          "price": 50,
+          "currency": "£",
+          "formattedPrice": "£50",
+          "description": "Statutory departure tax code and year-to-date pay certificate for departing staff."
+        },
+        {
+          "id": "benefits-reporting-p11d",
+          "name": "Employee Benefits Reporting (P11D, where applicable)",
+          "price": 110,
+          "currency": "£",
+          "formattedPrice": "£110",
+          "description": "Annual declaration of company cars, health insurance, and expenses to HMRC."
+        }
+      ]
+    },
+    {
+      "slug": "uk-bookkeeping-accounting",
+      "title": "Bookkeeping & Accounting",
+      "category": "UK",
+      "icon": "BookOpen",
+      "shortDescription": "Monthly UK bookkeeping, cleanup, bank reconciliations, bank-record financial statements, and e-commerce reconciliation.",
+      "fullDescription": "Precision bookkeeping for UK businesses, startups, and e-commerce merchants. We maintain your cloud accounting software, reconcile transactions, and prepare statutory financial summaries.",
+      "features": [
+        "Monthly Bookkeeping & Management Financial Reports",
+        "Bookkeeping Cleanup and historical ledger reconciliations",
+        "Multi-currency bank feed and credit card reconciliation",
+        "Financial Statements prepared from bank records & supporting documents",
+        "E-Commerce Accounting & Marketplace Reconciliation (Amazon UK, Shopify, eBay)"
+      ],
+      "softwareTools": [
+        "Xero UK",
+        "QuickBooks Online UK",
+        "Dext",
+        "FreeAgent"
+      ],
+      "imageUrl": "/sevices/Bookkeeping%20&%20Tax%20Compliance.png",
+      "subServices": [
+        {
+          "id": "uk-monthly-bookkeeping",
+          "name": "Monthly Bookkeeping & Reports",
+          "price": 200,
+          "currency": "£",
+          "formattedPrice": "£200",
+          "description": "Ongoing monthly transaction categorization, bank reconciliations, and P&L reporting."
+        },
+        {
+          "id": "uk-bookkeeping-cleanup",
+          "name": "Bookkeeping Cleanup",
+          "price": 350,
+          "currency": "£",
+          "formattedPrice": "£350",
+          "description": "Catch-up accounting and ledger reconstruction for prior unfiled financial periods."
+        },
+        {
+          "id": "uk-bank-reconciliation",
+          "name": "Bank Reconciliation",
+          "price": 120,
+          "currency": "£",
+          "formattedPrice": "£120",
+          "description": "Verification of GBP, EUR, and USD bank statement lines against cloud ledgers."
+        },
+        {
+          "id": "uk-financial-statements",
+          "name": "Financial Statements from Bank Records & Supporting Documents",
+          "price": 240,
+          "currency": "£",
+          "formattedPrice": "£240",
+          "description": "Compilation of balance sheet and profit & loss statements from raw banking documentation."
+        },
+        {
+          "id": "uk-ecommerce-accounting",
+          "name": "E-Commerce Accounting & Marketplace Reconciliation",
+          "price": 290,
+          "currency": "£",
+          "formattedPrice": "£290",
+          "description": "Specialized multi-channel settlement accounting for Amazon UK, Shopify, and Etsy."
+        }
+      ]
     }
   ],
   "Pakistan": [
     {
+      "slug": "secp-company-incorporation-pakistan",
+      "title": "Business Registration & Setup",
+      "category": "Pakistan",
+      "icon": "Building",
+      "shortDescription": "FBR NTN registration, PSEB IT registration & renewal, SECP company formation (SMC/Pvt Ltd), and business bank accounts.",
+      "fullDescription": "Launch your business in Pakistan with complete regulatory compliance. We handle FBR NTN registration, PSEB software house registration, SECP corporate incorporation, and bank account setup support.",
+      "features": [
+        "FBR Registration (NTN) for individuals, freelancers, sole proprietors, AOPs & companies",
+        "PSEB Registration & Renewal for IT freelancers and software export companies",
+        "SECP Company Formation: Single Member Company (SMC) & Private Limited Company (Pvt. Ltd.)",
+        "Company Name Reservation, digital incorporation, and Memorandum & Articles of Association",
+        "Business Bank Account application guidance and corporate resolution preparation"
+      ],
+      "softwareTools": [
+        "SECP eServices",
+        "EzFile",
+        "FBR IRIS",
+        "PSEB Portal"
+      ],
+      "imageUrl": "/sevices/SECP%20Company%20Incorporation%20(Pakistan).png",
+      "subServices": [
+        {
+          "id": "pk-fbr-ntn-reg",
+          "name": "FBR Registration (NTN) (Individuals, Freelancers, AOPs & Companies)",
+          "price": 5000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 5,000",
+          "description": "Issuance of National Tax Number (NTN) with Federal Board of Revenue."
+        },
+        {
+          "id": "pk-pseb-reg",
+          "name": "PSEB Registration & Renewal (Freelancers & IT Companies)",
+          "price": 15000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 15,000",
+          "description": "Pakistan Software Export Board registration for tax credits and income exemptions."
+        },
+        {
+          "id": "pk-secp-formation",
+          "name": "SECP Company Formation (SMC, Pvt. Ltd., Name Reservation & Articles)",
+          "price": 35000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 35,000",
+          "description": "Full incorporation with SECP including digital PINs, Memorandum, and incorporation certificate."
+        },
+        {
+          "id": "pk-bank-account-support",
+          "name": "Business Bank Account Application Support",
+          "price": 10000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 10,000",
+          "description": "Commercial bank account documentation, KYC file preparation, and biometric assistance."
+        }
+      ]
+    },
+    {
+      "slug": "pakistan-chamber-of-commerce-membership",
+      "title": "Chamber of Commerce Membership",
+      "category": "Pakistan",
+      "icon": "Landmark",
+      "shortDescription": "New Chamber of Commerce membership applications, annual renewals, and document preparation for Pakistani businesses.",
+      "fullDescription": "Acquire official Chamber of Commerce membership across Pakistan (LCCI, KCCI, ICCI, RCCI, FCCI). Essential for international trade, commercial tenders, and business visas.",
+      "features": [
+        "New Membership Applications for Corporate & Associate classes",
+        "Annual Chamber of Commerce Membership Renewals",
+        "Comprehensive Document Preparation, attestation & submission",
+        "Visa recommendation letter and commercial certificate assistance"
+      ],
+      "softwareTools": [
+        "Chamber Portals",
+        "FBR IRIS",
+        "NADRA e-Sahulat"
+      ],
+      "imageUrl": "/sevices/Tax%20Compliance%20&%20Filing%20Services.png",
+      "subServices": [
+        {
+          "id": "chamber-new-membership",
+          "name": "New Membership Applications",
+          "price": 18000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 18,000",
+          "description": "Preparation of membership file, proposer/seconder endorsement, and chamber submission."
+        },
+        {
+          "id": "chamber-renewals",
+          "name": "Membership Renewals",
+          "price": 10000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 10,000",
+          "description": "Annual renewal file processing, fee submission, and updated membership certificate."
+        },
+        {
+          "id": "chamber-doc-prep",
+          "name": "Document Preparation",
+          "price": 8000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 8,000",
+          "description": "Attestation of utility bills, lease agreements, NTN, and corporate resolutions."
+        }
+      ]
+    },
+    {
       "slug": "fbr-tax-filing-ntn-registration-pakistan",
-      "title": "FBR Income Tax Filing & NTN Registration",
+      "title": "FBR Income Tax Filing",
       "category": "Pakistan",
       "icon": "FileText",
-      "shortDescription": "National Tax Number (NTN) registration, Active Taxpayer List (ATL) status maintenance, and annual income tax return filing with FBR.",
-      "fullDescription": "Comprehensive Federal Board of Revenue (FBR) tax services for individuals, salaried persons, sole proprietors, AOPs, and private companies in Pakistan.",
+      "shortDescription": "Annual income tax return filing, Active Taxpayer List (ATL) status maintenance, and wealth statements on IRIS.",
+      "fullDescription": "Comprehensive Federal Board of Revenue (FBR) tax services for individuals, salaried employees, sole proprietors, partnerships (AOPs), and private companies in Pakistan.",
       "features": [
-        "NTN (National Tax Number) registration for individuals & businesses",
-        "Annual Income Tax return filing on IRIS portal",
+        "Annual Income Tax return filing on FBR IRIS portal for individuals & companies",
         "Active Taxpayer List (ATL) status inclusion & verification",
-        "Wealth statement reconciliation and asset declaration",
-        "Withholding tax statements and advance tax calculations"
+        "Wealth statement reconciliation and domestic/foreign asset declaration",
+        "Sole proprietor, partnership (AOP), and private limited returns",
+        "Iris Profile Updates, bank account additions, and CPR reconciliations"
       ],
       "softwareTools": [
         "FBR IRIS Portal",
         "WeBOC",
         "Excel"
       ],
-      "imageUrl": "/sevices/FBR%20Income%20Tax%20&%20NTN%20Registration%20(Pakistan).png"
+      "imageUrl": "/sevices/FBR%20Income%20Tax%20&%20NTN%20Registration%20(Pakistan).png",
+      "subServices": [
+        {
+          "id": "pk-individual-returns",
+          "name": "Individual Returns",
+          "price": 6000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 6,000",
+          "description": "Salaried or freelancer income tax return filing on IRIS portal."
+        },
+        {
+          "id": "pk-sole-proprietor-returns",
+          "name": "Sole Proprietor Returns",
+          "price": 12000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 12,000",
+          "description": "Business revenue, operational expenses, and tax credit declarations."
+        },
+        {
+          "id": "pk-aop-returns",
+          "name": "Partnership Returns (AOP)",
+          "price": 25000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 25,000",
+          "description": "Association of Persons corporate return with partner profit-sharing ratios."
+        },
+        {
+          "id": "pk-pvt-ltd-returns",
+          "name": "Private Limited Company Returns",
+          "price": 45000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 45,000",
+          "description": "Complete corporate income tax filing with audited accounts and tax reconciliation."
+        },
+        {
+          "id": "pk-wealth-statements",
+          "name": "Wealth Statements",
+          "price": 8000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 8,000",
+          "description": "Mandatory asset and liability statement reconciliation under Section 116."
+        },
+        {
+          "id": "pk-atl-support",
+          "name": "Active Taxpayer List (ATL) Support",
+          "price": 4000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 4,000",
+          "description": "Surcharge fee payment and immediate inclusion in active taxpayer list."
+        },
+        {
+          "id": "pk-iris-profile-updates",
+          "name": "Iris Profile Updates",
+          "price": 5000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 5,000",
+          "description": "Modification of address, business activities, or bank account details on IRIS."
+        }
+      ]
     },
     {
-      "slug": "secp-company-incorporation-pakistan",
-      "title": "SECP Company Incorporation & Statutory Filings",
+      "slug": "pakistan-secp-filings-company-changes",
+      "title": "SECP Filings & Company Changes",
       "category": "Pakistan",
       "icon": "Building",
-      "shortDescription": "Private Limited (SMC-Pvt / Pvt Ltd) company registration with SECP, name reservation, statutory forms, and corporate compliance.",
-      "fullDescription": "End-to-end Securities and Exchange Commission of Pakistan (SECP) registration services for startups and established enterprises.",
+      "shortDescription": "Statutory Annual Return Form A, Form 29 director updates, Form 21 registered address, and Form 3 share allotment.",
+      "fullDescription": "End-to-end corporate secretarial compliance with SECP under the Companies Act 2017. We file your annual returns, record changes in management, and update official company registries.",
       "features": [
-        "Company Name Reservation & digital certificate incorporation",
-        "Articles and Memorandum of Association preparation",
-        "Single Member Company (SMC-Pvt) & Private Limited registration",
-        "Annual statutory compliance (Form 29, Form A) filings",
-        "Corporate advisory and bank account opening resolution"
+        "Annual Return (Form A / Form B) preparation and filing",
+        "Director & Officer Changes (Form 29 / Form 9)",
+        "Registered Office Address Change (Form 21, plus statutory filings)",
+        "Share Allotment & Shareholding Changes (Form 3 / Form 7)",
+        "Corporate resolutions, minutes of meetings, and statutory register maintenance"
       ],
       "softwareTools": [
         "SECP eServices Portal",
         "EzFile"
       ],
-      "imageUrl": "/sevices/SECP%20Company%20Incorporation%20(Pakistan).png"
+      "imageUrl": "/sevices/SECP%20Company%20Incorporation%20(Pakistan).png",
+      "subServices": [
+        {
+          "id": "secp-form-a",
+          "name": "Annual Return (Form A, where applicable)",
+          "price": 15000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 15,000",
+          "description": "Annual filing of company shareholder register and corporate summary with SECP."
+        },
+        {
+          "id": "secp-director-changes",
+          "name": "Director & Officer Changes (9 / Form 29)",
+          "price": 12000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 12,000",
+          "description": "Appointment, resignation, or removal of company directors and CEO."
+        },
+        {
+          "id": "secp-address-change",
+          "name": "Registered Office Address Change (21, plus other filings if required)",
+          "price": 10000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 10,000",
+          "description": "Official relocation and statutory notice of new registered principal office."
+        },
+        {
+          "id": "secp-share-allotment",
+          "name": "Share Allotment & Shareholding Changes (3, where applicable)",
+          "price": 15000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 15,000",
+          "description": "Filing return of allotments, issuance of new shares, or transfer of share capital."
+        }
+      ]
     },
     {
       "slug": "sales-tax-pra-srb-fbr-pakistan",
-      "title": "Provincial Sales Tax & PRA / SRB / KPRA Registration",
+      "title": "Sales Tax",
       "category": "Pakistan",
       "icon": "Receipt",
-      "shortDescription": "Sales tax on services registration and monthly return filings with PRA, SRB, KPRA, and FBR GST registration.",
-      "fullDescription": "Complete provincial and federal sales tax compliance across Punjab (PRA), Sindh (SRB), Islamabad (ICT), and KPK (KPRA) for service and goods businesses.",
+      "shortDescription": "Federal Sales Tax (FBR) and Provincial Sales Tax on Services (PRA Punjab, SRB Sindh) registration and monthly returns.",
+      "fullDescription": "Complete sales tax compliance across federal and provincial authorities. We register your entity with FBR for goods and provincial revenue authorities (PRA, SRB, KPRA, BRA) for services.",
       "features": [
-        "Provincial Sales Tax registration (PRA, SRB, KPRA, BRA)",
-        "Sales Tax on Goods registration (STRN) with FBR",
-        "Monthly sales tax return preparation and submission",
-        "Sales tax audit support and notice handling",
-        "Input tax adjustments and invoice reconciliation"
+        "Federal Sales Tax Registration (STRN) with FBR",
+        "Provincial Sales Tax on Services Registration with SRB (Sindh) & PRA (Punjab)",
+        "Monthly Sales Tax Returns preparation, calculation, and online submission",
+        "Input tax credit adjustments and invoice clearing",
+        "Sales tax withholding slips and audit defense"
       ],
       "softwareTools": [
         "PRA Portal",
         "SRB Portal",
-        "FBR IRIS"
+        "FBR IRIS",
+        "e-FBR"
       ],
-      "imageUrl": "/sevices/Provincial%20Sales%20Tax%20PRA%20SRB%20KPRA%20(Pakistan).png"
+      "imageUrl": "/sevices/Provincial%20Sales%20Tax%20PRA%20SRB%20KPRA%20(Pakistan).png",
+      "subServices": [
+        {
+          "id": "pk-sales-tax-fbr",
+          "name": "Federal Sales Tax Registration (FBR)",
+          "price": 20000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 20,000",
+          "description": "Sales Tax Registration Number (STRN) for manufacturers, wholesalers, and importers."
+        },
+        {
+          "id": "pk-provincial-sales-tax-reg",
+          "name": "Provincial Sales Tax on Services Registration (SRB & PRA)",
+          "price": 22000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 22,000",
+          "description": "Registration with Punjab Revenue Authority (PRA) or Sindh Revenue Board (SRB)."
+        },
+        {
+          "id": "pk-monthly-sales-tax-returns",
+          "name": "Monthly Sales Tax Returns (FBR, SRB & PRA)",
+          "price": 12000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 12,000",
+          "description": "Monthly compilation, input-output adjustment, and return filing."
+        }
+      ]
+    },
+    {
+      "slug": "pakistan-payroll-eobi-withholding",
+      "title": "Payroll, EOBI & Withholding",
+      "category": "Pakistan",
+      "icon": "Users",
+      "shortDescription": "Monthly payroll, Section 165 withholding statements, EOBI employer/employee registration, and social security contributions.",
+      "fullDescription": "Ensure full statutory compliance with Pakistani labor laws and FBR withholding mandates. We handle monthly payroll, EOBI pension contributions, and quarterly Section 165 withholding statements.",
+      "features": [
+        "Monthly employee payroll calculation & itemized payslips",
+        "Salary Withholding Tax Calculation and payment support",
+        "Withholding Statements under Section 165 of the Income Tax Ordinance",
+        "EOBI Employer & Employee Registration",
+        "EOBI Contribution Calculation & Monthly Payment Support",
+        "Provincial Social Security Registration (PESSI / SESSI) & Contributions"
+      ],
+      "softwareTools": [
+        "EOBI Portal",
+        "PESSI Portal",
+        "FBR IRIS",
+        "Excel"
+      ],
+      "imageUrl": "/sevices/Payroll%20Tax%20Management.png",
+      "subServices": [
+        {
+          "id": "pk-payroll-payslips",
+          "name": "Payroll & Payslips",
+          "price": 15000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 15,000",
+          "description": "Monthly staff salary computation, tax deductions, and formal salary slips."
+        },
+        {
+          "id": "pk-salary-withholding-calc",
+          "name": "Salary Withholding Calculation & Payment Support",
+          "price": 8000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 8,000",
+          "description": "Calculation of Section 149 salary tax and generation of CPR challans."
+        },
+        {
+          "id": "pk-withholding-sec-165",
+          "name": "Withholding Statements (Section 165, where applicable)",
+          "price": 10000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 10,000",
+          "description": "Quarterly or semi-annual statement of withholding taxes filed on IRIS."
+        },
+        {
+          "id": "pk-eobi-registration",
+          "name": "EOBI Employer & Employee Registration",
+          "price": 12000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 12,000",
+          "description": "Registration of establishment and employees with Employees' Old-Age Benefits Institution."
+        },
+        {
+          "id": "pk-eobi-monthly-contributions",
+          "name": "EOBI Contribution Calculation & Payment Support",
+          "price": 8000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 8,000",
+          "description": "Monthly EOBI portal contribution schedule generation and payment slips."
+        },
+        {
+          "id": "pk-social-security-contributions",
+          "name": "Provincial Social Security Registration & Contributions",
+          "price": 10000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 10,000",
+          "description": "Registration and monthly contribution filings with PESSI (Punjab) or SESSI (Sindh)."
+        }
+      ]
+    },
+    {
+      "slug": "pakistan-property-transaction-tax",
+      "title": "Property Transaction Tax",
+      "category": "Pakistan",
+      "icon": "Coins",
+      "shortDescription": "Seller's advance tax (Section 236C), Buyer's advance tax (Section 236K), and FBR Payment Slips (PSID) generation.",
+      "fullDescription": "Professional tax calculations and challan generation for real estate property purchases and sales across Pakistan. We calculate applicable filer/non-filer rates under Sections 236C and 236K.",
+      "features": [
+        "Seller’s Advance Tax Calculation & Payment Support under Section 236C",
+        "Buyer’s Advance Tax Calculation & Payment Support under Section 236K",
+        "FBR Payment Slips (PSID) & Computerized Payment Receipts (CPR) generation",
+        "DC rate vs FBR property valuation assessment and ATL verification"
+      ],
+      "softwareTools": [
+        "FBR IRIS e-Payment",
+        "NADRA",
+        "1-Link"
+      ],
+      "imageUrl": "/sevices/Tax%20Compliance%20&%20Filing%20Services.png",
+      "subServices": [
+        {
+          "id": "pk-prop-tax-236c",
+          "name": "Seller’s Advance Tax Calculation & Payment Support (236C)",
+          "price": 8000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 8,000",
+          "description": "Computation of adjustable advance tax on transfer of immovable property by seller."
+        },
+        {
+          "id": "pk-prop-tax-236k",
+          "name": "Buyer’s Advance Tax Calculation & Payment Support (236K)",
+          "price": 8000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 8,000",
+          "description": "Advance tax calculation on purchase of real estate for filer and non-filer purchasers."
+        },
+        {
+          "id": "pk-fbr-psid-generation",
+          "name": "FBR Payment Slips (PSID)",
+          "price": 4000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 4,000",
+          "description": "Generation of official PSID challans for payment through banking channels or ATM."
+        }
+      ]
+    },
+    {
+      "slug": "pakistan-bookkeeping-accounting",
+      "title": "Bookkeeping & Accounting",
+      "category": "Pakistan",
+      "icon": "BookOpen",
+      "shortDescription": "Monthly bookkeeping, ledger cleanups, bank reconciliations, and financial statements prepared from bank records.",
+      "fullDescription": "Comprehensive bookkeeping and financial reporting for businesses in Pakistan. We reconcile bank accounts, organize expense vouchers, and prepare financial statements conforming to SECP and FBR requirements.",
+      "features": [
+        "Monthly Bookkeeping & Comprehensive Financial Reports",
+        "Bookkeeping Cleanup & prior year ledger adjustments",
+        "Bank Reconciliation across all commercial bank accounts",
+        "Financial Statements prepared from bank records & supporting documents"
+      ],
+      "softwareTools": [
+        "QuickBooks",
+        "Xero",
+        "Excel",
+        "Zoho Books"
+      ],
+      "imageUrl": "/sevices/Bookkeeping%20&%20Tax%20Compliance.png",
+      "subServices": [
+        {
+          "id": "pk-monthly-bookkeeping",
+          "name": "Monthly Bookkeeping & Financial Reports",
+          "price": 25000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 25,000",
+          "description": "Ongoing transaction recording, cash flow tracking, and monthly management reports."
+        },
+        {
+          "id": "pk-bookkeeping-cleanup",
+          "name": "Bookkeeping Cleanup",
+          "price": 35000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 35,000",
+          "description": "Reconstruction of missing books, opening balance reconciliations, and audit readiness."
+        },
+        {
+          "id": "pk-bank-reconciliation",
+          "name": "Bank Reconciliation",
+          "price": 12000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 12,000",
+          "description": "Monthly reconciliation of company bank statements against recorded invoices."
+        },
+        {
+          "id": "pk-financial-statements",
+          "name": "Financial Statements from Bank Records & Supporting Documents",
+          "price": 20000,
+          "currency": "PKR",
+          "formattedPrice": "PKR 20,000",
+          "description": "Preparation of formal profit and loss statements and balance sheets."
+        }
+      ]
+    }
+  ],
+  "General": [
+    {
+      "slug": "global-bookkeeping-accounting",
+      "title": "Bookkeeping & Accounting (Global)",
+      "category": "General",
+      "icon": "BookOpen",
+      "shortDescription": "Monthly books, catch-up cleanups, multi-currency reconciliations, QuickBooks/Xero/Zoho setup, and year-end workpapers.",
+      "fullDescription": "World-class bookkeeping and accounting services for international businesses, remote companies, and digital agencies. We automate multi-currency ledger reconciliations and maintain audit-proof books.",
+      "features": [
+        "Monthly Bookkeeping & Comprehensive Financial Reports",
+        "Catch-Up Bookkeeping for overdue or backlogged accounting periods",
+        "Bookkeeping Cleanup & chart of accounts re-architecture",
+        "Bank & Credit Card Reconciliation across multiple currencies",
+        "Financial Statements from Bank Records & Supporting Documents",
+        "E-Commerce Sales & Payout Reconciliation (Shopify, Amazon, Stripe)",
+        "QuickBooks, Xero & Zoho Books Setup and data migration",
+        "Year-End Accounts & Tax Workpapers"
+      ],
+      "softwareTools": [
+        "QuickBooks Online",
+        "Xero",
+        "Zoho Books",
+        "Dext"
+      ],
+      "imageUrl": "/sevices/Bookkeeping%20&%20Tax%20Compliance.png",
+      "subServices": [
+        {
+          "id": "global-monthly-books",
+          "name": "Monthly Bookkeeping & Financial Reports",
+          "price": 250,
+          "currency": "$",
+          "formattedPrice": "$250",
+          "description": "Full monthly ledger maintenance, recurring reconciliations, and P&L reporting."
+        },
+        {
+          "id": "global-catchup-bookkeeping",
+          "name": "Catch-Up Bookkeeping",
+          "price": 350,
+          "currency": "$",
+          "formattedPrice": "$350",
+          "description": "Rapid catch-up of multi-month unrecorded accounting data."
+        },
+        {
+          "id": "global-bookkeeping-cleanup",
+          "name": "Bookkeeping Cleanup",
+          "price": 400,
+          "currency": "$",
+          "formattedPrice": "$400",
+          "description": "Complete restructuring of messy transaction logs, unapplied cash, and mismatched balances."
+        },
+        {
+          "id": "global-bank-credit-reconciliation",
+          "name": "Bank & Credit Card Reconciliation",
+          "price": 150,
+          "currency": "$",
+          "formattedPrice": "$150",
+          "description": "Multi-currency bank feed and credit line balancing."
+        },
+        {
+          "id": "global-financial-statements-bank",
+          "name": "Financial Statements from Bank Records & Supporting Documents",
+          "price": 280,
+          "currency": "$",
+          "formattedPrice": "$280",
+          "description": "Financial statements drafted directly from bank records and invoices."
+        },
+        {
+          "id": "global-ecommerce-payout-reconciliation",
+          "name": "E-Commerce Sales & Payout Reconciliation",
+          "price": 320,
+          "currency": "$",
+          "formattedPrice": "$320",
+          "description": "Channel payout matching against gross sales, refunds, processing fees, and chargebacks."
+        },
+        {
+          "id": "global-software-setup",
+          "name": "QuickBooks, Xero & Zoho Books Setup",
+          "price": 220,
+          "currency": "$",
+          "formattedPrice": "$220",
+          "description": "Cloud accounting software onboarding, customized chart of accounts, and automated rules."
+        },
+        {
+          "id": "global-yearend-workpapers",
+          "name": "Year-End Accounts & Tax Workpapers",
+          "price": 380,
+          "currency": "$",
+          "formattedPrice": "$380",
+          "description": "Comprehensive audit workpapers, lead schedules, and CPA trial balances."
+        }
+      ]
+    },
+    {
+      "slug": "virtual-business-account-assistance",
+      "title": "Virtual Business Account Assistance",
+      "category": "General",
+      "icon": "CreditCard",
+      "shortDescription": "Eligibility checks and onboarding support for Wise Business, WorldFirst, nsave, Payoneer, Tide, PingPong & Airwallex.",
+      "fullDescription": "Cross-border financial assistance for international founders. We review your residency, company structure, and commercial model to secure multi-currency receiving accounts across premier virtual banking providers.",
+      "features": [
+        "Eligibility Check by Company Location & Owner Residency",
+        "Application & Corporate Document Preparation Support",
+        "Director ID Verification Support and proof of business substantiation",
+        "Multi-Currency Receiving Account Setup (USD, GBP, EUR, CAD, AUD)",
+        "Providers supported: Wise Business, WorldFirst, nsave Business, Taptap Send Business, Payoneer, Tide, PingPong & Airwallex"
+      ],
+      "softwareTools": [
+        "Wise",
+        "WorldFirst",
+        "nsave",
+        "Payoneer",
+        "Airwallex",
+        "Tide"
+      ],
+      "imageUrl": "/sevices/Virtual%20Bank%20Accounts%20&%20Payment%20Solutions.png",
+      "subServices": [
+        {
+          "id": "vba-wise-business",
+          "name": "Wise Business Account Assistance",
+          "price": 199,
+          "currency": "$",
+          "formattedPrice": "$199",
+          "description": "Step-by-step guidance for Wise Business verification, documents, and account approval."
+        },
+        {
+          "id": "vba-worldfirst",
+          "name": "WorldFirst Business Setup",
+          "price": 199,
+          "currency": "$",
+          "formattedPrice": "$199",
+          "description": "Application assistance for WorldFirst international corporate accounts."
+        },
+        {
+          "id": "vba-nsave",
+          "name": "nsave Business Setup",
+          "price": 199,
+          "currency": "$",
+          "formattedPrice": "$199",
+          "description": "Swiss-standard digital account onboarding support for eligible founders."
+        },
+        {
+          "id": "vba-taptap-send",
+          "name": "Taptap Send Business Setup",
+          "price": 199,
+          "currency": "$",
+          "formattedPrice": "$199",
+          "description": "Cross-border business transfer configuration and verification."
+        },
+        {
+          "id": "vba-payoneer",
+          "name": "Payoneer Account Setup",
+          "price": 179,
+          "currency": "$",
+          "formattedPrice": "$179",
+          "description": "Payoneer business account registration, global payment service setup, and KYC approval."
+        },
+        {
+          "id": "vba-tide-pingpong-airwallex",
+          "name": "Tide, PingPong & Airwallex Setup",
+          "price": 189,
+          "currency": "$",
+          "formattedPrice": "$189",
+          "description": "Commercial application support for Tide UK, PingPong Payments, or Airwallex corporate accounts."
+        },
+        {
+          "id": "vba-multicurrency-receiving",
+          "name": "Multi-Currency Receiving Account Setup",
+          "price": 149,
+          "currency": "$",
+          "formattedPrice": "$149",
+          "description": "Dedicated local IBAN and routing number activation for USD, EUR, and GBP collections."
+        }
+      ]
+    },
+    {
+      "slug": "online-payment-setup",
+      "title": "Online Payment Setup",
+      "category": "General",
+      "icon": "Receipt",
+      "shortDescription": "Stripe Business and PayPal Business merchant gateway setup, website compliance, and verified checkout integration.",
+      "fullDescription": "Monetize your online venture safely with verified payment gateways. We assist with legal website compliance pages, Stripe and PayPal business underwriting, and live gateway API integration.",
+      "features": [
+        "Stripe Business Setup: Corporate merchant onboarding, KYC verification & payout routing",
+        "PayPal Business Setup: Commercial account registration, multi-currency processing & website buttons",
+        "Dispute handling procedures and fraud prevention configuration",
+        "E-commerce checkout integration and web compliance verification"
+      ],
+      "softwareTools": [
+        "Stripe",
+        "PayPal",
+        "Shopify",
+        "WooCommerce"
+      ],
+      "imageUrl": "/sevices/Virtual%20Bank%20Accounts%20&%20Payment%20Solutions.png",
+      "subServices": [
+        {
+          "id": "online-pay-stripe",
+          "name": "Stripe Business Setup",
+          "price": 149,
+          "currency": "$",
+          "formattedPrice": "$149",
+          "description": "Stripe corporate merchant setup, terms/privacy verification, and payout configuration."
+        },
+        {
+          "id": "online-pay-paypal",
+          "name": "PayPal Business Setup",
+          "price": 149,
+          "currency": "$",
+          "formattedPrice": "$149",
+          "description": "PayPal Commerce Platform merchant registration and multi-currency payment clearance."
+        }
+      ]
+    },
+    {
+      "slug": "ecommerce-account-setup",
+      "title": "E-Commerce Account Setup",
+      "category": "General",
+      "icon": "ShoppingBag",
+      "shortDescription": "Amazon Seller Central, eBay Business Seller, and Shopify store launch, remote setup support, and verification.",
+      "fullDescription": "Launch your global e-commerce retail store with professional guidance. We assist with Amazon Seller identity verification, eBay business onboarding, and Shopify store configuration.",
+      "features": [
+        "Amazon Seller Account Setup & video/utility document verification assistance",
+        "eBay Business Seller Account Setup & Managed Payments linking",
+        "Shopify Store Setup: Custom domain, checkout integration & tax configuration",
+        "Remote setup support adhering to marketplace verification and seller guidelines"
+      ],
+      "softwareTools": [
+        "Amazon Seller Central",
+        "eBay",
+        "Shopify",
+        "Stripe"
+      ],
+      "imageUrl": "/sevices/E-Commerce%20Accounting%20&%20Tax%20Services%20(US).png",
+      "subServices": [
+        {
+          "id": "ecom-amazon-seller",
+          "name": "Amazon Seller Account Setup",
+          "price": 299,
+          "currency": "$",
+          "formattedPrice": "$299",
+          "description": "Amazon Seller Central account registration, tax interview, and video verification guidance."
+        },
+        {
+          "id": "ecom-ebay-business",
+          "name": "eBay Business Seller Account Setup",
+          "price": 249,
+          "currency": "$",
+          "formattedPrice": "$249",
+          "description": "eBay Business account setup, seller limits upgrade, and Managed Payments verification."
+        },
+        {
+          "id": "ecom-shopify-store",
+          "name": "Shopify Store Setup",
+          "price": 349,
+          "currency": "$",
+          "formattedPrice": "$349",
+          "description": "Shopify store setup, payment gateway integration, shipping zones, and sales tax rules."
+        }
+      ]
     }
   ]
 }

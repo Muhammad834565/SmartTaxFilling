@@ -31,14 +31,17 @@ import {
   Twitter,
   Instagram
 } from 'lucide-react';
-import { SERVICES, SITE_INFO } from '@/lib/data';
+import { SERVICES, SITE_INFO, SubServiceItem } from '@/lib/data';
 import SearchOverlay from '@/components/SearchOverlay';
 
 interface ServiceLink {
+  slug: string;
   title: string;
   href: string;
   desc: string;
+  category: string;
   icon: React.ComponentType<{ className?: string }>;
+  subServices: SubServiceItem[];
 }
 
 const navIconMap: Record<string, React.ComponentType<{ className?: string }>> = {
@@ -59,28 +62,49 @@ const navIconMap: Record<string, React.ComponentType<{ className?: string }>> = 
 const USA_SERVICES: ServiceLink[] = SERVICES
   .filter((s) => s.category === 'USA')
   .map((s) => ({
+    slug: s.slug,
     title: s.title,
     href: `/services/${s.slug}`,
     desc: s.shortDescription,
+    category: s.category,
     icon: navIconMap[s.icon] || BookOpen,
+    subServices: s.subServices || [],
   }));
 
 const UK_SERVICES: ServiceLink[] = SERVICES
   .filter((s) => s.category === 'UK')
   .map((s) => ({
+    slug: s.slug,
     title: s.title,
     href: `/services/${s.slug}`,
     desc: s.shortDescription,
+    category: s.category,
     icon: navIconMap[s.icon] || Landmark,
+    subServices: s.subServices || [],
   }));
 
 const PAKISTAN_SERVICES: ServiceLink[] = SERVICES
   .filter((s) => s.category === 'Pakistan')
   .map((s) => ({
+    slug: s.slug,
     title: s.title,
     href: `/services/${s.slug}`,
     desc: s.shortDescription,
+    category: s.category,
     icon: navIconMap[s.icon] || FileText,
+    subServices: s.subServices || [],
+  }));
+
+const GLOBAL_SERVICES: ServiceLink[] = SERVICES
+  .filter((s) => s.category === 'General')
+  .map((s) => ({
+    slug: s.slug,
+    title: s.title,
+    href: `/services/${s.slug}`,
+    desc: s.shortDescription,
+    category: s.category,
+    icon: navIconMap[s.icon] || BookOpen,
+    subServices: s.subServices || [],
   }));
 
 export default function Navbar() {
@@ -88,8 +112,9 @@ export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
   const [servicesDropdownOpen, setServicesDropdownOpen] = useState(false);
   const [mobileServicesOpen, setMobileServicesOpen] = useState(false);
-  const [mobileActiveRegion, setMobileActiveRegion] = useState<'USA' | 'UK' | 'PAKISTAN' | null>('USA');
-  const [activeRegion, setActiveRegion] = useState<'USA' | 'UK' | 'PAKISTAN'>('USA');
+  const [mobileActiveRegion, setMobileActiveRegion] = useState<'USA' | 'UK' | 'PAKISTAN' | 'GLOBAL' | null>('USA');
+  const [activeRegion, setActiveRegion] = useState<'USA' | 'UK' | 'PAKISTAN' | 'GLOBAL'>('USA');
+  const [hoveredServiceSlug, setHoveredServiceSlug] = useState<string>('');
   const [searchOpen, setSearchOpen] = useState(false);
 
   const currentRegionServices =
@@ -97,7 +122,12 @@ export default function Navbar() {
       ? USA_SERVICES
       : activeRegion === 'UK'
         ? UK_SERVICES
-        : PAKISTAN_SERVICES;
+        : activeRegion === 'PAKISTAN'
+          ? PAKISTAN_SERVICES
+          : GLOBAL_SERVICES;
+
+  const activeHoveredService =
+    currentRegionServices.find((s) => s.slug === hoveredServiceSlug) || currentRegionServices[0];
 
   return (
     <header className="sticky top-0 z-50 w-full bg-white shadow-sm">
@@ -253,67 +283,110 @@ export default function Navbar() {
 
               {/* Flyout Submenu */}
               {servicesDropdownOpen && (
-                <div className="absolute top-full -left-20 pt-2 z-50">
-                  <div className="w-[680px] max-h-[80vh] sm:max-h-[540px] bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden flex animate-in fade-in slide-in-from-top-2 duration-150 normal-case tracking-normal">
+                <div className="absolute top-full -left-48 lg:-left-56 pt-2 z-50">
+                  <div className="w-[940px] max-w-[95vw] max-h-[82vh] sm:max-h-[560px] bg-white rounded-2xl shadow-2xl border border-slate-100 overflow-hidden flex animate-in fade-in slide-in-from-top-2 duration-150 normal-case tracking-normal">
 
-                    {/* Left Column: Countries Tabs (USA, UK, PAKISTAN) */}
-                    <div className="w-52 bg-slate-50/80 p-3 border-r border-slate-100 flex flex-col gap-1.5 shrink-0">
+                    {/* Left Column: Countries Tabs (USA, UK, PAKISTAN, GLOBAL) */}
+                    <div className="w-48 bg-slate-50/80 p-3 border-r border-slate-100 flex flex-col gap-1.5 shrink-0">
                       <div className="text-[10px] uppercase font-bold tracking-wider text-slate-400 px-3 pt-2 pb-1">
                         Select Region
                       </div>
 
                       {/* USA Tab */}
                       <button
-                        onMouseEnter={() => setActiveRegion('USA')}
-                        onClick={() => setActiveRegion('USA')}
-                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all text-left ${activeRegion === 'USA'
+                        onMouseEnter={() => {
+                          setActiveRegion('USA');
+                          setHoveredServiceSlug(USA_SERVICES[0]?.slug || '');
+                        }}
+                        onClick={() => {
+                          setActiveRegion('USA');
+                          setHoveredServiceSlug(USA_SERVICES[0]?.slug || '');
+                        }}
+                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all text-left cursor-pointer ${activeRegion === 'USA'
                           ? 'bg-[#2DC55F] text-white shadow-md shadow-[#2DC55F]/25'
                           : 'text-slate-700 hover:bg-slate-100'
                           }`}
                       >
-                        <div className="flex items-center gap-2.5">
-                          <span className="inline-block w-6 h-4 rounded-sm overflow-hidden shrink-0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="16"><rect width="60" height="30" fill="#B22234" /><rect y="4.6" width="60" height="4.6" fill="#fff" /><rect y="9.2" width="60" height="4.6" fill="#B22234" /><rect y="13.8" width="60" height="4.6" fill="#fff" /><rect y="18.4" width="60" height="4.6" fill="#B22234" /><rect y="23" width="60" height="4.6" fill="#fff" /><rect width="24" height="16" fill="#3C3B6E" /></svg></span>
-                          <span>USA Services</span>
+                        <div className="flex items-center gap-2">
+                          <span className="inline-block w-5 h-3.5 rounded-xs overflow-hidden shrink-0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="20" height="14"><rect width="60" height="30" fill="#B22234" /><rect y="4.6" width="60" height="4.6" fill="#fff" /><rect y="9.2" width="60" height="4.6" fill="#B22234" /><rect y="13.8" width="60" height="4.6" fill="#fff" /><rect y="18.4" width="60" height="4.6" fill="#B22234" /><rect y="23" width="60" height="4.6" fill="#fff" /><rect width="24" height="16" fill="#3C3B6E" /></svg></span>
+                          <span className="truncate">USA Services</span>
                         </div>
-                        <ChevronRight className={`w-4 h-4 ${activeRegion === 'USA' ? 'text-white' : 'text-slate-400'}`} />
+                        <ChevronRight className={`w-3.5 h-3.5 ${activeRegion === 'USA' ? 'text-white' : 'text-slate-400'}`} />
                       </button>
 
                       {/* UK Tab */}
                       <button
-                        onMouseEnter={() => setActiveRegion('UK')}
-                        onClick={() => setActiveRegion('UK')}
-                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all text-left ${activeRegion === 'UK'
+                        onMouseEnter={() => {
+                          setActiveRegion('UK');
+                          setHoveredServiceSlug(UK_SERVICES[0]?.slug || '');
+                        }}
+                        onClick={() => {
+                          setActiveRegion('UK');
+                          setHoveredServiceSlug(UK_SERVICES[0]?.slug || '');
+                        }}
+                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all text-left cursor-pointer ${activeRegion === 'UK'
                           ? 'bg-[#2DC55F] text-white shadow-md shadow-[#2DC55F]/25'
                           : 'text-slate-700 hover:bg-slate-100'
                           }`}
                       >
-                        <div className="flex items-center gap-2.5">
-                          <span className="inline-block w-6 h-4 rounded-sm overflow-hidden shrink-0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="16"><rect width="60" height="30" fill="#012169" /><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6" /><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" strokeWidth="4" /><path d="M30,0 V30 M0,15 H60" stroke="#fff" strokeWidth="10" /><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" strokeWidth="6" /></svg></span>
-                          <span>UK Services</span>
+                        <div className="flex items-center gap-2">
+                          <span className="inline-block w-5 h-3.5 rounded-xs overflow-hidden shrink-0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="20" height="14"><rect width="60" height="30" fill="#012169" /><path d="M0,0 L60,30 M60,0 L0,30" stroke="#fff" strokeWidth="6" /><path d="M0,0 L60,30 M60,0 L0,30" stroke="#C8102E" strokeWidth="4" /><path d="M30,0 V30 M0,15 H60" stroke="#fff" strokeWidth="10" /><path d="M30,0 V30 M0,15 H60" stroke="#C8102E" strokeWidth="6" /></svg></span>
+                          <span className="truncate">UK Services</span>
                         </div>
-                        <ChevronRight className={`w-4 h-4 ${activeRegion === 'UK' ? 'text-white' : 'text-slate-400'}`} />
+                        <ChevronRight className={`w-3.5 h-3.5 ${activeRegion === 'UK' ? 'text-white' : 'text-slate-400'}`} />
                       </button>
 
                       {/* Pakistan Tab */}
                       <button
-                        onMouseEnter={() => setActiveRegion('PAKISTAN')}
-                        onClick={() => setActiveRegion('PAKISTAN')}
-                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all text-left ${activeRegion === 'PAKISTAN'
+                        onMouseEnter={() => {
+                          setActiveRegion('PAKISTAN');
+                          setHoveredServiceSlug(PAKISTAN_SERVICES[0]?.slug || '');
+                        }}
+                        onClick={() => {
+                          setActiveRegion('PAKISTAN');
+                          setHoveredServiceSlug(PAKISTAN_SERVICES[0]?.slug || '');
+                        }}
+                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all text-left cursor-pointer ${activeRegion === 'PAKISTAN'
                           ? 'bg-[#2DC55F] text-white shadow-md shadow-[#2DC55F]/25'
                           : 'text-slate-700 hover:bg-slate-100'
                           }`}
                       >
-                        <div className="flex items-center gap-2.5">
-                          <span className="inline-block w-6 h-4 rounded-sm overflow-hidden shrink-0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="24" height="16"><rect width="60" height="30" fill="#01411C" /><rect width="15" height="30" fill="#fff" /><circle cx="35" cy="15" r="8" fill="#fff" /><circle cx="37" cy="15" r="6.5" fill="#01411C" /></svg></span>
-                          <span>Pakistan Services</span>
+                        <div className="flex items-center gap-2">
+                          <span className="inline-block w-5 h-3.5 rounded-xs overflow-hidden shrink-0"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 60 30" width="20" height="14"><rect width="60" height="30" fill="#01411C" /><rect width="15" height="30" fill="#fff" /><circle cx="35" cy="15" r="8" fill="#fff" /><circle cx="37" cy="15" r="6.5" fill="#01411C" /></svg></span>
+                          <span className="truncate">Pakistan Services</span>
                         </div>
-                        <ChevronRight className={`w-4 h-4 ${activeRegion === 'PAKISTAN' ? 'text-white' : 'text-slate-400'}`} />
+                        <ChevronRight className={`w-3.5 h-3.5 ${activeRegion === 'PAKISTAN' ? 'text-white' : 'text-slate-400'}`} />
+                      </button>
+
+                      {/* Global / Other Services Tab */}
+                      <button
+                        onMouseEnter={() => {
+                          setActiveRegion('GLOBAL');
+                          setHoveredServiceSlug(GLOBAL_SERVICES[0]?.slug || '');
+                        }}
+                        onClick={() => {
+                          setActiveRegion('GLOBAL');
+                          setHoveredServiceSlug(GLOBAL_SERVICES[0]?.slug || '');
+                        }}
+                        className={`w-full flex items-center justify-between px-3 py-2.5 rounded-xl text-xs font-bold transition-all text-left cursor-pointer ${activeRegion === 'GLOBAL'
+                          ? 'bg-[#2DC55F] text-white shadow-md shadow-[#2DC55F]/25'
+                          : 'text-slate-700 hover:bg-slate-100'
+                          }`}
+                      >
+                        <div className="flex items-center gap-2">
+                          <span className="w-5 h-3.5 rounded-xs overflow-hidden shrink-0 bg-slate-800 text-emerald-400 inline-flex items-center justify-center text-[9px] font-black">
+                            GL
+                          </span>
+                          <span className="truncate">Global / Other</span>
+                        </div>
+                        <ChevronRight className={`w-3.5 h-3.5 ${activeRegion === 'GLOBAL' ? 'text-white' : 'text-slate-400'}`} />
                       </button>
 
                       {/* View all link */}
                       <div className="mt-auto pt-3 border-t border-slate-200/70">
                         <Link
                           href="/services"
+                          onClick={() => setServicesDropdownOpen(false)}
                           className="flex items-center justify-between px-3 py-2 text-[11px] font-semibold text-[#2DC55F] hover:text-emerald-700 hover:underline"
                         >
                           <span>Explore All Services</span>
@@ -322,16 +395,17 @@ export default function Navbar() {
                       </div>
                     </div>
 
-                    {/* Right Column: Dynamic Services of Active Region */}
-                    <div className="flex-1 p-5 bg-white flex flex-col overflow-hidden">
+                    {/* Middle Column: Services of Active Region (Hover reveals right panel) */}
+                    <div className="w-[340px] p-4 bg-white flex flex-col border-r border-slate-100 overflow-hidden shrink-0">
                       {/* Pinned Header */}
-                      <div className="flex items-center justify-between pb-3 mb-2 border-b border-slate-100 shrink-0">
+                      <div className="flex items-center justify-between pb-2.5 mb-2 border-b border-slate-100 shrink-0">
                         <div className="text-xs font-bold text-slate-900 flex items-center gap-2">
                           <span className="w-2 h-2 rounded-full bg-[#2DC55F]" />
                           <span>
-                            {activeRegion === 'USA' && 'United States Tax & Accounting Solutions'}
-                            {activeRegion === 'UK' && 'United Kingdom Statutory & Tax Solutions'}
-                            {activeRegion === 'PAKISTAN' && 'Pakistan FBR, SECP & Provincial Sales Tax'}
+                            {activeRegion === 'USA' && 'USA Solutions'}
+                            {activeRegion === 'UK' && 'UK Solutions'}
+                            {activeRegion === 'PAKISTAN' && 'Pakistan Solutions'}
+                            {activeRegion === 'GLOBAL' && 'Global Solutions'}
                           </span>
                         </div>
                         <span className="text-[10px] font-semibold text-slate-400">
@@ -340,25 +414,42 @@ export default function Navbar() {
                       </div>
 
                       {/* Scrollable List with custom-scrollbar */}
-                      <div className="overflow-y-auto pr-1.5 custom-scrollbar flex-1 space-y-1.5 max-h-[440px]">
+                      <div className="overflow-y-auto pr-1 custom-scrollbar flex-1 space-y-1.5 max-h-[440px]">
                         {currentRegionServices.map((service) => {
                           const IconComponent = service.icon;
+                          const isHovered = activeHoveredService?.slug === service.slug;
+
                           return (
                             <Link
                               key={service.href}
                               href={service.href}
+                              onMouseEnter={() => setHoveredServiceSlug(service.slug)}
                               onClick={() => setServicesDropdownOpen(false)}
-                              className="group flex items-start gap-3 p-2.5 rounded-xl hover:bg-slate-50 transition-colors"
+                              className={`group flex items-start gap-2.5 p-2.5 rounded-xl transition-all cursor-pointer border ${
+                                isHovered
+                                  ? 'bg-emerald-50/70 border-emerald-300 text-slate-900 shadow-2xs'
+                                  : 'border-transparent hover:bg-slate-50 text-slate-700'
+                              }`}
                             >
-                              <div className="w-8 h-8 rounded-lg bg-emerald-50 text-[#2DC55F] group-hover:bg-[#2DC55F] group-hover:text-slate-950 flex items-center justify-center shrink-0 transition-colors">
+                              <div className={`w-8 h-8 rounded-lg flex items-center justify-center shrink-0 transition-colors ${
+                                isHovered
+                                  ? 'bg-[#2DC55F] text-slate-950 font-bold'
+                                  : 'bg-emerald-50 text-[#2DC55F] group-hover:bg-[#2DC55F] group-hover:text-slate-950'
+                              }`}>
                                 <IconComponent className="w-4 h-4" />
                               </div>
                               <div className="flex-1 min-w-0">
-                                <div className="text-xs font-bold text-slate-900 group-hover:text-[#2DC55F] transition-colors flex items-center gap-1.5">
-                                  <span>{service.title}</span>
-                                  <ArrowRight className="w-3 h-3 opacity-0 group-hover:opacity-100 group-hover:translate-x-0.5 transition-all text-[#2DC55F]" />
+                                <div className={`text-xs font-bold leading-tight flex items-center justify-between gap-1 ${
+                                  isHovered ? 'text-[#0c1e36]' : 'group-hover:text-[#2DC55F]'
+                                }`}>
+                                  <span className="truncate">{service.title}</span>
+                                  {service.subServices && service.subServices.length > 0 && (
+                                    <span className="shrink-0 text-[10px] font-extrabold px-1.5 py-0.2 rounded-full bg-slate-100 text-slate-600">
+                                      {service.subServices.length}
+                                    </span>
+                                  )}
                                 </div>
-                                <p className="text-[11px] text-slate-500 truncate">
+                                <p className="text-[10px] text-slate-500 truncate mt-0.5">
                                   {service.desc}
                                 </p>
                               </div>
@@ -367,6 +458,92 @@ export default function Navbar() {
                         })}
                       </div>
                     </div>
+
+                    {/* Right Column: Hovered Service Sub-Services & Pricing Options */}
+                    <div className="flex-1 p-5 bg-gradient-to-br from-slate-50/70 via-white to-emerald-50/30 flex flex-col overflow-hidden">
+                      {activeHoveredService ? (
+                        <>
+                          {/* Hovered Service Title & Scope */}
+                          <div className="pb-3 mb-3 border-b border-slate-200/80 shrink-0">
+                            <div className="flex items-center justify-between gap-2">
+                              <div className="flex items-center gap-2">
+                                <span className="text-[10px] font-extrabold uppercase px-2 py-0.5 rounded-md bg-emerald-100 text-emerald-800">
+                                  {activeHoveredService.category} Option
+                                </span>
+                                <span className="text-[11px] font-bold text-slate-400">
+                                  Sub-Services & Pricing
+                                </span>
+                              </div>
+                              <span className="text-[10px] font-extrabold text-[#2DC55F]">
+                                Interactive Calculator
+                              </span>
+                            </div>
+
+                            <h3 className="text-sm font-black text-[#0c1e36] mt-1 flex items-center gap-1.5">
+                              <span>{activeHoveredService.title}</span>
+                            </h3>
+                            <p className="text-[11px] text-slate-500 line-clamp-2 mt-0.5 leading-relaxed">
+                              {activeHoveredService.desc}
+                            </p>
+                          </div>
+
+                          {/* Sub-Services List with Live Prices */}
+                          <div className="overflow-y-auto pr-1.5 custom-scrollbar flex-1 space-y-2 max-h-[360px]">
+                            {activeHoveredService.subServices && activeHoveredService.subServices.length > 0 ? (
+                              activeHoveredService.subServices.map((sub) => (
+                                <Link
+                                  key={sub.id}
+                                  href={`/services/${activeHoveredService.slug}?sub=${sub.id}`}
+                                  onClick={() => setServicesDropdownOpen(false)}
+                                  className="group/sub flex items-center justify-between p-2.5 rounded-xl border border-slate-200/80 bg-white hover:border-[#2DC55F] hover:bg-emerald-50/60 hover:shadow-sm transition-all"
+                                >
+                                  <div className="flex-1 min-w-0 pr-2">
+                                    <div className="text-xs font-bold text-slate-800 group-hover/sub:text-[#2DC55F] transition-colors leading-tight truncate">
+                                      {sub.name}
+                                    </div>
+                                    {sub.description && (
+                                      <p className="text-[10px] text-slate-500 line-clamp-1 mt-0.5 font-normal">
+                                        {sub.description}
+                                      </p>
+                                    )}
+                                  </div>
+                                  <div className="shrink-0 flex items-center gap-1.5">
+                                    <span className="text-xs font-black px-2 py-0.5 rounded-md bg-slate-100 group-hover/sub:bg-[#2DC55F] group-hover/sub:text-slate-950 text-slate-900 transition-colors shadow-2xs">
+                                      {sub.formattedPrice}
+                                    </span>
+                                    <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover/sub:text-[#2DC55F] transition-transform group-hover/sub:translate-x-0.5" />
+                                  </div>
+                                </Link>
+                              ))
+                            ) : (
+                              <div className="text-xs text-slate-400 py-6 text-center">
+                                Detailed consultation & customized quotation available.
+                              </div>
+                            )}
+                          </div>
+
+                          {/* Bottom Action Footer */}
+                          <div className="mt-auto pt-3 border-t border-slate-200/80 flex items-center justify-between shrink-0">
+                            <span className="text-[11px] text-slate-500">
+                              Click any sub-service to view live invoice
+                            </span>
+                            <Link
+                              href={`/services/${activeHoveredService.slug}`}
+                              onClick={() => setServicesDropdownOpen(false)}
+                              className="text-xs font-bold text-[#2DC55F] hover:text-emerald-700 flex items-center gap-1 hover:underline"
+                            >
+                              <span>Configure Service Quote</span>
+                              <ArrowRight className="w-3.5 h-3.5" />
+                            </Link>
+                          </div>
+                        </>
+                      ) : (
+                        <div className="flex items-center justify-center h-full text-xs text-slate-400">
+                          Hover a service to view sub-services and pricing
+                        </div>
+                      )}
+                    </div>
+
                   </div>
                 </div>
               )}
@@ -513,23 +690,30 @@ export default function Navbar() {
             {mobileServicesOpen && (
               <div className="space-y-3 pb-2 pt-1 animate-in fade-in duration-150">
                 {/* Region Selector Pills */}
-                <div className="flex items-center gap-1.5 p-1 bg-slate-100 rounded-xl">
-                  {(['USA', 'UK', 'PAKISTAN'] as const).map((r) => {
+                <div className="grid grid-cols-4 gap-1 p-1 bg-slate-100 rounded-xl">
+                  {(['USA', 'UK', 'PAKISTAN', 'GLOBAL'] as const).map((r) => {
                     const isActive = mobileActiveRegion === r;
-                    const label = r === 'USA' ? 'USA' : r === 'UK' ? 'UK' : 'Pakistan';
-                    const count = r === 'USA' ? USA_SERVICES.length : r === 'UK' ? UK_SERVICES.length : PAKISTAN_SERVICES.length;
+                    const label = r === 'USA' ? 'USA' : r === 'UK' ? 'UK' : r === 'PAKISTAN' ? 'Pakistan' : 'Global';
+                    const count =
+                      r === 'USA'
+                        ? USA_SERVICES.length
+                        : r === 'UK'
+                          ? UK_SERVICES.length
+                          : r === 'PAKISTAN'
+                            ? PAKISTAN_SERVICES.length
+                            : GLOBAL_SERVICES.length;
                     return (
                       <button
                         key={r}
                         type="button"
                         onClick={() => setMobileActiveRegion(r)}
-                        className={`flex-1 py-1.5 px-2 text-xs font-bold rounded-lg transition-all text-center flex items-center justify-center gap-1 cursor-pointer ${isActive
+                        className={`py-1.5 px-1 text-[11px] font-bold rounded-lg transition-all text-center flex flex-col items-center justify-center cursor-pointer ${isActive
                           ? 'bg-[#2DC55F] text-white shadow-sm font-extrabold'
                           : 'text-slate-600 hover:text-slate-900'
                           }`}
                       >
-                        <span>{label}</span>
-                        <span className={`text-[10px] px-1 rounded-full ${isActive ? 'bg-white/25 text-white' : 'bg-slate-200 text-slate-700'}`}>
+                        <span className="truncate">{label}</span>
+                        <span className={`text-[9px] px-1 rounded-full mt-0.5 ${isActive ? 'bg-white/25 text-white' : 'bg-slate-200 text-slate-700'}`}>
                           {count}
                         </span>
                       </button>
@@ -543,7 +727,9 @@ export default function Navbar() {
                     ? USA_SERVICES
                     : mobileActiveRegion === 'UK'
                       ? UK_SERVICES
-                      : PAKISTAN_SERVICES
+                      : mobileActiveRegion === 'PAKISTAN'
+                        ? PAKISTAN_SERVICES
+                        : GLOBAL_SERVICES
                   ).map((s) => (
                     <Link
                       key={s.href}
@@ -562,7 +748,7 @@ export default function Navbar() {
                   onClick={() => setMobileMenuOpen(false)}
                   className="block text-center py-2 text-xs font-black uppercase tracking-wider text-[#2DC55F] hover:underline border-t border-slate-100 pt-2"
                 >
-                  View All 15 Services →
+                  View All Services →
                 </Link>
               </div>
             )}
