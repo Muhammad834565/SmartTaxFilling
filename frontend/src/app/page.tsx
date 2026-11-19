@@ -31,7 +31,7 @@ import {
   Handshake
 } from 'lucide-react';
 import { SERVICES, POSTS, FAQS, SITE_INFO } from '@/lib/data';
-import HoneycombHero from '@/components/HoneycombHero';
+import ServicesShowcase from '@/components/ServicesShowcase';
 import PricingCalculator from '@/components/PricingCalculator';
 import FaqAccordion from '@/components/FaqAccordion';
 import HomeServicesGrid from '@/components/HomeServicesGrid';
@@ -174,7 +174,7 @@ export default function HomePage() {
             {/* Right Visual Column (Interactive Services Honeycomb with Zoom-Out Hover & Redirection) */}
             <div className="lg:col-span-6 relative mt-6 lg:mt-0">
               <ScrollReveal animation="zoom-in" delay={150} duration={900}>
-                <HoneycombHero />
+                <ServicesShowcase />
               </ScrollReveal>
             </div>
           </div>
