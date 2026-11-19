@@ -1,7 +1,7 @@
 'use client';
 
 import React, { useState, useEffect, useRef } from 'react';
-import { Send, CheckCircle2, AlertCircle, Loader2, ChevronDown, Check } from 'lucide-react';
+import { Send, CheckCircle2, AlertCircle, Loader2, ChevronDown, Check, DollarSign, Handshake } from 'lucide-react';
 import { submitInquiry } from '@/lib/api';
 import { SERVICES, SubServiceItem, ServiceItem } from '@/lib/data';
 
@@ -121,6 +121,11 @@ export default function ContactForm({
   const [expandedSubServices, setExpandedSubServices] = useState<Record<string, boolean>>({});
   const [isSubServicesOpen, setIsSubServicesOpen] = useState(false);
 
+  // Counter Offer State
+  const [showCounterOffer, setShowCounterOffer] = useState(false);
+  const [counterOfferAmount, setCounterOfferAmount] = useState('');
+  const [counterOfferNote, setCounterOfferNote] = useState('');
+
   const toggleSubServiceExpand = (e: React.MouseEvent, id: string) => {
     e.stopPropagation();
     setExpandedSubServices((prev) => ({
@@ -212,13 +217,19 @@ export default function ContactForm({
     setError(null);
 
     try {
-      // Append selected sub-services to message for full administrative audit
+      // Append selected sub-services and counter-offer to message for full administrative audit
       let fullMessage = formData.message;
       if (selectedSubServices.length > 0) {
         const subServicesSummary = selectedSubServices
           .map((s) => `${s.name} (${s.formattedPrice})`)
           .join(', ');
         fullMessage += `\n\n[SELECTED SUB-SERVICES]: ${subServicesSummary}\n[ESTIMATED QUOTATION]: ${currencySymbol}${totalSelectedPrice.toLocaleString()}`;
+      }
+
+      if (showCounterOffer && counterOfferAmount.trim()) {
+        fullMessage += `\n\n[CLIENT COUNTER OFFER]: ${currencySymbol}${counterOfferAmount.trim()}${
+          counterOfferNote.trim() ? `\n[COUNTER OFFER REASON/BUDGET]: ${counterOfferNote.trim()}` : ''
+        }`;
       }
 
       await submitInquiry({
@@ -229,6 +240,9 @@ export default function ContactForm({
       setSuccess(true);
       setFormData({ name: '', email: '', phone: '', country: '', service: '', message: '' });
       setSelectedSubServices([]);
+      setCounterOfferAmount('');
+      setCounterOfferNote('');
+      setShowCounterOffer(false);
       onSelectedSubServicesChange?.([]);
     } catch (err: any) {
       setError(err.message || 'There was an issue submitting your request. Please try again.');
@@ -472,16 +486,77 @@ export default function ContactForm({
 
           {/* Dynamic Price Summary Bar */}
           {selectedSubServices.length > 0 && (
-            <div className="flex items-center justify-between p-3.5 rounded-xl bg-[#0c1a2e] text-white shadow-md border border-[#2DC55F]/40 animate-in fade-in duration-200">
-              <div className="flex items-center gap-2">
-                <span className="w-2 h-2 rounded-full bg-[#2DC55F] animate-pulse" />
-                <span className="text-xs font-semibold text-slate-200">
-                  Total for {selectedSubServices.length} {selectedSubServices.length === 1 ? 'Service Option' : 'Service Options'}:
-                </span>
+            <div className="space-y-3 animate-in fade-in duration-200">
+              <div className="flex items-center justify-between p-3.5 rounded-xl bg-[#0c1a2e] text-white shadow-md border border-[#2DC55F]/40">
+                <div className="flex items-center gap-2">
+                  <span className="w-2 h-2 rounded-full bg-[#2DC55F] animate-pulse" />
+                  <span className="text-xs font-semibold text-slate-200">
+                    Total for {selectedSubServices.length} {selectedSubServices.length === 1 ? 'Service Option' : 'Service Options'}:
+                  </span>
+                </div>
+                <div className="text-base sm:text-lg font-black text-[#2DC55F] tracking-tight">
+                  {currencySymbol}
+                  {totalSelectedPrice.toLocaleString()}
+                </div>
               </div>
-              <div className="text-base sm:text-lg font-black text-[#2DC55F] tracking-tight">
-                {currencySymbol}
-                {totalSelectedPrice.toLocaleString()}
+
+              {/* Counter Offer Section Button & Input */}
+              <div className="bg-slate-50 border border-slate-200 rounded-xl p-3.5 space-y-3">
+                <div className="flex items-center justify-between">
+                  <div className="flex items-center gap-2">
+                    <Handshake className="w-4 h-4 text-[#2DC55F]" />
+                    <span className="text-xs font-bold text-[#0c1e36]">
+                      Have a specific budget?
+                    </span>
+                  </div>
+                  <button
+                    type="button"
+                    onClick={() => setShowCounterOffer((prev) => !prev)}
+                    className="text-xs font-bold text-[#2DC55F] hover:text-emerald-700 underline cursor-pointer"
+                  >
+                    {showCounterOffer ? 'Cancel counter offer' : 'Make a Counter Offer'}
+                  </button>
+                </div>
+
+                {showCounterOffer && (
+                  <div className="pt-2 border-t border-slate-200 space-y-3 animate-in fade-in slide-in-from-top-1 duration-150">
+                    <div>
+                      <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">
+                        Your Proposed Budget / Counter Offer ({currencySymbol})
+                      </label>
+                      <div className="relative">
+                        <span className="absolute left-3 top-1/2 -translate-y-1/2 text-sm font-bold text-slate-400">
+                          {currencySymbol}
+                        </span>
+                        <input
+                          type="number"
+                          min="1"
+                          step="any"
+                          value={counterOfferAmount}
+                          onChange={(e) => setCounterOfferAmount(e.target.value)}
+                          placeholder={`e.g. ${Math.round(totalSelectedPrice * 0.85)}`}
+                          className="w-full text-sm pl-7 pr-3.5 py-2 rounded-lg border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-[#2DC55F] font-semibold text-slate-900"
+                        />
+                      </div>
+                      <span className="text-[10px] text-slate-400 mt-1 block">
+                        Our standard estimate is {currencySymbol}{totalSelectedPrice.toLocaleString()}. Enter your proposed price for advisor review.
+                      </span>
+                    </div>
+
+                    <div>
+                      <label className="block text-[11px] font-bold uppercase tracking-wider text-slate-600 mb-1">
+                        Reason or Scope Details (Optional)
+                      </label>
+                      <input
+                        type="text"
+                        value={counterOfferNote}
+                        onChange={(e) => setCounterOfferNote(e.target.value)}
+                        placeholder="e.g. Low transaction volume, multi-year package discount..."
+                        className="w-full text-xs px-3 py-2 rounded-lg border border-slate-200 bg-white focus:outline-none focus:ring-2 focus:ring-emerald-500/20 focus:border-[#2DC55F]"
+                      />
+                    </div>
+                  </div>
+                )}
               </div>
             </div>
           )}
