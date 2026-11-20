@@ -1,4 +1,4 @@
-import { Controller, Get, Post, Patch, Body, Param, Query, UseGuards } from '@nestjs/common';
+import { Controller, Get, Post, Patch, Delete, Body, Param, Query, UseGuards } from '@nestjs/common';
 import { ApiService } from './api.service';
 import { CreateInquiryDto } from './dto/create-inquiry.dto';
 import { JwtAuthGuard } from '../auth/jwt-auth.guard';
@@ -76,6 +76,12 @@ export class ApiController {
     return this.apiService.getInquiries();
   }
 
+  @Get('inquiries/deleted')
+  @UseGuards(JwtAuthGuard)
+  getDeletedInquiries() {
+    return this.apiService.getDeletedInquiries();
+  }
+
   @Patch('inquiries/:id/status')
   @UseGuards(JwtAuthGuard)
   updateInquiryStatus(
@@ -83,6 +89,18 @@ export class ApiController {
     @Body() dto: UpdateInquiryStatusDto,
   ) {
     return this.apiService.updateInquiryStatus(id, dto.status);
+  }
+
+  @Delete('inquiries/:id')
+  @UseGuards(JwtAuthGuard)
+  deleteInquiry(@Param('id') id: string) {
+    return this.apiService.deleteInquiry(id);
+  }
+
+  @Patch('inquiries/:id/restore')
+  @UseGuards(JwtAuthGuard)
+  restoreInquiry(@Param('id') id: string) {
+    return this.apiService.restoreInquiry(id);
   }
 
   // Site Settings
