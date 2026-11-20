@@ -36,7 +36,11 @@ import { SiteSetting } from './entities/site-setting.entity';
         // Force IPv4 — prevents ENETUNREACH errors on Render/Railway (IPv6 not supported)
         extra: {
           family: 4,
+          // Disable prepared statements — required for Supabase PgBouncer pooler (port 6543)
+          options: '-c statement_timeout=30000',
         },
+        // Use simple query protocol — compatible with Supabase pooler
+        connectTimeoutMS: 30000,
         entities: [
           Page,
           Service,
