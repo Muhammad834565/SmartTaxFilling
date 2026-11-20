@@ -24,7 +24,7 @@ export class ApiService {
     @InjectRepository(Inquiry) private inquiryRepo: Repository<Inquiry>,
     @InjectRepository(SiteSetting) private settingRepo: Repository<SiteSetting>,
     private readonly mailService: MailService,
-  ) {}
+  ) { }
 
   // Services
   async getServices(category?: string) {

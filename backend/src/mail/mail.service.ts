@@ -282,7 +282,7 @@ export class MailService {
         await this.sendViaBrevoHttp({
           to: data.email,
           toName: data.name,
-          subject: 'We received your consultation request — SMARTax Global',
+          subject: 'Order Confirmed: Thank You for Choosing SMARTax Global',
           htmlContent: clientHtml,
         });
 
@@ -302,7 +302,7 @@ export class MailService {
         await this.transporter.sendMail({
           from,
           to: data.email,
-          subject: 'We received your consultation request — SMARTax Global',
+          subject: 'Order Confirmed: Thank You for Choosing SMARTax Global',
           html: clientHtml,
         });
 
