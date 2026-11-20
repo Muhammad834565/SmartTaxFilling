@@ -11,7 +11,7 @@ class UpdateInquiryStatusDto {
 
 @Controller('api')
 export class ApiController {
-  constructor(private readonly apiService: ApiService) {}
+  constructor(private readonly apiService: ApiService) { }
 
   // Services
   @Get('services')
