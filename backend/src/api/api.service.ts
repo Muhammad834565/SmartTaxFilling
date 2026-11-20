@@ -96,13 +96,32 @@ export class ApiService {
   }
 
   async getInquiries() {
-    return this.inquiryRepo.find({ order: { createdAt: 'DESC' } });
+    return this.inquiryRepo.find({ where: { isDeleted: false }, order: { createdAt: 'DESC' } });
+  }
+
+  async getDeletedInquiries() {
+    return this.inquiryRepo.find({ where: { isDeleted: true }, order: { createdAt: 'DESC' } });
   }
 
   async updateInquiryStatus(id: string, status: string) {
     const inquiry = await this.inquiryRepo.findOne({ where: { id } });
     if (!inquiry) throw new NotFoundException(`Inquiry ${id} not found`);
     inquiry.status = status;
+    return this.inquiryRepo.save(inquiry);
+  }
+
+  async deleteInquiry(id: string) {
+    const inquiry = await this.inquiryRepo.findOne({ where: { id } });
+    if (!inquiry) throw new NotFoundException(`Inquiry ${id} not found`);
+    inquiry.isDeleted = true;
+    await this.inquiryRepo.save(inquiry);
+    return { success: true };
+  }
+
+  async restoreInquiry(id: string) {
+    const inquiry = await this.inquiryRepo.findOne({ where: { id, isDeleted: true } });
+    if (!inquiry) throw new NotFoundException(`Inquiry ${id} not found in deleted items`);
+    inquiry.isDeleted = false;
     return this.inquiryRepo.save(inquiry);
   }
 

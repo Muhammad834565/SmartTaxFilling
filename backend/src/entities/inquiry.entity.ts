@@ -26,6 +26,9 @@ export class Inquiry {
   @Column({ default: 'NEW' })
   status: string; // 'NEW', 'CONTACTED', 'RESOLVED'
 
+  @Column({ default: false })
+  isDeleted: boolean;
+
   @CreateDateColumn()
   createdAt: Date;
 }
