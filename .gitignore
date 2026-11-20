@@ -1,6 +1,10 @@
 # Dependencies
 node_modules/
 */node_modules/
+
+# Lock files (using yarn — ignore npm lock file)
+package-lock.json
+*/package-lock.json
 .pnp
 .pnp.js
 
