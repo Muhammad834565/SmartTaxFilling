@@ -111,7 +111,7 @@ export default function HomePage() {
               {/* Headline with animated dynamic rotating text */}
               <ScrollReveal animation="fade-up" delay={100} duration={800}>
                 <h1 className="text-2xl sm:text-4xl md:text-5xl lg:text-6xl font-black text-white tracking-tight leading-[1.18]">
-                  Reliable Financial & Tax Solutions For Your{' '}
+                  Reliable Financial & Tax Solutions For{' '}
                   <span className="block mt-1 sm:inline sm:mt-0">
                     <TextRotator
                       words={['Business Growth', 'Global Expansion', 'Tax Optimization', 'Corporate Success']}
