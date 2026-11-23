@@ -471,11 +471,11 @@ export default function Navbar() {
                                   {activeHoveredService.category} Option
                                 </span>
                                 <span className="text-[11px] font-bold text-slate-400">
-                                  Sub-Services & Pricing
+                                  Sub-Services
                                 </span>
                               </div>
                               <span className="text-[10px] font-extrabold text-[#2DC55F]">
-                                Interactive Calculator
+                                Interactive Solutions
                               </span>
                             </div>
 
@@ -508,10 +508,7 @@ export default function Navbar() {
                                     )}
                                   </div>
                                   <div className="shrink-0 flex items-center gap-1.5">
-                                    <span className="text-xs font-black px-2 py-0.5 rounded-md bg-slate-100 group-hover/sub:bg-[#2DC55F] group-hover/sub:text-slate-950 text-slate-900 transition-colors shadow-2xs">
-                                      {sub.formattedPrice}
-                                    </span>
-                                    <ArrowRight className="w-3.5 h-3.5 text-slate-400 group-hover/sub:text-[#2DC55F] transition-transform group-hover/sub:translate-x-0.5" />
+                                    <ArrowRight className="w-4 h-4 text-slate-400 group-hover/sub:text-[#2DC55F] transition-transform group-hover/sub:translate-x-0.5" />
                                   </div>
                                 </Link>
                               ))
@@ -525,14 +522,14 @@ export default function Navbar() {
                           {/* Bottom Action Footer */}
                           <div className="mt-auto pt-3 border-t border-slate-200/80 flex items-center justify-between shrink-0">
                             <span className="text-[11px] text-slate-500">
-                              Click any sub-service to view live invoice
+                              Click any sub-service to learn more
                             </span>
                             <Link
                               href={`/services/${activeHoveredService.slug}`}
                               onClick={() => setServicesDropdownOpen(false)}
                               className="text-xs font-bold text-[#2DC55F] hover:text-emerald-700 flex items-center gap-1 hover:underline"
                             >
-                              <span>Configure Service Quote</span>
+                              <span>Explore Service Details</span>
                               <ArrowRight className="w-3.5 h-3.5" />
                             </Link>
                           </div>
