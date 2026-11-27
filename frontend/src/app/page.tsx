@@ -176,11 +176,9 @@ export default function HomePage() {
               </ScrollReveal>
             </div>
 
-            {/* Right Visual Column (Interactive Services Honeycomb with Zoom-Out Hover & Redirection) */}
+            {/* Right Visual Column (Interactive Services Honeycomb — Instant Render Without ScrollReveal Delay) */}
             <div className="lg:col-span-6 relative mt-1 sm:mt-4 lg:mt-0">
-              <ScrollReveal animation="zoom-in" delay={150} duration={900}>
-                <HoneycombHero />
-              </ScrollReveal>
+              <HoneycombHero />
             </div>
           </div>
         </div>
