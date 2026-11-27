@@ -397,7 +397,7 @@ export default function SoftwareEcosystem() {
   };
 
   return (
-    <section className="bg-white text-[#0c1e36] pt-14 sm:pt-16 pb-8 relative overflow-hidden">
+    <section className="bg-white text-[#0c1e36] pt-8 sm:pt-12 lg:pt-16 pb-6 sm:pb-8 relative overflow-hidden">
       {/* Dynamic Continuous Marquee Animation */}
       <style>{`
         @keyframes honeycombScrollBelt {
@@ -421,7 +421,7 @@ export default function SoftwareEcosystem() {
       <div className="absolute inset-0 bg-[radial-gradient(#e2e8f0_1px,transparent_1px)] [background-size:24px_24px] opacity-40 pointer-events-none" />
 
       {/* Header Block — Clean, Centered, Professional */}
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-3 mb-10">
+      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-10 text-center space-y-3 mb-6 sm:mb-10">
         <div className="inline-flex items-center gap-2 px-3.5 py-1 rounded-full bg-emerald-50 border border-emerald-200 text-[#16a34a] text-xs font-bold uppercase tracking-wider">
           <Sparkles className="w-3.5 h-3.5 text-[#2DC55F]" />
           <span>Certified Software & Technology Infrastructure</span>

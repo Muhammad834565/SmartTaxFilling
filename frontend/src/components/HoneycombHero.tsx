@@ -144,15 +144,15 @@ export default function HoneycombHero() {
   }, [hexServices]);
 
   return (
-    <div className="relative w-full h-[500px] sm:h-[580px] lg:h-[650px] flex items-center justify-center select-none overflow-visible">
+    <div className="relative w-full h-auto aspect-[650/590] max-h-[380px] sm:max-h-[500px] lg:max-h-[640px] flex items-center justify-center select-none overflow-visible mx-auto">
       {/* ─── Ambient Glow Layers blending into Hero section ───────────── */}
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[520px] h-[520px] bg-[#2DC55F]/15 rounded-full blur-[140px] pointer-events-none animate-pulse" />
-      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[300px] h-[300px] bg-[#2DC55F]/20 rounded-full blur-[90px] pointer-events-none" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[280px] sm:w-[520px] h-[280px] sm:h-[520px] bg-[#2DC55F]/15 rounded-full blur-[70px] sm:blur-[140px] pointer-events-none animate-pulse" />
+      <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-[180px] sm:w-[300px] h-[180px] sm:h-[300px] bg-[#2DC55F]/20 rounded-full blur-[50px] sm:blur-[90px] pointer-events-none" />
 
       {/* ─── 19-Hex Pointed-Top Interlocking SVG Honeycomb ───────────── */}
       <div className="relative w-full max-w-[860px] h-full flex items-center justify-center z-10">
         <svg
-          viewBox="100 40 720 640"
+          viewBox="135 65 650 590"
           className="w-full h-full max-h-[640px] drop-shadow-2xl overflow-visible"
         >
           <defs>
@@ -202,16 +202,16 @@ export default function HoneycombHero() {
           {/* ── Outer High-Tech Circuit Radiations ────────────────────── */}
           <g opacity="0.45">
             <path
-              d="M 460 360 L 460 30 M 460 360 L 820 120 M 460 360 L 820 600 M 460 360 L 460 690 M 460 360 L 100 600 M 460 360 L 100 120"
+              d="M 460 360 L 460 70 M 460 360 L 780 120 M 460 360 L 780 600 M 460 360 L 460 650 M 460 360 L 140 600 M 460 360 L 140 120"
               stroke="url(#circuitLineGrad)"
               strokeWidth="1.2"
               strokeDasharray="4 4"
               fill="none"
             />
-            <circle cx="100" cy="120" r="3" fill="#2DC55F" filter="url(#hexGlow)" />
-            <circle cx="820" cy="120" r="3" fill="#2DC55F" filter="url(#hexGlow)" />
-            <circle cx="100" cy="600" r="3" fill="#2DC55F" filter="url(#hexGlow)" />
-            <circle cx="820" cy="600" r="3" fill="#2DC55F" filter="url(#hexGlow)" />
+            <circle cx="140" cy="120" r="3" fill="#2DC55F" filter="url(#hexGlow)" />
+            <circle cx="780" cy="120" r="3" fill="#2DC55F" filter="url(#hexGlow)" />
+            <circle cx="140" cy="600" r="3" fill="#2DC55F" filter="url(#hexGlow)" />
+            <circle cx="780" cy="600" r="3" fill="#2DC55F" filter="url(#hexGlow)" />
           </g>
 
           {/* ── Background Shared Honeycomb Grid Joints ───────────────── */}
