@@ -39,6 +39,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import TextRotator from '@/components/TextRotator';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import SoftwareEcosystem from '@/components/SoftwareEcosystem';
+import BackendWarmup from '@/components/BackendWarmup';
 
 export default function HomePage() {
 
@@ -76,6 +77,9 @@ export default function HomePage() {
 
   return (
     <div className="space-y-24 bg-white overflow-hidden">
+      {/* Invisible Background Wakeup for Render/Free-Tier Backend */}
+      <BackendWarmup />
+
       {/* 1. Hero Section (Inzofin Home 1 Signature Layout) */}
       <section className="relative pt-6 sm:pt-8 md:pt-10 pb-6 md:pb-8 text-white overflow-hidden border-b border-[#152c4e]">
         {/* Background Image */}

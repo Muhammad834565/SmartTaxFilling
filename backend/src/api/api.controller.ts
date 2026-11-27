@@ -13,6 +13,12 @@ class UpdateInquiryStatusDto {
 export class ApiController {
   constructor(private readonly apiService: ApiService) { }
 
+  // Health / Wakeup Endpoint (Ultra-lightweight ping for zero cold-start delay)
+  @Get('health')
+  healthCheck() {
+    return { status: 'ok', uptime: process.uptime(), timestamp: new Date().toISOString() };
+  }
+
   // Services
   @Get('services')
   getServices(@Query('category') category?: string) {
