@@ -39,6 +39,7 @@ import ScrollReveal from '@/components/ScrollReveal';
 import TextRotator from '@/components/TextRotator';
 import AnimatedCounter from '@/components/AnimatedCounter';
 import SoftwareEcosystem from '@/components/SoftwareEcosystem';
+import HeroSoftwareSlider from '@/components/HeroSoftwareSlider';
 import BackendWarmup from '@/components/BackendWarmup';
 
 export default function HomePage() {
@@ -153,26 +154,9 @@ export default function HomePage() {
                 </div>
               </ScrollReveal>
 
-              {/* Inzofin Trust Strip */}
+              {/* Integrated Platforms Software Honeycomb Slider */}
               <ScrollReveal animation="fade-up" delay={400} duration={800}>
-                <div className="pt-3 sm:pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 text-[11px] sm:text-xs font-semibold text-slate-300">
-                  <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs hover:border-[#2DC55F]/40 transition-colors">
-                    <ShieldCheck className="w-4 h-4 text-[#2DC55F] shrink-0" />
-                    <span>US Tax Advisory</span>
-                  </div>
-                  <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs hover:border-[#2DC55F]/40 transition-colors">
-                    <Award className="w-4 h-4 text-[#2DC55F] shrink-0" />
-                    <span>HMRC MTD Partner</span>
-                  </div>
-                  <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs hover:border-[#2DC55F]/40 transition-colors">
-                    <CheckCircle2 className="w-4 h-4 text-[#2DC55F] shrink-0" />
-                    <span>QuickBooks Elite</span>
-                  </div>
-                  <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs hover:border-[#2DC55F]/40 transition-colors">
-                    <CheckCircle2 className="w-4 h-4 text-[#2DC55F] shrink-0" />
-                    <span>Platinum Xero Partner</span>
-                  </div>
-                </div>
+                <HeroSoftwareSlider />
               </ScrollReveal>
             </div>
 
