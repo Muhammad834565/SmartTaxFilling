@@ -344,9 +344,9 @@
       "softwareTools": [
         "QuickBooks Online",
         "Xero",
-        "Wave",
-        "FreshBooks",
-        "Zoho Books"
+        "Sage",
+        "Zoho Books",
+        "Wave"
       ],
       "imageUrl": "/sevices/Bookkeeping%20&%20Tax%20Compliance.png",
       "subServices": [
@@ -448,10 +448,10 @@
       ],
       "softwareTools": [
         "Wise",
-        "Payoneer",
-        "nsave",
-        "Stripe",
         "PayPal",
+        "Payoneer",
+        "Airwallex",
+        "Stripe",
         "Mercury"
       ],
       "imageUrl": "/sevices/Virtual%20Bank%20Accounts%20&%20Payment%20Solutions.png",
@@ -1374,6 +1374,7 @@
       "softwareTools": [
         "QuickBooks Online",
         "Xero",
+        "Sage",
         "Zoho Books",
         "Dext"
       ],
@@ -1461,10 +1462,10 @@
       ],
       "softwareTools": [
         "Wise",
-        "WorldFirst",
-        "nsave",
+        "PayPal",
         "Payoneer",
         "Airwallex",
+        "WorldFirst",
         "Tide"
       ],
       "imageUrl": "/sevices/Logistics%20&%20Transport%20Accounting%20&%20Tax%20Support.jpg",
