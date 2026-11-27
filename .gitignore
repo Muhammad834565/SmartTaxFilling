@@ -58,4 +58,4 @@ coverage/
 *.tsbuildinfo
 tmp/
 temp/
-
+/temp
