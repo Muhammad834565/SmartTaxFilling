@@ -1,8 +1,23 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Metadata } from 'next';
 import { ArrowRight, BookOpen, Clock, Calendar } from 'lucide-react';
 import { POSTS } from '@/lib/data';
+
+export const metadata: Metadata = {
+  title: 'Tax & Accounting Insights & Compliance Guides | SMARTax Global',
+  description:
+    'Read expert analysis on US sales tax, IRS corporate filings, UK HMRC compliance, bookkeeping automation, and international business growth.',
+  alternates: {
+    canonical: '/blog',
+  },
+  openGraph: {
+    title: 'Tax & Accounting Insights & Compliance Guides | SMARTax Global',
+    description: 'Expert financial analysis and advisory from certified tax consultants.',
+    url: '/blog',
+  },
+};
 
 export default function BlogListingPage() {
   return (
@@ -58,27 +73,26 @@ export default function BlogListingPage() {
                     </span>
                   </div>
 
-                  <h2 className="text-lg font-bold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors leading-snug">
-                    <Link href={`/blog/${post.slug}`}>{post.title}</Link>
+                  <h2 className="text-xl font-bold text-[#0c1e36] group-hover:text-[#2DC55F] transition-colors leading-snug">
+                    <Link href={`/blog/${post.slug}`}>
+                      {post.title}
+                    </Link>
                   </h2>
 
-                  <p className="text-xs sm:text-sm text-slate-600 leading-relaxed line-clamp-3">
+                  <p className="text-xs text-slate-500 leading-relaxed line-clamp-3">
                     {post.excerpt}
                   </p>
                 </div>
               </div>
 
-              <div className="px-7 pb-7 pt-2 flex items-center justify-between border-t border-slate-100">
-                <span className="text-xs font-semibold text-slate-500">
-                  By {post.author}
-                </span>
-
+              <div className="p-7 pt-0 border-t border-slate-100 flex items-center justify-between mt-4">
+                <span className="text-xs font-semibold text-slate-400">By {post.author}</span>
                 <Link
                   href={`/blog/${post.slug}`}
-                  className="text-xs font-bold text-[#0c1e36] group-hover:text-[#2DC55F] flex items-center gap-1 transition-colors"
+                  className="text-xs font-bold text-[#2DC55F] group-hover:text-emerald-700 flex items-center gap-1 transition-colors"
                 >
                   <span>Read Article</span>
-                  <ArrowRight className="w-3.5 h-3.5" />
+                  <ArrowRight className="w-3 h-3 group-hover:translate-x-1 transition-transform" />
                 </Link>
               </div>
             </article>

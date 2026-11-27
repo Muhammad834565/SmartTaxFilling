@@ -11,14 +11,24 @@ import {
   BadgeCheck,
   Sparkles
 } from 'lucide-react';
+import { Metadata } from 'next';
 import InteractivePricingDirectory from '@/components/InteractivePricingDirectory';
 import FaqAccordion from '@/components/FaqAccordion';
 import { FAQS } from '@/lib/data';
 
-export const metadata = {
+export const metadata: Metadata = {
   title: 'Pricing & Transparent Rates | SMARTax Global',
   description:
     'Explore transparent pricing for US, UK, and Pakistan bookkeeping, tax compliance, company incorporation, and payment setup services.',
+  alternates: {
+    canonical: '/pricing',
+  },
+  openGraph: {
+    title: 'Transparent Pricing Plans | SMARTax Global',
+    description:
+      'Clear, predictable rates for monthly bookkeeping, corporate tax preparation, and business entity formation.',
+    url: '/pricing',
+  },
 };
 
 export default function PricingPage() {

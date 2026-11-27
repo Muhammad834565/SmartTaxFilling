@@ -1,5 +1,19 @@
 import React from 'react';
 import Link from 'next/link';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Privacy Policy | SMARTax Global',
+  description:
+    'Our commitment to protecting your financial data, confidentiality, and personal information under US and international data security standards.',
+  alternates: {
+    canonical: '/privacy-policy',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function PrivacyPolicyPage() {
   return (

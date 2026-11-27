@@ -1,8 +1,24 @@
 import React, { Suspense } from 'react';
 import Link from 'next/link';
+import { Metadata } from 'next';
 import { Phone, Mail, MapPin, Clock, ShieldCheck, CheckCircle2 } from 'lucide-react';
 import { SITE_INFO } from '@/lib/data';
 import ContactForm from '@/components/ContactForm';
+
+export const metadata: Metadata = {
+  title: 'Contact Us & Book Free Consultation | SMARTax Global',
+  description:
+    'Schedule your free 30-minute tax and accounting consultation with our CPAs. Phone: +1 936 220 6795. Headquarters in Lufkin, Texas.',
+  alternates: {
+    canonical: '/contact',
+  },
+  openGraph: {
+    title: 'Contact SMARTax Global | Free Tax & Accounting Consultation',
+    description:
+      'Get in touch with our certified accountants for US, UK, and Pakistan tax & bookkeeping advisory.',
+    url: '/contact',
+  },
+};
 
 function ContactFormWrapper({ searchParams }: { searchParams?: { service?: string; plan?: string } }) {
   const initial = searchParams?.service || (searchParams?.plan ? `${searchParams.plan} Plan` : '');

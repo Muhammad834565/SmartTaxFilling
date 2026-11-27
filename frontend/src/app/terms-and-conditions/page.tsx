@@ -1,5 +1,19 @@
 import React from 'react';
 import Link from 'next/link';
+import { Metadata } from 'next';
+
+export const metadata: Metadata = {
+  title: 'Terms and Conditions | SMARTax Global',
+  description:
+    'Terms of service, professional engagement standards, and liability limitations for SMARTax Global financial consulting and tax preparation.',
+  alternates: {
+    canonical: '/terms-and-conditions',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
+};
 
 export default function TermsPage() {
   return (

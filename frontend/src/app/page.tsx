@@ -1,6 +1,7 @@
 import React from 'react';
 import Link from 'next/link';
 import Image from 'next/image';
+import { Metadata } from 'next';
 import {
   ArrowRight,
   CheckCircle2,
@@ -42,6 +43,15 @@ import SoftwareEcosystem from '@/components/SoftwareEcosystem';
 import HeroSoftwareSlider from '@/components/HeroSoftwareSlider';
 import BackendWarmup from '@/components/BackendWarmup';
 
+export const metadata: Metadata = {
+  title: 'SMARTax Global | US, UK & Pakistan Tax & Bookkeeping Consultancy',
+  description:
+    'Specialized corporate bookkeeping, IRS US tax filing, HMRC UK corporation tax & VAT compliance, Pakistan FBR advisory, LLC/Ltd company formation, and payment gateway integration.',
+  alternates: {
+    canonical: '/',
+  },
+};
+
 export default function HomePage() {
 
   // Case Studies
@@ -76,8 +86,21 @@ export default function HomePage() {
     }
   ];
 
+  const jsonLdFaq = {
+    '@context': 'https://schema.org',
+    '@type': 'FAQPage',
+    mainEntity: FAQS.map((faq) => ({
+      '@type': 'Question',
+      name: faq.question,
+      acceptedAnswer: {
+        '@type': 'Answer',
+        text: faq.answer,
+      },
+    })),
+  };
+
   return (
-    <div className="space-y-10 sm:space-y-16 lg:space-y-24 bg-white overflow-hidden">
+    <div className="bg-white overflow-hidden">
       {/* Invisible Background Wakeup for Render/Free-Tier Backend */}
       <BackendWarmup />
 
@@ -168,7 +191,9 @@ export default function HomePage() {
         </div>
       </section>
 
-      {/* 3. About Us Section (Inzofin Home 1 Layout) */}
+      {/* Remaining Content Sections with vertical rhythm */}
+      <div className="space-y-10 sm:space-y-16 lg:space-y-24">
+        {/* 3. About Us Section (Inzofin Home 1 Layout) */}
       <section className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-14 items-center">
           {/* Left Column: Image with Experience Ribbon */}
@@ -827,6 +852,13 @@ export default function HomePage() {
           </div>
         </ScrollReveal>
       </section>
+      </div>
+
+      {/* Structured Data FAQPage */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdFaq) }}
+      />
     </div>
   );
 }
