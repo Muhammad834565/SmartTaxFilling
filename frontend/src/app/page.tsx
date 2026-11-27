@@ -38,6 +38,7 @@ import HomeServicesGrid from '@/components/HomeServicesGrid';
 import ScrollReveal from '@/components/ScrollReveal';
 import TextRotator from '@/components/TextRotator';
 import AnimatedCounter from '@/components/AnimatedCounter';
+import SoftwareEcosystem from '@/components/SoftwareEcosystem';
 
 export default function HomePage() {
 
@@ -689,6 +690,9 @@ export default function HomePage() {
           </ScrollReveal>
         </div>
       </section>
+
+      {/* 5b. Integrated Software & Tech Ecosystem Section */}
+      <SoftwareEcosystem />
 
       {/* 8. Pricing Plans Section (Home 1 Layout) */}
       <section className="bg-[#f7f9fc] py-20 border-y border-slate-200">

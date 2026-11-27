@@ -16,10 +16,11 @@
         "State and local income tax returns across all applicable jurisdictions"
       ],
       "softwareTools": [
+        "MyTAXPrepOffice",
+        "Drake Tax",
         "ProConnect Tax",
-        "Drake",
-        "Lacerte",
-        "UltraTax"
+        "TurboTax",
+        "TaxAct"
       ],
       "imageUrl": "/sevices/Tax%20Compliance%20&%20Filing%20Services.png",
       "subServices": [
@@ -81,10 +82,11 @@
         "Multi-state corporate income & franchise tax returns"
       ],
       "softwareTools": [
+        "MyTAXPrepOffice",
+        "Drake Tax",
         "ProConnect Tax",
-        "Drake",
-        "Lacerte",
-        "UltraTax"
+        "TurboTax",
+        "TaxAct"
       ],
       "imageUrl": "/sevices/US%20Tax%20Compliance%20&%20Filing%20Services.png",
       "subServices": [
@@ -342,9 +344,9 @@
       "softwareTools": [
         "QuickBooks Online",
         "Xero",
-        "Wave",
-        "FreshBooks",
-        "Zoho Books"
+        "Sage",
+        "Zoho Books",
+        "Wave"
       ],
       "imageUrl": "/sevices/Bookkeeping%20&%20Tax%20Compliance.png",
       "subServices": [
@@ -446,10 +448,10 @@
       ],
       "softwareTools": [
         "Wise",
-        "Payoneer",
-        "nsave",
-        "Stripe",
         "PayPal",
+        "Payoneer",
+        "Airwallex",
+        "Stripe",
         "Mercury"
       ],
       "imageUrl": "/sevices/Virtual%20Bank%20Accounts%20&%20Payment%20Solutions.png",
@@ -528,10 +530,11 @@
         "Corporate KYC documentation and compliance submission support"
       ],
       "softwareTools": [
-        "Wise Business",
+        "Taptap",
+        "PayPal",
         "Payoneer",
-        "Stripe",
-        "WorldFirst"
+        "Wise",
+        "Airwallex"
       ],
       "imageUrl": "/sevices/UK%20Virtual%20Business%20Accounts%20&%20Payments.png",
       "subServices": [
@@ -656,10 +659,11 @@
         "HMRC correspondence, payment scheduling, and tax clearance support"
       ],
       "softwareTools": [
-        "Taxfiler",
-        "Xero UK",
-        "QuickBooks UK",
-        "FreeAgent"
+        "FreeAgent",
+        "#GoFile",
+        "IRIS Element",
+        "TaxCalc",
+        "WeFile"
       ],
       "imageUrl": "/sevices/UK%20Tax%20Compliance%20&%20Filing%20Services.png",
       "subServices": [
@@ -840,10 +844,10 @@
         "E-Commerce Accounting & Marketplace Reconciliation (Amazon UK, Shopify, eBay)"
       ],
       "softwareTools": [
-        "Xero UK",
-        "QuickBooks Online UK",
-        "Dext",
-        "FreeAgent"
+        "Sage",
+        "Xero",
+        "QuickBooks",
+        "Zoho Books"
       ],
       "imageUrl": "/sevices/UK%20Bookkeeping%20&%20Accounting.png",
       "subServices": [
@@ -1370,6 +1374,7 @@
       "softwareTools": [
         "QuickBooks Online",
         "Xero",
+        "Sage",
         "Zoho Books",
         "Dext"
       ],
@@ -1457,10 +1462,10 @@
       ],
       "softwareTools": [
         "Wise",
-        "WorldFirst",
-        "nsave",
+        "PayPal",
         "Payoneer",
         "Airwallex",
+        "WorldFirst",
         "Tide"
       ],
       "imageUrl": "/sevices/Logistics%20&%20Transport%20Accounting%20&%20Tax%20Support.jpg",

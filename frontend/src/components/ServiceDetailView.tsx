@@ -23,6 +23,84 @@ import {
 import type { ServiceItem, SubServiceItem } from '@/lib/data';
 import ContactForm from '@/components/ContactForm';
 
+// Global and service-specific logo mapping for supported software tools
+const GLOBAL_TOOL_LOGOS: Record<string, string> = {
+  // US Tax Software
+  'MyTAXPrepOffice': '/software/us tax software/mytaxprepoffice.png',
+  'Drake Tax': '/software/us tax software/drake-tax.png',
+  'Drake': '/software/us tax software/drake-tax.png',
+  'ProConnect Tax': '/software/us tax software/proconnect-tax.png',
+  'Intuit ProConnect': '/software/us tax software/proconnect-tax.png',
+  'Intuit ProConnect Tax': '/software/us tax software/proconnect-tax.png',
+  'TurboTax': '/software/us tax software/turbotax.png',
+  'Intuit TurboTax': '/software/us tax software/turbotax.png',
+  'TaxAct': '/software/us tax software/taxact.png',
+
+  // UK Tax Software
+  'FreeAgent': '/software/uk tax software/freeagent.jpg',
+  '#GoFile': '/software/uk tax software/gofile.jpg',
+  'IRIS Element': '/software/uk tax software/iris-element.jpg',
+  'TaxCalc': '/software/uk tax software/taxcalc.jpg',
+  'WeFile': '/software/uk tax software/wefile.jpg',
+
+  // Accountant & Bookkeeping Software
+  'Sage': '/software/accountant software/sage.png',
+  'Xero': '/software/accountant software/xero.png',
+  'Xero UK': '/software/accountant software/xero.png',
+  'QuickBooks': '/software/accountant software/quickbooks.png',
+  'QuickBooks Online': '/software/accountant software/quickbooks.png',
+  'QuickBooks Online UK': '/software/accountant software/quickbooks.png',
+  'Zoho Books': '/software/accountant software/zoho.png',
+
+  // Payment & Banking Software
+  'Taptap': '/software/payment software/taptap.png',
+  'Taptap Send': '/software/payment software/taptap.png',
+  'PayPal': '/software/payment software/paypal.png',
+  'PayPal Business': '/software/payment software/paypal.png',
+  'Payoneer': '/software/payment software/payoneer.png',
+  'Payoneer Business': '/software/payment software/payoneer.png',
+  'Wise': '/software/payment software/wise.png',
+  'Wise Business': '/software/payment software/wise.png',
+  'Airwallex': '/software/payment software/airwallex.png',
+};
+
+const SERVICE_LOGO_MAP: Record<string, Record<string, string>> = {
+  'individual-tax-filing': {
+    'MyTAXPrepOffice': '/software/us tax software/mytaxprepoffice.png',
+    'Drake Tax': '/software/us tax software/drake-tax.png',
+    'ProConnect Tax': '/software/us tax software/proconnect-tax.png',
+    'TurboTax': '/software/us tax software/turbotax.png',
+    'TaxAct': '/software/us tax software/taxact.png',
+  },
+  'us-tax-compliance-filing-services': {
+    'MyTAXPrepOffice': '/software/us tax software/mytaxprepoffice.png',
+    'Drake Tax': '/software/us tax software/drake-tax.png',
+    'ProConnect Tax': '/software/us tax software/proconnect-tax.png',
+    'TurboTax': '/software/us tax software/turbotax.png',
+    'TaxAct': '/software/us tax software/taxact.png',
+  },
+  'uk-tax-compliance-filing-services': {
+    'FreeAgent': '/software/uk tax software/freeagent.jpg',
+    '#GoFile': '/software/uk tax software/gofile.jpg',
+    'IRIS Element': '/software/uk tax software/iris-element.jpg',
+    'TaxCalc': '/software/uk tax software/taxcalc.jpg',
+    'WeFile': '/software/uk tax software/wefile.jpg',
+  },
+  'uk-bookkeeping-accounting': {
+    'Sage': '/software/accountant software/sage.png',
+    'Xero': '/software/accountant software/xero.png',
+    'QuickBooks': '/software/accountant software/quickbooks.png',
+    'Zoho Books': '/software/accountant software/zoho.png',
+  },
+  'uk-virtual-business-accounts-payments': {
+    'Taptap': '/software/payment software/taptap.png',
+    'PayPal': '/software/payment software/paypal.png',
+    'Payoneer': '/software/payment software/payoneer.png',
+    'Wise': '/software/payment software/wise.png',
+    'Airwallex': '/software/payment software/airwallex.png',
+  },
+};
+
 interface ServiceDetailViewProps {
   service: ServiceItem;
 }
@@ -310,23 +388,66 @@ export default function ServiceDetailView({ service }: ServiceDetailViewProps) {
             </div>
 
             {/* Software Stack & Tools */}
-            <div className="bg-[#0c1a2e] text-white rounded-2xl p-8 border-2 border-[#2DC55F]/40 shadow-xl space-y-4">
-              <h2 className="text-xl font-bold flex items-center gap-2 text-white">
-                <Cpu className="w-5 h-5 text-[#2DC55F]" />
-                <span>Supported Software & Platforms</span>
-              </h2>
+            <div className="bg-[#0c1a2e] text-white rounded-2xl p-8 border-2 border-[#2DC55F]/40 shadow-xl space-y-5">
+              <div className="flex items-center justify-between flex-wrap gap-3">
+                <h2 className="text-xl font-bold flex items-center gap-2 text-white">
+                  <Cpu className="w-5 h-5 text-[#2DC55F]" />
+                  <span>Supported Software & Platforms</span>
+                </h2>
+                <span className="text-[10px] font-extrabold uppercase tracking-widest text-[#2DC55F] bg-[#2DC55F]/10 border border-[#2DC55F]/30 px-3 py-1 rounded-full">
+                  {service.softwareTools.length} Tools
+                </span>
+              </div>
               <p className="text-xs text-slate-300 leading-relaxed">
                 We integrate seamlessly with your existing tech stack or help you migrate to optimal accounting systems:
               </p>
-              <div className="flex flex-wrap gap-2.5 pt-2">
-                {service.softwareTools.map((tool, idx) => (
-                  <span
-                    key={idx}
-                    className="bg-white/10 border border-white/20 text-emerald-300 text-xs font-bold px-3.5 py-1.5 rounded-lg"
-                  >
-                    {tool}
-                  </span>
-                ))}
+
+              {/* Logo Grid — shown for services with configured or global logos */}
+              {service.softwareTools.some((tool) => SERVICE_LOGO_MAP[service.slug]?.[tool] || GLOBAL_TOOL_LOGOS[tool]) ? (
+                <div className="grid grid-cols-2 sm:grid-cols-3 gap-3 pt-1">
+                  {service.softwareTools.map((tool, idx) => {
+                    const logoSrc = SERVICE_LOGO_MAP[service.slug]?.[tool] || GLOBAL_TOOL_LOGOS[tool];
+                    return (
+                      <div
+                        key={idx}
+                        className="group bg-white rounded-xl px-4 py-3 flex items-center justify-center min-h-[64px] border border-slate-200 hover:border-[#2DC55F] hover:shadow-lg hover:shadow-[#2DC55F]/10 transition-all duration-300 relative overflow-hidden"
+                      >
+                        <div className="absolute inset-0 bg-gradient-to-br from-transparent to-slate-50/40 group-hover:to-emerald-50/40 transition-colors duration-300" />
+                        {logoSrc ? (
+                          // eslint-disable-next-line @next/next/no-img-element
+                          <img
+                            src={logoSrc}
+                            alt={tool}
+                            className="relative z-10 max-h-9 w-auto object-contain group-hover:scale-105 transition-transform duration-300"
+                          />
+                        ) : (
+                          <span className="relative z-10 text-xs font-black text-slate-700 text-center leading-tight group-hover:text-[#2DC55F] transition-colors">
+                            {tool}
+                          </span>
+                        )}
+                      </div>
+                    );
+                  })}
+                </div>
+              ) : (
+                <div className="flex flex-wrap gap-2.5 pt-1">
+                  {service.softwareTools.map((tool, idx) => (
+                    <span
+                      key={idx}
+                      className="bg-white/10 border border-white/20 text-emerald-300 text-xs font-bold px-3.5 py-1.5 rounded-lg hover:bg-white/20 transition-colors"
+                    >
+                      {tool}
+                    </span>
+                  ))}
+                </div>
+              )}
+
+              {/* Trusted partner badge */}
+              <div className="flex items-center gap-3 pt-2 border-t border-white/10">
+                <ShieldCheck className="w-4 h-4 text-[#2DC55F] shrink-0" />
+                <p className="text-[11px] text-slate-400 leading-relaxed">
+                  All software integrations are HMRC-authorised, MTD-compliant, and secured with 256-bit encryption.
+                </p>
               </div>
             </div>
 
