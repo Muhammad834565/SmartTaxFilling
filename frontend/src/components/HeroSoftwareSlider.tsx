@@ -53,7 +53,7 @@ export default function HeroSoftwareSlider() {
       <div className="flex items-center gap-2 mb-2 sm:mb-2.5">
         <span className="w-1.5 h-1.5 rounded-full bg-[#2DC55F] inline-block shadow-[0_0_8px_#2DC55F] animate-pulse" />
         <span className="text-[10px] sm:text-[11px] font-extrabold uppercase tracking-widest text-slate-300">
-          Integrated With 19+ Certified Tax & Financial Platforms
+          WE WORK ACROSS LEADING CERTIFIED TAX & FINANCIAL PLATFORMS
         </span>
       </div>
 
