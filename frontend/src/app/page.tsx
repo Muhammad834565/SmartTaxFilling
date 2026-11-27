@@ -76,12 +76,12 @@ export default function HomePage() {
   ];
 
   return (
-    <div className="space-y-24 bg-white overflow-hidden">
+    <div className="space-y-10 sm:space-y-16 lg:space-y-24 bg-white overflow-hidden">
       {/* Invisible Background Wakeup for Render/Free-Tier Backend */}
       <BackendWarmup />
 
       {/* 1. Hero Section (Inzofin Home 1 Signature Layout) */}
-      <section className="relative pt-6 sm:pt-8 md:pt-10 pb-6 md:pb-8 text-white overflow-hidden border-b border-[#152c4e]">
+      <section className="relative pt-4 sm:pt-8 md:pt-10 pb-4 sm:pb-8 text-white overflow-hidden border-b border-[#152c4e]">
         {/* Background Image */}
         <div className="absolute inset-0 z-0">
           {/* eslint-disable-next-line @next/next/no-img-element */}
@@ -102,7 +102,7 @@ export default function HomePage() {
         <div className="absolute -bottom-20 -left-20 w-[500px] h-[500px] bg-blue-600/8 blur-[120px] rounded-full pointer-events-none z-10" />
 
         <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative z-20">
-          <div className="grid grid-cols-1 lg:grid-cols-12 gap-12 lg:gap-8 items-center">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-5 sm:gap-8 items-center">
             {/* Left Content Column */}
             <div className="lg:col-span-6 space-y-4 text-center lg:text-left">
               <ScrollReveal animation="fade-up" duration={700}>
@@ -155,7 +155,7 @@ export default function HomePage() {
 
               {/* Inzofin Trust Strip */}
               <ScrollReveal animation="fade-up" delay={400} duration={800}>
-                <div className="pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 text-[11px] sm:text-xs font-semibold text-slate-300">
+                <div className="pt-3 sm:pt-6 border-t border-white/10 grid grid-cols-2 sm:grid-cols-4 gap-2 sm:gap-3 text-[11px] sm:text-xs font-semibold text-slate-300">
                   <div className="flex items-center gap-2 justify-center lg:justify-start px-3 py-2 rounded-lg bg-white/5 border border-white/10 backdrop-blur-xs hover:border-[#2DC55F]/40 transition-colors">
                     <ShieldCheck className="w-4 h-4 text-[#2DC55F] shrink-0" />
                     <span>US Tax Advisory</span>
@@ -176,11 +176,9 @@ export default function HomePage() {
               </ScrollReveal>
             </div>
 
-            {/* Right Visual Column (Interactive Services Honeycomb with Zoom-Out Hover & Redirection) */}
-            <div className="lg:col-span-6 relative mt-6 lg:mt-0">
-              <ScrollReveal animation="zoom-in" delay={150} duration={900}>
-                <HoneycombHero />
-              </ScrollReveal>
+            {/* Right Visual Column (Interactive Services Honeycomb — Instant Render Without ScrollReveal Delay) */}
+            <div className="lg:col-span-6 relative mt-1 sm:mt-4 lg:mt-0">
+              <HoneycombHero />
             </div>
           </div>
         </div>
@@ -309,7 +307,7 @@ export default function HomePage() {
       </section>
 
       {/* 4b. Our Services / What We Provide Grid */}
-      <section className="bg-[#f7f9fc] py-20 border-y border-slate-200 relative overflow-hidden">
+      <section className="bg-[#f7f9fc] py-10 sm:py-16 lg:py-20 border-y border-slate-200 relative overflow-hidden">
         {/* Subtle abstract wavy line pattern in background */}
         <div className="absolute inset-0 pointer-events-none opacity-40">
           <svg
@@ -343,7 +341,7 @@ export default function HomePage() {
       {/* 4. Services Working Process Section */}
       <section className="relative">
         {/* Dark top banner with dot-grid pattern */}
-        <div className="relative bg-[#0b1728] pt-16 pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
+        <div className="relative bg-[#0b1728] pt-10 sm:pt-16 pb-16 sm:pb-28 px-4 sm:px-6 lg:px-8 overflow-hidden">
           {/* Abstract wavy line pattern */}
           <div className="absolute inset-0 pointer-events-none overflow-hidden">
             <svg
@@ -699,7 +697,7 @@ export default function HomePage() {
       <SoftwareEcosystem />
 
       {/* 8. Pricing Plans Section (Home 1 Layout) */}
-      <section className="bg-[#f7f9fc] py-20 border-y border-slate-200">
+      <section className="bg-[#f7f9fc] py-10 sm:py-16 lg:py-20 border-y border-slate-200">
         <ScrollReveal animation="fade-up" className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 space-y-12">
           <div className="text-center max-w-2xl mx-auto space-y-3">
             <div className="inzofin-section-subtitle">
