@@ -13,9 +13,18 @@ export const metadata: Metadata = {
   description:
     'Specialized corporate bookkeeping, IRS US tax filing, HMRC UK corporation tax & VAT compliance, Pakistan FBR advisory, LLC/Ltd company formation, and payment gateway integration.',
   icons: {
-    icon: '/favicon.ico',
+    icon: [
+      { url: '/favicon.ico', sizes: 'any' },
+      { url: '/icon-48x48.png', sizes: '48x48', type: 'image/png' },
+      { url: '/icon-96x96.png', sizes: '96x96', type: 'image/png' },
+      { url: '/icon-192x192.png', sizes: '192x192', type: 'image/png' },
+      { url: '/logo-icon.png', sizes: '512x512', type: 'image/png' },
+    ],
     shortcut: '/favicon.ico',
-    apple: '/logo-icon.png',
+    apple: [
+      { url: '/apple-touch-icon.png', sizes: '180x180', type: 'image/png' },
+      { url: '/logo-icon.png', sizes: '180x180', type: 'image/png' },
+    ],
   },
   keywords: [
     'Bookkeeping services',
@@ -190,6 +199,15 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        {/* Google Search Favicon Guidelines Multi-Size Link Declarations */}
+        <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="icon" type="image/png" sizes="48x48" href="/icon-48x48.png" />
+        <link rel="icon" type="image/png" sizes="96x96" href="/icon-96x96.png" />
+        <link rel="icon" type="image/png" sizes="192x192" href="/icon-192x192.png" />
+        <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
+        <meta name="theme-color" content="#2DC55F" />
+
+        {/* Structured Schema.org Organization Data */}
         <script
           type="application/ld+json"
           dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdOrganization) }}
