@@ -4,7 +4,7 @@ import { Metadata } from 'next';
 import { SERVICES } from '@/lib/data';
 import ServiceDetailView from '@/components/ServiceDetailView';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://smartaxglobal.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.smartaxglobal.com';
 
 export function generateStaticParams() {
   return SERVICES.map((service) => ({
@@ -72,51 +72,79 @@ export default function ServiceDetailPage({
     return null;
   }
 
-  const jsonLdService = {
+  const jsonLdData = {
     '@context': 'https://schema.org',
-    '@type': 'Service',
-    '@id': `${SITE_URL}/services/${service.slug}#service`,
-    name: service.title,
-    description: service.shortDescription || service.fullDescription,
-    serviceType: service.category,
-    provider: {
-      '@type': 'AccountingService',
-      name: 'SMARTax Global',
-      url: SITE_URL,
-      telephone: '+1 936 220 6795',
-      address: {
-        '@type': 'PostalAddress',
-        streetAddress: '401 Timbered dr.',
-        addressLocality: 'Lufkin',
-        addressRegion: 'TX',
-        postalCode: '75901',
-        addressCountry: 'US',
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${SITE_URL}/services/${service.slug}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: SITE_URL,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Services',
+            item: `${SITE_URL}/services`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: service.title,
+            item: `${SITE_URL}/services/${service.slug}`,
+          },
+        ],
       },
-    },
-    areaServed: [
-      { '@type': 'Country', name: 'United States' },
-      { '@type': 'Country', name: 'United Kingdom' },
-      { '@type': 'Country', name: 'Pakistan' },
+      {
+        '@type': 'Service',
+        '@id': `${SITE_URL}/services/${service.slug}#service`,
+        name: service.title,
+        description: service.shortDescription || service.fullDescription,
+        serviceType: service.category,
+        provider: {
+          '@type': 'AccountingService',
+          name: 'SMARTax Global',
+          url: SITE_URL,
+          telephone: '+1 936 220 6795',
+          address: {
+            '@type': 'PostalAddress',
+            streetAddress: '401 Timbered dr.',
+            addressLocality: 'Lufkin',
+            addressRegion: 'TX',
+            postalCode: '75901',
+            addressCountry: 'US',
+          },
+        },
+        areaServed: [
+          { '@type': 'Country', name: 'United States' },
+          { '@type': 'Country', name: 'United Kingdom' },
+          { '@type': 'Country', name: 'Pakistan' },
+        ],
+        ...(service.imageUrl
+          ? {
+              image: `${SITE_URL}${service.imageUrl}`,
+            }
+          : {}),
+        offers: service.subServices?.map((sub) => ({
+          '@type': 'Offer',
+          name: sub.name,
+          price: sub.price,
+          priceCurrency: sub.currency || 'USD',
+          description: sub.description,
+        })),
+      },
     ],
-    ...(service.imageUrl
-      ? {
-          image: `${SITE_URL}${service.imageUrl}`,
-        }
-      : {}),
-    offers: service.subServices?.map((sub) => ({
-      '@type': 'Offer',
-      name: sub.name,
-      price: sub.price,
-      priceCurrency: sub.currency || 'USD',
-      description: sub.description,
-    })),
   };
 
   return (
     <>
       <script
         type="application/ld+json"
-        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdService) }}
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLdData) }}
       />
       <ServiceDetailView service={service} />
     </>

@@ -6,7 +6,7 @@ import { Metadata } from 'next';
 import { ArrowLeft, Calendar, Clock, User, Share2, ArrowRight } from 'lucide-react';
 import { POSTS } from '@/lib/data';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://smartaxglobal.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.smartaxglobal.com';
 
 export function generateStaticParams() {
   return POSTS.map((p) => ({
@@ -77,31 +77,59 @@ export default function BlogPostPage({
 
   const jsonLdArticle = {
     '@context': 'https://schema.org',
-    '@type': 'BlogPosting',
-    '@id': `${SITE_URL}/blog/${post.slug}#article`,
-    headline: post.title,
-    description: post.excerpt,
-    articleBody: post.content,
-    datePublished: post.date,
-    dateModified: post.date,
-    author: {
-      '@type': 'Person',
-      name: post.author,
-    },
-    publisher: {
-      '@type': 'Organization',
-      name: 'SMARTax Global',
-      url: SITE_URL,
-      logo: {
-        '@type': 'ImageObject',
-        url: `${SITE_URL}/logo-icon.png`,
+    '@graph': [
+      {
+        '@type': 'BreadcrumbList',
+        '@id': `${SITE_URL}/blog/${post.slug}#breadcrumb`,
+        itemListElement: [
+          {
+            '@type': 'ListItem',
+            position: 1,
+            name: 'Home',
+            item: SITE_URL,
+          },
+          {
+            '@type': 'ListItem',
+            position: 2,
+            name: 'Blog',
+            item: `${SITE_URL}/blog`,
+          },
+          {
+            '@type': 'ListItem',
+            position: 3,
+            name: post.title,
+            item: `${SITE_URL}/blog/${post.slug}`,
+          },
+        ],
       },
-    },
-    image: `${SITE_URL}${post.imageUrl}`,
-    mainEntityOfPage: {
-      '@type': 'WebPage',
-      '@id': `${SITE_URL}/blog/${post.slug}`,
-    },
+      {
+        '@type': 'BlogPosting',
+        '@id': `${SITE_URL}/blog/${post.slug}#article`,
+        headline: post.title,
+        description: post.excerpt,
+        articleBody: post.content,
+        datePublished: post.date,
+        dateModified: post.date,
+        author: {
+          '@type': 'Person',
+          name: post.author,
+        },
+        publisher: {
+          '@type': 'Organization',
+          name: 'SMARTax Global',
+          url: SITE_URL,
+          logo: {
+            '@type': 'ImageObject',
+            url: `${SITE_URL}/logo-icon.png`,
+          },
+        },
+        image: `${SITE_URL}${post.imageUrl}`,
+        mainEntityOfPage: {
+          '@type': 'WebPage',
+          '@id': `${SITE_URL}/blog/${post.slug}`,
+        },
+      },
+    ],
   };
 
   return (

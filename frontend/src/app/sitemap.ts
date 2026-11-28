@@ -1,7 +1,7 @@
 import { MetadataRoute } from 'next';
 import { SERVICES, POSTS } from '@/lib/data';
 
-const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://smartaxglobal.com';
+const BASE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.smartaxglobal.com';
 
 export default function sitemap(): MetadataRoute.Sitemap {
   const staticRoutes: MetadataRoute.Sitemap = [
