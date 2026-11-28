@@ -2,7 +2,7 @@ import type { Metadata } from 'next';
 import './globals.css';
 import AppShell from '@/components/AppShell';
 
-const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://smartaxglobal.com';
+const SITE_URL = process.env.NEXT_PUBLIC_SITE_URL || 'https://www.smartaxglobal.com';
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITE_URL),
@@ -206,6 +206,16 @@ export default function RootLayout({
         <link rel="icon" type="image/png" sizes="192x192" href="/icon-192x192.png" />
         <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png" />
         <meta name="theme-color" content="#2DC55F" />
+
+        {/* Local & Geo-Targeting Metadata */}
+        <meta name="geo.region" content="US-TX" />
+        <meta name="geo.placename" content="Lufkin, Texas" />
+        <meta name="geo.position" content="31.3385;-94.7291" />
+        <meta name="ICBM" content="31.3385, -94.7291" />
+
+        {/* Font Performance Preconnects */}
+        <link rel="preconnect" href="https://fonts.googleapis.com" />
+        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
 
         {/* Structured Schema.org Organization Data */}
         <script
